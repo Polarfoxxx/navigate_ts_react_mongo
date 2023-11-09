@@ -1,0 +1,22 @@
+
+.road_DIVIDER_detail_OTR{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    border: 2px solid orange;
+
+}
+
+.road_DIVIDER_detail_OTR .direction_box{
+    width: 100%;
+    height: 460px;
+    overflow-y: auto;
+}
+.road_DIVIDER_detail_OTR .direction_box_deactive{
+    width: 100%;
+    height: 45px;
+    background-color: red;
+}

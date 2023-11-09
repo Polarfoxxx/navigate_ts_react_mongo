@@ -1,0 +1,21 @@
+.control-box{
+    width: 100%;
+    background-color: rgba(64, 77, 101, 0);
+    right: 0;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.control-box .stEnd{
+  width: 100%;
+
+}
+
+.control-box .sideways_box{
+    width: 80%;
+}
+  

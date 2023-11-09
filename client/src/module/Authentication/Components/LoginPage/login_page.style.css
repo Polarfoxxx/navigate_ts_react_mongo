@@ -1,0 +1,240 @@
+.loginPage {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: row;
+}
+
+.loginPage .buttonSide {
+  width: 100%;
+  height: 100%;
+}
+
+.loginPage>div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginPage .buttonSide {
+  position: relative;
+  background-image: url("/public/img/backGround/loginwallp.jpg");
+  background-position: left;
+  background-size: 1920px;
+  background-repeat: no-repeat;
+}
+
+.loginPage .buttonSide .buttonSideCol {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 255, 255, 0.353);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginPage .buttonSide .buttonSideCol .buttonBox {
+  width: 20vw;
+  min-width: 300px;
+  height: 140vh;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background-color: rgba(0, 0, 0, 0.474);
+  position: absolute;
+  left: 120px;
+  transform: skew(18deg);
+  border-left: 4px solid var(--yellowGreen);
+}
+
+.loginPage .buttonSide .buttonSideCol .buttonBox .signButton {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: skew(-18deg);
+}
+
+.loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton {
+  width: 8vw;
+  min-width: 100px;
+  height: 3vw;
+  min-height: 40px;
+  border-radius: 2vw;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background-color: rgb(77, 77, 77);
+
+}
+
+.loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton>button {
+  width: 8vw;
+  min-width: 100px;
+  height: 3vw;
+  min-height: 40px;
+  border-radius: 2vw;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  z-index: 2;
+  overflow: hidden;
+  font-size: 20px;
+  color: var(--whiteTextColor);
+  font-weight: bold;
+}
+
+.loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton>button::before {
+  content: "";
+  right: -40px;
+  top: 0;
+  z-index: -1;
+  width: 300px;
+  height: 100px;
+  cursor: pointer;
+  position: absolute;
+  background-color: rgb(0, 0, 0);
+  transform: skew(18deg);
+  border-right: 1vw solid var(--yellowGreen);
+
+}
+
+.loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton>button:hover::before {
+  transform: translateX(-110%) skew(18deg);
+  transition: transform 0.8s ease;
+
+}
+
+.loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton>button:hover {
+  transition-delay: 0.1s;
+  color: var(--yellowGreen);
+}
+
+
+
+
+/* ================================================= */
+.loginPage .textSide {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  position: relative;
+}
+
+.loginPage .textSide::before {
+  content: "";
+  height: 100%;
+  width: 330px;
+  left: -130px;
+  position: absolute;
+  transform: skew(18deg) translate(-26px, 0px);
+  background-color: rgb(14, 14, 14);
+}
+
+.loginPage .textSide::after {
+  content: "";
+  height: 100%;
+  width: 115px;
+  left: -130px;
+  position: absolute;
+  transform: skew(18deg) translate(-26px, 0px);
+  background-color: rgba(174, 174, 174, 0.294);
+  border-left: 110px solid rgba(116, 116, 116, 0.153);
+}
+
+/* vyskakovacie okno */
+.loginPage .textSide .signBox {
+  width: 60vw;
+  height: 17vw;
+  position: fixed;
+  top: 550px;
+  transition: 1s;
+  z-index: 99;
+}
+
+.loginPage .textSide .signBox>div {
+  width: 25vw;
+  height: 100%;
+  position: absolute;
+  transition: 1s;
+}
+
+.loginPage .textSide .textBlock {
+  width: 58vw;
+  min-width: 1000px;
+  height: 40vw;
+  min-height: 500px;
+  top: 30px;
+  position: absolute;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+  right: 0;
+}
+
+.loginPage .textSide .textBlock .headTextBlock {
+  width: 100%;
+  height: auto;
+  font-size: 55px;
+}
+
+.loginPage .textSide .textBlock .headTextBlock .welcomeBox {
+  color: var(--yellowGreen);
+  font-size: 170px;
+  line-height: 170px;
+  font-family: 'Dancing Script', cursive;
+  margin-right: 20px;
+}
+
+.loginPage .textSide .textBlock .headTextBlock .tomyBox {
+  color: var(--whiteTextColor);
+}
+
+.loginPage .textSide .textBlock .bodyTextBlock {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: end;
+}
+
+.loginPage .textSide .textBlock .bodyTextBlock .bodyTextContent {
+  width: 90%;
+  margin-top: 20px;
+  color: var(--whiteTextColor);
+  margin-right: 20px;
+  font-size: 24px;
+}
+
+.loginPage .textSide .textBlock .bodyTextBlock .bodyTextContent .first::first-letter {
+  font-size: 2.5vw;
+  font-weight: bold;
+  color: rgb(106, 255, 0);
+}
+
+
+.loginPage .textSide .textBlock .bodyTextBlock .bodyTextContent p:nth-child(2) {
+  margin-left: 40px;
+}
+
+.loginPage .textSide .textBlock .bodyTextBlock .bodyTextContent p:nth-child(3) {
+  margin-left: 70px;
+}
+
+.loginPage .textSide .textBlock .bodyTextBlock .bodyTextContent p:nth-child(4) {
+  margin-left: 80px;
+}
+
+.loginPage .textSide .textBlock .bodyTextBlock .bodyTextContent p:nth-child(5) {
+  margin-left: 100px;
+}

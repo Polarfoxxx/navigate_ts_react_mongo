@@ -1,0 +1,94 @@
+.detailOfTheRoad {
+    width: 100%;
+    min-height: 100px;
+    background-color: rgb(215, 215, 215);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    position: relative;
+    border-radius: 10px;
+}
+
+.detailOfTheRoad .detailOfTheRoad_header {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+    font-size: 0.6em;
+    background-color: transparent;
+    padding: 4px;
+    overflow-y: auto;
+}
+
+.detailOfTheRoad .detailOfTheRoad_header:hover {
+    background-color: rgb(179, 179, 179);
+}
+
+.detailOfTheRoad .detailOfTheRoad_totalInfo {
+    width: 100%;
+    height: 50px;
+    border: 1px solid red;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    padding-left: 10px;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.detailOfTheRoad .detailOfTheRoad_totalInfo>div {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.detailOfTheRoad .detailOfTheRoad_totalInfo>div>span {
+    width: 120px;
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+.detailOfTheRoad .detailOfTheRoad_totalInfo>div .disSpan {
+    background-color: rgb(146, 1, 1);
+    color: white;
+    padding-left: 5px;
+}
+
+.detailOfTheRoad .detailOfTheRoad_totalInfo>div .timeSpan {
+    background-color: rgb(2, 104, 2);
+    color: white;
+    padding-left: 5px;
+
+}
+
+
+.detailOfTheRoad .direction_box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: auto;
+    border: 1px solid green;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.detailOfTheRoad .direction_box::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.detailOfTheRoad .direction_box {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}

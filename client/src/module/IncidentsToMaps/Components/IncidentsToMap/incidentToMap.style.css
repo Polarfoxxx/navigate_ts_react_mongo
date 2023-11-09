@@ -1,0 +1,62 @@
+.incident_content{
+    width: 100%;
+    background-color: rgb(155, 155, 155);
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.incident_content .inc_cont_header{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(173, 31, 31);
+    flex-direction: row;
+    padding: 4px;
+    color: white;
+}
+
+.incident_content .inc_cont_header  .imgIncBox{
+    width: 20%;
+    height: 100%;
+}
+
+.incident_content .inc_cont_header  .imgIncBox > img{
+    width: 40px;
+    height: 40px;
+}
+.incident_content .inc_cont_header > div .titt{
+    font-size: 15px;
+    background-color: red;
+}
+
+
+
+
+.incident_content .inc_cont_header .startIncBox{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+    justify-content: center;
+    align-items: center;
+}
+.incident_content .inc_cont_header .endIncBox{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+
+
+

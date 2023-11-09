@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main_title: #000000;
+  --main_title_backgr: rgba(0, 0, 0, 0.244);
+  --yellowGreen: rgb(106, 255, 0);
+  --whiteTextColor: rgb(193, 193, 193);
+  --silverContent: rgb(107, 107, 107);
+}
+
+
+.app {
+  width: 100%;
+  min-width: 1400px;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+
+}

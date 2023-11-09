@@ -1,0 +1,1 @@
+export { default as LocationInfoBox } from "./LocationInfoBox/LocationInfoBox"

@@ -1,0 +1,106 @@
+.route_item {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 2px;
+}
+
+.route_item>div {
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ------------------------ */
+.route_item .direction {
+    width: 30%;
+    font-weight: bold;
+}
+
+.route_item .direction>h5 {
+    width: 70%;
+    height: 70%;
+    background-color: black;
+    color: rgb(211, 211, 211);
+    border-radius: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ------------------------ */
+
+
+.route_item .modifier {
+    width: 20%;
+}
+
+.route_item .modifier>img {
+    width: auto;
+    height: 80%;
+}
+
+/* ------------------------ */
+
+.route_item .roadAndText {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-direction: column;
+    font-size: 12px;
+    font-weight: normal;
+    width: 140%;
+}
+
+.route_item .roadAndText>div {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+.route_item .roadAndText .text{
+    border-bottom: 1px solid rgba(181, 5, 5, 0.233);
+}
+
+/* ------------------------ */
+.route_item .exit {
+    width: 25%;
+     font-size: 12px;
+     padding: 3px;
+}
+
+/* ------------------------ */
+.route_item .distanceAndTime {
+    width: 70%;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-direction: column;
+}
+
+.route_item .distanceAndTime>div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.route_item .distanceAndTime>div>span {
+    margin-right: 4px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(146, 1, 1);
+}
+
+.route_item .distanceAndTime>div .spDis {
+    background-color: rgb(2, 104, 2);
+}
+
+.route_item .distanceAndTime>div>p {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

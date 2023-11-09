@@ -1,0 +1,102 @@
+/* popup */
+.leaflet-popup-content-wrapper {
+  background-color: rgba(48, 43, 43, 0.911);
+  min-width: 280px;
+}
+
+.leaflet-popup-tip-container > div {
+  background-color: black;
+}
+
+.popup {
+  background-color: transparent;
+  color: white;
+}
+
+.popup .coordinateBox {
+  width: 100%;
+  background-color: rgba(110, 89, 89, 0.297);
+  padding: 5px;
+  border-radius: 5px 5px 0 0;
+}
+
+.popup .coordinateBox .coordoante-item {
+  display: flex;
+  justify-content: start;
+  flex-direction: row;
+  margin: 1px;
+}
+
+.popup .coordinateBox .coordoante-item > span {
+  color: black;
+  margin-right: 7px;
+  font-weight: bold;
+  width: 80px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 2px;
+  padding-left: 3px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+/* box druhy */
+.popup .locationBox {
+  background-color: rgba(189, 189, 189, 0.42);
+  padding: 5px;
+}
+
+.popup .locationBox .locationHeader {
+  width: 100%;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  color: rgb(255, 255, 255);
+}
+
+.popup .locationBox .locationContent {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.popup .locationBox .locationContent .items {
+  background-color: rgb(19, 207, 44);
+  border-radius: 5px;
+  padding: 3px;
+  font-size: 11px;
+  display: flex;
+  margin: 1px;
+  color: black;
+  width: 49%;
+  height: auto;
+  break-inside: avoid;
+  font-size: 12px;
+}
+.popup .locationBox .locationContent .items > span {
+  margin-right: 5px;
+}
+
+.popup .buttonBox {
+  width: 100%;
+  height: 30px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0 0 5px 5px;
+  color: red;
+}
+.popup .buttonBox > button {
+  width: 100%;
+  height: 100%;
+  border-radius: 0 0 5px 5px;
+  background-color: rgb(175, 175, 175);
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.popup .buttonBox > button:hover {
+  background-color: rgba(212, 212, 212, 0.788);
+  transition: 0.3s;
+}
