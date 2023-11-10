@@ -1,6 +1,6 @@
 import React from 'react'
 import "leaflet/dist/leaflet.css"
-import { MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import "./maps.master.style.css"
 import { LatLngExpression } from 'leaflet';
 import PoligonXXX from '../../../IncidentsToMaps/Components/poligonXXXXX/PoligonXXX';
@@ -12,13 +12,13 @@ import { MapHandler } from '../../Components';
 import { ServicesFollowPointsOnTheMap } from '../../../Control';
 import { MapTraffic } from '../../../IncidentsToMaps';
 import { Popups } from '../../../Maps/Components';
+import { MapSearche } from '../../../IncidentsToMaps';
 
 function Maps() {
     console.log("map");
     const mapRef = React.useRef(null);
     const containerRef = React.useRef<HTMLDivElement | null>(null);
-    const CENTER_MAP: LatLngExpression = [48.7144253, 17.1079803];
-
+    const CENTER_MAP: LatLngExpression = [51.4944253, -0.13];
 
     return (
         <div
@@ -40,6 +40,7 @@ function Maps() {
                 <MapHandler />
                 <ServicesFollowPointsOnTheMap />
                 <MapTraffic />
+                <MapSearche />
                 <Popups />
                 {/*    <PoligonXXX />  */}
 

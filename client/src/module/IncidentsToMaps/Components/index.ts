@@ -1,6 +1,7 @@
 
 export { default as IncidentsToMap } from "./IncidentsToMap/IncidentsToMap";
 export { default as MapTraffic } from "./MapTraffic/MapTraffic";
+export { default as MapSearche } from "./MapSearch/MapSearch";
 
 /* services */
 export {default as services_dataManagForIncapi} from "./IncidentsToMap/services/services_dataManagForIncapi";

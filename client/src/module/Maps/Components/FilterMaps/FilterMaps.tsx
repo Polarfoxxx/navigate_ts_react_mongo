@@ -32,7 +32,7 @@ function FilterMaps(): null {
         };
 
         // Nastavení výchozí vrstvy na "OpenStreetMapDark"
-        DARK_LAYER.addTo(MAP);
+        OSM_LAYER.addTo(MAP);
         const layerControl = L.control.layers(BASE_LAYERS).addTo(MAP);
 
         return (() => {

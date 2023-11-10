@@ -115,7 +115,7 @@ function RouteMachine() {
             routingControl.on("routesfound", function (e) {
                 const ROUTES = e.routes;
                 setRoutes(ROUTES)
-                updateContext_DATA([{ newData: services_routeDetail(ROUTES), key: "route" }]);
+                updateContext_DATA([{ newData: services_routeDetail(ROUTES), key: "main_atl_route" }]);
 
                 /* posun na trasu */
                 if (routes.length > 0) {

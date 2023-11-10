@@ -12,7 +12,7 @@ import { Container } from "../../../Container";
 
 function IncidentsToMap() {
     const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
-    const { trafficDATA, incident } = sideWays_DATA;
+    const { mapsCurrentInfo, incident } = sideWays_DATA;
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
     const [incidentDATA, setIncidentDATA] = React.useState<Type_IncidentDATA_forMarker[]>()
 
@@ -25,7 +25,7 @@ function IncidentsToMap() {
     async function fetchData() {
         if (incident.status) {
             const MINI_SECTION = services_highestCoordInhTeAreasOf(location_DATA);
-            const ALL_INCIDENTS_WIN = services_dataManagForIncapi(trafficDATA.mapsRectangle);
+            const ALL_INCIDENTS_WIN = services_dataManagForIncapi(mapsCurrentInfo.mapsRectangle);
             const SECTION = location_DATA.endPoints.address ? MINI_SECTION : ALL_INCIDENTS_WIN
             console.log(SECTION);
 
@@ -65,8 +65,7 @@ function IncidentsToMap() {
     const handleMarkerToggle = async (incident: Type_IncidentDATA_forMarker, state: boolean) => {
         if (state) {
             const UPDATE_DATA = {
-                ...incident,
-                type: "incidents",
+                status: true,
                 dataInc: {
                     id: incident.id,
                     type: incident.type,
@@ -96,30 +95,13 @@ function IncidentsToMap() {
             updateContext_DATA([
                 { newData: false, key: "popupStatus" },
             ]);
-        }
-
-
-
-
-        /*    try {
-               const data = await IncidentPopup({ incident });
-               const popup = L.popup()
-                   .setLatLng(incident.location)
-                   .setContent(data);
-               if (state) {
-                   popup.openOn(MAP); // Otvor popup
-               } else {
-                   MAP.closePopup();
-               };
-           } catch (error) {
-               console.error(error);
-           }; */
+        };
     };
 
     return (
         <>
             {
-                incidentDATA && incidentDATA.map((incident: Type_IncidentDATA_forMarker, key: number) =>
+               incident.status && incidentDATA && incidentDATA.map((incident: Type_IncidentDATA_forMarker, key: number) =>
                     <Marker
                         position={incident.location}
                         icon={incident.icon}
@@ -129,9 +111,8 @@ function IncidentsToMap() {
                             mouseout: () => handleMarkerToggle(incident, false),
                         }}>
                     </Marker>
-
                 )
-            }
+            };
 
         </>
 

@@ -62,7 +62,6 @@ export type Type_IncidentDATA_forMarker = {
 
 export type Type_incident = {
   status: boolean,
-  type: string,
   dataInc: Type_IncidentDATA_forMarker | null,
 };
 
@@ -91,8 +90,7 @@ export type Type_location_DATA = {
   startPoints: TypeStartAndEndPoint;
   endPoints: TypeStartAndEndPoint;
   arrayALL_coordinate: Type_ArrayAllCoord;
-  route: Type_ArrayALLRoute[];
-  onClick: boolean,
+  main_atl_route: Type_ArrayALLRoute[];
   changeRoutes: Type_forRouteChange
 };
 
@@ -103,7 +101,7 @@ export type Type_sideWays_DATA = {
   traffic: boolean,
   popupStatus: boolean;
   markerInTheRoute: L.LatLngExpression | null,
-  trafficDATA: Type_forTraficDATA
+  mapsCurrentInfo: Type_forTraficDATA
 };
 
 export type Type_Provider_Context = {

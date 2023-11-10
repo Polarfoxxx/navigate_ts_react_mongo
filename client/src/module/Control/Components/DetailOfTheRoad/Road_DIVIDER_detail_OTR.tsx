@@ -9,7 +9,7 @@ import { UseChangeContextDATA } from "../../../hooks";
 
 function Road_DIVIDER_detail_OTR(): JSX.Element {
     const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
-    const { route, changeRoutes } = location_DATA;
+    const { main_atl_route, changeRoutes } = location_DATA;
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
     const [mainAndAlternativeRoads, setMainAndAlternativeRoads] = React.useState<Type_ArrayALLRoute[]>([]);
     const [active, setActive] = React.useState(0);
@@ -37,15 +37,15 @@ function Road_DIVIDER_detail_OTR(): JSX.Element {
 
 
     React.useEffect(() => {
-        if (route.length > 0) {
+        if (main_atl_route.length > 0) {
             let allRoute: Type_ArrayALLRoute[] = [];
-            route.forEach(item => {
+            main_atl_route.forEach(item => {
                 /* nastavenie vsetkych trias aj alt  */
                 allRoute.push(item);
                 setMainAndAlternativeRoads(allRoute);
             });
         };
-    }, [route]);
+    }, [main_atl_route]);
 
 
     return (

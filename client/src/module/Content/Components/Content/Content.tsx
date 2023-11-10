@@ -12,7 +12,7 @@ function Content() {
         <div className="appBlock" >
             <div className="container">
                 <header>
-                    <Header/>
+                    <Header />
                 </header>
                 <section>
                     <div className='mapsAndControl'>

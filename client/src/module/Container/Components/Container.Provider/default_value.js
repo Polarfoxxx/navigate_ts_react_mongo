@@ -9,8 +9,9 @@ export const defaultValue_address_for_Provider_Context = {
         latLng: [],
     },
     arrayALL_coordinate: [],
-    route: [],
-    onClick: false,
+    main_atl_route: [],
+
+    /* nepouiva sa */
     changeRoutes: {
         routeIndex: 0,
         onEvent: ""
@@ -25,16 +26,15 @@ export const defaultValue_sideways_for_Provider_Context = {
     navi_Machine: false,/* nepoziva sa */
     incident: {
         status: false,
-        type: "",
         dataInc: null
     },
     traffic: false,
     popupStatus: false,
     markerInTheRoute: null,
-    trafficDATA: {
+    mapsCurrentInfo: {
         zoom: 0,
         center: null,
         sizeMap: [],
-        mapsRectangle:[]
+        mapsRectangle: []
     },
 };

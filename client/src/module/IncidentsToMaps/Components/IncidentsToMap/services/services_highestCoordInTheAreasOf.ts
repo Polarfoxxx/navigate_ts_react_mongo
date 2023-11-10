@@ -5,7 +5,7 @@ import { Type_CoordAllRoads_LatLng, Type_MostedCoordinate_Arr } from "../types";
 function services_highestCoordInTheAreasOf(location_DATA: Type_location_DATA): Type_MostedCoordinate_Arr[] {
   let COORD_ALL_ROADS: Type_CoordAllRoads_LatLng[][] = [];
   const RECTANGLE_KM = 500;
-  const ALL_POINTS_ROAD = location_DATA.route;
+  const ALL_POINTS_ROAD = location_DATA.main_atl_route;
   let most_northEast_cord: Type_MostedCoordinate_Arr[] = [];
 
   // Projdeme všechny objekty v ALL_POINTS

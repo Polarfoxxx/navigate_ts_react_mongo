@@ -94,7 +94,7 @@ function MapHandler(): null {
         mapsRectangle: [leftTopCoordinates.lat, leftTopCoordinates.lng, rightBottomCoordinates.lat, rightBottomCoordinates.lng]
       }
       updateContext_DATA([
-        { newData: UPDATE_DATA, key: "trafficDATA" },
+        { newData: UPDATE_DATA, key: "mapsCurrentInfo" },
       ]);
     };
   };
