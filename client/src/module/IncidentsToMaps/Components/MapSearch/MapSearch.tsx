@@ -16,12 +16,19 @@ function MapSearch(): JSX.Element {
 
     React.useEffect(() => {
         fetchData()
-    }, [])
+    }, [mapShops])
 
     async function fetchData() {
         if (mapShops) {
             const ALL_INCIDENTS_WIN = services_rectagleCoord_WinMap(mapsCurrentInfo.mapsRectangle);
-            search_API( ALL_INCIDENTS_WIN )
+            try {
+               const DATA_API = await search_API( ALL_INCIDENTS_WIN )
+                    console.log(DATA_API);
+                    
+
+            } catch  (error) {
+                console.error(error);
+            };
         }
 
     }

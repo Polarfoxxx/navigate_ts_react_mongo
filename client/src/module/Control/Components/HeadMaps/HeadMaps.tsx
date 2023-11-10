@@ -101,12 +101,12 @@ function HeadMaps(): JSX.Element {
                     </ButtonComponent.ButtonBox>
                 </div>
                 <div 
-                style={sideWays_DATA.traffic || sideWays_DATA.incident.status ? {backgroundColor: "red"}: {backgroundColor: "transparent"}}
+                style={sideWays_DATA.traffic || sideWays_DATA.incident.status || sideWays_DATA.mapShops ? {backgroundColor: "red"}: {backgroundColor: "transparent"}}
                 className="headerButBoxActive">
                     <div>
                     <h3>{sideWays_DATA.traffic ? "traffic" : ""}</h3>
                     <h3>{sideWays_DATA.incident.status ? "incidents" : ""}</h3>
-                    <h3>{sideWays_DATA.incident.status ? "shop" : ""}</h3>
+                    <h3>{sideWays_DATA.mapShops ? "shop" : ""}</h3>
                     </div>
                 </div>
             </div>
