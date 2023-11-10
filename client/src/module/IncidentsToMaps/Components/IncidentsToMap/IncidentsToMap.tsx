@@ -6,7 +6,7 @@ import L from "leaflet"
 import { Type_for_TraficIncidents, Type_IncidentDATA_forMarker } from "./types";
 import services_highestCoordInhTeAreasOf from "./services/services_highestCoordInTheAreasOf";
 import { UseChangeContextDATA } from "../../../hooks";
-import services_dataManagForIncapi from "./services/services_dataManagForIncapi";
+import {services_rectagleCoord_WinMap} from "../";
 import { Container } from "../../../Container";
 
 
@@ -25,7 +25,7 @@ function IncidentsToMap() {
     async function fetchData() {
         if (incident.status) {
             const MINI_SECTION = services_highestCoordInhTeAreasOf(location_DATA);
-            const ALL_INCIDENTS_WIN = services_dataManagForIncapi(mapsCurrentInfo.mapsRectangle);
+            const ALL_INCIDENTS_WIN = services_rectagleCoord_WinMap(mapsCurrentInfo.mapsRectangle);
             const SECTION = location_DATA.endPoints.address ? MINI_SECTION : ALL_INCIDENTS_WIN
             console.log(SECTION);
 

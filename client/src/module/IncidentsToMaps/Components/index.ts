@@ -4,7 +4,7 @@ export { default as MapTraffic } from "./MapTraffic/MapTraffic";
 export { default as MapSearche } from "./MapSearch/MapSearch";
 
 /* services */
-export {default as services_dataManagForIncapi} from "./IncidentsToMap/services/services_dataManagForIncapi";
+export {default as services_rectagleCoord_WinMap} from "./IncidentsToMap/services/services_rectagleCoord_WinMap";
 export {default as services_highestCoordInTheAreasOf} from "./IncidentsToMap/services/services_highestCoordInTheAreasOf";
 export {default as services_zoomLevel} from "./MapTraffic/services/services_zoomLevel";
 

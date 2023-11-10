@@ -3,7 +3,6 @@ import services_zoomLevel from "./services/services_zoomLevel";
 import { useMap } from "react-leaflet";
 import L from "leaflet"
 import { Container } from "../../../Container";
-import { search_API } from "../../../API";
 
 
 function MapTraffic() {
@@ -13,10 +12,8 @@ function MapTraffic() {
     const [imageLayer, setImageLayer] = React.useState<L.ImageOverlay | null>(null);
 
 
-
 React.useEffect(() =>{
     if (MAP && traffic && mapsCurrentInfo.center && mapsCurrentInfo.zoom > 10) {
-   /*  search_API() */
 
             const LAT = Object.values(mapsCurrentInfo.center)[0];
             const LNG = Object.values(mapsCurrentInfo.center)[1];

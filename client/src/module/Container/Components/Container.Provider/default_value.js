@@ -37,4 +37,5 @@ export const defaultValue_sideways_for_Provider_Context = {
         sizeMap: [],
         mapsRectangle: []
     },
+    mapShops: false
 };

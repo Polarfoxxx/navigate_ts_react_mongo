@@ -23,7 +23,7 @@ const reducer = (state: Type_State_HeadMaps, action: Type_Action_HeadMaps) => {
 function HeadMaps(): JSX.Element {
     const { location_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { startPoints, endPoints, arrayALL_coordinate } = location_DATA;
-    const { incident, traffic } = sideWays_DATA;
+    const { incident, traffic, mapShops } = sideWays_DATA;
     const { updateContext_DATA } = UseChangeContextDATA({sideWays_DATA, setSideWays_DATA });
     const [state, dispatch] = React.useReducer(reducer, {
         start_point: "",
@@ -61,6 +61,12 @@ function HeadMaps(): JSX.Element {
     };
 
 
+    const handleClickShop = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation(); /* zabranuje prebublavaniu */
+        updateContext_DATA([ { newData: !mapShops , key: "mapShops" }]);
+    };
+
+
     return (
         <div className="headerLocName">
             <div className="headarLocName_Box">
@@ -91,6 +97,7 @@ function HeadMaps(): JSX.Element {
                     <ButtonComponent.ButtonBox>
                         <ButtonComponent.Button text="Incidents" onClick={handleClickIncidents} variant_btn="dark" round />
                         <ButtonComponent.Button text="Traffic" onClick={handleClickTraffic} variant_btn="dark" round />
+                        <ButtonComponent.Button text="shops" onClick={handleClickShop} variant_btn="dark" round />
                     </ButtonComponent.ButtonBox>
                 </div>
                 <div 
@@ -99,6 +106,7 @@ function HeadMaps(): JSX.Element {
                     <div>
                     <h3>{sideWays_DATA.traffic ? "traffic" : ""}</h3>
                     <h3>{sideWays_DATA.incident.status ? "incidents" : ""}</h3>
+                    <h3>{sideWays_DATA.incident.status ? "shop" : ""}</h3>
                     </div>
                 </div>
             </div>

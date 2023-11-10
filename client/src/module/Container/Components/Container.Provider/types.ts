@@ -101,7 +101,8 @@ export type Type_sideWays_DATA = {
   traffic: boolean,
   popupStatus: boolean;
   markerInTheRoute: L.LatLngExpression | null,
-  mapsCurrentInfo: Type_forTraficDATA
+  mapsCurrentInfo: Type_forTraficDATA,
+  mapShops: boolean
 };
 
 export type Type_Provider_Context = {

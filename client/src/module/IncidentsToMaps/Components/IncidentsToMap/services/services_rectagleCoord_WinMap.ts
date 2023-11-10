@@ -1,6 +1,6 @@
 import { Type_MostedCoordinate_Arr } from "../types";
 
-function services_dataManagForIncapi(rectagleCOORD: number[]): Type_MostedCoordinate_Arr[] {
+function services_rectagleCoord_WinMap(rectagleCOORD: number[]): Type_MostedCoordinate_Arr[] {
   
 const UPDATE_DATA = {
   norther_western: [rectagleCOORD[0],rectagleCOORD[1]],
@@ -11,4 +11,4 @@ const UPDATE_DATA = {
   return [UPDATE_DATA];
 
 };
-export default services_dataManagForIncapi;
+export default services_rectagleCoord_WinMap;
