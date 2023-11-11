@@ -6,7 +6,7 @@ import L from "leaflet"
 import { Type_for_TraficIncidents, Type_IncidentDATA_forMarker } from "./types";
 import services_highestCoordInhTeAreasOf from "./services/services_highestCoordInTheAreasOf";
 import { UseChangeContextDATA } from "../../../hooks";
-import {services_rectagleCoord_WinMap} from "../";
+import { services_rectagleCoord_WinMap } from "../";
 import { Container } from "../../../Container";
 
 
@@ -24,10 +24,12 @@ function IncidentsToMap() {
 
     async function fetchData() {
         if (incident.status) {
+
+            /* rozdelovac ak sa jedna o inceidety na trase alebo incidenty v celom okne */
             const MINI_SECTION = services_highestCoordInhTeAreasOf(location_DATA);
             const ALL_INCIDENTS_WIN = services_rectagleCoord_WinMap(mapsCurrentInfo.mapsRectangle);
             const SECTION = location_DATA.endPoints.address ? MINI_SECTION : ALL_INCIDENTS_WIN
-            console.log(SECTION);
+
 
             try {
                 const API_DATA = await traffic_Incidents_API<Type_for_TraficIncidents>(SECTION, 1000, 1000);
@@ -61,7 +63,7 @@ function IncidentsToMap() {
         };
     };
 
-    /* zobrazovac markerov pre incidety */
+    /* zobrazovac markerov mauseover pre incidety */
     const handleMarkerToggle = async (incident: Type_IncidentDATA_forMarker, state: boolean) => {
         if (state) {
             const UPDATE_DATA = {
@@ -101,7 +103,7 @@ function IncidentsToMap() {
     return (
         <>
             {
-               incident.status && incidentDATA && incidentDATA.map((incident: Type_IncidentDATA_forMarker, key: number) =>
+                incident.status && incidentDATA && incidentDATA.map((incident: Type_IncidentDATA_forMarker, key: number) =>
                     <Marker
                         position={incident.location}
                         icon={incident.icon}

@@ -15,6 +15,7 @@ export type {
     Type_IncidentDATA_forMarker,
     Type_incident,
     Type_For_Direction,
+    Type_mapPOI_Category
 } from "./Container.Provider/types";
 
 

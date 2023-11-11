@@ -18,16 +18,32 @@ const reducer = (state: Type_State_HeadMaps, action: Type_Action_HeadMaps) => {
 };
 /* useReducer ----------------------------*/
 
+type Type_typePOI_category = {
+    typePOI: string,
+    Restaur: boolean,
+    Pubs: boolean,
+    Shopping: boolean,
+    Cafes: boolean,
+    Bars: boolean,
+}
 
 
 function HeadMaps(): JSX.Element {
     const { location_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { startPoints, endPoints, arrayALL_coordinate } = location_DATA;
-    const { incident, traffic, mapShops } = sideWays_DATA;
-    const { updateContext_DATA } = UseChangeContextDATA({sideWays_DATA, setSideWays_DATA });
+    const { incident, traffic, mapPOI_Category } = sideWays_DATA;
+    const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
     const [state, dispatch] = React.useReducer(reducer, {
         start_point: "",
         end_point: ""
+    });
+    const [typePOI_category, setTypePOI_category] = React.useState<Type_typePOI_category>({
+        typePOI: "",
+        Restaur: false,
+        Pubs: false,
+        Shopping: false,
+        Cafes: false,
+        Bars: false,
     });
 
 
@@ -49,23 +65,38 @@ function HeadMaps(): JSX.Element {
     const handleClickIncidents = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation(); /* zabranuje prebublavaniu */
         const UPDATE_DATA = {
-            ...incident, 
+            ...incident,
             status: !incident.status
         }
-        updateContext_DATA([ { newData: UPDATE_DATA, key: "incident" }]);
+        updateContext_DATA([{ newData: UPDATE_DATA, key: "incident" }]);
     };
 
     const handleClickTraffic = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation(); /* zabranuje prebublavaniu */
-        updateContext_DATA([ { newData: !traffic , key: "traffic" }]);
+        updateContext_DATA([{ newData: !traffic, key: "traffic" }]);
     };
 
 
-    const handleClickShop = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleClick_POI_Category = (e: React.MouseEvent<HTMLButtonElement>, type: keyof typeof typePOI_category) => {
         e.stopPropagation(); /* zabranuje prebublavaniu */
-        updateContext_DATA([ { newData: !mapShops , key: "mapShops" }]);
+        setTypePOI_category({
+            ...typePOI_category,
+            typePOI: type,
+            [type]: !typePOI_category[type]
+        })
     };
 
+
+
+    React.useEffect(() => {
+        const ddd = typePOI_category.typePOI as keyof typeof typePOI_category
+        const UPDATE_DATA = {
+            ...mapPOI_Category,
+            type: typePOI_category.typePOI,
+            status: typePOI_category[ddd]
+        };
+        updateContext_DATA([{ newData: UPDATE_DATA, key: "mapPOI_Category" }]);
+    }, [typePOI_category])
 
     return (
         <div className="headerLocName">
@@ -97,16 +128,22 @@ function HeadMaps(): JSX.Element {
                     <ButtonComponent.ButtonBox>
                         <ButtonComponent.Button text="Incidents" onClick={handleClickIncidents} variant_btn="dark" round />
                         <ButtonComponent.Button text="Traffic" onClick={handleClickTraffic} variant_btn="dark" round />
-                        <ButtonComponent.Button text="shops" onClick={handleClickShop} variant_btn="dark" round />
                     </ButtonComponent.ButtonBox>
+                    <ButtonComponent.ButtonBox>
+                        <ButtonComponent.Button text="Restaur" onClick={(e) => handleClick_POI_Category(e, "Restaur")} variant_btn="dark" round />
+                        <ButtonComponent.Button text="Pubs" onClick={(e) => handleClick_POI_Category(e, "Pubs")} variant_btn="dark" round />
+                        <ButtonComponent.Button text="Shopping" onClick={(e) => handleClick_POI_Category(e, "Shopping")} variant_btn="dark" round />
+                        <ButtonComponent.Button text="Cafes" onClick={(e) => handleClick_POI_Category(e, "Cafes")} variant_btn="dark" round />
+                        <ButtonComponent.Button text="Bars" onClick={(e) => handleClick_POI_Category(e, "Bars")} variant_btn="dark" round />
+                    </ButtonComponent.ButtonBox>
+
                 </div>
-                <div 
-                style={sideWays_DATA.traffic || sideWays_DATA.incident.status || sideWays_DATA.mapShops ? {backgroundColor: "red"}: {backgroundColor: "transparent"}}
-                className="headerButBoxActive">
+                <div
+                    style={sideWays_DATA.traffic || sideWays_DATA.incident.status ? { backgroundColor: "red" } : { backgroundColor: "transparent" }}
+                    className="headerButBoxActive">
                     <div>
-                    <h3>{sideWays_DATA.traffic ? "traffic" : ""}</h3>
-                    <h3>{sideWays_DATA.incident.status ? "incidents" : ""}</h3>
-                    <h3>{sideWays_DATA.mapShops ? "shop" : ""}</h3>
+                        <h3>{sideWays_DATA.traffic ? "traffic" : ""}</h3>
+                        <h3>{sideWays_DATA.incident.status ? "incidents" : ""}</h3>
                     </div>
                 </div>
             </div>

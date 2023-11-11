@@ -24,10 +24,7 @@ export const defaultValue_sideways_for_Provider_Context = {
         latLng: null,
     },
     navi_Machine: false,/* nepoziva sa */
-    incident: {
-        status: false,
-        dataInc: null
-    },
+
     traffic: false,
     popupStatus: false,
     markerInTheRoute: null,
@@ -37,5 +34,13 @@ export const defaultValue_sideways_for_Provider_Context = {
         sizeMap: [],
         mapsRectangle: []
     },
-    mapShops: false
+    incident: {
+        status: false,
+        dataInc: null
+    },
+    mapPOI_Category:{
+        type: "",
+        status:false,
+        POI_Data: null
+    } 
 };

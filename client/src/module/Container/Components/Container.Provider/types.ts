@@ -28,7 +28,13 @@ export type Type_forTraficDATA = {
   center: LatLngExpression | null,
   sizeMap: number[],
   mapsRectangle: number[]
-}
+};
+
+export type Type_mapPOI_Category = {
+  type: string,
+  status: boolean,
+  POI_Data: null
+};
 
 export type Type_LatLng = {
   lat: number;
@@ -97,12 +103,12 @@ export type Type_location_DATA = {
 export type Type_sideWays_DATA = {
   clickOnMap: Type_OnClick_object;
   navi_Machine: boolean;
-  incident: Type_incident,
   traffic: boolean,
   popupStatus: boolean;
   markerInTheRoute: L.LatLngExpression | null,
   mapsCurrentInfo: Type_forTraficDATA,
-  mapShops: boolean
+  incident: Type_incident,
+  mapPOI_Category: Type_mapPOI_Category
 };
 
 export type Type_Provider_Context = {

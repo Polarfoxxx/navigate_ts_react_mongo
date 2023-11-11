@@ -9,7 +9,7 @@ import { Header } from "../../../HeaderAndFooter/Components";
 
 function Content() {
     return (
-        <div className="appBlock" >
+        <div className="content" >
             <div className="container">
                 <header>
                     <Header />
