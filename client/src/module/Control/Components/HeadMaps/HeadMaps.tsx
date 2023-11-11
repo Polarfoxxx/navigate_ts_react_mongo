@@ -3,7 +3,7 @@ import { Container } from "../../../Container";
 import "./headMaps.style.css"
 import { Type_forStyle_startAndEnd_point, Type_Action_HeadMaps, Type_State_HeadMaps } from "./type";
 import { UseChangeContextDATA } from "../../../hooks";
-import { ButtonComponent } from "foxxy-package";
+import { DEFAULT_VALUE_FOR_REDUCER } from "./default_Value";
 
 /* useReducer ----------------------------*/
 const reducer = (state: Type_State_HeadMaps, action: Type_Action_HeadMaps) => {
@@ -12,20 +12,14 @@ const reducer = (state: Type_State_HeadMaps, action: Type_Action_HeadMaps) => {
             return { ...state, start_point: action.payload };
         case 'END_POINTS_NAME':
             return { ...state, end_point: action.payload };
+        case 'POI_CATEGORY':
+            return { ...state, typePOI_category: action.payload };
         default:
             return state;
     }
 };
 /* useReducer ----------------------------*/
 
-type Type_typePOI_category = {
-    typePOI: string,
-    Restaur: boolean,
-    Pubs: boolean,
-    Shopping: boolean,
-    Cafes: boolean,
-    Bars: boolean,
-}
 
 
 function HeadMaps(): JSX.Element {
@@ -33,19 +27,7 @@ function HeadMaps(): JSX.Element {
     const { startPoints, endPoints, arrayALL_coordinate } = location_DATA;
     const { incident, traffic, mapPOI_Category } = sideWays_DATA;
     const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
-    const [state, dispatch] = React.useReducer(reducer, {
-        start_point: "",
-        end_point: ""
-    });
-    const [typePOI_category, setTypePOI_category] = React.useState<Type_typePOI_category>({
-        typePOI: "",
-        Restaur: false,
-        Pubs: false,
-        Shopping: false,
-        Cafes: false,
-        Bars: false,
-    });
-
+    const [state, dispatch] = React.useReducer(reducer, DEFAULT_VALUE_FOR_REDUCER);
 
     React.useEffect(() => {
         dispatch({ type: "START_POINTS_NAME", payload: startPoints.address });
@@ -55,7 +37,7 @@ function HeadMaps(): JSX.Element {
 
     const STYLE_FOR_STARTANDEND_POINT: Type_forStyle_startAndEnd_point = {
         on: {
-            backgroundColor: "rgba(0, 0, 0, 0.244)"
+            backgroundColor: "rgb(107, 107, 107)"
         },
         off: {
             backgroundColor: "transparent"
@@ -77,26 +59,27 @@ function HeadMaps(): JSX.Element {
     };
 
 
-    const handleClick_POI_Category = (e: React.MouseEvent<HTMLButtonElement>, type: keyof typeof typePOI_category) => {
+    const handleClick_POI_Category = (e: React.MouseEvent<HTMLButtonElement>, type: keyof typeof state.typePOI_category) => {
         e.stopPropagation(); /* zabranuje prebublavaniu */
-        setTypePOI_category({
-            ...typePOI_category,
+        const UPDATE_DATA = {
+            ...state.typePOI_category,
             typePOI: type,
-            [type]: !typePOI_category[type]
-        })
+            [type]: !state.typePOI_category[type]
+        };
+        dispatch({ type: "POI_CATEGORY", payload: UPDATE_DATA });
     };
 
-
-
     React.useEffect(() => {
-        const ddd = typePOI_category.typePOI as keyof typeof typePOI_category
+        const KEY_POI_CATEGORY = state.typePOI_category.typePOI as keyof typeof state.typePOI_category
         const UPDATE_DATA = {
             ...mapPOI_Category,
-            type: typePOI_category.typePOI,
-            status: typePOI_category[ddd]
+            type: state.typePOI_category.typePOI,
+            status: state.typePOI_category[KEY_POI_CATEGORY]
         };
         updateContext_DATA([{ newData: UPDATE_DATA, key: "mapPOI_Category" }]);
-    }, [typePOI_category])
+    }, [state.typePOI_category])
+
+
 
     return (
         <div className="headerLocName">
@@ -124,26 +107,45 @@ function HeadMaps(): JSX.Element {
                 </div>
             </div>
             <div className="headerButtonBox">
-                <div >
-                    <ButtonComponent.ButtonBox>
-                        <ButtonComponent.Button text="Incidents" onClick={handleClickIncidents} variant_btn="dark" round />
-                        <ButtonComponent.Button text="Traffic" onClick={handleClickTraffic} variant_btn="dark" round />
-                    </ButtonComponent.ButtonBox>
-                    <ButtonComponent.ButtonBox>
-                        <ButtonComponent.Button text="Restaur" onClick={(e) => handleClick_POI_Category(e, "Restaur")} variant_btn="dark" round />
-                        <ButtonComponent.Button text="Pubs" onClick={(e) => handleClick_POI_Category(e, "Pubs")} variant_btn="dark" round />
-                        <ButtonComponent.Button text="Shopping" onClick={(e) => handleClick_POI_Category(e, "Shopping")} variant_btn="dark" round />
-                        <ButtonComponent.Button text="Cafes" onClick={(e) => handleClick_POI_Category(e, "Cafes")} variant_btn="dark" round />
-                        <ButtonComponent.Button text="Bars" onClick={(e) => handleClick_POI_Category(e, "Bars")} variant_btn="dark" round />
-                    </ButtonComponent.ButtonBox>
-
-                </div>
-                <div
-                    style={sideWays_DATA.traffic || sideWays_DATA.incident.status ? { backgroundColor: "red" } : { backgroundColor: "transparent" }}
-                    className="headerButBoxActive">
-                    <div>
-                        <h3>{sideWays_DATA.traffic ? "traffic" : ""}</h3>
-                        <h3>{sideWays_DATA.incident.status ? "incidents" : ""}</h3>
+                <div className="buttonContent">
+                    <div className="IncidentsButton">
+                        <button
+                            className={sideWays_DATA.incident.status ? "onActiveButtom" : "offActiveButtom"}
+                            onClick={handleClickIncidents}>
+                            Incidents
+                        </button>
+                        <button
+                            className={sideWays_DATA.traffic ? "onActiveButtom" : "offActiveButtom"}
+                            onClick={handleClickTraffic}>
+                            Traffic
+                        </button>
+                    </div>
+                    <div className="poi_categoryBox">
+                        <button
+                            className={state.typePOI_category.Restaur ? "onActiveButtom" : "offActiveButtom"}
+                            onClick={(e) => handleClick_POI_Category(e, "Restaur")}>
+                            Restaurans
+                        </button>
+                        <button
+                            className={state.typePOI_category.Pubs ? "onActiveButtom" : "offActiveButtom"}
+                            onClick={(e) => handleClick_POI_Category(e, "Pubs")} >
+                            Pubs
+                        </button>
+                        <button
+                            className={state.typePOI_category.Shopping ? "onActiveButtom" : "offActiveButtom"}
+                            onClick={(e) => handleClick_POI_Category(e, "Shopping")} >
+                            Shopping
+                        </button>
+                        <button
+                            className={state.typePOI_category.Cafes ? "onActiveButtom" : "offActiveButtom"}
+                            onClick={(e) => handleClick_POI_Category(e, "Cafes")} >
+                            Cafes
+                        </button>
+                        <button
+                            className={state.typePOI_category.Bars ? "onActiveButtom" : "offActiveButtom"}
+                            onClick={(e) => handleClick_POI_Category(e, "Bars")} >
+                            Bars
+                        </button>
                     </div>
                 </div>
             </div>

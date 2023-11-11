@@ -24,7 +24,7 @@ export type {
     Type_forGeocoderInput,
     Type_Action_ControlnputsSearche,
     Type_State_ControlnputsSearche,
-    Type_CSS_navyButton
+    Type_CSS_navyButton,
 } from "./OffCanvasBoxInputsControl/type";
 
 export type {
@@ -39,6 +39,7 @@ export type {
     Type_forStyle_startAndEnd_point,
     Type_State_HeadMaps,
     Type_Action_HeadMaps,
+    Type_typePOI_category
 } from "./HeadMaps/type";
 
 export type {

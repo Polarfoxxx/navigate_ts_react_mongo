@@ -24,11 +24,9 @@
 
 .headerLocName .headarLocName_Box>div>h3 {
     margin: 5px 10px;
-    color: var(--main_title);
+    color: var(--whiteTextColor);
     font-size: 1em;
-   
 }
-
 
 .headerLocName .headarLocName_Box .addedLocation {
     width: auto;
@@ -41,27 +39,62 @@
     justify-content: start;
     align-items: start;
 }
-.headerLocName .headarLocName_Box .addedLocation .addLocation_item{
-    background-color: rgb(93, 217, 217);
+
+.headerLocName .headarLocName_Box .addedLocation .addLocation_item {
+    background-color: var(--yellowGreenLow);
     margin: 1px;
     border-radius: 2px;
     padding: 2px;
     font-size: 0.9em;
 }
 
-.headerLocName .headerButtonBox{
- width: 100%;
- background-color: rgba(213, 23, 23, 0.492);
- height: 40px;
- display: flex;
- flex-direction: row;
-}
-
-.headerLocName .headerButtonBox >div{
+.headerLocName .headerButtonBox {
     width: 100%;
-    border: 1px solid black;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.headerLocName .headerButtonBox .buttonContent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.headerLocName .headerButtonBox .buttonContent > div .offActiveButtom {
+    width: 100px;
+    height: 27px;
+    transition: 0.4s;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: var(--silverContent);
+    color: white;
+}
+
+.headerLocName .headerButtonBox .buttonContent > div .onActiveButtom {
+    width: 100px;
+    height: 27px;
+    transition: 0.4s;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: var(--yellowGreen);
+    color: rgb(0, 0, 0);
+}
+
+
+.headerLocName .headerButtonBox .buttonContent > div > button:hover {
+    background-color: var(--yellowGreen);
+    color: black;
+}
+
+
+.headerLocName .headerButtonBox .buttonContent {
 
 }
