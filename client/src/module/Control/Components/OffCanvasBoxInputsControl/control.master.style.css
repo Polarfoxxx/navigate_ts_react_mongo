@@ -1,21 +1,34 @@
-.control-box{
-    width: 100%;
-    background-color: rgba(64, 77, 101, 0);
-    right: 0;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.control-box .stEnd{
+.control-box {
   width: 100%;
-
+  height: 100%;
+  background-color: rgba(64, 77, 101, 0.835);
+  right: 0;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
-.control-box .sideways_box{
-    width: 80%;
+.control-box .controlInput {
+  width: 100%;
+  height: 40%;
+  border: 1px solid red;
 }
-  
+
+.control-box .controlInput .stEnd {
+  width: 100%;
+}
+
+.control-box .controlInput .sideways_box {
+  width: 80%;
+}
+
+/* ======================================= */
+.control-box .controlSearch {
+  width: 100%;
+  height: 60%;
+  border: 1px solid green;
+}

@@ -91,7 +91,7 @@ function HeadMaps(): JSX.Element {
             </div>
             <div className="headerButtonBox">
                 <div className="buttonContent">
-                    <div className="IncidentsButton">
+                    <div className="incidentsButton">
                         <button
                             className={clsx(sideWays_DATA.incident.status && 'onActiveButtom', 'offActiveButtom')}
                             onClick={handleClickIncidents}>
@@ -103,7 +103,7 @@ function HeadMaps(): JSX.Element {
                             Traffic
                         </button>
                     </div>
-                    <div className="poi_categoryBox">
+                  {/*   <div className="poi_categoryBox">
                         <button
                             className={clsx(state.typePOI_category.Restaur && 'onActiveButtom', 'offActiveButtom')}
                             onClick={(e) => handleClick_POI_Category(e, "Restaur")}>
@@ -129,7 +129,7 @@ function HeadMaps(): JSX.Element {
                             onClick={(e) => handleClick_POI_Category(e, "Bars")} >
                             Bars
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

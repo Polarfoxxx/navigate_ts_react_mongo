@@ -73,11 +73,12 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: end;
     flex-direction: row;
+    padding-right: 150px;
 }
 
-.headerLocName .headerButtonBox .buttonContent>div .offActiveButtom {
+.headerLocName .headerButtonBox .buttonContent .incidentsButton .offActiveButtom {
     width: 100px;
     height: 27px;
     transition: 0.4s;
@@ -89,7 +90,7 @@
     color: white;
 }
 
-.headerLocName .headerButtonBox .buttonContent>div .onActiveButtom {
+.headerLocName .headerButtonBox .buttonContent .incidentsButton .onActiveButtom {
     width: 100px;
     height: 27px;
     transition: 0.4s;
@@ -102,7 +103,7 @@
 }
 
 
-.headerLocName .headerButtonBox .buttonContent>div>button:hover {
+.headerLocName .headerButtonBox .buttonContent .incidentsButton>button:hover {
     background-color: var(--yellowGreen);
     color: black;
 }

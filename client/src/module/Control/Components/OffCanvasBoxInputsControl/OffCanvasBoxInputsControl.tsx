@@ -1,6 +1,7 @@
 import { ButtonComponent, OffCanvasComponent } from 'foxxy-package/dist';
 import React from 'react';
 import ControlBox from './ControlBox';
+import "./offCanvasBox.style.css";
 
 function OffCanvasBoxInputsControl(): JSX.Element {
     const [show, setShow] = React.useState(false);
@@ -8,23 +9,21 @@ function OffCanvasBoxInputsControl(): JSX.Element {
         setShow(!show);
     };
     return (
-        <div className="App">
-            <div>
-                <ButtonComponent.ButtonBox>
-                    <ButtonComponent.Button text='Searche' onClick={handleClick} variant_btn='dark' round />
-                </ButtonComponent.ButtonBox>
+        <div className="offCanvasBox">
+            <div className='offCanvasButtonBox'>
+                <button className='offCanvasButton' onClick={handleClick}> Search</button>
             </div>
 
             <OffCanvasComponent.OffCanvas show={show} setShow={setShow} position="left" variant_offCnv='dark'>
                 <OffCanvasComponent.OffCanvasHeader>
-                Points on the map
+                    Points on the map
                 </OffCanvasComponent.OffCanvasHeader>
                 <OffCanvasComponent.OffCanvasBody>
                     <ControlBox />
                 </OffCanvasComponent.OffCanvasBody>
                 <OffCanvasComponent.OffCanvasButoonBox>
                     <ButtonComponent.ButtonBox>
-                        <ButtonComponent.Button text='exit' onClick={handleClick} round variant_btn='white'/>
+                        <button className='offCanvasButton' onClick={handleClick}> Search</button>
                     </ButtonComponent.ButtonBox>
                 </OffCanvasComponent.OffCanvasButoonBox>
             </OffCanvasComponent.OffCanvas>
