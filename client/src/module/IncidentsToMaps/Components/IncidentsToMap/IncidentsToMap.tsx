@@ -18,12 +18,13 @@ function IncidentsToMap() {
 
 
     React.useEffect(() => {
+        if (incident.status && mapsCurrentInfo.zoom > 13) {
         fetchData();
-    }, [incident.status]);
+        }
+    }, [incident.status, mapsCurrentInfo.center]);
 
 
     async function fetchData() {
-        if (incident.status) {
 
             /* rozdelovac ak sa jedna o inceidety na trase alebo incidenty v celom okne */
             const MINI_SECTION = services_highestCoordInhTeAreasOf(location_DATA);
@@ -60,7 +61,6 @@ function IncidentsToMap() {
             } catch (error) {
                 console.error(error);
             };
-        };
     };
 
     /* zobrazovac markerov mauseover pre incidety */

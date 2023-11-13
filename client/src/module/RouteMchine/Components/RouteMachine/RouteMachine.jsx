@@ -39,13 +39,13 @@ function RouteMachine() {
             showAlternatives: true,
             show: false,
             lineOptions: {
-                styles: [{ color: "red", opacity: 0.7, weight: 4 }],
+                styles: [{ color: "red", opacity: 0.7, weight: 7 }],
                 extendToWaypoints: false,
                 missingRouteTolerance: 5,
                 addWaypoints: false,
             },
             altLineOptions: {
-                styles: [{ color: "green", opacity: 0.7, weight: 3 }],
+                styles: [{ color: "blue", opacity: 0.7, weight: 5 }],
                 extendToWaypoints: false,
                 missingRouteTolerance: 5,
                 addWaypoints: true,

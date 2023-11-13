@@ -13,11 +13,31 @@
 }
 
 /* zoom control panel */
-#root > div > div > div.mapsAndControl > div.mapsBox > div.maps > div > div.leaflet-control-container > div.leaflet-top.leaflet-left > div {
+#root>div>div>div.mapsAndControl>div.mapsBox>div.maps>div>div.leaflet-control-container>div.leaflet-top.leaflet-left>div {
     position: absolute;
     top: 4vw;
 }
+
 /* detail cesty skovanie  */
-#root > div > div > div.mapsAndControl > div.mapsBox > div.maps > div > div.leaflet-control-container > div.leaflet-top.leaflet-right > div.leaflet-routing-container.leaflet-bar.leaflet-routing-container-hide.leaflet-control{
+#root>div>div>div.mapsAndControl>div.mapsBox>div.maps>div>div.leaflet-control-container>div.leaflet-top.leaflet-right>div.leaflet-routing-container.leaflet-bar.leaflet-routing-container-hide.leaflet-control,
+#root>div>div>div>section>div.mapsAndControl>div.mapsBox>div>div.maps_Box>div>div>div.leaflet-control-container>div.leaflet-top.leaflet-right>div.leaflet-routing-container.leaflet-bar.leaflet-routing-container-hide.leaflet-control {
     display: none;
+}
+
+
+
+#root>div>div>div>section>div.mapsAndControl>div.mapsBox>div>div.maps_Box>div>div>div.leaflet-control-container>div.leaflet-top.leaflet-left>div>a.leaflet-control-zoom-in,
+#root>div>div>div>section>div.mapsAndControl>div.mapsBox>div>div.maps_Box>div>div>div.leaflet-control-container>div.leaflet-top.leaflet-left>div>a.leaflet-control-zoom-out,
+#root > div > div > div > section > div.mapsAndControl > div.mapsBox > div > div.maps_Box > div > div > div.leaflet-control-container > div.leaflet-top.leaflet-right > div.leaflet-control-layers.leaflet-control > a {
+    background-color: var(--silverContent);
+    border: black;
+    color: white;
+    transition: 0.4s;
+}
+
+#root>div>div>div>section>div.mapsAndControl>div.mapsBox>div>div.maps_Box>div>div>div.leaflet-control-container>div.leaflet-top.leaflet-left>div>a.leaflet-control-zoom-in:hover,
+#root>div>div>div>section>div.mapsAndControl>div.mapsBox>div>div.maps_Box>div>div>div.leaflet-control-container>div.leaflet-top.leaflet-left>div>a.leaflet-control-zoom-out:hover {
+    background-color: var(--yellowGreen);
+    border: black;
+    color: black(0, 0, 0);
 }

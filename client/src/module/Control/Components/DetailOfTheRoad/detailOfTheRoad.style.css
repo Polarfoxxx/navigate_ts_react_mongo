@@ -1,7 +1,7 @@
 .detailOfTheRoad {
     width: 100%;
     min-height: 100px;
-    background-color: rgb(215, 215, 215);
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -16,10 +16,6 @@ function MapSearch(): JSX.Element {
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
 
 
-console.log(mapPOI_Category.type);
-console.log(mapPOI_Category.status);
-
-
     React.useEffect(() => {
         fetchData()
     }, [mapPOI_Category.status])

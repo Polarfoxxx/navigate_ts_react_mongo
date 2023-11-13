@@ -11,9 +11,10 @@ function MapTraffic() {
     const { mapsCurrentInfo, traffic } = sideWays_DATA;
     const [imageLayer, setImageLayer] = React.useState<L.ImageOverlay | null>(null);
 
+console.log(mapsCurrentInfo.zoom);
 
 React.useEffect(() =>{
-    if (MAP && traffic && mapsCurrentInfo.center && mapsCurrentInfo.zoom > 10) {
+    if (MAP && traffic && mapsCurrentInfo.center && mapsCurrentInfo.zoom > 13) {
 
             const LAT = Object.values(mapsCurrentInfo.center)[0];
             const LNG = Object.values(mapsCurrentInfo.center)[1];

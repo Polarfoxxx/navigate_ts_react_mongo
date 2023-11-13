@@ -1,9 +1,10 @@
-.header{
+.header {
     height: 100%;
     width: 100%;
     border-bottom: 1px solid var(--yellowGreen);
 }
-.header .headerBox{
+
+.header .headerBox {
     width: 100%;
     height: 100%;
     display: flex;
@@ -12,21 +13,48 @@
     flex-direction: row;
 }
 
-.header .headerBox .headerbottonBox{
+.header .headerBox .headerbottonBox {
     width: 15%;
     height: 100%;
-    border: 1px solid red;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.header .headerBox .headerTittleBox{
+.header .headerBox .headerbottonBox>button {
+    width: 200px;
+    height: 40px;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: var(--silverContent);
+    color: white;
+    cursor: pointer;
+    transition: 0.4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.header .headerBox .headerbottonBox>button:hover {
+    background-color: var(--yellowGreen);
+    color: rgb(0, 0, 0);
+    opacity: 1;
+}
+
+.header .headerBox .headerbottonBox>button > span  {
+    margin-left: 20px;
+}
+
+
+
+.header .headerBox .headerTittleBox {
     width: 85%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: end;
     padding-right: 100px;
-  font-family: 'Dancing Script', cursive;
+    font-family: 'Dancing Script', cursive;
 }

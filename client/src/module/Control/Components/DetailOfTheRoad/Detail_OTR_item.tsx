@@ -12,7 +12,6 @@ function DetailOTRitem({ all_directions, all_coordinate }: Type_For_Direction_it
     const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
 
 
-
     const handleDivMouseToogle = (event: React.MouseEvent<HTMLDivElement>, state: boolean) => {
         if (state) {
             const EVENT_INDEX = +event.currentTarget.id;

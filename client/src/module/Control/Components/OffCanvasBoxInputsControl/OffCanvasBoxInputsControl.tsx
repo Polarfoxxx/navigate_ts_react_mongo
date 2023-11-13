@@ -15,7 +15,7 @@ function OffCanvasBoxInputsControl(): JSX.Element {
                 </ButtonComponent.ButtonBox>
             </div>
 
-            <OffCanvasComponent.OffCanvas show={show} setShow={setShow} position="left" variant_offCnv='white'>
+            <OffCanvasComponent.OffCanvas show={show} setShow={setShow} position="left" variant_offCnv='dark'>
                 <OffCanvasComponent.OffCanvasHeader>
                 Points on the map
                 </OffCanvasComponent.OffCanvasHeader>

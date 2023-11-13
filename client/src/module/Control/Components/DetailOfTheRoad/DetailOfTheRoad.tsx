@@ -4,6 +4,8 @@ import { Type_For_Direction, Type_LatLng } from "../../../Container";
 import { Type_forDetailOfTheRoad, Type_State_DetailOfTheRoad, Type_Action_DetailOfTheRoad } from "./type";
 import { DetailOTRitem, SERVICES_CONVERSION_OF_UNIT_AND_TIME } from "../index";
 import { DEFAULT_VALUE_FOR_REDUCER } from "./defaultValue";
+import clsx from "clsx";
+ 
 
 const reducer = (state: Type_State_DetailOfTheRoad, action: Type_Action_DetailOfTheRoad) => {
    switch (action.type) {
@@ -42,7 +44,7 @@ function DetailOfTheRoad({ oneRoute, active, index }: Type_forDetailOfTheRoad): 
    return (
       <div className="detailOfTheRoad">
          <div
-            style={index === 0 ? { backgroundColor: "orange" } : { backgroundColor: "green" }}
+            style={active === index ? { backgroundColor: "rgb(106, 255, 0)" } : { backgroundColor: "rgb(107, 107, 107)" }}
             className="detailOfTheRoad_header">
             <h2>Direction for the route - {state.total_Info.nameRoads}</h2>
          </div>

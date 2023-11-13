@@ -10,7 +10,7 @@
     overflow: hidden;
 }
 
-.headerLocName .headarLocName_Box>div {
+.headerLocName .headarLocName_Box .startEndLocation {
     width: auto;
     min-height: 27px;
     margin-top: 6px;
@@ -19,7 +19,20 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: start
+    justify-content: start;
+}
+
+.headerLocName .headarLocName_Box .startEndLocationActive {
+    width: auto;
+    min-height: 27px;
+    margin-top: 6px;
+    border-radius: 7px;
+    z-index: 99;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background-color: rgb(57, 57, 57);
 }
 
 .headerLocName .headarLocName_Box>div>h3 {
@@ -42,7 +55,7 @@
 
 .headerLocName .headarLocName_Box .addedLocation .addLocation_item {
     background-color: var(--yellowGreenLow);
-    margin: 1px;
+    margin: 3px;
     border-radius: 2px;
     padding: 2px;
     font-size: 0.9em;
@@ -64,7 +77,7 @@
     flex-direction: row;
 }
 
-.headerLocName .headerButtonBox .buttonContent > div .offActiveButtom {
+.headerLocName .headerButtonBox .buttonContent>div .offActiveButtom {
     width: 100px;
     height: 27px;
     transition: 0.4s;
@@ -76,7 +89,7 @@
     color: white;
 }
 
-.headerLocName .headerButtonBox .buttonContent > div .onActiveButtom {
+.headerLocName .headerButtonBox .buttonContent>div .onActiveButtom {
     width: 100px;
     height: 27px;
     transition: 0.4s;
@@ -89,12 +102,8 @@
 }
 
 
-.headerLocName .headerButtonBox .buttonContent > div > button:hover {
+.headerLocName .headerButtonBox .buttonContent>div>button:hover {
     background-color: var(--yellowGreen);
     color: black;
 }
 
-
-.headerLocName .headerButtonBox .buttonContent {
-
-}
