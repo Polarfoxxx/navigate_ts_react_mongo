@@ -23,7 +23,7 @@ function OffCanvasBoxInputsControl(): JSX.Element {
                 </OffCanvasComponent.OffCanvasBody>
                 <OffCanvasComponent.OffCanvasButoonBox>
                     <ButtonComponent.ButtonBox>
-                        <button className='offCanvasButton' onClick={handleClick}> Search</button>
+                        <button className='offCanvasButton' onClick={handleClick}>Close</button>
                     </ButtonComponent.ButtonBox>
                 </OffCanvasComponent.OffCanvasButoonBox>
             </OffCanvasComponent.OffCanvas>

@@ -1,12 +1,14 @@
 import React from "react";
-
+import "./onePointBussSearchCon.style.css";
 
 function OnePointBussinessSearcheControl(): JSX.Element {
-
-    // State to manage the selected value
     const [selectedValue, setSelectedValue] = React.useState('');
 
-    // Handler function to update the selected value
+
+
+
+
+
     const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedValue(event.target.value);
     };
@@ -15,19 +17,26 @@ function OnePointBussinessSearcheControl(): JSX.Element {
     return (
         <div className="onePointContent">
             <div className="onePoint oneRadius">
+                <label htmlFor="inpOneRadius">Search size radius</label>
                 <input
+                    min={2}
+                    max={10}
+                    id="inpOneRadius"
                     placeholder="Radius search"
                     type="number" />
             </div>
             <div className="onePoint oneMaxMatches">
+                <label htmlFor="oneMaxMatches">Number of results (max 100)</label>
                 <input
+                    id="oneMaxMatches"
                     max={100}
-                    placeholder=" max number of subjects"
+                    min={1}
+                    placeholder="Max number of subjects"
                     type="number" />
             </div>
             <div className="onePoint oneAmbiguities ">
-                <select className="mySelector" value={selectedValue} onChange={handleSelectChange}>
-                    <option value="">Select...</option>
+                <label htmlFor="mySelector">Matching of entries</label>
+                <select className="mySelector" id="mySelector" value={selectedValue} onChange={handleSelectChange}>
                     <option value="option1">Ignore</option>
                     <option value="option3">Allow</option>
                 </select>

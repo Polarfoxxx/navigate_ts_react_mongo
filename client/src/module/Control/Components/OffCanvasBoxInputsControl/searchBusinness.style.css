@@ -14,6 +14,9 @@
     justify-content: start;
     padding-left: 20px;
     font-size: 20px;
+    color: var(--whiteTextColor);
+    border-bottom: 1px solid var(--yellowGreen) ;
+    margin-bottom: 20px;
 }
 
 .searchBox > section{
@@ -40,9 +43,9 @@
     color: rgb(0, 0, 0);
 }
 
-.searchBox > section .selectorBox .searchComponentsBox{
+.searchBox > section .searchComponentsBox{
     width: 100%;
-    height: 80%;
+    height: 80%; 
 }
 
 .searchBox > footer{

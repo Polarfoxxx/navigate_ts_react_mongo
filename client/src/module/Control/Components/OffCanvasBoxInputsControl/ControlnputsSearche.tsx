@@ -31,7 +31,7 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
   const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const timeoutRef = React.useRef<number | null>(null);
-  const [state, dispatch] = React.useReducer(reducer, DEFAULT_VALUE_FOR_REDUCER );
+  const [state, dispatch] = React.useReducer(reducer, DEFAULT_VALUE_FOR_REDUCER);
 
 
   const handleInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {

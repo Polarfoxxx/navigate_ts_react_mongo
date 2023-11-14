@@ -1,6 +1,6 @@
 import React from "react";
 import "./searchBusinness.style.css";
-import { OnePointBussinessSearcheControl, RouteBussinessSearcheControl } from "../";
+import { OnePointBussinessSearcheControl, RouteBussinessSearcheControl, NoContent } from "../";
 import { Container } from "../../../Container";
 
 function SearchBusiness(): JSX.Element {
@@ -14,11 +14,14 @@ function SearchBusiness(): JSX.Element {
     };
 
     React.useEffect(() => {
-        setSearchCompContent(startPoints.latLng[0] && !endPoints.latLng[0] ? <OnePointBussinessSearcheControl /> : <RouteBussinessSearcheControl />)
-    }, [startPoints.latLng[0], !endPoints.latLng[0]])
-
-
-
+        if (startPoints.latLng[0] && !endPoints.latLng[0]) {
+            setSearchCompContent(<OnePointBussinessSearcheControl />)
+        } else if(startPoints.latLng[0]  && endPoints.latLng[0]) {
+            setSearchCompContent(<RouteBussinessSearcheControl />)
+        }else {
+            setSearchCompContent(<NoContent />)
+        }
+    }, [startPoints.latLng[0], !endPoints.latLng[0]]);
 
 
     return (
@@ -29,7 +32,6 @@ function SearchBusiness(): JSX.Element {
             <section>
                 <div className="selectorBox">
                     <select className="mySelector" value={selectedValue} onChange={handleSelectChange}>
-                        <option value="">Select...</option>
                         <option value="option1">Restaurants</option>
                         <option value="option2">Pubs</option>
                         <option value="option3">Shopping</option>
@@ -46,7 +48,11 @@ function SearchBusiness(): JSX.Element {
                 </div>
             </section>
             <footer>
-                <button>send</button>
+                {
+                    startPoints.latLng[0] && <button>send</button>
+                }
+
+
             </footer>
         </div>
 

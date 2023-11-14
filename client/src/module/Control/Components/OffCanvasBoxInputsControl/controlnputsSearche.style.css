@@ -10,32 +10,31 @@
   .geocoder-input-container .labelName{
     width: 100%;
     font-weight: bold;
-    color: rgb(39, 29, 115);
-
+    color: var(--whiteTextColor);
+    font-size: 17px;
   }
-
   .geocoder-input-container .inputAndButtonBox{
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: row;
   }
-  .geocoder-input-container> div > input[type="text"] {
+  .geocoder-input-container> div > input {
     width: 100%;
-    height: 40px;
+    height: 35px;
     padding: 8px;
     margin-bottom: 8px;
     border: 1px solid #6c0909;
-    font-size: 13px;
-    background-color: rgb(255, 255, 255);
+    font-size: 14px;
+    background-color: var(--silverInputBacgColor);
     border-right: none;
-    border-radius: 10px
+    border-radius: 10px;
   }
   .geocoder-input-container> div > button {
     width: 40px;
-    height: 40px;
+    height: 35px;
     border: 1px solid #6c0909;;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--silverInputBacgColor);
     border-left: none;
     cursor: pointer;
     border-radius: 0px 10px  10px 0px;

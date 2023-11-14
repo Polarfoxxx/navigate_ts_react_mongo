@@ -1,0 +1,28 @@
+
+.onePointContent{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.onePointContent > div{
+    width: 50%;
+    height: 60px;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+}
+.onePointContent > div > label{
+    font-size: 16px;
+    color: var(--whiteTextColor);
+}
+.onePointContent > div > input, select{
+    width: 100%;
+    border-radius: 6px;
+    height: 27px;
+    padding: 0 5px 0 5px;
+    background-color: var(--silverInputBacgColor);
+    font-weight: bolder;
+}
