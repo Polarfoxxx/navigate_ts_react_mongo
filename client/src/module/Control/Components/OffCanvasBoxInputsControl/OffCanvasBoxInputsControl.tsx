@@ -11,7 +11,7 @@ function OffCanvasBoxInputsControl(): JSX.Element {
     return (
         <div className="offCanvasBox">
             <div className='offCanvasButtonBox'>
-                <button className='offCanvasButton' onClick={handleClick}> Search</button>
+                <button className='offCanvasButtonON' onClick={handleClick}> Search</button>
             </div>
 
             <OffCanvasComponent.OffCanvas show={show} setShow={setShow} position="left" variant_offCnv='dark'>
@@ -23,7 +23,7 @@ function OffCanvasBoxInputsControl(): JSX.Element {
                 </OffCanvasComponent.OffCanvasBody>
                 <OffCanvasComponent.OffCanvasButoonBox>
                     <ButtonComponent.ButtonBox>
-                        <button className='offCanvasButton' onClick={handleClick}>Close</button>
+                        <button className='offCanvasButtonOFF' onClick={handleClick}>Close</button>
                     </ButtonComponent.ButtonBox>
                 </OffCanvasComponent.OffCanvasButoonBox>
             </OffCanvasComponent.OffCanvas>

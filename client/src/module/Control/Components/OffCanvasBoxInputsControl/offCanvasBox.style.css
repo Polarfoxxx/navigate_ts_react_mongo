@@ -1,12 +1,14 @@
-.offCanvasBox{
+.offCanvasBox {
     width: 100%;
     height: 100%;
 }
-.offCanvasBox .offCanvasButtonBox{
+
+.offCanvasBox .offCanvasButtonBox {
     width: 100%;
     height: 100%;
 }
-button {
+
+.offCanvasBox .offCanvasButtonON {
     width: 140px;
     height: 33px;
     transition: 0.4s;
@@ -17,7 +19,25 @@ button {
     background-color: var(--silverContent);
     color: var(--buttonColor);
 }
-button:hover {
+
+.offCanvasBox .offCanvasButtonON:hover {
     background-color: var(--yellowGreen);
+    color: black;
+}
+
+.offCanvasBox .offCanvasButtonOFF {
+    width: 140px;
+    height: 33px;
+    transition: 0.4s;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: var(--silverContent);
+    color: var(--closeButtonColor);
+}
+
+.offCanvasBox .offCanvasButtonOFF:hover {
+    background-color: red;
     color: black;
 }

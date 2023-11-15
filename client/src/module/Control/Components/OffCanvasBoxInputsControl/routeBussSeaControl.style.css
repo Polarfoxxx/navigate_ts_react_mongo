@@ -1,24 +1,32 @@
-
-.routeContent{
+.routeContent {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
-.routeContent > div{
-    width: 50%;
-    height: 60px;
+
+.routeContent>form {
+    width: 65%;
+    height: 100%;
+}
+
+.routeContent>form>div {
+    width: 100%;
+    height: 55px;
     display: flex;
     align-items: start;
     justify-content: start;
     flex-direction: column;
 }
-.routeContent > div > label{
-    font-size: 16px;
+
+.routeContent>form>div>label {
+    font-size: 15px;
     color: var(--whiteTextColor);
 }
-.routeContent > div > input, select{
+
+.routeContent>form>div>input,
+select {
     width: 100%;
     border-radius: 6px;
     height: 27px;
@@ -26,10 +34,65 @@
     background-color: var(--silverInputBacgColor);
     font-weight: bolder;
 }
-.routeContent .routetButtonBox{
+
+.routeContent>form>div>select>option {
+    background-color: var(--yellowGreenLow);
+}
+
+.routeContent>form .routeControltButtonBox {
     width: 100%;
     height: 10%;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
 }
+
+.routeContent>form .routeControltButtonBox>div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.routeContent>form .routeControltButtonBox>div>button {
+    width: 90px;
+    height: 27px;
+}
+
+.routeContent>form .routeControltButtonBox .submitBoxButton>button {
+    color: var(--closeButtonColor);
+    transition: 0.4s;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: var(--silverContent);
+    color: var(--buttonColor);
+}
+
+.routeContent>form .routeControltButtonBox .submitBoxButton>button:hover {
+    background-color: var(--yellowGreen);
+    color: black;
+}
+
+
+.routeContent>form .routeControltButtonBox .resetBoxButton>button {
+    transition: 0.4s;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: var(--silverContent);
+    color: var(--closeButtonColor);
+    color: var(--closeButtonColor);
+}
+
+.routeContent>form .routeControltButtonBox .resetBoxButton>button:hover {
+    background-color: red;
+    color: black;
+}
+
+
+

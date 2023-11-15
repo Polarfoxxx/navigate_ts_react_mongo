@@ -2,40 +2,30 @@ import React from "react";
 import "./onePointBussSearchCon.style.css";
 import { UseChangeContextDATA } from "../../../hooks";
 import { Container } from "../../../Container";
-import { Type_OnePointBussinesControl } from "../../../Container";
 import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 
 
-
 function OnePointBussinessSearcheControl(): JSX.Element {
-    const { location_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context)
-    const { startPoints, endPoints } = location_DATA, { mapBussines_Category } = sideWays_DATA;
-    const { handleSubmit, reset } = useInputValue();
+    const { sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context)
     const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
-    const [selectedValue, setSelectedValue] = React.useState('');
-    const [searchBussines_DATA, setSearchBussines_DATA] = React.useState<Type_OnePointBussinesControl>({
-        type: "",
-        radius: 0,
-        numResult: 0,
-        ambiguities: "Ignore"
-    })
+    const { handleSubmit, reset } = useInputValue();
 
 
     const submit = (v: TypeForInputsObject["v"]): void => {
-        console.log(v);
         const UPDATE_DATA = {
             status: true,
             POI_Data: {
-                type: "",
-                radius: 0,
-                numResult: 0,
-                ambiguities: "Ignore"
+                type: v[0].inputValues,
+                radius: v[1].inputValues,
+                numResult: v[2].inputValues,
+                ambiguities: v[3].inputValues
             }
         };
+        updateContext_DATA([
+            { newData: UPDATE_DATA, key: "mapBussines_Category" },
+        ])
     };
-
-
 
     return (
         <div className="onePointContent">
@@ -65,7 +55,7 @@ function OnePointBussinessSearcheControl(): JSX.Element {
                 <div className="onePoint oneMaxMatches">
                     <label htmlFor="oneMaxMatches">Number of results (max 100)</label>
                     <input
-                        defaultValue={22}
+                        defaultValue={20}
                         name='oneMaxMatches'
                         id="oneMaxMatches"
                         max={100}
