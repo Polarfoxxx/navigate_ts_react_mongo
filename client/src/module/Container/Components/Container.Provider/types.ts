@@ -16,8 +16,6 @@ export type Type_forRouteChange = {
   onEvent: string
 };
 
-
-
 export type TypeStartAndEndPoint = {
   address: string;
   latLng: number[];
@@ -30,11 +28,7 @@ export type Type_forTraficDATA = {
   mapsRectangle: number[]
 };
 
-export type Type_mapPOI_Category = {
-  type: string,
-  status: boolean,
-  POI_Data: null
-};
+
 
 export type Type_LatLng = {
   lat: number;
@@ -65,11 +59,33 @@ export type Type_IncidentDATA_forMarker = {
   lng: number
 };
 
-
 export type Type_incident = {
   status: boolean,
   dataInc: Type_IncidentDATA_forMarker | null,
 };
+
+/* =========================================================== */
+export type Type_MapBussines_Category = {
+  status: boolean,
+  POI_Data: null | Type_OnePointBussinesControl | Type_RouteBussinesControl
+};
+
+export type Type_OnePointBussinesControl= {
+  type: string,
+  radius: number,
+  numResult: number,
+  ambiguities: "Ignore" | "Allow"
+};
+
+export type Type_RouteBussinesControl= {
+  type: string,
+  width: number,
+  bufferedWidth: number,
+  numResult: number,
+  ambiguities: "Ignore" | "Allow"
+};
+/* =========================================================== */
+
 
 export type Type_For_Direction = {
   direction: string;
@@ -108,7 +124,7 @@ export type Type_sideWays_DATA = {
   markerInTheRoute: L.LatLngExpression | null,
   mapsCurrentInfo: Type_forTraficDATA,
   incident: Type_incident,
-  mapPOI_Category: Type_mapPOI_Category
+  mapBussines_Category: Type_MapBussines_Category
 };
 
 export type Type_Provider_Context = {

@@ -5,20 +5,17 @@ import { Container } from "../../../Container";
 
 function SearchBusiness(): JSX.Element {
     const { location_DATA } = React.useContext(Container.Context)
-    const { startPoints, endPoints } = location_DATA;
-    const [selectedValue, setSelectedValue] = React.useState('');
+    const { startPoints, endPoints } = location_DATA
     const [searchCompContent, setSearchCompContent] = React.useState<JSX.Element | null>(null);
 
-    const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedValue(event.target.value);
-    };
 
+    /* aky kontet sa ma zobrazit rozdelenie jedneho bodu alebo cesty */
     React.useEffect(() => {
         if (startPoints.latLng[0] && !endPoints.latLng[0]) {
             setSearchCompContent(<OnePointBussinessSearcheControl />)
-        } else if(startPoints.latLng[0]  && endPoints.latLng[0]) {
+        } else if (startPoints.latLng[0] && endPoints.latLng[0]) {
             setSearchCompContent(<RouteBussinessSearcheControl />)
-        }else {
+        } else {
             setSearchCompContent(<NoContent />)
         }
     }, [startPoints.latLng[0], !endPoints.latLng[0]]);
@@ -27,33 +24,13 @@ function SearchBusiness(): JSX.Element {
     return (
         <div className="searchBox">
             <header>
-                <h4>Searche bussinnes</h4>
+                <h4>Searche bussines</h4>
             </header>
             <section>
-                <div className="selectorBox">
-                    <select className="mySelector" value={selectedValue} onChange={handleSelectChange}>
-                        <option value="option1">Restaurants</option>
-                        <option value="option2">Pubs</option>
-                        <option value="option3">Shopping</option>
-                        <option value="option3">Caffes</option>
-                        <option value="option3">Bars</option>
-                    </select>
-
-                </div>
-                <div className="searchComponentsBox">
-                    {
-                        searchCompContent
-                    }
-
-                </div>
-            </section>
-            <footer>
                 {
-                    startPoints.latLng[0] && <button>send</button>
+                    searchCompContent
                 }
-
-
-            </footer>
+            </section>
         </div>
 
     )

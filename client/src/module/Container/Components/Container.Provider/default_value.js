@@ -38,9 +38,10 @@ export const defaultValue_sideways_for_Provider_Context = {
         status: false,
         dataInc: null
     },
-    mapPOI_Category:{
+    mapBussines_Category:{
         type: "",
         status:false,
         POI_Data: null
     } 
 };
+

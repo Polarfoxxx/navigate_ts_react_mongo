@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./header.style.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
   import { faLeftLong } from '@fortawesome/free-solid-svg-icons'
+  import { faRoute } from '@fortawesome/free-solid-svg-icons'
 
 
 function Header(): JSX.Element {
@@ -23,6 +24,7 @@ function Header(): JSX.Element {
                 </div>
                 <div className="headerTittleBox">
                     <h1>FoxxyNavigate</h1>
+                    <FontAwesomeIcon icon={faRoute} color="white" size="2xl"/>
                 </div>
             </div>
         </div>

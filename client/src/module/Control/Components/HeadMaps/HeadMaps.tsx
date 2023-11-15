@@ -6,6 +6,7 @@ import { UseChangeContextDATA } from "../../../hooks";
 import { DEFAULT_VALUE_FOR_REDUCER } from "./default_Value";
 import clsx from "clsx";
 
+
 /* useReducer ----------------------------*/
 const reducer = (state: Type_State_HeadMaps, action: Type_Action_HeadMaps) => {
     switch (action.type) {
@@ -24,7 +25,7 @@ const reducer = (state: Type_State_HeadMaps, action: Type_Action_HeadMaps) => {
 function HeadMaps(): JSX.Element {
     const { location_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { startPoints, endPoints, arrayALL_coordinate } = location_DATA;
-    const { incident, traffic, mapPOI_Category } = sideWays_DATA;
+    const { incident, traffic, mapBussines_Category } = sideWays_DATA;
     const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
     const [state, dispatch] = React.useReducer(reducer, DEFAULT_VALUE_FOR_REDUCER);
 
@@ -60,11 +61,11 @@ function HeadMaps(): JSX.Element {
     React.useEffect(() => {
         const KEY_POI_CATEGORY = state.typePOI_category.typePOI as keyof typeof state.typePOI_category
         const UPDATE_DATA = {
-            ...mapPOI_Category,
+            ...mapBussines_Category,
             type: state.typePOI_category.typePOI,
             status: state.typePOI_category[KEY_POI_CATEGORY]
         };
-        updateContext_DATA([{ newData: UPDATE_DATA, key: "mapPOI_Category" }]);
+        updateContext_DATA([{ newData: UPDATE_DATA, key: "mapBussines_Category" }]);
     }, [state.typePOI_category])
 
 
@@ -80,7 +81,7 @@ function HeadMaps(): JSX.Element {
                             <div
                                 className="addLocation_item"
                                 key={key}>
-                                <h4 >- {item.address}</h4>
+                                <h4>- {item.address}</h4>
                             </div>
                         )
                     }

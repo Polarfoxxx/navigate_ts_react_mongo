@@ -15,7 +15,7 @@ button {
     font-size: 14px;
     font-weight: bold;
     background-color: var(--silverContent);
-    color: white;
+    color: var(--buttonColor);
 }
 button:hover {
     background-color: var(--yellowGreen);

@@ -1,28 +1,66 @@
-
-.onePointContent{
+.onePointContent {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
-.onePointContent > div{
-    width: 50%;
-    height: 60px;
+.onePointContent>form {
+    width: 66%;
+    height: 100%;
+}
+.onePointContent>form>div {
+    width: 100%;
+    height: 55px;
     display: flex;
     align-items: start;
     justify-content: start;
     flex-direction: column;
 }
-.onePointContent > div > label{
+
+.onePointContent>form>div>label {
     font-size: 16px;
     color: var(--whiteTextColor);
 }
-.onePointContent > div > input, select{
+
+.onePointContent>form>div>input,
+select {
     width: 100%;
     border-radius: 6px;
     height: 27px;
     padding: 0 5px 0 5px;
     background-color: var(--silverInputBacgColor);
     font-weight: bolder;
+}
+.onePointContent>form>div>select>option {
+    background-color: var(--yellowGreenLow);
+}
+.onePointContent > form .onePointButtonBox {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.onePointContent > form .onePointButtonBox > div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.onePointContent > form .onePointButtonBox .resetBoxButton > button {
+color: rgb(255, 46, 46);
+
+}
+.onePointContent > form .onePointButtonBox .resetBoxButton > button:hover{
+    background-color: red;
+    color:black;
+}
+
+.onePointContent > form .onePointButtonBox > div> button{
+    width: 90px;
+    height: 27px;
 }

@@ -12,13 +12,17 @@ import { services_zoomLevel, services_rectagleCoord_WinMap } from "..";
 function MapSearch(): JSX.Element {
     const MAP = useMap();
     const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
-    const { mapsCurrentInfo, mapPOI_Category } = sideWays_DATA;
+    const { mapsCurrentInfo, mapBussines_Category } = sideWays_DATA;
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
+
+
+
+console.log(mapBussines_Category.POI_Data?.type);
 
 
     React.useEffect(() => {
         fetchData()
-    }, [mapPOI_Category.status])
+    }, [mapBussines_Category.status])
 
     async function fetchData() {
         if (false) {

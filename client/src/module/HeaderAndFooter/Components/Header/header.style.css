@@ -47,14 +47,13 @@
     margin-left: 20px;
 }
 
-
-
 .header .headerBox .headerTittleBox {
     width: 85%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: end;
-    padding-right: 100px;
+    padding-right: 80px;
     font-family: 'Dancing Script', cursive;
+    gap: 15px;
 }

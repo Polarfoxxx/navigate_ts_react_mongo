@@ -93,8 +93,8 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
       latLng: [coordinates?.lat, coordinates?.lon]
     };
 
-    updateContext_DATA([
-      { newData: services_setALL_location({ location_DATA, GEO_DATA, input_ident }), key: "location_DATA" }]);
+    updateContext_DATA(
+      [{ newData: services_setALL_location({ location_DATA, GEO_DATA, input_ident }), key: "location_DATA" }]);
     dispatch({ type: "SET_RESULT_OPEN", payload: false }); // Zavřít seznam po výběru adresy
   };
 
