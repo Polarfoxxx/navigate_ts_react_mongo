@@ -47,7 +47,7 @@ function RouteBussinessSearcheControl(): JSX.Element {
                         <option value="Bars">Bars</option>
                     </select>
                 </div>
-                <div className="routeControl routeWidth">
+                <div className="routeControl ">
                     <label htmlFor="Width">Width</label>
                     <input
                         defaultValue={1}
@@ -58,7 +58,7 @@ function RouteBussinessSearcheControl(): JSX.Element {
                         placeholder="Radius search"
                         type="number" />
                 </div>
-                <div className="routeControl routeBufferedWidth">
+                <div className="routeControl ">
                     <label htmlFor="routeBufferedWidth">Buffered Width</label>
                     <select name='routeBufferedWidth' className="routeBufferedWidth" id="routeBufferedWidth" defaultValue="0.25" >
                         <option value="0.25">0.25</option>
@@ -67,7 +67,7 @@ function RouteBussinessSearcheControl(): JSX.Element {
                         <option value="1">1</option>
                     </select>
                 </div>
-                <div className="routeControl oneMaxMatches">
+                <div className="routeControl ">
                     <label htmlFor="oneMaxMatches">Number of results (max 100)</label>
                     <input
                         defaultValue={20}
@@ -78,7 +78,7 @@ function RouteBussinessSearcheControl(): JSX.Element {
                         placeholder="Max number of subjects"
                         type="number" />
                 </div>
-                <div className="routeControl routeAmbiguities ">
+                <div className="routeControl  ">
                     <label htmlFor="selectorIgAll">Matching of entries</label>
                     <select name='selectorIgAll' className="mySelector" id="selectorIgAll" defaultValue="Ignore" >
                         <option value="Ignore">Ignore</option>

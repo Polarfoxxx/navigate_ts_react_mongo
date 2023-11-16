@@ -38,10 +38,11 @@ export const defaultValue_sideways_for_Provider_Context = {
         status: false,
         dataInc: null
     },
-    mapBussines_Category:{
+    mapBussines_Category: {
+        typeSearch:"",
         type: "",
-        status:false,
+        status: false,
         POI_Data: null
-    } 
+    }
 };
 

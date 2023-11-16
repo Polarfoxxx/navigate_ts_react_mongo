@@ -4,6 +4,7 @@ import { UseChangeContextDATA } from "../../../hooks";
 import { Container } from "../../../Container";
 import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
+import { Type_OnePointBussinesControl } from "../../../Container";
 
 
 function OnePointBussinessSearcheControl(): JSX.Element {
@@ -13,15 +14,22 @@ function OnePointBussinessSearcheControl(): JSX.Element {
 
 
     const submit = (v: TypeForInputsObject["v"]): void => {
+
+        const UPDATE_POI: Type_OnePointBussinesControl = {
+            type: v[0].inputValues as string,
+            area: v[1].inputValues as string,
+            numResult: v[2].inputValues as string,
+            ambiguities: v[3].inputValues as "Ignore" | "Allow"
+        }
+
         const UPDATE_DATA = {
+            typeSearch: "OnePointBussinessSearche",
             status: true,
-            POI_Data: {
-                type: v[0].inputValues,
-                radius: v[1].inputValues,
-                numResult: v[2].inputValues,
-                ambiguities: v[3].inputValues
-            }
+            POI_Data: UPDATE_POI,
+            typePOI: typeof UPDATE_POI
         };
+
+
         updateContext_DATA([
             { newData: UPDATE_DATA, key: "mapBussines_Category" },
         ])
@@ -41,18 +49,18 @@ function OnePointBussinessSearcheControl(): JSX.Element {
                         <option value="Bars">Bars</option>
                     </select>
                 </div>
-                <div className="onePoint oneRadius">
-                    <label htmlFor="inpOneRadius">Search size radius</label>
+                <div className="onePoint">
+                    <label htmlFor="inpOneArea">Searching in the area (m)</label>
                     <input
-                        defaultValue={1}
-                        name='inpOneRadius'
+                        defaultValue={1000}
+                        name='inpOneArea'
                         min={0}
-                        max={10}
-                        id="inpOneRadius"
-                        placeholder="Radius search"
+                        max={8000}
+                        id="inpOneArea"
+                        placeholder="Area"
                         type="number" />
                 </div>
-                <div className="onePoint oneMaxMatches">
+                <div className="onePoint">
                     <label htmlFor="oneMaxMatches">Number of results (max 100)</label>
                     <input
                         defaultValue={20}
@@ -63,7 +71,7 @@ function OnePointBussinessSearcheControl(): JSX.Element {
                         placeholder="Max number of subjects"
                         type="number" />
                 </div>
-                <div className="onePoint oneAmbiguities ">
+                <div className="onePoint">
                     <label htmlFor="selectorIgAll">Matching of entries</label>
                     <select name='selectorIgAll' className="mySelector" id="selectorIgAll" defaultValue="Ignore" >
                         <option value="Ignore">Ignore</option>

@@ -66,22 +66,23 @@ export type Type_incident = {
 
 /* =========================================================== */
 export type Type_MapBussines_Category = {
+  typeSearch: string,
   status: boolean,
-  POI_Data: null | Type_OnePointBussinesControl | Type_RouteBussinesControl
+  POI_Data: null | Type_OnePointBussinesControl & Type_RouteBussinesControl,
 };
 
 export type Type_OnePointBussinesControl= {
   type: string,
-  radius: number,
-  numResult: number,
+  area: string,
+  numResult: string,
   ambiguities: "Ignore" | "Allow"
 };
 
 export type Type_RouteBussinesControl= {
   type: string,
-  width: number,
-  bufferedWidth: number,
-  numResult: number,
+  width: string,
+  bufferedWidth: string,
+  numResult: string,
   ambiguities: "Ignore" | "Allow"
 };
 /* =========================================================== */
