@@ -26,7 +26,7 @@ function MapHandler(): null {
           /* test custtom hooks */
           updateContext_DATA([
             { newData: data, key: "clickOnMap" },
-            { newData: true, key: "popupStatus" }
+            { newData: true, key: "popup_clickToMap_status" }
           ]);
         });
     }, []);

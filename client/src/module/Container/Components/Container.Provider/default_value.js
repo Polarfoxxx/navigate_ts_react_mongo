@@ -26,7 +26,7 @@ export const defaultValue_sideways_for_Provider_Context = {
     navi_Machine: false,/* nepoziva sa */
 
     traffic: false,
-    popupStatus: false,
+    popup_clickToMap_status: false,
     markerInTheRoute: null,
     mapsCurrentInfo: {
         zoom: 0,
@@ -36,7 +36,7 @@ export const defaultValue_sideways_for_Provider_Context = {
     },
     incident: {
         status: false,
-        dataInc: null
+        dataInc_ForPopup: null
     },
     mapBussines_Category: {
         typeSearch:"",

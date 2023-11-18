@@ -26,9 +26,9 @@ function endIcon() {
 
 function altIcon() {
     return L.icon({
-            iconUrl: "https://assets.mapquestapi.com/icon/v2/marker.png",
-            iconSize: [28, 35], // Adjust the icon size as needed
-            iconAnchor: [14, 35], // Adjust the anchor point as needed
+        iconUrl: "https://assets.mapquestapi.com/icon/v2/marker.png",
+        iconSize: [28, 35], // Adjust the icon size as needed
+        iconAnchor: [14, 35], // Adjust the anchor point as needed
     });
 }
 function moveIcon() {

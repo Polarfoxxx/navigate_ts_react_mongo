@@ -7,7 +7,7 @@ import { OnClickMapContent, OnClickIncidentContent } from "../../../Control";
 
 function Popups(): JSX.Element {
     const { sideWays_DATA } = React.useContext(Container.Context);
-    const { clickOnMap, popupStatus, incident } = sideWays_DATA;
+    const { clickOnMap, popup_clickToMap_status, incident } = sideWays_DATA;
     const [popupPosition, setPopupPosition] = React.useState<LatLngExpression | null>(null)
     const [content, setContent] = React.useState<JSX.Element | null>(null)
 
@@ -24,16 +24,16 @@ function Popups(): JSX.Element {
 
     /* spustenie popupu na incidents mararker */
     React.useEffect(() => {
-        if (incident.dataInc?.location) {
-            setPopupPosition(incident.dataInc?.location);
+        if (incident.dataInc_ForPopup?.location) {
+            setPopupPosition(incident.dataInc_ForPopup?.location);
             setContent(<OnClickIncidentContent />)
         };
-    }, [incident.dataInc?.location]);
+    }, [incident.dataInc_ForPopup?.location]);
 
     return (
         <>
             {
-                popupPosition && popupStatus &&
+                popupPosition && popup_clickToMap_status &&
                 <Popup position={popupPosition}>
                     {content}
                 </Popup>

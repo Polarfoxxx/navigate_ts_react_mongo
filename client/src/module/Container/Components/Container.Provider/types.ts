@@ -46,7 +46,7 @@ export type Type_IncidentDATA_forMarker = {
   id: string,
   type: number,
   location: LatLngExpression | null,
-  icon: any,
+  icon: L.Icon<L.IconOptions> | null,
   startTime: string,
   endTime: string,
   shortDesc: string,
@@ -61,7 +61,7 @@ export type Type_IncidentDATA_forMarker = {
 
 export type Type_incident = {
   status: boolean,
-  dataInc: Type_IncidentDATA_forMarker | null,
+  dataInc_ForPopup: Type_IncidentDATA_forMarker | null,
 };
 
 /* =========================================================== */
@@ -121,7 +121,7 @@ export type Type_sideWays_DATA = {
   clickOnMap: Type_OnClick_object;
   navi_Machine: boolean;
   traffic: boolean,
-  popupStatus: boolean;
+  popup_clickToMap_status: boolean;
   markerInTheRoute: L.LatLngExpression | null,
   mapsCurrentInfo: Type_forTraficDATA,
   incident: Type_incident,

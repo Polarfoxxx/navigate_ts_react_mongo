@@ -40,7 +40,7 @@ function OnClickMapContent(props: Type_forControlMapCLcontent): JSX.Element {
 
         updateContext_DATA([
             { newData: services_onClick_setStartEnd(location_DATA, sideWays_DATA), key: "location_DATA" },
-            { newData: false, key: "popupStatus" },
+            { newData: false, key: "popup_clickToMap_status" },
         ]);
     };
 

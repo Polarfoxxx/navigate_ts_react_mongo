@@ -1,11 +1,10 @@
 import React from "react";
-import { Marker, useMap } from "react-leaflet";
+import {  useMap } from "react-leaflet";
 import { Container } from "../../../Container";
-import { UseChangeContextDATA } from "../../../hooks";
 import { SEARCH_BUSSINES_API } from "../../../API";
 import L from "leaflet";
-import { Type_MapBussines_Category } from "../../../Container";
-import {services_POIcode_bussines, Type_forSearchAPI_Circle, Type_SearchResponse_Circle} from "..";
+import {services_POIcode_bussines, Type_forSearchAPI_Circle} from "..";
+import MarkersBussinessAndIncidents from "../MarkersBussinessAndIncidents/MarkersBussinessAndIncidents";
 
 function MapSearch(): JSX.Element {
     const MAP = useMap();
@@ -20,7 +19,6 @@ function MapSearch(): JSX.Element {
 
     async function fetchSearchData() {
         if (mapBussines_Category.typeSearch === "OnePointBussinessSearche" && mapBussines_Category.POI_Data) {
-
             const UPDATE_DATA: Type_forSearchAPI_Circle = {
                 coordinate_point : startPoints.latLng,
                 area : mapBussines_Category.POI_Data.area,
@@ -30,12 +28,15 @@ function MapSearch(): JSX.Element {
             };
 
             try {
-                const DATA_API = await SEARCH_BUSSINES_API.search_API_bussines_Circle<Type_SearchResponse_Circle>(UPDATE_DATA)
+                const DATA_API = await SEARCH_BUSSINES_API.search_API_bussines_Circle(UPDATE_DATA)
+
                 console.log(DATA_API);
 
             } catch (error) {
                 console.error(error);
             };
+
+
         } else if (mapBussines_Category.typeSearch === "RouteBussinessSearche") {
             try {
                /*  const DATA_API = await SEARCH_BUSSINES_API.search_API_bussines_Corridor()

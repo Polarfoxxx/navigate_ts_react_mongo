@@ -13,34 +13,34 @@ function OnClickIncidentContent(): JSX.Element {
     const [inc_DATA, setInc_DATA] = React.useState<Type_IncidentDATA_forMarker>(DEFAULT_VALUE_FOR_INC_DATA);
 
     React.useEffect(() => {
-        if (incident.dataInc) {
+        if (incident.dataInc_ForPopup) {
             const UPDATE_INC: Type_IncidentDATA_forMarker = {
-                id: incident.dataInc.id,
-                type: incident.dataInc.type,
-                location: incident.dataInc.location,
-                icon: incident.dataInc.icon,
-                startTime: incident.dataInc.startTime,
-                endTime: incident.dataInc.endTime,
-                shortDesc: incident.dataInc.startTime,
-                fullDesc: incident.dataInc.fullDesc,
-                distance: incident.dataInc.distance,
-                severity: incident.dataInc.severity,
-                impacting: incident.dataInc.impacting,
-                iconURL: incident.dataInc.iconURL,
-                lat: incident.dataInc.lat,
-                lng: incident.dataInc.lng,
+                id: incident.dataInc_ForPopup.id,
+                type: incident.dataInc_ForPopup.type,
+                location: incident.dataInc_ForPopup.location,
+                icon: incident.dataInc_ForPopup.icon,
+                startTime: incident.dataInc_ForPopup.startTime,
+                endTime: incident.dataInc_ForPopup.endTime,
+                shortDesc: incident.dataInc_ForPopup.startTime,
+                fullDesc: incident.dataInc_ForPopup.fullDesc,
+                distance: incident.dataInc_ForPopup.distance,
+                severity: incident.dataInc_ForPopup.severity,
+                impacting: incident.dataInc_ForPopup.impacting,
+                iconURL: incident.dataInc_ForPopup.iconURL,
+                lat: incident.dataInc_ForPopup.lat,
+                lng: incident.dataInc_ForPopup.lng,
             };
             setInc_DATA(UPDATE_INC)
         }
 
-    }, [incident.dataInc?.id])
+    }, [incident.dataInc_ForPopup?.id])
 
 
     React.useEffect(() => {
-        if (incident.dataInc?.lat && incident.dataInc?.lng) {
-            incidentPopup([incident.dataInc.lat, incident.dataInc.lng])
+        if (incident.dataInc_ForPopup?.lat && incident.dataInc_ForPopup?.lng) {
+            incidentPopup([incident.dataInc_ForPopup.lat, incident.dataInc_ForPopup.lng])
         };
-    }, [incident.dataInc?.id]);
+    }, [incident.dataInc_ForPopup?.id]);
 
     async function incidentPopup(coord: number[]) {
         if (incident) {

@@ -2,6 +2,7 @@
 export { default as IncidentsToMap } from "./IncidentsToMap/IncidentsToMap";
 export { default as MapTraffic } from "./MapTraffic/MapTraffic";
 export { default as MapSearche } from "./MapSearch/MapSearch";
+export { default as MarkersBussinessAndIncidents } from "./MapSearch/MapSearch";
 
 /* services */
 export { default as services_rectagleCoord_WinMap } from "./IncidentsToMap/services/services_rectagleCoord_WinMap";

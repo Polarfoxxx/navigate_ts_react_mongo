@@ -11,13 +11,14 @@ export type Type_SearchResponse_Circle = {
     distanceUnit: string;
     distance: number;
     name: string;
-    sourceName: string;
+
     resultNumber: number;
     fields: {
         mqap_id: string;
         country: string;
         address: string;
         lng: number;
+        lat: number;
         city: string;
         group_sic_code_name_ext: string;
         group_sic_code: string;
@@ -31,12 +32,7 @@ export type Type_SearchResponse_Circle = {
         state: string;
         id: string;
         postal_code: string;
-        mqap_geography: {
-            latLng: {
-                lng: number;
-                lat: number;
-            };
-        };
+    
     };
-}[];
+};
 
