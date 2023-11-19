@@ -13,6 +13,8 @@ export default SEARCH_BUSSINES_API;
 
 
 async function search_API_bussines_Circle(searchCircleBussines: Type_forSearchAPI_Circle): Promise<Type_SearchResponse_Circle[]> {
+
+  const KEY_REQUIRED: (keyof Type_RAW_OnePoint_response_bussiness)[] = ["fields", "distance", "distanceUnit", "name", "resultNumber"]
   const COORDINATE_POINT = searchCircleBussines.coordinate_point;
   const AREA = searchCircleBussines.area;
   const MAX_MATCHES = searchCircleBussines.max_matches;
@@ -27,10 +29,12 @@ async function search_API_bussines_Circle(searchCircleBussines: Type_forSearchAP
 
   try {
     const response = await axios.get(URL);
-    const RESPO_DATA: Type_RAW_OnePoint_response_bussiness[] = response.data.searchResults;
+    const RESPO_RAW_DATA: Type_RAW_OnePoint_response_bussiness[] = response.data.searchResults;
 
-    const CIRCLE_RESPO_ARR = services_setResponseDATA<Type_RAW_OnePoint_response_bussiness, Type_SearchResponse_Circle>({ RESPO_DATA });
-    return CIRCLE_RESPO_ARR;
+    /* uprava vyslednych dat pomocou services, vybranie iba niektorych klucov */
+    const CIRCLE_RESPO_ARR: Type_SearchResponse_Circle[] = services_setResponseDATA({ KEY_REQUIRED: KEY_REQUIRED, RESPO_RAW_DATA: RESPO_RAW_DATA});
+    return CIRCLE_RESPO_ARR
+
   } catch (error) {
     console.error(error);
     return [];

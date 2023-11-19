@@ -12,10 +12,12 @@ import MarkersBussinessAndIncidents from "../MarkersBussinessAndIncidents/Marker
 
 
 function IncidentsToMap() {
-    const { location_DATA, sideWays_DATA,  } = React.useContext(Container.Context);
+    const { location_DATA, sideWays_DATA, } = React.useContext(Container.Context);
     const { mapsCurrentInfo, incident } = sideWays_DATA;
     const [incidentDATA, setIncidentDATA] = React.useState<Type_IncidentDATA_forMarker[]>()
-  
+    const KEY_REQUIREDS: (keyof Type_IncidentDATA_forMarker)[] = [
+        "id", "type", "location", "icon", "startTime", "endTime", "shortDesc", "fullDesc", "distance", "severity", "impacting", "iconURL", "lat", "lng"
+    ];
 
     React.useEffect(() => {
         if (incident.status && mapsCurrentInfo.zoom > 13) {
@@ -65,13 +67,14 @@ function IncidentsToMap() {
             {
                 incident.status && incidentDATA && incidentDATA.map((incidents: Type_IncidentDATA_forMarker, key: number) =>
                     <MarkersBussinessAndIncidents
+                        KEY_REQUIRED={KEY_REQUIREDS}
                         position={incidents.location}
                         icon={incidents.icon}
-                        incidents={incidents}
+                        data={incidents}
                         key={key}
                     />
                 )
-            };
+            }
 
         </>
 
@@ -79,4 +82,5 @@ function IncidentsToMap() {
     )
 };
 
-export default IncidentsToMap
+export default IncidentsToMap;
+

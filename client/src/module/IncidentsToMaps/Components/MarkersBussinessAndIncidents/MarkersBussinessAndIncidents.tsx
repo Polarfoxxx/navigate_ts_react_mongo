@@ -1,25 +1,36 @@
 import React from "react";
 import { Marker } from "react-leaflet";
 import L from "leaflet";
-import { Type_IncidentDATA_forMarker } from "../../../Container";
 import { UseChangeContextDATA } from "../../../hooks";
 import { Container } from "../../../Container";
 
 
-type Type_forMarkersBussinessAndIncidents = {
+type Type_forMarkersBussinessAndIncidents<T> = {
+    KEY_REQUIRED: (keyof T)[],
     position: L.LatLngExpression,
     icon?: L.Icon<L.IconOptions>,
-    incidents: Type_IncidentDATA_forMarker
-
+    data: T
 };
 
 
-function MarkersBussinessAndIncidents({ position, icon, incidents }: Type_forMarkersBussinessAndIncidents): JSX.Element {
+function MarkersBussinessAndIncidents<T extends object>({KEY_REQUIRED, position, icon, data }: Type_forMarkersBussinessAndIncidents<T>): JSX.Element {
+
     const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
 
+    let result = {} as T;
+    for (const key of KEY_REQUIRED) {
+      if (key in data) {
+        result[key] = data[key];
+      }
+    }
+
+console.log(result);
+
+
+
     /* zobrazovac markerov mauseover pre incidety */
-    const handleMarkerToggle = async (incident: Type_IncidentDATA_forMarker, state: boolean) => {
+/*     const handleMarkerToggle = (incident: T, state: boolean) => {
         if (state) {
             const UPDATE_DATA = {
                 status: true,
@@ -54,16 +65,16 @@ function MarkersBussinessAndIncidents({ position, icon, incidents }: Type_forMar
             ]);
         };
     };
-
+ */
 
     return (
         <>
             <Marker
                 position={position}
-                icon={icon}
+              
                 eventHandlers={{
-                    mouseover: () => handleMarkerToggle(incidents, true),
-                    mouseout: () => handleMarkerToggle(incidents, false),
+                   /*  mouseover: () => handleMarkerToggle(data, true),
+                    mouseout: () => handleMarkerToggle(data, false), */
                 }}>
             </Marker>
         </>

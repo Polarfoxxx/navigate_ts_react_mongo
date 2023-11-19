@@ -8,10 +8,8 @@ export type Type_forSearchAPI_Circle = {
 };
 
 export type Type_SearchResponse_Circle = {
-    distanceUnit: string;
     distance: number;
     name: string;
-
     resultNumber: number;
     fields: {
         mqap_id: string;
@@ -20,6 +18,7 @@ export type Type_SearchResponse_Circle = {
         lng: number;
         lat: number;
         city: string;
+        mqap_geography:  {latLng: { lng: number; lat: number; };} ;
         group_sic_code_name_ext: string;
         group_sic_code: string;
         side_of_street: string;
@@ -32,7 +31,6 @@ export type Type_SearchResponse_Circle = {
         state: string;
         id: string;
         postal_code: string;
-    
     };
 };
 

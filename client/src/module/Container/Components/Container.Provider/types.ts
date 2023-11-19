@@ -1,47 +1,14 @@
 import React from "react";
 import { LatLngExpression } from "leaflet";
 
+
+/* =========================================================== */
+/* =========================================================== */
 export type Props_Provider = {
   children: JSX.Element | JSX.Element[];
 };
-
-export type Type_ALLCoordinateObjekt = {
-  identObject?: string | number,
-  address: string;
-  latLng: number[];
-};
-
-export type Type_forRouteChange = {
-  routeIndex: number,
-  onEvent: string
-};
-
-export type TypeStartAndEndPoint = {
-  address: string;
-  latLng: number[];
-};
-
-export type Type_forTraficDATA = {
-  zoom: number,
-  center: LatLngExpression | null,
-  sizeMap: number[],
-  mapsRectangle: number[]
-};
-
-
-
-export type Type_LatLng = {
-  lat: number;
-  lng: number;
-};
-
-export type Type_ArrayAllCoord = Type_ALLCoordinateObjekt[];
-
-export type Type_OnClick_object = {
-  address: string;
-  latLng: number[] | null;
-};
-
+/* =========================================================== */
+/* =========================================================== */
 export type Type_IncidentDATA_forMarker = {
   id: string,
   type: number,
@@ -63,7 +30,7 @@ export type Type_incident = {
   status: boolean,
   dataInc_ForPopup: Type_IncidentDATA_forMarker | null,
 };
-
+/* =========================================================== */
 /* =========================================================== */
 export type Type_MapBussines_Category = {
   typeSearch: string,
@@ -71,14 +38,14 @@ export type Type_MapBussines_Category = {
   POI_Data: null | Type_OnePointBussinesControl & Type_RouteBussinesControl,
 };
 
-export type Type_OnePointBussinesControl= {
+export type Type_OnePointBussinesControl = {
   type: string,
   area: string,
   numResult: string,
   ambiguities: "Ignore" | "Allow"
 };
 
-export type Type_RouteBussinesControl= {
+export type Type_RouteBussinesControl = {
   type: string,
   width: string,
   bufferedWidth: string,
@@ -86,8 +53,7 @@ export type Type_RouteBussinesControl= {
   ambiguities: "Ignore" | "Allow"
 };
 /* =========================================================== */
-
-
+/* =========================================================== */
 export type Type_For_Direction = {
   direction: string;
   distance: number;
@@ -101,6 +67,11 @@ export type Type_For_Direction = {
   type: string;
 };
 
+export type Type_LatLng = {
+  lat: number;
+  lng: number;
+};
+
 export type Type_ArrayALLRoute = {
   nameRoutes: string;
   totalDistance: number;
@@ -108,7 +79,43 @@ export type Type_ArrayALLRoute = {
   coordinates: Type_LatLng[];
   instructions: Type_For_Direction[];
 };
+/* =========================================================== */
+/* =========================================================== */
+export type Type_ALLCoordinateObjekt = {
+  identObject?: string | number,
+  address: string;
+  latLng: number[];
+};
+export type Type_ArrayAllCoord = Type_ALLCoordinateObjekt[];
+/* =========================================================== */
+/* =========================================================== */
+export type TypeStartAndEndPoint = {
+  address: string;
+  latLng: number[];
+};
+/* =========================================================== */
+/* =========================================================== */
+export type Type_OnClick_object = {
+  address: string;
+  latLng: number[] | null;
+};
+/* =========================================================== */
+/* =========================================================== */
+export type Type_forTraficDATA = {
+  zoom: number,
+  center: LatLngExpression | null,
+  sizeMap: number[],
+  mapsRectangle: number[]
+};
+/* =========================================================== */
+/* =========================================================== */
 
+export type Type_forRouteChange = {
+  routeIndex: number,
+  onEvent: string
+};
+/* =========================================================== */
+/* =========================================================== */
 export type Type_location_DATA = {
   startPoints: TypeStartAndEndPoint;
   endPoints: TypeStartAndEndPoint;
@@ -116,7 +123,6 @@ export type Type_location_DATA = {
   main_atl_route: Type_ArrayALLRoute[];
   changeRoutes: Type_forRouteChange
 };
-
 export type Type_sideWays_DATA = {
   clickOnMap: Type_OnClick_object;
   navi_Machine: boolean;
@@ -127,10 +133,11 @@ export type Type_sideWays_DATA = {
   incident: Type_incident,
   mapBussines_Category: Type_MapBussines_Category
 };
-
 export type Type_Provider_Context = {
   location_DATA: Type_location_DATA;
   setLocation_DATA: React.Dispatch<React.SetStateAction<Type_location_DATA>>;
   sideWays_DATA: Type_sideWays_DATA,
   setSideWays_DATA: React.Dispatch<React.SetStateAction<Type_sideWays_DATA>>;
 };
+/* =========================================================== */
+/* =========================================================== */

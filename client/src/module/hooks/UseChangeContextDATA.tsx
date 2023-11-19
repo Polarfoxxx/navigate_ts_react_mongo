@@ -16,8 +16,6 @@ function UseChangeContextDATA({
     function updateContext_DATA(props: Type_updateContext_DATA[]): void {
 
         props.forEach((item: Type_updateContext_DATA) => {
-
-
             if (location_DATA && setLocation_DATA && item.key === "location_DATA") {
                 setLocation_DATA(item.newData);
                 return
@@ -25,7 +23,6 @@ function UseChangeContextDATA({
                 setSideWays_DATA(item.newData);
                 return
             };
-
 
             if (location_DATA && setLocation_DATA && item.key in location_DATA) {
                 setLocation_DATA(prew => ({
