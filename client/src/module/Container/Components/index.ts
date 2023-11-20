@@ -17,7 +17,8 @@ export type {
     Type_For_Direction,
     Type_MapBussines_Category,
     Type_OnePointBussinesControl,
-    Type_RouteBussinesControl
+    Type_RouteBussinesControl,
+    Type_SearchResponse_Circle
 } from "./Container.Provider/types";
 
 

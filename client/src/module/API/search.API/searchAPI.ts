@@ -1,9 +1,8 @@
 import axios from "axios";
-import { Type_forSearchAPI_Circle, Type_SearchResponse_Circle, Type_MostedCoordinate_Arr } from "../../IncidentsToMaps";
-import { services_setResponseDATA } from "..";
+import { Type_forSearchAPI_Circle,Type_MostedCoordinate_Arr } from "../../IncidentsToMaps";
+import { Type_SearchResponse_Circle } from "../../Container";
 import { Type_RAW_OnePoint_response_bussiness } from "..";
-
-const API_KEY = "5GX8lJDVddQIy3d3nAmlGCXYaFe5IMFC";
+import {services_setResponseDATA} from "..";
 
 const SEARCH_BUSSINES_API = {
   search_API_bussines_Circle,
@@ -11,19 +10,20 @@ const SEARCH_BUSSINES_API = {
 }
 export default SEARCH_BUSSINES_API;
 
+const API_KEY = "5GX8lJDVddQIy3d3nAmlGCXYaFe5IMFC";
+
 
 async function search_API_bussines_Circle(searchCircleBussines: Type_forSearchAPI_Circle): Promise<Type_SearchResponse_Circle[]> {
-
   const KEY_REQUIRED: (keyof Type_RAW_OnePoint_response_bussiness)[] = ["fields", "distance", "distanceUnit", "name", "resultNumber"]
   const COORDINATE_POINT = searchCircleBussines.coordinate_point;
-  const AREA = searchCircleBussines.area;
+  const AREA = searchCircleBussines.area; 
   const MAX_MATCHES = searchCircleBussines.max_matches;
   const AMBIGUITIES = searchCircleBussines.ambiguities;
   const POI_CODE = searchCircleBussines.POI_code;
 
   const URL = `https://www.mapquestapi.com/search/v2/radius?` +
-    `origin=${COORDINATE_POINT[0]}+${COORDINATE_POINT[1]}&` +
-    `radius=${AREA}&maxMatches=${MAX_MATCHES}&ambiguities=${AMBIGUITIES}&` +
+    `origin=${COORDINATE_POINT[0]},+${COORDINATE_POINT[1]}&` +
+    `radius=${+AREA * 0.6213}&maxMatches=${MAX_MATCHES}&units=k&ambiguities=${AMBIGUITIES}&` +
     `hostedData=mqap.ntpois|group_sic_code=?|${POI_CODE}&outFormat=json&` +
     `key=${API_KEY}`;
 
@@ -31,8 +31,14 @@ async function search_API_bussines_Circle(searchCircleBussines: Type_forSearchAP
     const response = await axios.get(URL);
     const RESPO_RAW_DATA: Type_RAW_OnePoint_response_bussiness[] = response.data.searchResults;
 
+
+    console.log(RESPO_RAW_DATA);
+
+
     /* uprava vyslednych dat pomocou services, vybranie iba niektorych klucov */
     const CIRCLE_RESPO_ARR: Type_SearchResponse_Circle[] = services_setResponseDATA({ KEY_REQUIRED: KEY_REQUIRED, RESPO_RAW_DATA: RESPO_RAW_DATA});
+    
+
     return CIRCLE_RESPO_ARR
 
   } catch (error) {
@@ -40,6 +46,18 @@ async function search_API_bussines_Circle(searchCircleBussines: Type_forSearchAP
     return [];
   };
 };
+
+
+
+
+
+
+
+
+
+
+
+
 
 async function search_API_bussines_Corridor(ALL_INCIDENTS_WIN: Type_MostedCoordinate_Arr[]): Promise<any> {
   console.log(ALL_INCIDENTS_WIN);

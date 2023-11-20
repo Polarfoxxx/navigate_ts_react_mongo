@@ -50,12 +50,13 @@ function OnePointBussinessSearcheControl(): JSX.Element {
                     </select>
                 </div>
                 <div className="onePoint">
-                    <label htmlFor="inpOneArea">Searching in the area (m)</label>
+                    <label htmlFor="inpOneArea">Searching in the area (km)</label>
                     <input
-                        defaultValue={1000}
+                        step="0.1"
+                        defaultValue={1}
                         name='inpOneArea'
-                        min={0}
-                        max={8000}
+                        min={0.1}
+                        max={3}
                         id="inpOneArea"
                         placeholder="Area"
                         type="number" />

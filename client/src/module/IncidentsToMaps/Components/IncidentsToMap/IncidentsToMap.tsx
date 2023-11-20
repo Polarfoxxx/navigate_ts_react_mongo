@@ -1,11 +1,9 @@
 import React from "react";
 import "./incidentToMap.style.css";
 import { traffic_Incidents_API } from "../../../API";
-import { Marker, useMap } from "react-leaflet";
 import L from "leaflet"
-import { Type_for_TraficIncidents, Type_IncidentDATA_forMarker } from "./types";
+import { Type_IncidentDATA_forMarker } from "../../../Container";
 import services_highestCoordInhTeAreasOf from "./services/services_highestCoordInTheAreasOf";
-import { UseChangeContextDATA } from "../../../hooks";
 import { services_rectagleCoord_WinMap } from "../";
 import { Container } from "../../../Container";
 import MarkersBussinessAndIncidents from "../MarkersBussinessAndIncidents/MarkersBussinessAndIncidents";
@@ -13,11 +11,8 @@ import MarkersBussinessAndIncidents from "../MarkersBussinessAndIncidents/Marker
 
 function IncidentsToMap() {
     const { location_DATA, sideWays_DATA, } = React.useContext(Container.Context);
-    const { mapsCurrentInfo, incident } = sideWays_DATA;
+    const {mapBussines_Category, mapsCurrentInfo, incident } = sideWays_DATA;
     const [incidentDATA, setIncidentDATA] = React.useState<Type_IncidentDATA_forMarker[]>()
-    const KEY_REQUIREDS: (keyof Type_IncidentDATA_forMarker)[] = [
-        "id", "type", "location", "icon", "startTime", "endTime", "shortDesc", "fullDesc", "distance", "severity", "impacting", "iconURL", "lat", "lng"
-    ];
 
     React.useEffect(() => {
         if (incident.status && mapsCurrentInfo.zoom > 13) {
@@ -33,43 +28,31 @@ function IncidentsToMap() {
         const SECTION = location_DATA.endPoints.address ? MINI_SECTION : ALL_INCIDENTS_WIN
 
         try {
-            const API_DATA = await traffic_Incidents_API<Type_for_TraficIncidents>(SECTION, 1000, 1000);
-            const INCIDENT_LOCATION = API_DATA.map(incident => {
-                return {
-                    id: incident.id,
-                    type: incident.type,
-                    location: L.latLng(incident.lat, incident.lng),
-                    icon: L.icon({
-                        iconUrl: incident.iconURL,
-                        iconSize: [30, 30],
-                        iconAnchor: [25, 25]
-                    }),
-                    startTime: incident.startTime,
-                    endTime: incident.endTime,
-                    shortDesc: incident.shortDesc,
-                    fullDesc: incident.fullDesc,
-                    distance: incident.distance,
-                    severity: incident.severity,
-                    impacting: incident.impacting,
-                    iconURL: incident.iconURL,
-                    lat: incident.lat,
-                    lng: incident.lng
-                };
-            });
-            setIncidentDATA(INCIDENT_LOCATION)
+            const DATA_API: Type_IncidentDATA_forMarker[] = await traffic_Incidents_API(SECTION, 1000, 1000);
+            setIncidentDATA(DATA_API)
+
         } catch (error) {
             console.error(error);
         };
     };
+
+    
+    
+
+
 
     return (
         <>
             {
                 incident.status && incidentDATA && incidentDATA.map((incidents: Type_IncidentDATA_forMarker, key: number) =>
                     <MarkersBussinessAndIncidents
-                        KEY_REQUIRED={KEY_REQUIREDS}
-                        position={incidents.location}
-                        icon={incidents.icon}
+                        type="incident"
+                        position={[incidents.lat, incidents.lng]}
+                        icon={L.icon({
+                            iconUrl: incidents.iconURL,
+                            iconSize: [30, 30],
+                            iconAnchor: [25, 25]
+                        })}
                         data={incidents}
                         key={key}
                     />

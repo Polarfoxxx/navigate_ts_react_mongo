@@ -6,75 +6,56 @@ import { Container } from "../../../Container";
 
 
 type Type_forMarkersBussinessAndIncidents<T> = {
-    KEY_REQUIRED: (keyof T)[],
+    type: string;
     position: L.LatLngExpression,
     icon?: L.Icon<L.IconOptions>,
     data: T
 };
 
 
-function MarkersBussinessAndIncidents<T extends object>({KEY_REQUIRED, position, icon, data }: Type_forMarkersBussinessAndIncidents<T>): JSX.Element {
+function MarkersBussinessAndIncidents<T extends object>({ type, position, icon, data }: Type_forMarkersBussinessAndIncidents<T>): JSX.Element {
 
     const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
 
-    let result = {} as T;
-    for (const key of KEY_REQUIRED) {
-      if (key in data) {
-        result[key] = data[key];
-      }
-    }
-
-console.log(result);
 
 
 
-    /* zobrazovac markerov mauseover pre incidety */
-/*     const handleMarkerToggle = (incident: T, state: boolean) => {
-        if (state) {
-            const UPDATE_DATA = {
-                status: true,
-                dataInc_ForPopup: {
-                    id: incident.id,
-                    type: incident.type,
-                    location: L.latLng(incident.lat, incident.lng),
-                    icon: L.icon({
-                        iconUrl: incident.iconURL,
-                        iconSize: [30, 30],
-                        iconAnchor: [25, 25]
-                    }),
-                    startTime: incident.startTime,
-                    endTime: incident.endTime,
-                    shortDesc: incident.shortDesc,
-                    fullDesc: incident.fullDesc,
-                    distance: incident.distance,
-                    severity: incident.severity,
-                    impacting: incident.impacting,
-                    iconURL: incident.iconURL,
-                    lat: incident.lat,
-                    lng: incident.lng
-                }
+
+
+
+    /* toto bude treba rodelit incident alebo bussines */
+    const handleMarkerToggle = (state: boolean) => {
+    if (type === "incident") {
+        /* zobrazovac markerov mauseover pre incidety */
+            if (state) {
+                const UPDATE_DATA = {
+                    status: true,
+                    dataInc_ForPopup: data
+                };
+
+                updateContext_DATA([
+                    { newData: UPDATE_DATA, key: "incident" },
+                    { newData: true, key: "popup_clickToMap_status" },
+                ]);
+            } else {
+                updateContext_DATA([
+                    { newData: false, key: "popup_clickToMap_status" },
+                ]);
             };
-            updateContext_DATA([
-                { newData: UPDATE_DATA, key: "incident" },
-                { newData: true, key: "popup_clickToMap_status" },
-            ]);
-        } else {
-            updateContext_DATA([
-                { newData: false, key: "popup_clickToMap_status" },
-            ]);
-        };
-    };
- */
+        } else if(type === "bussines") {
+            
+        }
+    }
 
     return (
         <>
             <Marker
+                icon={icon}
                 position={position}
-              
                 eventHandlers={{
-                   /*  mouseover: () => handleMarkerToggle(data, true),
-                    mouseout: () => handleMarkerToggle(data, false), */
+                    mouseover: () => handleMarkerToggle(true),
+                    mouseout: () => handleMarkerToggle(false),
                 }}>
             </Marker>
         </>
@@ -82,3 +63,5 @@ console.log(result);
 };
 
 export default MarkersBussinessAndIncidents;
+
+

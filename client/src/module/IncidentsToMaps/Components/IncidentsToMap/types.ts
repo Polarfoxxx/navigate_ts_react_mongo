@@ -1,4 +1,3 @@
-import { LatLngExpression } from "leaflet";
 
 
 export type Type_for_TraficIncidents = {
@@ -20,22 +19,6 @@ export type Type_for_TraficIncidents = {
     parameterizedDescription: Record<string, any>;
 };
 
-export type Type_IncidentDATA_forMarker = {
-    id: string,
-    type: number,
-    location: LatLngExpression,
-    icon: any,
-    startTime: string,
-    endTime: string,
-    shortDesc: string,
-    fullDesc: string,
-    distance: number,
-    severity: number,
-    impacting: boolean,
-    iconURL: string,
-    lat: number,
-    lng: number
-};
 
 export type Type_CoordAllRoads_LatLng = {
     lat: number;

@@ -24,11 +24,12 @@ function Popups(): JSX.Element {
 
     /* spustenie popupu na incidents mararker */
     React.useEffect(() => {
-        if (incident.dataInc_ForPopup?.location) {
-            setPopupPosition(incident.dataInc_ForPopup?.location);
+        if (incident.dataInc_ForPopup?.lat) {
+        const LOCATION = [incident.dataInc_ForPopup?.lat, incident.dataInc_ForPopup?.lng] as L.LatLngExpression
+            setPopupPosition(LOCATION);
             setContent(<OnClickIncidentContent />)
         };
-    }, [incident.dataInc_ForPopup?.location]);
+    }, [incident.dataInc_ForPopup?.lat]);
 
     return (
         <>

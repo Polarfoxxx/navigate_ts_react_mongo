@@ -13,7 +13,6 @@ export { default as services_POIcode_bussines } from "./MapSearch/services/servi
 
 /* type */
 export type {
-    Type_IncidentDATA_forMarker,
     Type_for_TraficIncidents,
     Type_CoordAllRoads_LatLng,
     Type_MostedCoordinate_Arr,
@@ -21,7 +20,6 @@ export type {
 
 export type {
     Type_forSearchAPI_Circle,
-    Type_SearchResponse_Circle
 } from "./MapSearch/type";
 
 

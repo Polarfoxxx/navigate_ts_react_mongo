@@ -17,8 +17,6 @@ function OnClickIncidentContent(): JSX.Element {
             const UPDATE_INC: Type_IncidentDATA_forMarker = {
                 id: incident.dataInc_ForPopup.id,
                 type: incident.dataInc_ForPopup.type,
-                location: incident.dataInc_ForPopup.location,
-                icon: incident.dataInc_ForPopup.icon,
                 startTime: incident.dataInc_ForPopup.startTime,
                 endTime: incident.dataInc_ForPopup.endTime,
                 shortDesc: incident.dataInc_ForPopup.startTime,

@@ -12,8 +12,6 @@ export type Props_Provider = {
 export type Type_IncidentDATA_forMarker = {
   id: string,
   type: number,
-  location: LatLngExpression | null,
-  icon: L.Icon<L.IconOptions> | null,
   startTime: string,
   endTime: string,
   shortDesc: string,
@@ -52,6 +50,36 @@ export type Type_RouteBussinesControl = {
   numResult: string,
   ambiguities: "Ignore" | "Allow"
 };
+/* =========================================================== */
+/* =========================================================== */
+/* typ upraveny z RAW odpovade */
+export type Type_SearchResponse_Circle = {
+  distance: number;
+  name: string;
+  resultNumber: number;
+  fields: {
+      mqap_id: string;
+      country: string;
+      address: string;
+      lng: number;
+      lat: number;
+      city: string;
+      mqap_geography:  {latLng: { lng: number; lat: number; };} ;
+      group_sic_code_name_ext: string;
+      group_sic_code: string;
+      side_of_street: string;
+      disp_lng: number;
+      phone: string;
+      group_sic_code_ext: string;
+      group_sic_code_name: string;
+      name: string;
+      disp_lat: number;
+      state: string;
+      id: string;
+      postal_code: string;
+  };
+};
+
 /* =========================================================== */
 /* =========================================================== */
 export type Type_For_Direction = {
