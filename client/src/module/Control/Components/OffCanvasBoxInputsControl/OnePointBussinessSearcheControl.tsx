@@ -8,7 +8,8 @@ import { Type_OnePointBussinesControl } from "../../../Container";
 
 
 function OnePointBussinessSearcheControl(): JSX.Element {
-    const { sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context)
+    const { sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
+    const { mapBussines_Category } = sideWays_DATA;
     const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
     const { handleSubmit, reset } = useInputValue();
 
@@ -20,20 +21,28 @@ function OnePointBussinessSearcheControl(): JSX.Element {
             area: v[1].inputValues as string,
             numResult: v[2].inputValues as string,
             ambiguities: v[3].inputValues as "Ignore" | "Allow"
-        }
-
+        };
         const UPDATE_DATA = {
             typeSearch: "OnePointBussinessSearche",
             status: true,
             POI_Data: UPDATE_POI,
             typePOI: typeof UPDATE_POI
         };
-
-
         updateContext_DATA([
             { newData: UPDATE_DATA, key: "mapBussines_Category" },
         ])
     };
+
+    /* skovanie markerov bussines */
+    const handleClickClearFunctuon = () => {
+        const UPDATE_DATA = {
+            ...mapBussines_Category,
+            status: false
+        }
+        updateContext_DATA([
+            { newData: UPDATE_DATA, key: "mapBussines_Category" },
+        ])
+    }
 
     return (
         <div className="onePointContent">
@@ -84,7 +93,9 @@ function OnePointBussinessSearcheControl(): JSX.Element {
                         <button type='submit'>Search</button>
                     </div>
                     <div className="resetBoxButton">
-                        <button onClick={reset}>Reset</button>
+                        <button onClick={() => { reset(); handleClickClearFunctuon(); }}>
+                            Clear
+                        </button>
                     </div>
                 </div>
             </form>

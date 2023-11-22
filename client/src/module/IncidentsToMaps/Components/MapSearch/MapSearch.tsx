@@ -16,7 +16,7 @@ function MapSearch(): JSX.Element {
 
     React.useEffect(() => {
         fetchSearchData()
-    }, [mapBussines_Category.status]);
+    }, [mapBussines_Category.POI_Data?.type]);
 
 
     async function fetchSearchData() {
@@ -67,7 +67,7 @@ function MapSearch(): JSX.Element {
     return (
         <>
             {
-                mapBussines_Category.status && allBussines.length > 0 &&
+                mapBussines_Category.status && allBussines.length > 0 && mapBussines_Category.status &&
                 allBussines.map((item, key) =>
                     <MarkersBussinessAndIncidents
                         type="bussines"

@@ -49,14 +49,16 @@ function MarkersBussinessAndIncidents<T extends object>({ type, position, icon, 
 
     return (
         <>
-            <Marker
-                icon={icon}
-                position={position}
-                eventHandlers={{
-                    mouseover: () => handleMarkerToggle(true),
-                    mouseout: () => handleMarkerToggle(false),
-                }}>
-            </Marker>
+            {
+                <Marker
+                    icon={icon}
+                    position={position}
+                    eventHandlers={{
+                        mouseover: () => handleMarkerToggle(true),
+                        mouseout: () => handleMarkerToggle(false),
+                    }}>
+                </Marker>
+            }
         </>
     );
 };
