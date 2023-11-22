@@ -81,10 +81,10 @@ function OnePointBussinessSearcheControl(): JSX.Element {
                 </div>
                 <div className="onePointButtonBox">
                     <div className="submitBoxButton">
-                        <button type='submit'>submit</button>
+                        <button type='submit'>Search</button>
                     </div>
                     <div className="resetBoxButton">
-                        <button onClick={reset}>reset</button>
+                        <button onClick={reset}>Reset</button>
                     </div>
                 </div>
             </form>

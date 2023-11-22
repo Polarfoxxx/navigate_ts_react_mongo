@@ -48,8 +48,8 @@ function HeadMaps(): JSX.Element {
         updateContext_DATA([{ newData: !traffic, key: "traffic" }]);
     };
 
-    const handleClick_POI_Category = (e: React.MouseEvent<HTMLButtonElement>, type: keyof typeof state.typePOI_category) => {
-        e.stopPropagation(); /* zabranuje prebublavaniu */
+   /*  const handleClick_POI_Category = (e: React.MouseEvent<HTMLButtonElement>, type: keyof typeof state.typePOI_category) => {
+        e.stopPropagation();
         const UPDATE_DATA = {
             ...state.typePOI_category,
             typePOI: type,
@@ -66,7 +66,7 @@ function HeadMaps(): JSX.Element {
             status: state.typePOI_category[KEY_POI_CATEGORY]
         };
         updateContext_DATA([{ newData: UPDATE_DATA, key: "mapBussines_Category" }]);
-    }, [state.typePOI_category])
+    }, [state.typePOI_category]) */
 
 
     return (
@@ -104,33 +104,6 @@ function HeadMaps(): JSX.Element {
                             Traffic
                         </button>
                     </div>
-                  {/*   <div className="poi_categoryBox">
-                        <button
-                            className={clsx(state.typePOI_category.Restaur && 'onActiveButtom', 'offActiveButtom')}
-                            onClick={(e) => handleClick_POI_Category(e, "Restaur")}>
-                            Restaurans
-                        </button>
-                        <button
-                            className={clsx(state.typePOI_category.Pubs && 'onActiveButtom', 'offActiveButtom')}
-                            onClick={(e) => handleClick_POI_Category(e, "Pubs")} >
-                            Pubs
-                        </button>
-                        <button
-                            className={clsx(state.typePOI_category.Shopping && 'onActiveButtom', 'offActiveButtom')}
-                            onClick={(e) => handleClick_POI_Category(e, "Shopping")} >
-                            Shopping
-                        </button>
-                        <button
-                            className={clsx(state.typePOI_category.Cafes && 'onActiveButtom', 'offActiveButtom')}
-                            onClick={(e) => handleClick_POI_Category(e, "Cafes")} >
-                            Cafes
-                        </button>
-                        <button
-                            className={clsx(state.typePOI_category.Bars && 'onActiveButtom', 'offActiveButtom')}
-                            onClick={(e) => handleClick_POI_Category(e, "Bars")} >
-                            Bars
-                        </button>
-                    </div> */}
                 </div>
             </div>
         </div>

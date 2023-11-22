@@ -11,7 +11,7 @@ import MarkersBussinessAndIncidents from "../MarkersBussinessAndIncidents/Marker
 
 function IncidentsToMap() {
     const { location_DATA, sideWays_DATA, } = React.useContext(Container.Context);
-    const {mapBussines_Category, mapsCurrentInfo, incident } = sideWays_DATA;
+    const { mapBussines_Category, mapsCurrentInfo, incident } = sideWays_DATA;
     const [incidentDATA, setIncidentDATA] = React.useState<Type_IncidentDATA_forMarker[]>()
 
     React.useEffect(() => {
@@ -29,17 +29,13 @@ function IncidentsToMap() {
 
         try {
             const DATA_API: Type_IncidentDATA_forMarker[] = await traffic_Incidents_API(SECTION, 1000, 1000);
+            console.log(`incident ${DATA_API}`);
             setIncidentDATA(DATA_API)
 
         } catch (error) {
             console.error(error);
         };
     };
-
-    
-    
-
-
 
     return (
         <>

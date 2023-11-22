@@ -26,7 +26,7 @@ export const defaultValue_sideways_for_Provider_Context = {
     navi_Machine: false,/* nepoziva sa */
 
     traffic: false,
-    popup_clickToMap_status: false,
+    popup_event: false,
     markerInTheRoute: null,
     mapsCurrentInfo: {
         zoom: 0,
@@ -42,7 +42,8 @@ export const defaultValue_sideways_for_Provider_Context = {
         typeSearch:"",
         type: "",
         status: false,
-        POI_Data: null
+        POI_Data: null,
+        dataMapBussines_froPopup: null
     }
 };
 

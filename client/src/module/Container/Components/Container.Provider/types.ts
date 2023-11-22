@@ -34,6 +34,7 @@ export type Type_MapBussines_Category = {
   typeSearch: string,
   status: boolean,
   POI_Data: null | Type_OnePointBussinesControl & Type_RouteBussinesControl,
+  dataMapBussines_froPopup: null | Type_SearchRespo_clearDATA_Circle
 };
 
 export type Type_OnePointBussinesControl = {
@@ -50,10 +51,9 @@ export type Type_RouteBussinesControl = {
   numResult: string,
   ambiguities: "Ignore" | "Allow"
 };
-/* =========================================================== */
-/* =========================================================== */
+
 /* typ upraveny z RAW odpovade */
-export type Type_SearchResponse_Circle = {
+export type Type_SearchRespo_clearDATA_Circle = {
   distance: number;
   name: string;
   resultNumber: number;
@@ -155,11 +155,11 @@ export type Type_sideWays_DATA = {
   clickOnMap: Type_OnClick_object;
   navi_Machine: boolean;
   traffic: boolean,
-  popup_clickToMap_status: boolean;
+  popup_event: boolean;
   markerInTheRoute: L.LatLngExpression | null,
   mapsCurrentInfo: Type_forTraficDATA,
   incident: Type_incident,
-  mapBussines_Category: Type_MapBussines_Category
+  mapBussines_Category: Type_MapBussines_Category,
 };
 export type Type_Provider_Context = {
   location_DATA: Type_location_DATA;

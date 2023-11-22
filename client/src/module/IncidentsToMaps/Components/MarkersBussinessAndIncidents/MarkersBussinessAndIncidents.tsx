@@ -14,39 +14,38 @@ type Type_forMarkersBussinessAndIncidents<T> = {
 
 
 function MarkersBussinessAndIncidents<T extends object>({ type, position, icon, data }: Type_forMarkersBussinessAndIncidents<T>): JSX.Element {
-
     const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
+    const { mapBussines_Category } = sideWays_DATA;
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
 
 
-
-
-
-
-
     /* toto bude treba rodelit incident alebo bussines */
-    const handleMarkerToggle = (state: boolean) => {
-    if (type === "incident") {
-        /* zobrazovac markerov mauseover pre incidety */
-            if (state) {
-                const UPDATE_DATA = {
-                    status: true,
-                    dataInc_ForPopup: data
-                };
-
+    const handleMarkerToggle = (stateONmouse: boolean) => {
+        if (type === "incident") {
+            if (stateONmouse) {
                 updateContext_DATA([
-                    { newData: UPDATE_DATA, key: "incident" },
-                    { newData: true, key: "popup_clickToMap_status" },
+                    { newData: { status: true, dataInc_ForPopup: data }, key: "incident" },
+                    { newData: true, key: "popup_event" },
                 ]);
             } else {
+                updateContext_DATA([{ newData: false, key: "popup_event" }]);
+            }
+        } else if (type === "bussines") {
+            if (stateONmouse) {
+                const UPDATE_DATA = {
+                    ...mapBussines_Category,
+                    status: true,
+                    dataMapBussines_froPopup: data
+                };
                 updateContext_DATA([
-                    { newData: false, key: "popup_clickToMap_status" },
+                    { newData: UPDATE_DATA, key: "mapBussines_Category" },
+                    { newData: true, key: "popup_event" },
                 ]);
+            } else {
+                updateContext_DATA([{ newData: false, key: "popup_event" }]);
             };
-        } else if(type === "bussines") {
-            
-        }
-    }
+        };
+    };
 
     return (
         <>

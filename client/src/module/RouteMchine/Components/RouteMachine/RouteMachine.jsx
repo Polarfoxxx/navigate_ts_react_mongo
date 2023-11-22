@@ -102,7 +102,7 @@ function RouteMachine() {
                 };
                 updateContext_DATA([
                     { newData: UPDATE_DATA, key: "changeRoutes" },
-                    { newData: false, key: "popup_clickToMap_status" }
+                    { newData: false, key: "popup_event" }
                 ]);
             });
         };

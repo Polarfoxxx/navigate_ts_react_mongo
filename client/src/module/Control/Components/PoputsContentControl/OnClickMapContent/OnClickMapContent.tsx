@@ -1,10 +1,10 @@
 
 import React from "react";
 import "./onClickMapContent.style.css"
-import { Container } from "../../../Container";
+import { Container } from "../../../../Container";
 import services_onClick_setStartEnd from "./services/services_onClick_setStartEnd";
 import { Type_ButtonName } from "./types";
-import { UseChangeContextDATA } from "../../../hooks";
+import { UseChangeContextDATA } from "../../../../hooks";
 
 type Type_forControlMapCLcontent = {
     click?: string
@@ -40,7 +40,7 @@ function OnClickMapContent(props: Type_forControlMapCLcontent): JSX.Element {
 
         updateContext_DATA([
             { newData: services_onClick_setStartEnd(location_DATA, sideWays_DATA), key: "location_DATA" },
-            { newData: false, key: "popup_clickToMap_status" },
+            { newData: false, key: "popup_event" },
         ]);
     };
 

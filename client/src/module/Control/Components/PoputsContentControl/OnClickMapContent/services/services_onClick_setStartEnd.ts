@@ -1,4 +1,4 @@
-import { Type_location_DATA, Type_sideWays_DATA } from "../../../../Container";
+import { Type_location_DATA, Type_sideWays_DATA } from "../../../../../Container";
 
 
 export default function services_onClick_setStartEnd(

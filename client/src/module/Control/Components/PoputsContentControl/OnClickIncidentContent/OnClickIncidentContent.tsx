@@ -1,8 +1,8 @@
 import React from "react";
 import "./onClickIncidentContent.style.css";
-import { Container, Type_IncidentDATA_forMarker } from "../../../Container";
-import { geocoder_coordSearche } from "../../../Geocoder";
-import { Type_returning_object } from "../../../Geocoder/utils/geocoder_coordSearche/types";
+import { Container, Type_IncidentDATA_forMarker } from "../../../../Container";
+import { geocoder_coordSearche } from "../../../../Geocoder";
+import { Type_returning_object } from "../../../../Geocoder/utils/geocoder_coordSearche/types";
 import { DEFAULT_VALUE_FOR_INC_DATA, DEFAULT_VALUE_FOR_GEOCODER } from "./defaultValue";
 
 
@@ -40,6 +40,7 @@ function OnClickIncidentContent(): JSX.Element {
         };
     }, [incident.dataInc_ForPopup?.id]);
 
+    /* geocodovanie lokacie na nazov */
     async function incidentPopup(coord: number[]) {
         if (incident) {
             try {
