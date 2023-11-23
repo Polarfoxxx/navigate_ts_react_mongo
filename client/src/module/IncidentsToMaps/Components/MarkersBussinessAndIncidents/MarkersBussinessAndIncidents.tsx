@@ -22,7 +22,7 @@ function MarkersBussinessAndIncidents<T extends object>({ type, position, icon, 
     /* toto bude treba rodelit incident alebo bussines */
     const handleMarkerToggle = (stateONmouse: boolean) => {
         if (type === "incident") {
-            if (stateONmouse) {
+            if (true) {
                 updateContext_DATA([
                     { newData: { status: true, dataInc_ForPopup: data }, key: "incident" },
                     { newData: true, key: "popup_event" },

@@ -1,74 +1,97 @@
-.incident_content{
-    width: 100%;
+.incident_contentsBox {
+    width: 300px;
     height: auto;
-    background-color: rgb(155, 155, 155);
-    color: rgb(0, 0, 0);
     display: flex;
     justify-content: start;
     flex-direction: column;
+    background-color: black;
 }
-.incident_content .inc_cont_header{
+
+.incident_contentsBox .inc_cont_header {
     width: 100%;
-    height: 50px;
+    height: 40px;
     display: flex;
     justify-content: center;
-    background-color: rgb(173, 31, 31);
     flex-direction: row;
     padding: 4px;
     color: white;
+    background-color: black;
 }
-.incident_content .inc_cont_header  .imgIncBox{
+
+.incident_contentsBox .inc_cont_header .imgIncBox {
     width: 50%;
     height: 100%;
-    border: 1px solid black
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.incident_content .inc_cont_header  .imgIncBox > img{
+
+.incident_contentsBox .inc_cont_header .imgIncBox>img {
     width: 40px;
     height: 40px;
 }
-.incident_content .inc_cont_header > div .incBox{
-    font-size: 15px;
-}
 
-.incident_content .inc_cont_header .startIncBox{
+.incident_contentsBox .inc_cont_header .startIncBox,
+.incident_contentsBox .inc_cont_header .endIncBox {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    font-size: 11px;
     justify-content: center;
     align-items: center;
 }
-.incident_content .inc_cont_header .endIncBox{
+
+.incident_contentsBox .inc_cont_header .startIncBox .incBox,
+.incident_contentsBox .inc_cont_header .endIncBox .incBox {
+    width: 100%;
+    font-size: 14px;
+    height: 100%;
+    font-weight: bold;
+    color: var(--colorFontRed);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.incident_contentsBox .inc_cont_header .startIncBox  .IncBoxValue,
+.incident_contentsBox .inc_cont_header .endIncBox  .IncBoxValue {
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
     font-size: 11px;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
-.incident_content .inc_cont_body{
-  width: 100%;
-  height: auto;
-  background-color: green;
-  display: flex;
-  flex-direction: column;
-      padding: 4px;
 
+
+.incident_contentsBox .inc_cont_body {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    background-color: black;
+    color: white;
 }
 
-.incident_content .inc_cont_body > div{
-  height: 100%;
-  border:  1px solid red;
-  margin-bottom : 2px;
-  font-size: 14px
+.incident_contentsBox .inc_cont_body>div {
+    height: 100%;
+    margin-bottom: 2px;
+    font-size: 11px
+}
+.incident_contentsBox .inc_cont_body>div .ImportanceBox {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: row;
+    gap: 15px;
 }
 
-.incident_content .inc_cont_body .block_title{
-  width: auto;
-  background-color: orangered;
-  margin-bottom: 2px;
-  font-weight: bold;
-  font-size: 16px
+.incident_contentsBox .inc_cont_body .block_title {
+    width: auto;
+    margin-bottom: 2px;
+    font-weight: bold;
+    font-size: 12px;
+    color: var(--colorFontRed);
 }

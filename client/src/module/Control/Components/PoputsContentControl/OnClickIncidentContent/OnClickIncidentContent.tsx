@@ -4,6 +4,8 @@ import { Container, Type_IncidentDATA_forMarker } from "../../../../Container";
 import { geocoder_coordSearche } from "../../../../Geocoder";
 import { Type_returning_object } from "../../../../Geocoder/utils/geocoder_coordSearche/types";
 import { DEFAULT_VALUE_FOR_INC_DATA, DEFAULT_VALUE_FOR_GEOCODER } from "./defaultValue";
+import { Rating } from 'react-simple-star-rating'
+
 
 
 function OnClickIncidentContent(): JSX.Element {
@@ -14,33 +16,18 @@ function OnClickIncidentContent(): JSX.Element {
 
     React.useEffect(() => {
         if (incident.dataInc_ForPopup) {
-            const UPDATE_INC: Type_IncidentDATA_forMarker = {
-                id: incident.dataInc_ForPopup.id,
-                type: incident.dataInc_ForPopup.type,
-                startTime: incident.dataInc_ForPopup.startTime,
-                endTime: incident.dataInc_ForPopup.endTime,
-                shortDesc: incident.dataInc_ForPopup.startTime,
-                fullDesc: incident.dataInc_ForPopup.fullDesc,
-                distance: incident.dataInc_ForPopup.distance,
-                severity: incident.dataInc_ForPopup.severity,
-                impacting: incident.dataInc_ForPopup.impacting,
-                iconURL: incident.dataInc_ForPopup.iconURL,
-                lat: incident.dataInc_ForPopup.lat,
-                lng: incident.dataInc_ForPopup.lng,
-            };
-            setInc_DATA(UPDATE_INC)
-        }
-
+            setInc_DATA(incident.dataInc_ForPopup)
+        };
     }, [incident.dataInc_ForPopup?.id])
 
 
+    /* geocodovanie lokacie na nazov */
     React.useEffect(() => {
         if (incident.dataInc_ForPopup?.lat && incident.dataInc_ForPopup?.lng) {
             incidentPopup([incident.dataInc_ForPopup.lat, incident.dataInc_ForPopup.lng])
         };
     }, [incident.dataInc_ForPopup?.id]);
 
-    /* geocodovanie lokacie na nazov */
     async function incidentPopup(coord: number[]) {
         if (incident) {
             try {
@@ -55,18 +42,18 @@ function OnClickIncidentContent(): JSX.Element {
 
 
     return (
-        <div className="incident_content">
+        <div className="incident_contentsBox">
             <div className="inc_cont_header">
                 <div className="imgIncBox">
-                    <img src="{inc_DATA.iconURL}" alt="Icon" />
+                    <img src={`${inc_DATA.iconURL}`} alt="Icon" />
                 </div>
                 <div className="startIncBox">
                     <div className="startIncBox incBox">Start incinet</div>
-                    <div>{inc_DATA.startTime}</div>
+                    <div className="IncBoxValue">{inc_DATA.startTime}</div>
                 </div>
                 <div className="endIncBox">
                     <div className="startIncBox incBox">End incinet</div>
-                    <div>{inc_DATA.endTime}</div>
+                    <div className="IncBoxValue">{inc_DATA.endTime}</div>
                 </div>
             </div>
             <div className="inc_cont_body">
@@ -74,11 +61,17 @@ function OnClickIncidentContent(): JSX.Element {
                     <div className="block_title">Incident details:</div>
                     <div>{inc_DATA.fullDesc}</div>
                     <div>{inc_DATA.shortDesc}</div>
-                </div>
-                <div className="inc_severity">
-                    <div className="block_title">Incident details:</div>
-                    <div>{inc_DATA.severity}</div>
-                    <div>{inc_DATA.impacting}</div>
+                    <div className="ImportanceBox">
+                        <div className="block_title">Importance:</div>
+                        <div>
+                            <Rating
+                                fillColor={"rgb(221, 0, 0)"}
+                                readonly={true}
+                                initialValue={inc_DATA.severity}
+                                iconsCount={4} />
+                        </div>
+                    </div>
+                    <div>{inc_DATA.impacting ? "Closed" : "Open"}</div>
                 </div>
                 <div className="inc_location">
                     <div className="block_title">Location:</div>

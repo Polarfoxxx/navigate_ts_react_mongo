@@ -1,5 +1,6 @@
    
 #root > div > div > div > section > div.mapsAndControl > div.mapsBox > div > div.maps_Box > div > div > div.leaflet-pane.leaflet-map-pane > div.leaflet-pane.leaflet-popup-pane > div > div.leaflet-popup-content-wrapper{
-    background-color: rgb(16, 16, 16);
+    background-color: rgb(0, 0, 0);
+    width: auto;
 }
 

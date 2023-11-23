@@ -15,7 +15,7 @@ function OnClickBussinesSearcheContent(): JSX.Element {
                <div className='bussinesContentBodyDistance'>
                  <p>45</p><span>k</span>
                </div>
-               <div className>
+               <div className="">
                
                </div>
             </div>
