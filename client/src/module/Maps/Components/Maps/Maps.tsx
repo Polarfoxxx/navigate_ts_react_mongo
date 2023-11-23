@@ -18,7 +18,7 @@ function Maps() {
     console.log("map");
     const mapRef = React.useRef(null);
     const containerRef = React.useRef<HTMLDivElement | null>(null);
-    const CENTER_MAP: LatLngExpression = [38.93709570657687, -77.00798987216];
+    const CENTER_MAP: LatLngExpression = [40.72498136513723, -73.995302658492366];
 
     return (
         <div
@@ -26,8 +26,8 @@ function Maps() {
             className='maps'>
             <MapContainer
                 center={CENTER_MAP}
-                zoom={13}
-                maxZoom={18}
+                zoom={14}
+                maxZoom={19}
                 minZoom={4}
                 ref={mapRef}
                 scrollWheelZoom={true}>

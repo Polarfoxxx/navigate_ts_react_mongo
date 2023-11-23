@@ -75,8 +75,8 @@ function MapSearch(): JSX.Element {
                         data={item}
                         key={key}
                         icon={L.icon({
-                            iconUrl: `https://assets.mapquestapi.com/icon/v2/flag-md-000000-000000-foot.png`,
-                            iconSize: [50, 25],
+                            iconUrl: `https://assets.mapquestapi.com/icon/v2/marker-000000.png`,
+                            iconSize: [25, 34],
                             iconAnchor: [25, 25],
                         })}
                     />

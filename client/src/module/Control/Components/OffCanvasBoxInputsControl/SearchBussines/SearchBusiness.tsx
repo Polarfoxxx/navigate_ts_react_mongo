@@ -1,7 +1,8 @@
 import React from "react";
 import "./searchBusinness.style.css";
-import { OnePointBussinessSearcheControl, RouteBussinessSearcheControl, NoContent } from "../";
-import { Container } from "../../../Container";
+import { OnePointBussinessSearcheControl, RouteBussinessSearcheControl, NoContent } from "../..";
+import { Container } from "../../../../Container";
+import {SearchResultControl} from "../..";
 
 function SearchBusiness(): JSX.Element {
     const { location_DATA } = React.useContext(Container.Context)

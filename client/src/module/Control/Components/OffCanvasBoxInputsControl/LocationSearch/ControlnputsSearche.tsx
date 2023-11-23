@@ -1,11 +1,11 @@
 import React from "react";
 import "./controlnputsSearche.style.css";
-import { Container } from "../../../Container";
-import { GeocoderInputSearche, services_setALL_location } from "../../../Geocoder";
-import { Type_forGeocoderInput, Type_Action_ControlnputsSearche, Type_State_ControlnputsSearche } from "./type";
+import { Container } from "../../../../Container";
+import { GeocoderInputSearche, services_setALL_location } from "../../../../Geocoder";
+import { Type_forGeocoderInput, Type_Action_ControlnputsSearche, Type_State_ControlnputsSearche } from "../type";
 import services_changeNamefor_Label from "./services/services_changeNamefor_Label";
-import { UseChangeContextDATA } from "../../../hooks";
-import { DEFAULT_VALUE_FOR_REDUCER } from "./defaultValue";
+import { UseChangeContextDATA } from "../../../../hooks";
+import { DEFAULT_VALUE_FOR_REDUCER_CONTROL_INPUT_SEARCH } from "./defaultValue";
 
 
 /* useReducer ----------------------------*/
@@ -31,7 +31,7 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
   const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const timeoutRef = React.useRef<number | null>(null);
-  const [state, dispatch] = React.useReducer(reducer, DEFAULT_VALUE_FOR_REDUCER);
+  const [state, dispatch] = React.useReducer(reducer, DEFAULT_VALUE_FOR_REDUCER_CONTROL_INPUT_SEARCH);
 
 
   const handleInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
