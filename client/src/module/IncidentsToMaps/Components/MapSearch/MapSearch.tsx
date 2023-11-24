@@ -48,7 +48,7 @@ function MapSearch(): JSX.Element {
     };
     
  
-    React.useEffect(() => {
+/*     React.useEffect(() => {
         if (mapBussines_Category.POI_Data?.area) {
             cicrcele(mapBussines_Category.POI_Data?.area)
         }
@@ -61,7 +61,7 @@ function MapSearch(): JSX.Element {
             }).addTo(MAP);
         }
     }, [allBussines])
-
+ */
 
 
     return (
@@ -75,9 +75,9 @@ function MapSearch(): JSX.Element {
                         data={item}
                         key={key}
                         icon={L.icon({
-                            iconUrl: `https://assets.mapquestapi.com/icon/v2/marker-000000.png`,
-                            iconSize: [25, 34],
-                            iconAnchor: [25, 25],
+                            iconUrl: `https://assets.mapquestapi.com/icon/v2/marker-000000-sm.png`,
+                            iconSize: [38, 45],
+                            iconAnchor: [19, 35],
                         })}
                     />
                 )

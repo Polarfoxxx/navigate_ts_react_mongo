@@ -13,10 +13,8 @@ type Type_forControlMapCLcontent = {
 function OnClickMapContent(props: Type_forControlMapCLcontent): JSX.Element {
     const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
-    const { startPoints, endPoints, arrayALL_coordinate } = location_DATA;
-    const { clickOnMap } = sideWays_DATA;
-
-    const [segments, setSegments] = React.useState<string[]>(["", ""]);
+    const { startPoints, endPoints, arrayALL_coordinate } = location_DATA, { clickOnMap } = sideWays_DATA
+    const [locationName, setLocationName] = React.useState("");
     const [buttonName, setButtonName] = React.useState<Type_ButtonName>("Start of your route");
 
     React.useEffect(() => {
@@ -46,8 +44,7 @@ function OnClickMapContent(props: Type_forControlMapCLcontent): JSX.Element {
 
 
     React.useEffect(() => {
-        const SEGMENTS = clickOnMap.address.split(", ");
-        setSegments(SEGMENTS)
+        setLocationName(clickOnMap.address)
     }, [clickOnMap]);
 
     return (
@@ -75,17 +72,10 @@ function OnClickMapContent(props: Type_forControlMapCLcontent): JSX.Element {
                 </div>
                 <div className="locationContent">
                     {
-                        segments.map((item: string, key: number) =>
-                            <div
-                                key={key}
-                                className="items">
-                                <span>-</span><h4>{item}</h4>
-                            </div>
-                        )
+                        locationName
                     }
                 </div>
             </div>
-
             <div className="buttonBox">
                 <button
                     onClick={handleClick}>
@@ -93,11 +83,10 @@ function OnClickMapContent(props: Type_forControlMapCLcontent): JSX.Element {
                 </button>
             </div>
             <div>
-            {
-            props.click && <div>{props.click}</div>}
+                {
+                    props.click && <div>{props.click}</div>
+                }
             </div>
-            
-            
         </div>
     )
 };

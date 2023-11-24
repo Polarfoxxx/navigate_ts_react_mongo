@@ -27,7 +27,7 @@ function Maps() {
             <MapContainer
                 center={CENTER_MAP}
                 zoom={14}
-                maxZoom={19}
+                maxZoom={18}
                 minZoom={4}
                 ref={mapRef}
                 scrollWheelZoom={true}>

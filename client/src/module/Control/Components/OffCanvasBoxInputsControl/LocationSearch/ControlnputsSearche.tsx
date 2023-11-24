@@ -5,7 +5,7 @@ import { GeocoderInputSearche, services_setALL_location } from "../../../../Geoc
 import { Type_forGeocoderInput, Type_Action_ControlnputsSearche, Type_State_ControlnputsSearche } from "../type";
 import services_changeNamefor_Label from "./services/services_changeNamefor_Label";
 import { UseChangeContextDATA } from "../../../../hooks";
-import { DEFAULT_VALUE_FOR_REDUCER_CONTROL_INPUT_SEARCH } from "./defaultValue";
+import { DEFAULT_VALUE_FOR_REDUCER_CONTROL_INPUT_SEARCH } from "../defaultValue";
 
 
 /* useReducer ----------------------------*/

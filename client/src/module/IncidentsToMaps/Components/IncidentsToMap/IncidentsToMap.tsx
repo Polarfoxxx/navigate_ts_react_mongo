@@ -46,7 +46,7 @@ function IncidentsToMap() {
                         position={[incidents.lat, incidents.lng]}
                         icon={L.icon({
                             iconUrl: incidents.iconURL,
-                            iconSize: [30, 30],
+                            iconSize: [45, 45],
                             iconAnchor: [25, 25]
                         })}
                         data={incidents}

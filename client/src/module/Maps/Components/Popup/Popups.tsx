@@ -5,6 +5,7 @@ import { Container } from "../../../Container";
 import { LatLngExpression } from "leaflet"
 import { OnClickMapContent, OnClickIncidentContent, OnClickBussinesSearcheContent } from "../../../Control";
 
+
 function Popups(): JSX.Element {
     const { sideWays_DATA } = React.useContext(Container.Context);
     const { clickOnMap, popup_event, incident, mapBussines_Category } = sideWays_DATA;
@@ -23,9 +24,10 @@ function Popups(): JSX.Element {
 
 
     /* spustenie popupu na incidents mararker */
+    /* navisenie 0.0001 je pre posunutie popup mimo marker  */
     React.useEffect(() => {
         if (incident.dataInc_ForPopup?.lat) {
-            const LOCATION = [incident.dataInc_ForPopup?.lat, incident.dataInc_ForPopup?.lng] as L.LatLngExpression
+            const LOCATION = [incident.dataInc_ForPopup?.lat + 0.0001, incident.dataInc_ForPopup?.lng] as L.LatLngExpression
             setPopupPosition(LOCATION);
             setContent(<OnClickIncidentContent />)
         };
@@ -33,9 +35,10 @@ function Popups(): JSX.Element {
 
 
     /* zobrazenie pre busssines */
+    /* navisenie 0.0001 je pre posunutie popup mimo marker  */
     React.useEffect(() => {
         if (mapBussines_Category.dataMapBussines_froPopup?.fields.mqap_geography.latLng.lat) {
-            const LAT = mapBussines_Category.dataMapBussines_froPopup.fields.mqap_geography.latLng.lat;
+            const LAT = mapBussines_Category.dataMapBussines_froPopup.fields.mqap_geography.latLng.lat + 0.0001;
             const LNG = mapBussines_Category.dataMapBussines_froPopup.fields.mqap_geography.latLng.lng;
             const LOCATION = [LAT, LNG] as L.LatLngExpression
             setPopupPosition(LOCATION);
@@ -44,12 +47,13 @@ function Popups(): JSX.Element {
     }, [mapBussines_Category.dataMapBussines_froPopup?.distance]);
 
 
-
     return (
         <>
             {
                 popupPosition && popup_event &&
-                <Popup position={popupPosition}>
+                <Popup
+                    autoPan={false}
+                    position={popupPosition}>
                     {content}
                 </Popup>
             }
