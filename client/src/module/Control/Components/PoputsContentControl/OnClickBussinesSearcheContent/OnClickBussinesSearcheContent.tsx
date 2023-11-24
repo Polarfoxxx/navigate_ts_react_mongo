@@ -7,7 +7,7 @@ import { faUtensils } from '@fortawesome/free-solid-svg-icons'
 
 function OnClickBussinesSearcheContent(): JSX.Element {
     const { location_DATA, sideWays_DATA } = React.useContext(Container.Context);
-    const { mapBussines_Category} = sideWays_DATA;
+    const { mapBussines_Category } = sideWays_DATA;
 
 
 
@@ -15,7 +15,7 @@ function OnClickBussinesSearcheContent(): JSX.Element {
         <div className="bussinecContent">
             <div className="bussinecContent_header">
                 <div className='bussinesHeaderLogo'>
-                <FontAwesomeIcon icon={faUtensils} size="2xl" />
+                    <FontAwesomeIcon icon={faUtensils} size="2xl" />
                 </div>
                 <div className='bussinesHeaderName'>
                     <h2>{mapBussines_Category.dataMapBussines_froPopup?.name}</h2>
