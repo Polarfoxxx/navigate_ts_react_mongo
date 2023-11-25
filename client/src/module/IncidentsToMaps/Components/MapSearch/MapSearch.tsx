@@ -28,6 +28,7 @@ function MapSearch(): JSX.Element {
                 ambiguities: mapBussines_Category.POI_Data.ambiguities,
                 POI_code: services_POIcode_bussines(mapBussines_Category.POI_Data.type)
             };
+            
             try {
                 const DATA_API: Type_SearchRespo_clearDATA_Circle[] = await SEARCH_BUSSINES_API.search_API_bussines_Circle(UPDATE_DATA);
                 console.log(DATA_API);
