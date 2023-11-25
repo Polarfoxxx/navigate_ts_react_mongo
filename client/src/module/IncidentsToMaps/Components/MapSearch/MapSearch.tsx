@@ -6,13 +6,14 @@ import { services_POIcode_bussines, Type_forSearchAPI_Circle } from "..";
 import { Type_SearchRespo_clearDATA_Circle } from "../../../Container";
 import MarkersBussinessAndIncidents from "../MarkersBussinessAndIncidents/MarkersBussinessAndIncidents";
 import L from "leaflet";
+import { UseChangeContextDATA } from "../../../hooks";
 
 function MapSearch(): JSX.Element {
     const MAP = useMap();
-    const { location_DATA, sideWays_DATA } = React.useContext(Container.Context);
+    const { location_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { mapBussines_Category } = sideWays_DATA, { startPoints } = location_DATA;
+    const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
     const [allBussines, setBussines] = React.useState<Type_SearchRespo_clearDATA_Circle[]>([]);
-
 
     React.useEffect(() => {
         fetchSearchData()
@@ -28,11 +29,19 @@ function MapSearch(): JSX.Element {
                 ambiguities: mapBussines_Category.POI_Data.ambiguities,
                 POI_code: services_POIcode_bussines(mapBussines_Category.POI_Data.type)
             };
-            
+
             try {
                 const DATA_API: Type_SearchRespo_clearDATA_Circle[] = await SEARCH_BUSSINES_API.search_API_bussines_Circle(UPDATE_DATA);
                 console.log(DATA_API);
                 setBussines(DATA_API)
+                const UPDATE_DATA_FOR_CONTEXT = {
+                    ...mapBussines_Category,
+                    allResultDATA: DATA_API
+                }
+                updateContext_DATA([
+                    { newData: UPDATE_DATA_FOR_CONTEXT, key: "mapBussines_Category" },
+                ]);
+
             } catch (error) {
                 console.error(error);
             };
@@ -47,22 +56,22 @@ function MapSearch(): JSX.Element {
             };
         };
     };
-    
- 
-/*     React.useEffect(() => {
-        if (mapBussines_Category.POI_Data?.area) {
-            cicrcele(mapBussines_Category.POI_Data?.area)
-        }
-        function cicrcele(area: string) {
-            L.circle([startPoints.latLng[0], startPoints.latLng[1]], {
-                color: 'rgb(106, 255, 0)',
-                fillColor: 'black',
-                fillOpacity: 0.3,
-                radius: (+area * 1000)
-            }).addTo(MAP);
-        }
-    }, [allBussines])
- */
+
+
+    /*     React.useEffect(() => {
+            if (mapBussines_Category.POI_Data?.area) {
+                cicrcele(mapBussines_Category.POI_Data?.area)
+            }
+            function cicrcele(area: string) {
+                L.circle([startPoints.latLng[0], startPoints.latLng[1]], {
+                    color: 'rgb(106, 255, 0)',
+                    fillColor: 'black',
+                    fillOpacity: 0.3,
+                    radius: (+area * 1000)
+                }).addTo(MAP);
+            }
+        }, [allBussines])
+     */
 
 
     return (

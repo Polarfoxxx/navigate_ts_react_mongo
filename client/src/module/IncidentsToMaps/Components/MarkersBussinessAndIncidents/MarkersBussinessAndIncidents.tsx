@@ -23,7 +23,7 @@ function MarkersBussinessAndIncidents<T extends object>({ type, position, icon, 
         };
 
         if (type === "incident" || type === "bussines") {
-            if (true) {
+            if (stateONmouse) {
                 clearAndSetTimeout(() => {
                     const newData = type === "incident"
                             ? { status: true, dataInc_ForPopup: data }

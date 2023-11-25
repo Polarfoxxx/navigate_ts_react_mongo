@@ -34,7 +34,8 @@ export type Type_MapBussines_Category = {
   typeSearch: string,
   status: boolean,
   POI_Data: null | Type_OnePointBussinesControl & Type_RouteBussinesControl,
-  dataMapBussines_froPopup: null | Type_SearchRespo_clearDATA_Circle
+  dataMapBussines_froPopup: null | Type_SearchRespo_clearDATA_Circle,
+  allResultDATA: null | Type_SearchRespo_clearDATA_Circle[],
 };
 
 export type Type_OnePointBussinesControl = {

@@ -43,7 +43,8 @@ export const defaultValue_sideways_for_Provider_Context = {
         type: "",
         status: false,
         POI_Data: null,
-        dataMapBussines_froPopup: null
+        dataMapBussines_froPopup: null,
+        allResultDATA:null
     }
 };
 
