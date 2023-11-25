@@ -1,35 +1,66 @@
-.bussinecContent{
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.bussinecContent {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3px;
 }
 
-.bussinecContent .bussinecContent_header{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    padding-right: 10px;
+.bussinecContent .bussinecContent_header {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding-right: 10px;
 }
-.bussinecContent .bussinecContent_header > div{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.bussinecContent .bussinecContent_header .bussinesHeaderLogo{
-    width: 20%;
-    color: var(--yellowGreen);
+.bussinecContent .bussinecContent_header > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
-.bussinecContent .bussinecContent_header .bussinesHeaderName{
-    color: var(--whiteTextColor);
+.bussinecContent .bussinecContent_header .bussinesHeaderLogo {
+  width: 20%;
+  color: var(--yellowGreen);
+  justify-content: center;
+}
+
+.bussinecContent .bussinecContent_header .bussinesHeaderName {
+  color: var(--whiteTextColor);
+  font-size: 12px;
+  justify-content: start;
+}
+.bussinecContent .bussinesContentBody {
+  width: 100%;
+  height: 100%;
+}
+
+.bussinecContent .bussinesContentBody  > div{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: var(--whiteTextColor);
+}
+
+.bussinecContent .bussinesContentBody > div .tittleHead{
+    width: 30%;
+    justify-content: center;
+    font-size: 15px;
+  color: var(--yellowGreen);
+
+}
+
+.bussinecContent .bussinesContentBody > div .bodyValue{
+    justify-content: start;
     font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }

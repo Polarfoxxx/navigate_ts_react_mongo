@@ -23,10 +23,28 @@ function OnClickBussinesSearcheContent(): JSX.Element {
             </div>
             <div className='bussinesContentBody'>
                 <div className='bussinesContentBodyDistance'>
-                    <h2>{mapBussines_Category.dataMapBussines_froPopup?.distance}</h2><span>k</span>
+                    <div className="distanceContentTittle tittleHead">
+                        <h4>Distance:</h4>
+                    </div>
+                    <div className="distanceContentValue bodyValue">
+                        <h2>{mapBussines_Category.dataMapBussines_froPopup?.distance}</h2><span>k</span>
+                    </div>
                 </div>
-                <div className="">
-
+                <div className="bussinesContentBodyInfo">
+                    <div className="infoBussinesInfoPhone tittleHead">
+                        <h4>Phone:</h4>
+                    </div>
+                    <div className="infoBussinesInfophonValue bodyValue">
+                        <h2>{mapBussines_Category.dataMapBussines_froPopup?.fields.phone}</h2>
+                    </div>
+                </div>
+                <div>
+                    <div className="infoBussinesInfoPhone tittleHead">
+                        <h4>Post code:</h4>
+                    </div>
+                    <div className="infoBussinesInfophonValue bodyValue">
+                        <h2>{mapBussines_Category.dataMapBussines_froPopup?.fields.postal_code}</h2>
+                    </div>
                 </div>
             </div>
             <div className='bussinesContentFooter'>
