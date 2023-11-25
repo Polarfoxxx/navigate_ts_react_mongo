@@ -22,6 +22,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+.bussinecContent .bussinecContent_header > div >div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-size: 10px;
+    color: var(--whiteTextColor);
 }
 
 .bussinecContent .bussinecContent_header .bussinesHeaderLogo{
@@ -29,7 +39,4 @@
     color: var(--yellowGreen);
 }
 
-.bussinecContent .bussinecContent_header .bussinesHeaderName{
-    color: var(--whiteTextColor);
-    font-size: 12px;
-}
+

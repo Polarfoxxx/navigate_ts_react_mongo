@@ -5,6 +5,7 @@ import { Container } from "../../../../Container";
 import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import { Type_OnePointBussinesControl } from "../../../../Container";
+import  SIC_Codes  from "../../../../utils/SIC_code.json";
 
 
 function OnePointBussinessSearcheControl(): JSX.Element {
@@ -13,9 +14,8 @@ function OnePointBussinessSearcheControl(): JSX.Element {
     const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
     const { handleSubmit, reset } = useInputValue();
 
-
+/* submit odoslanie formulara */
     const submit = (v: TypeForInputsObject["v"]): void => {
-
         const UPDATE_POI: Type_OnePointBussinesControl = {
             type: v[0].inputValues as string,
             area: v[1].inputValues as string,
@@ -33,7 +33,8 @@ function OnePointBussinessSearcheControl(): JSX.Element {
         ])
     };
 
-    /* skovanie markerov bussines */
+
+    /* close markerov bussines */
     const handleClickClearFunctuon = () => {
         const UPDATE_DATA = {
             ...mapBussines_Category,
@@ -50,12 +51,14 @@ function OnePointBussinessSearcheControl(): JSX.Element {
                 onSubmit={(e) => handleSubmit(e, submit)}>
                 <div className="selectorBoxBussines">
                     <label htmlFor="typeBussines">Type Bussines</label>
-                    <select name='typeBussines' className="typeBussines" defaultValue="Restaurants" >
-                        <option value="Restaurants">Restaurants</option>
-                        <option value="Pubs">Pubs</option>
-                        <option value="Shopping">Shopping</option>
-                        <option value="Caffes">Caffes</option>
-                        <option value="Bars">Bars</option>
+                    <select name='typeBussines' className="typeBussines" defaultValue="Restaurants">
+                        {
+                            Object.keys(SIC_Codes).map(item => (
+                                <option key={item} value={item}>
+                                    {item}
+                                </option>
+                            ))
+                        }
                     </select>
                 </div>
                 <div className="onePoint">

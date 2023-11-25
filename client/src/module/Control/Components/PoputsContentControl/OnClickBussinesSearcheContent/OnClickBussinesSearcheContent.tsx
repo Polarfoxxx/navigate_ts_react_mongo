@@ -17,9 +17,15 @@ function OnClickBussinesSearcheContent(): JSX.Element {
                 <div className='bussinesHeaderLogo'>
                     <FontAwesomeIcon icon={faUtensils} size="2xl" />
                 </div>
-                <div className='bussinesHeaderName'>
-                    <h2>{mapBussines_Category.dataMapBussines_froPopup?.name}</h2>
+                <div className="bussinesHeaderBOXname">
+                    <div className='bussinesHeaderSIC_Name'>
+                        <h2>{mapBussines_Category.dataMapBussines_froPopup?.fields.group_sic_code_name}</h2>
+                    </div>
+                    <div className='bussinesHeaderName'>
+                        <h2>{mapBussines_Category.dataMapBussines_froPopup?.name}</h2>
+                    </div>
                 </div>
+
             </div>
             <div className='bussinesContentBody'>
                 <div className='bussinesContentBodyDistance'>
