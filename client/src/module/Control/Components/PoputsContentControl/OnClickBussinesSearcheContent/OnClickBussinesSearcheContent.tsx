@@ -2,7 +2,7 @@ import React from "react";
 import "./onClickBussinesSeaCont.style.css";
 import { Container } from "../../../../Container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUtensils } from '@fortawesome/free-solid-svg-icons'
+import { faBuilding } from '@fortawesome/free-solid-svg-icons'
 
 
 function OnClickBussinesSearcheContent(): JSX.Element {
@@ -15,7 +15,7 @@ function OnClickBussinesSearcheContent(): JSX.Element {
         <div className="bussinecContent">
             <div className="bussinecContent_header">
                 <div className='bussinesHeaderLogo'>
-                    <FontAwesomeIcon icon={faUtensils} size="2xl" />
+                <FontAwesomeIcon icon={faBuilding} size="2xl" />
                 </div>
                 <div className="bussinesHeaderBOXname">
                     <div className='bussinesHeaderSIC_Name'>

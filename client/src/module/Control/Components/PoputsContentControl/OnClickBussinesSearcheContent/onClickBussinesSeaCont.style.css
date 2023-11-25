@@ -1,64 +1,85 @@
 .bussinecContent {
-  width: 100%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 3px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3px;
 }
 
 .bussinecContent .bussinecContent_header {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  padding-right: 10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--yellowGreen);
 }
-.bussinecContent .bussinecContent_header > div {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
+
+.bussinecContent .bussinecContent_header>div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .bussinecContent .bussinecContent_header .bussinesHeaderLogo {
-  width: 20%;
-  color: var(--yellowGreen);
-  justify-content: center;
+    width: 20%;
+    color: var(--yellowGreen);
+    justify-content: center;
 }
 
-.bussinecContent .bussinecContent_header .bussinesHeaderName {
-  color: var(--whiteTextColor);
-  font-size: 12px;
-  justify-content: start;
+.bussinecContent .bussinecContent_header .bussinesHeaderBOXname {
+    color: var(--whiteTextColor);
+    font-size: 12px;
+    justify-content: start;
+    
 }
+
+.bussinecContent .bussinecContent_header .bussinesHeaderBOXname>div {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    height: 100%;
+    font-size: 10px;
+}
+.bussinecContent .bussinecContent_header .bussinesHeaderBOXname .bussinesHeaderSIC_Name {
+    color: var(--yellowGreen);
+    font-size: 8px;
+}
+
+
 .bussinecContent .bussinesContentBody {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
+    margin-top: 5px;
 }
 
-.bussinecContent .bussinesContentBody > div {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  color: var(--whiteTextColor);
+.bussinecContent .bussinesContentBody>div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: var(--whiteTextColor);
 }
 
-.bussinecContent .bussinesContentBody > div .tittleHead {
-  width: 30%;
-  justify-content: center;
-  font-size: 15px;
-  color: var(--yellowGreen);
+.bussinecContent .bussinesContentBody>div .tittleHead {
+    width: 30%;
+    justify-content: center;
+    color: var(--yellowGreen);
+    font-size: 11px;
 }
 
-.bussinecContent .bussinesContentBody > div .bodyValue {
-  justify-content: start;
-  font-size: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.bussinecContent .bussinesContentBody>div .bodyValue {
+    justify-content: start;
+    font-size: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
