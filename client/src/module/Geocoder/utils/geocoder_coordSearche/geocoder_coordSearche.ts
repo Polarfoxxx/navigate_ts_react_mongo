@@ -6,7 +6,6 @@ import {
 
 export default async function geocoder_coordSearche(CLICK_COORD: Type_fromGeocoderMapClickSearche): Promise<Type_returning_object> {
   const provider = new OpenStreetMapProvider();
-  
   const searchQuery = `${CLICK_COORD[0]}, ${CLICK_COORD[1]}`;
 
   try {

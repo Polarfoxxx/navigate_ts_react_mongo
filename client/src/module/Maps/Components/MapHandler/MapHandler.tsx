@@ -14,7 +14,6 @@ function MapHandler(): null {
     mapCenter: MAP.getCenter(),
     mapZoom: MAP.getZoom()
   });
-
   
   /* kliknutie n amapu */
   React.useEffect(() => {

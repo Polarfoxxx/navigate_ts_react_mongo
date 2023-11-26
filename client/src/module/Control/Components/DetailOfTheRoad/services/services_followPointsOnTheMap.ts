@@ -7,8 +7,8 @@ import { SERVICES_MARKER_ICON } from "../../../../RouteMchine";
 function ServicesFollowPointsOnTheMap(): null {
     const MAP = useMap();
     const { sideWays_DATA } = React.useContext(Container.Context);
-    const [marker, setMarker] = React.useState<L.Marker | null>(null); // State pro marker
     const { markerInTheRoute } = sideWays_DATA;
+    const [marker, setMarker] = React.useState<L.Marker | null>(null); // State pro marker
 
     useEffect(() => {
         if (marker) {

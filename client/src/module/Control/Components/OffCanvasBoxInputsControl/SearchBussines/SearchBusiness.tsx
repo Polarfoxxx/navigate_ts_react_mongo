@@ -3,13 +3,13 @@ import "./searchBusinness.style.css";
 import { OnePointBussinessSearcheControl, RouteBussinessSearcheControl, NoContent } from "../..";
 import { Container } from "../../../../Container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRightLong, faArrowLeftLong } from '@fortawesome/free-solid-svg-icons'
+import { faCircleArrowRight, faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { SearchResultControl } from "../..";
 
 
 function SearchBusiness(): JSX.Element {
-    const { location_DATA } = React.useContext(Container.Context)
-    const { startPoints, endPoints } = location_DATA
+    const { location_DATA, sideWays_DATA } = React.useContext(Container.Context)
+    const { startPoints, endPoints } = location_DATA, { mapBussines_Category } = sideWays_DATA;
     const [searchCompContent, setSearchCompContent] = React.useState<JSX.Element[] | JSX.Element | null>(null);
     const [resultState, setResultState] = React.useState(false)
 
@@ -38,14 +38,14 @@ function SearchBusiness(): JSX.Element {
                 </div>
                 <div className="searchBoxbutton">
                     {
-                        /* podmienja */
+                        mapBussines_Category.allResultDATA && mapBussines_Category.allResultDATA?.length > 0 &&
                         <button onClick={handleResultClick}>
                             <div>
                                 {
                                     resultState ? (
-                                        <span> <FontAwesomeIcon icon={faArrowLeftLong} size="lg" /> Searche</span>
+                                        <span> <FontAwesomeIcon icon={faCircleArrowLeft} size="lg" /> Searche</span>
                                     ) : (
-                                        <span>Result <FontAwesomeIcon icon={faArrowRightLong} size="lg" /> </span>
+                                        <span>Result <FontAwesomeIcon icon={faCircleArrowRight} size="lg" /> </span>
                                     )
                                 }
                             </div>

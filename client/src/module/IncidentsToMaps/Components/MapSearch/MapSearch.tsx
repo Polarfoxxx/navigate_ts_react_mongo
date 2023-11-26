@@ -1,6 +1,5 @@
 import React from "react";
 import { Container } from "../../../Container";
-import { useMap } from "react-leaflet";
 import { SEARCH_BUSSINES_API } from "../../../API";
 import { services_POIcode_bussines, Type_forSearchAPI_Circle } from "..";
 import { Type_SearchRespo_clearDATA_Circle } from "../../../Container";
@@ -9,7 +8,6 @@ import L from "leaflet";
 import { UseChangeContextDATA } from "../../../hooks";
 
 function MapSearch(): JSX.Element {
-    const MAP = useMap();
     const { location_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { mapBussines_Category } = sideWays_DATA, { startPoints } = location_DATA;
     const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
