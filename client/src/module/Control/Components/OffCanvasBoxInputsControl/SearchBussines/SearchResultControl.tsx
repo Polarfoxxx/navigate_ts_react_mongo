@@ -4,6 +4,9 @@ import { Container } from "../../../../Container";
 import { Type_SearchRespo_clearDATA_Circle } from "../../../../Container";
 import { geocoder_coordSearche } from "../../../../Geocoder";
 
+
+
+
 function SearchResultControl(): JSX.Element {
     const {location_DATA, sideWays_DATA } = React.useContext(Container.Context);
     const { mapBussines_Category } = sideWays_DATA, {endPoints} = location_DATA;
@@ -17,12 +20,10 @@ function SearchResultControl(): JSX.Element {
     }, [mapBussines_Category.allResultDATA])
 
 
-const handleSelectItem =() => {
-const UPDATE_DATA = {
-    
-}
-}
+const handleSelectItem =(item: Type_SearchRespo_clearDATA_Circle) => {
+const UPDATE_DATA = geocoder_coordSearche([lat:item. ,lng:])
 
+}
 
 
     return (
@@ -31,7 +32,7 @@ const UPDATE_DATA = {
                 {
                     bussinesDATA.map((item, key) =>
                         <div
-                        onClick={handleSelectItem}
+                            onClick{(item) => handleSelectItem({item})}
                             className="searcheItem"
                             key={key}>
                             <div>
