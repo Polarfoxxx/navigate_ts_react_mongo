@@ -1,4 +1,4 @@
-import { Type_location_DATA, Type_sideWays_DATA } from "../Container";
+import { Type_location_DATA, Type_sideWays_DATA } from "../../Container";
 
 
 export type Type_updateContext_DATA = {

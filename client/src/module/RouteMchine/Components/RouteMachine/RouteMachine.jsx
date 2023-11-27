@@ -88,7 +88,7 @@ function RouteMachine() {
             MAP.removeControl(routingControl);
         };
     }, [startPoints, endPoints, arrayALL_coordinate]);
-/* ========================================================================= */
+    /* ========================================================================= */
 
 
 

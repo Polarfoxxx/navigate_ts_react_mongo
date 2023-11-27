@@ -4,6 +4,8 @@ import { UseChangeContextDATA } from "../../../hooks";
 import { Container } from "../../../Container";
 import { Type_forMarkersBussinessAndIncidents } from "./type";
 
+
+
 function MarkersBussinessAndIncidents<T extends object>({ type, position, icon, data }: Type_forMarkersBussinessAndIncidents<T>): JSX.Element {
     const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { mapBussines_Category } = sideWays_DATA;
@@ -51,7 +53,7 @@ function MarkersBussinessAndIncidents<T extends object>({ type, position, icon, 
         }
     };
 
-    
+
 
     return (
         <>

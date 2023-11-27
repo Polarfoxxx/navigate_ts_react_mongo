@@ -14,7 +14,7 @@ function MapHandler(): null {
     mapCenter: MAP.getCenter(),
     mapZoom: MAP.getZoom()
   });
-  
+
   /* kliknutie n amapu */
   React.useEffect(() => {
     MAP.on("click", (e: LeafletMouseEvent) => {
@@ -22,17 +22,18 @@ function MapHandler(): null {
       popupLocationRef.current = [lat, lng];
       geocoder_coordSearche([lat, lng])
         .then(data => {
-          /* test custtom hooks */
           updateContext_DATA([
             { newData: data, key: "clickOnMap" },
             { newData: true, key: "popup_event" }
           ]);
-        });
+        })
+        .catch((error) => console.error(error))
     }, []);
   }, []);
 
 
   /* event pohyb mapi */
+  /* ====================================================== */
   React.useEffect(() => {
     let timeout: NodeJS.Timeout | null = null;
     const handleMapMove = () => {
@@ -59,9 +60,10 @@ function MapHandler(): null {
       MAP.off("move", handleMapMove);
     };
   }, [MAP]);
-
+  /* ====================================================== */
 
   /* zachitenie zoom */
+  /* ====================================================== */
   MAP.on("zoomend", (e) => {
     const MAP_ZOOM = MAP.getZoom();
     centerMAP_zoomMAP_Ref.current = {
@@ -69,7 +71,10 @@ function MapHandler(): null {
       mapZoom: MAP_ZOOM
     };
   }, []);
+  /* ====================================================== */
 
+
+  /* ====================================================== */
   React.useEffect(() => {
     setMoveFunction()
   }, [])
@@ -97,6 +102,7 @@ function MapHandler(): null {
       ]);
     };
   };
+  /* ====================================================== */
 
   return null
 };
