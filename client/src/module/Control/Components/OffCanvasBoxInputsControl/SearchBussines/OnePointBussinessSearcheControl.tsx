@@ -22,7 +22,9 @@ function OnePointBussinessSearcheControl(): JSX.Element {
             numResult: v[2].inputValues as string,
             ambiguities: v[3].inputValues as "Ignore" | "Allow"
         };
+        
         const UPDATE_DATA = {
+            ...mapBussines_Category,
             typeSearch: "OnePointBussinessSearche",
             status: true,
             POI_Data: UPDATE_POI,

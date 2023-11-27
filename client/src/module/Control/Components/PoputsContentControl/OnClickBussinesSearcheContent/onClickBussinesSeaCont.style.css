@@ -38,7 +38,7 @@
     color: var(--whiteTextColor);
     font-size: 12px;
     justify-content: start;
-    
+
 }
 
 .bussinecContent .bussinecContent_header .bussinesHeaderBOXname>div {
@@ -49,6 +49,7 @@
     height: 100%;
     font-size: 10px;
 }
+
 .bussinecContent .bussinecContent_header .bussinesHeaderBOXname .bussinesHeaderSIC_Name {
     color: var(--yellowGreen);
     font-size: 8px;
@@ -82,4 +83,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.bussinecContent .bussinesContentFooter {
+    width: 100%;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bussinecContent .bussinesContentFooter>button {
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 5px 5px;
+    background-color: var(--silverContent);
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    color: white;
+}
+
+.bussinecContent .bussinesContentFooter>button:hover {
+    background-color: var(--yellowGreen);
+    transition: 0.3s;
+    color: black;
 }

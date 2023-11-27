@@ -36,7 +36,13 @@ export type Type_MapBussines_Category = {
   POI_Data: null | Type_OnePointBussinesControl & Type_RouteBussinesControl,
   dataMapBussines_froPopup: null | Type_SearchRespo_clearDATA_Circle,
   allResultDATA: null | Type_SearchRespo_clearDATA_Circle[],
+  select_Route_Bussines: TypeSelect_Route_Bussines
 };
+
+export type TypeSelect_Route_Bussines = {
+  select: number,
+  typeMAPorList: string
+}
 
 export type Type_OnePointBussinesControl = {
   type: string,

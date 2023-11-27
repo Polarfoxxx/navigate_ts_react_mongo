@@ -36,6 +36,7 @@ function SearchBusiness(): JSX.Element {
                 <div className="searchBoxTittle">
                     <h4>Searche bussines</h4>
                 </div>
+                
                 <div className="searchBoxbutton">
                     {
                         mapBussines_Category.allResultDATA && mapBussines_Category.allResultDATA?.length > 0 &&

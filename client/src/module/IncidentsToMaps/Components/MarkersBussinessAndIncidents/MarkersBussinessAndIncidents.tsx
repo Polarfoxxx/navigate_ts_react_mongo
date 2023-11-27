@@ -26,7 +26,7 @@ function MarkersBussinessAndIncidents<T extends object>({ type, position, icon, 
             if (stateONmouse) {
                 clearAndSetTimeout(() => {
                     const newData = type === "incident"
-                        ? { status: true, dataInc_ForPopup: data }
+                        ? {...mapBussines_Category, status: true, dataInc_ForPopup: data }
                         : {
                             ...mapBussines_Category,
                             status: true,

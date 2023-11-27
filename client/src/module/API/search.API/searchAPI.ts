@@ -1,8 +1,8 @@
 import axios from "axios";
-import { Type_forSearchAPI_Circle,Type_MostedCoordinate_Arr } from "../../IncidentsToMaps";
+import { Type_forSearchAPI_Circle, Type_MostedCoordinate_Arr } from "../../IncidentsToMaps";
 import { Type_SearchRespo_clearDATA_Circle } from "../../Container";
 import { Type_RAW_OnePoint_response_bussiness } from "..";
-import {services_setResponseDATA} from "..";
+import { services_setResponseDATA } from "..";
 
 const SEARCH_BUSSINES_API = {
   search_API_bussines_Circle,
@@ -15,7 +15,7 @@ const API_KEY = "5GX8lJDVddQIy3d3nAmlGCXYaFe5IMFC";
 async function search_API_bussines_Circle(searchCircleBussines: Type_forSearchAPI_Circle): Promise<Type_SearchRespo_clearDATA_Circle[]> {
   const KEY_REQUIRED: (keyof Type_RAW_OnePoint_response_bussiness)[] = ["fields", "distance", "distanceUnit", "name", "resultNumber"]
   const COORDINATE_POINT = searchCircleBussines.coordinate_point;
-  const AREA = searchCircleBussines.area; 
+  const AREA = searchCircleBussines.area;
   const MAX_MATCHES = searchCircleBussines.max_matches;
   const AMBIGUITIES = searchCircleBussines.ambiguities;
   const POI_CODE = searchCircleBussines.POI_code;
@@ -29,10 +29,9 @@ async function search_API_bussines_Circle(searchCircleBussines: Type_forSearchAP
   try {
     const response = await axios.get(URL);
     const RESPO_RAW_DATA: Type_RAW_OnePoint_response_bussiness[] = response.data.searchResults;
-    console.log(RESPO_RAW_DATA);
 
     /* uprava vyslednych dat pomocou services, vybranie iba niektorych klucov */
-    const CIRCLE_RESPO_ARR: Type_SearchRespo_clearDATA_Circle[] = services_setResponseDATA({ KEY_REQUIRED: KEY_REQUIRED, RESPO_RAW_DATA: RESPO_RAW_DATA});
+    const CIRCLE_RESPO_ARR: Type_SearchRespo_clearDATA_Circle[] = services_setResponseDATA({ KEY_REQUIRED: KEY_REQUIRED, RESPO_RAW_DATA: RESPO_RAW_DATA });
     return CIRCLE_RESPO_ARR
 
   } catch (error) {

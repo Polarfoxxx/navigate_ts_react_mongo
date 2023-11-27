@@ -39,12 +39,16 @@ export const defaultValue_sideways_for_Provider_Context = {
         dataInc_ForPopup: null
     },
     mapBussines_Category: {
-        typeSearch:"",
+        typeSearch: "",
         type: "",
         status: false,
         POI_Data: null,
         dataMapBussines_froPopup: null,
-        allResultDATA:null
+        allResultDATA: null,
+        select_Route_Bussines: {
+            select: 0,
+            typeMAPorList:""
+        }
     }
 };
 

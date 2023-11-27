@@ -18,7 +18,8 @@ export type {
     Type_MapBussines_Category,
     Type_OnePointBussinesControl,
     Type_RouteBussinesControl,
-    Type_SearchRespo_clearDATA_Circle
+    Type_SearchRespo_clearDATA_Circle,
+    TypeSelect_Route_Bussines
 } from "./Container.Provider/types";
 
 

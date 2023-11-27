@@ -11,8 +11,6 @@ function MapTraffic() {
     const { mapsCurrentInfo, traffic } = sideWays_DATA;
     const [imageLayer, setImageLayer] = React.useState<L.ImageOverlay | null>(null);
 
-console.log(mapsCurrentInfo.zoom);
-
 React.useEffect(() =>{
     if (MAP && traffic && mapsCurrentInfo.center && mapsCurrentInfo.zoom > 13) {
 

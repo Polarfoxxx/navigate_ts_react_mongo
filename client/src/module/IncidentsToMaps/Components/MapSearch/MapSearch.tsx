@@ -83,7 +83,7 @@ function MapSearch(): JSX.Element {
                         data={item}
                         key={key}
                         icon={L.icon({
-                            iconUrl: `https://assets.mapquestapi.com/icon/v2/marker-000000-sm.png`,
+                            iconUrl: `https://assets.mapquestapi.com/icon/v2/marker-000000-1c8899.png`,
                             iconSize: [38, 45],
                             iconAnchor: [19, 35],
                         })}

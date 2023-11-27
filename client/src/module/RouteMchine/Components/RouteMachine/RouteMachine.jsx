@@ -14,7 +14,7 @@ function RouteMachine() {
     const MAP = useMap();
     const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
-    const { startPoints, endPoints, arrayALL_coordinate, changeRoutes } = location_DATA;
+    const { startPoints, endPoints, arrayALL_coordinate, changeRoutes } = location_DATA, { mapBussines_Category } = sideWays_DATA;
     const [routingControl, setRoutingControl] = React.useState(null);
     const [marker, setMarker] = React.useState(null);
     const [routes, setRoutes] = React.useState([]);

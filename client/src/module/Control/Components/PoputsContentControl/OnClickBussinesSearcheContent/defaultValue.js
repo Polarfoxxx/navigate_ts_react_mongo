@@ -1,0 +1,26 @@
+export const DEFAULT_VALUE_FOR_ONCLICK_BUSSINES_CONTENT = {
+    distance: 0,
+    name: '',
+    resultNumber: 0,
+    fields: {
+        mqap_id: '',
+        country: '',
+        address: '',
+        lng: 0,
+        lat: 0,
+        city: '',
+        mqap_geography: { latLng: { lng: 0, lat: 0 } },
+        group_sic_code_name_ext: '',
+        group_sic_code: '',
+        side_of_street: '',
+        disp_lng: 0,
+        phone: '',
+        group_sic_code_ext: '',
+        group_sic_code_name: '',
+        name: '',
+        disp_lat: 0,
+        state: '',
+        id: '',
+        postal_code: '',
+    }
+};

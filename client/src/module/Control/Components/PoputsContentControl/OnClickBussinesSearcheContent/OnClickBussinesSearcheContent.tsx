@@ -1,25 +1,48 @@
 import React from "react";
 import "./onClickBussinesSeaCont.style.css";
-import { Container, Type_MapBussines_Category } from "../../../../Container";
+import { Container, Type_SearchRespo_clearDATA_Circle } from "../../../../Container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBuilding } from '@fortawesome/free-solid-svg-icons'
+import { geocoder_coordSearche } from "../../../../Geocoder";
+import { UseChangeContextDATA } from "../../../../hooks";
+import { DEFAULT_VALUE_FOR_ONCLICK_BUSSINES_CONTENT } from "./defaultValue";
 
 
 function OnClickBussinesSearcheContent(): JSX.Element {
-    const { location_DATA, setSideWays_DATA } = React.useContext(Container.Context);
-    const { sideWays_DATA } = React.useContext(Container.Context);
+    const { location_DATA, sideWays_DATA, setLocation_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { mapBussines_Category } = sideWays_DATA;
-    const [bussinesDATA_item, setBussinesDATA_item] = React.useState<Type_MapBussines_Category>({
-        typeSearch: "",
-        status: false,
-        POI_Data: null,
-        dataMapBussines_froPopup: null,
-        allResultDATA: null
-    });
+    const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
+    const [bussinesDATA_item, setBussinesDATA_item] = React.useState<Type_SearchRespo_clearDATA_Circle>(DEFAULT_VALUE_FOR_ONCLICK_BUSSINES_CONTENT)
 
+    /* nastavenie stavu pre obsah popupu */
     React.useEffect(() => {
-        setBussinesDATA_item(mapBussines_Category)
-    }, [bussinesDATA_item])
+        if (mapBussines_Category.dataMapBussines_froPopup) {
+            setBussinesDATA_item(mapBussines_Category.dataMapBussines_froPopup)
+        };
+    }, [mapBussines_Category.dataMapBussines_froPopup?.resultNumber])
+
+
+    /* nastavenie navigacie na bod bussiness */
+    const handleSelectBussinesMarker = (item: Type_SearchRespo_clearDATA_Circle) => {
+        /* voalnie geocoderu pre nastavenie koncoveho bodu */
+        if (item.fields) {
+            const UPDATE_DATA = {
+                ...mapBussines_Category,
+                select_Route_Bussines: {
+                    select: item.resultNumber,
+                    typeMAPorList: "mapMarker"
+                }
+            };
+            geocoder_coordSearche([item.fields.lat, item.fields.lng])
+                .then(data => {
+                    updateContext_DATA([
+                        { newData: UPDATE_DATA, key: "mapBussines_Category" },
+                        { newData: data, key: "endPoints" },
+                    ]);
+                })
+                .catch((error) => console.error(error))
+        }
+    };
 
 
     return (
@@ -30,10 +53,10 @@ function OnClickBussinesSearcheContent(): JSX.Element {
                 </div>
                 <div className="bussinesHeaderBOXname">
                     <div className='bussinesHeaderSIC_Name'>
-                        <h2>{bussinesDATA_item.dataMapBussines_froPopup?.fields.group_sic_code_name}</h2>
+                        <h2>{bussinesDATA_item.fields.group_sic_code_name}</h2>
                     </div>
                     <div className='bussinesHeaderName'>
-                        <h2>{bussinesDATA_item.dataMapBussines_froPopup?.name}</h2>
+                        <h2>{bussinesDATA_item.name}</h2>
                     </div>
                 </div>
 
@@ -44,7 +67,7 @@ function OnClickBussinesSearcheContent(): JSX.Element {
                         <h4>Distance:</h4>
                     </div>
                     <div className="distanceContentValue bodyValue">
-                        <h2>{bussinesDATA_item.dataMapBussines_froPopup?.distance}</h2><span>k</span>
+                        <h2>{bussinesDATA_item.distance}</h2><span>k</span>
                     </div>
                 </div>
                 <div className="bussinesContentBodyInfo">
@@ -52,7 +75,7 @@ function OnClickBussinesSearcheContent(): JSX.Element {
                         <h4>Phone:</h4>
                     </div>
                     <div className="infoBussinesInfophonValue bodyValue">
-                        <h2>{bussinesDATA_item.dataMapBussines_froPopup?.fields.phone}</h2>
+                        <h2>{bussinesDATA_item.fields.phone}</h2>
                     </div>
                 </div>
                 <div>
@@ -60,11 +83,15 @@ function OnClickBussinesSearcheContent(): JSX.Element {
                         <h4>Post code:</h4>
                     </div>
                     <div className="infoBussinesInfophonValue bodyValue">
-                        <h2>{bussinesDATA_item.dataMapBussines_froPopup?.fields.postal_code}</h2>
+                        <h2>{bussinesDATA_item.fields.postal_code}</h2>
                     </div>
                 </div>
             </div>
+            <div className="bussinesContentFooter">
+                <p style={{ color: "white" }}>{bussinesDATA_item.resultNumber}</p>
+                <button onClick={() => handleSelectBussinesMarker(bussinesDATA_item)}>navigate</button>
             </div>
-            )
+        </div>
+    )
 }
 export default OnClickBussinesSearcheContent;

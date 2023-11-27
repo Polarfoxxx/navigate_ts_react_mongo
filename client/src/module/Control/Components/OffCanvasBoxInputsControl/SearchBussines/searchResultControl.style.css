@@ -12,12 +12,13 @@
     align-items: center;
     justify-content: start;
     flex-direction: column;
-    overflow-x: auto;
+    overflow-y: auto;
 }
 
 .searchResultControl .searchResultBox .searcheItemDeactive {
     width: 95%;
     height: 40px;
+    min-height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,6 +33,7 @@
 .searchResultControl .searchResultBox .searcheItemActive {
     width: 95%;
     height: 40px;
+    min-height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
