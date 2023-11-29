@@ -28,11 +28,7 @@
 .offCanvasBox .offCanvasButtonOFF {
     width: 140px;
     height: 33px;
-    transition: 0.4s;
     border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
     background-color: var(--silverContent);
     color: var(--closeButtonColor);
 }

@@ -32,3 +32,4 @@ function OffCanvasBoxInputsControl(): JSX.Element {
 };
 
 export default OffCanvasBoxInputsControl;
+

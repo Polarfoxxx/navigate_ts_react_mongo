@@ -48,27 +48,6 @@ function HeadMaps(): JSX.Element {
         updateContext_DATA([{ newData: !traffic, key: "traffic" }]);
     };
 
-   /*  const handleClick_POI_Category = (e: React.MouseEvent<HTMLButtonElement>, type: keyof typeof state.typePOI_category) => {
-        e.stopPropagation();
-        const UPDATE_DATA = {
-            ...state.typePOI_category,
-            typePOI: type,
-            [type]: !state.typePOI_category[type]
-        };
-        dispatch({ type: "POI_CATEGORY", payload: UPDATE_DATA });
-    };
-
-    React.useEffect(() => {
-        const KEY_POI_CATEGORY = state.typePOI_category.typePOI as keyof typeof state.typePOI_category
-        const UPDATE_DATA = {
-            ...mapBussines_Category,
-            type: state.typePOI_category.typePOI,
-            status: state.typePOI_category[KEY_POI_CATEGORY]
-        };
-        updateContext_DATA([{ newData: UPDATE_DATA, key: "mapBussines_Category" }]);
-    }, [state.typePOI_category]) */
-
-
     return (
         <div className="headerLocName">
             <div className="headarLocName_Box">

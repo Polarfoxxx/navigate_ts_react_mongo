@@ -47,11 +47,21 @@ function Popups(): JSX.Element {
     }, [mapBussines_Category.dataMapBussines_froPopup?.distance]);
 
 
+
+    
+const handleMarkerToggle = (state: boolean) => {
+
+}
+
+
     return (
         <>
             {
                 popupPosition && popup_event &&
                 <Popup
+                    eventHandlers={{
+                        mouseover: () => handleMarkerToggle(true),
+                    }}
                     autoPan={false}
                     position={popupPosition}>
                     {content}

@@ -51,7 +51,7 @@ function Road_DIVIDER_detail_OTR(): JSX.Element {
     return (
         <div className="road_DIVIDER_detail_OTR">
             {
-                mainAndAlternativeRoads.length > 0 && mainAndAlternativeRoads.map((item, key) =>
+             main_atl_route.length > 0 && mainAndAlternativeRoads.length > 0 && mainAndAlternativeRoads.map((item, key) =>
 
                     <div
                         className={active === key ? "direction_boxs" : "direction_box_deactive"}
@@ -61,9 +61,7 @@ function Road_DIVIDER_detail_OTR(): JSX.Element {
                             index={key}
                             active={active}
                             oneRoute={item} />
-
                     </div>
-
                 )
             }
         </div>

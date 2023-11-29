@@ -4,7 +4,7 @@ import { OnePointBussinessSearcheControl, RouteBussinessSearcheControl, NoConten
 import { Container } from "../../../../Container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowRight, faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import { SearchResultControl } from "../..";
+import { SearchALLResultBusssinesControl } from "../..";
 
 
 function SearchBusiness(): JSX.Element {
@@ -16,9 +16,9 @@ function SearchBusiness(): JSX.Element {
     /* aky kontet sa ma zobrazit rozdelenie jedneho bodu alebo cesty */
     React.useEffect(() => {
         if (startPoints.latLng[0] && !endPoints.latLng[0]) {
-            setSearchCompContent([<OnePointBussinessSearcheControl />, <SearchResultControl />])
+            setSearchCompContent([<OnePointBussinessSearcheControl />, <SearchALLResultBusssinesControl />])
         } else if (startPoints.latLng[0] && endPoints.latLng[0]) {
-            setSearchCompContent([<RouteBussinessSearcheControl />, <SearchResultControl />])
+            setSearchCompContent([<RouteBussinessSearcheControl />, <SearchALLResultBusssinesControl />])
         } else {
             setSearchCompContent(<NoContent />)
         }
@@ -36,10 +36,9 @@ function SearchBusiness(): JSX.Element {
                 <div className="searchBoxTittle">
                     <h4>Searche bussines</h4>
                 </div>
-                
                 <div className="searchBoxbutton">
                     {
-                        mapBussines_Category.allResultDATA && mapBussines_Category.allResultDATA?.length > 0 &&
+                       /*  mapBussines_Category.allResultDATA && mapBussines_Category.allResultDATA?.length > 0 && */
                         <button onClick={handleResultClick}>
                             <div>
                                 {

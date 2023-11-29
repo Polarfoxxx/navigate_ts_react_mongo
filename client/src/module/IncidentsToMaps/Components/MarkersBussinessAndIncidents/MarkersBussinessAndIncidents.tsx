@@ -20,37 +20,30 @@ function MarkersBussinessAndIncidents<T extends object>({ type, position, icon, 
             if (timeout) {
                 clearTimeout(timeout);
             }
-            timeout = setTimeout(callback, 1000);
+            timeout = setTimeout(callback, 700); // Změna na 5000 ms (5 sekund)
         };
         if (type === "incident" || type === "bussines") {
             if (stateONmouse) {
                 clearAndSetTimeout(() => {
-                    const newData = type === "incident"
-                        ? {...mapBussines_Category, status: true, dataInc_ForPopup: data }
-                        : {
-                            ...mapBussines_Category,
-                            status: true,
-                            dataMapBussines_froPopup: data,
-                        };
+                    const newData =
+                        type === "incident"
+                            ? { ...mapBussines_Category, status: true, dataInc_ForPopup: data }
+                            : {
+                                ...mapBussines_Category,
+                                status: true,
+                                dataMapBussines_froPopup: data,
+                            };
                     updateContext_DATA([
                         { newData, key: type === "incident" ? "incident" : "mapBussines_Category" },
                         { newData: true, key: "popup_event" },
                     ]);
                 });
             } else {
-                clearAndSetTimeout(() => {
-                    const newData =
-                        type === "incident"
-                            ? { status: true, dataInc_ForPopup: null }
-                            : { ...mapBussines_Category, status: true, dataMapBussines_froPopup: null };
-
-                    updateContext_DATA([
-                        { newData: false, key: "popup_event" },
-                        { newData, key: type === "incident" ? "incident" : "mapBussines_Category" },
-                    ]);
-                });
-            }
-        }
+                if (timeout) {
+                    clearTimeout(timeout);
+                };
+            };
+        };
     };
 
 

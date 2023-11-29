@@ -19,7 +19,9 @@ function RouteMachine() {
     const [marker, setMarker] = React.useState(null);
     const [routes, setRoutes] = React.useState([]);
 
+    console.log(arrayALL_coordinate);
     React.useEffect(() => {
+        console.log("runmacchien");
         const START_POINT = startPoints;
         const END_POINT = endPoints;
         const ADD_CORD_POINT = arrayALL_coordinate.map((item) => item.latLng);
@@ -87,7 +89,7 @@ function RouteMachine() {
         return () => {
             MAP.removeControl(routingControl);
         };
-    }, [startPoints, endPoints, arrayALL_coordinate]);
+    }, [startPoints, endPoints, arrayALL_coordinate.length]);
     /* ========================================================================= */
 
 
@@ -119,11 +121,12 @@ function RouteMachine() {
 
                 /* posun na trasu */
                 if (routes.length > 0) {
-                    const routeCoordinates = routes[0].coordinates; // Predpokladáme, že budeme používať prvú trasu
+                    const routeCoordinates = routes[0].coordinates; // Předpokládáme, že budeme používat první trasu
                     const bounds = L.latLngBounds(routeCoordinates);
-                    MAP.setView(bounds.getCenter());
-                    MAP.fitBounds(bounds);
-                };
+                  
+                    // Nastavení automatického přiblížení na celou trasu
+                    MAP.fitBounds(bounds, { padding: [200, 200] }); // Můžete také nastavit padding podle potřeby
+                  }
             }, []);
         };
     }, [routingControl]);

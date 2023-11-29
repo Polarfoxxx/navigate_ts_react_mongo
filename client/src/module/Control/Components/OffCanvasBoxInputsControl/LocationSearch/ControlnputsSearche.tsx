@@ -26,9 +26,10 @@ const reducer = (state: Type_State_ControlnputsSearche, action: Type_Action_Cont
 /* useReducer ----------------------------*/
 
 function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput) {
+  const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
+  const { arrayALL_coordinate } = location_DATA;
+  const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
   const geocoderService = new GeocoderInputSearche();
-  const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
-  const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const timeoutRef = React.useRef<number | null>(null);
   const [state, dispatch] = React.useReducer(reducer, DEFAULT_VALUE_FOR_REDUCER_CONTROL_INPUT_SEARCH);
@@ -41,7 +42,6 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     };
-
     timeoutRef.current = window.setTimeout(async () => {
       if (inputText.length >= 3) {
         const autoResults = await geocoderService.autoComplete(inputText);
@@ -54,10 +54,51 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
     }, 1000); // Delay (1500 ms) for autocomplete
   };
 
+
   /* vymazanie */
-  const handleClick = () => {
-    dispatch({ type: "SET_QUERY", payload: "" })
-  };
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    console.log(input_ident);
+    console.log(arrayALL_coordinate);
+
+    if (typeof input_ident === "number") {
+      if (input_ident >= 0 && input_ident < arrayALL_coordinate.length) {
+
+        const NEWDATA = arrayALL_coordinate
+        NEWDATA.splice(input_ident, 1);
+    console.log(NEWDATA);
+
+        updateContext_DATA([
+          { newData: NEWDATA, key: "arrayALL_coordinate" },
+        ]);
+        dispatch({ type: "SET_QUERY", payload: "" })
+      };
+    } else {
+      const IDENT_INPUT_NAME = input_ident === "start_point" ? "startPoints" : "endPoints"
+
+      dispatch({ type: "SET_QUERY", payload: "" })
+      const UPDATE_DATA_STARTPOINT = {
+        address: "",
+        latLng: [],
+      };
+
+      const UPDATE_DATA_MAPBUSSINES = {
+        typeSearch: "",
+        status: false,
+        POI_Data: null,
+        dataMapBussines_froPopup: null,
+        allResultDATA: null,
+        select_Route_Bussines: 0
+      };
+
+      updateContext_DATA([
+        { newData: UPDATE_DATA_STARTPOINT, key: IDENT_INPUT_NAME },
+        { newData: [], key: "main_atl_route" },
+        { newData: UPDATE_DATA_MAPBUSSINES, key: "mapBussines_Category" },
+      ]);
+    };
+  }
+
+
 
   /* nastavenie mesta do inputov po kliku */
   React.useEffect(() => {
@@ -93,8 +134,9 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
       latLng: [coordinates?.lat, coordinates?.lon]
     };
 
-    updateContext_DATA(
-      [{ newData: services_setALL_location({ location_DATA, GEO_DATA, input_ident }), key: "location_DATA" }]);
+    updateContext_DATA([
+      { newData: services_setALL_location({ location_DATA, GEO_DATA, input_ident }), key: "location_DATA" }
+    ]);
     dispatch({ type: "SET_RESULT_OPEN", payload: false }); // Zavřít seznam po výběru adresy
   };
 
@@ -118,7 +160,7 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
           onFocus={() => dispatch({ type: "SET_RESULT_OPEN", payload: true })} />
         <button
           className="resetButton"
-          onClick={handleClick}>
+          onClick={(e) => handleClick(e)}>
           X
         </button>
       </div>
