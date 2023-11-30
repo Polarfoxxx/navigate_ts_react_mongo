@@ -66,17 +66,17 @@ function LoginPage(): JSX.Element {
             <div className="textSide">
                 <div
                     ref={signBoxRef}
-                    style={hideBox ? { right: "-65vw" } : { right: "-120vw" }}
+                    style={hideBox ? { right: "-400px" } : { right: "-150%" }}
                     className="signBox">
                     <div
-                        style={hide ? { left: "0px", transitionDelay: "1s" } : { left: "50vw" }}
+                        style={hide ? { left: "0px", transitionDelay: "1s" } : { left: "100%" }}
                         className="signInContainer">
-                        <SignUp />
+                      <SignUp /> 
                     </div>
                     <div
-                        style={hide ? { left: "50vw" } : { left: "0px", transitionDelay: "1s" }}
+                        style={hide ? { left: "100%" } : { left: "0px", transitionDelay: "1s" }}
                         className="signUpContainer">
-                        <SignIn />
+                         <SignIn /> 
                     </div>
                 </div>
                 <div className="textBlock">

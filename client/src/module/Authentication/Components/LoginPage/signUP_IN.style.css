@@ -1,11 +1,11 @@
-.signUp {
+.signUP_IN {
     width: 100%;
     height: 100%;
     background-color: black;
     background-color: rgba(56, 56, 56, 0);
 }
 
-.signUp .signContainer {
+.signUP_IN .signContainer {
     width: 100%;
     height: 100%;
     display: flex;
@@ -17,7 +17,7 @@
 
 }
 
-.signUp .signContainer .signContainerName {
+.signUP_IN .signContainer .signContainerName {
     width: 90%;
     height: 50px;
     display: flex;
@@ -28,11 +28,11 @@
     font-size: 18px;
 }
 
-.signUp .signContainer .signContainerName>h1::first-letter {
+.signUP_IN .signContainer .signContainerName>h1::first-letter {
     color: var(--yellowGreen);
 }
 
-.signUp .signContainer>form {
+.signUP_IN .signContainer>form {
     width: 90%;
     height: 100%;
     display: flex;
@@ -41,7 +41,7 @@
     flex-direction: column;
 }
 
-.signUp .signContainer>form>input {
+.signUP_IN .signContainer>form>input {
     width: 100%;
     height: 30px;
     border-radius: 10px;
@@ -53,7 +53,7 @@
     margin-top: 10px;
 }
 
-.signUp .signContainer>form>button {
+.signUP_IN .signContainer>form>button {
     margin-top: 20px;
     width: 90px;
     height: 30px;
@@ -66,6 +66,6 @@
 
 }
 
-.signUp .signContainer>form>button:hover {
+.signUP_IN .signContainer>form>button:hover {
     background-color: var(--silverContent);
 }

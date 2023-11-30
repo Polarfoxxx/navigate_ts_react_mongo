@@ -1,5 +1,5 @@
 import React from "react";
-import "./signUp.style.css";
+import "./signUP_IN.style.css";
 import authentication from "../../../API/authentication.API/authentication";
 
 
@@ -7,7 +7,7 @@ function SignUp(): JSX.Element {
 
 
     return (
-        <div className="signUp">
+        <div className="signUP_IN">
             <div className="signContainer">
                 <div className="signContainerName">
                     <h1>Sign Up</h1>

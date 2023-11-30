@@ -1,9 +1,9 @@
 import React from "react";
-import "./signIn.style.css";
+import "./signUP_IN.style.css";
 
 function SignIn(): JSX.Element {
     return (
-        <div className="signIn">
+        <div className="signUP_IN">
             <div className="signContainer">
                 <div className="signContainerName">
                     <h1>Sign in</h1>
