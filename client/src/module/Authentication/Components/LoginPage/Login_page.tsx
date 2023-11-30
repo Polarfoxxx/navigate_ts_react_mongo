@@ -66,7 +66,7 @@ function LoginPage(): JSX.Element {
             <div className="textSide">
                 <div
                     ref={signBoxRef}
-                    style={hideBox ? { right: "-30vw" } : { right: "-100vw" }}
+                    style={hideBox ? { right: "-65vw" } : { right: "-120vw" }}
                     className="signBox">
                     <div
                         style={hide ? { left: "0px", transitionDelay: "1s" } : { left: "50vw" }}

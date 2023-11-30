@@ -25,11 +25,11 @@
     justify-content: center;
     color: var(--whiteTextColor);
     margin-bottom: 10px;
+    font-size: 18px;
 }
 
 .signUp .signContainer .signContainerName>h1::first-letter {
     color: var(--yellowGreen);
-    font-size: 2vw;
 }
 
 .signUp .signContainer>form {
@@ -43,21 +43,21 @@
 
 .signUp .signContainer>form>input {
     width: 100%;
-    height: 2vw;
+    height: 30px;
     border-radius: 10px;
     text-align: center;
     padding: 0 5px 0 5px;
     background-color: rgba(173, 173, 173, 0.307);
-    font-size: 1vw;
+    font-size: 15px;
     color: var(--whiteTextColor);
     margin-top: 10px;
 }
 
 .signUp .signContainer>form>button {
     margin-top: 20px;
-    width: 9vw;
+    width: 90px;
     height: 30px;
-    font-size: 1vw;
+    font-size: 13px;
     font-weight: bold;
     border-radius: 1vw;
     background-color: var(--yellowGreen);
