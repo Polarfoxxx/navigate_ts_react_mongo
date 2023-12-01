@@ -41,8 +41,6 @@ function LoginPage(): JSX.Element {
     }
 
 
-
-
     return (
         <div className="loginPage">
             <div className="buttonSide">
@@ -71,12 +69,12 @@ function LoginPage(): JSX.Element {
                     <div
                         style={hide ? { left: "0px", transitionDelay: "1s" } : { left: "100%" }}
                         className="signInContainer">
-                      <SignUp /> 
+                        <SignUp />
                     </div>
                     <div
                         style={hide ? { left: "100%" } : { left: "0px", transitionDelay: "1s" }}
                         className="signUpContainer">
-                         <SignIn /> 
+                        <SignIn />
                     </div>
                 </div>
                 <div className="textBlock">

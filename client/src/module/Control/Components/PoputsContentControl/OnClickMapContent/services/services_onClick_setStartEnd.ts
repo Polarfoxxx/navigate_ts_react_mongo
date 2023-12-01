@@ -29,7 +29,6 @@ export default function services_onClick_setStartEnd(
 
   } else {
     const COORDINATE_AND_ADDRESS = {
-      identObject: location_DATA.arrayALL_coordinate.length,
       address: sideWays_DATA.clickOnMap.address,
       latLng: sideWays_DATA.clickOnMap.latLng,
     };
@@ -38,9 +37,8 @@ export default function services_onClick_setStartEnd(
       // Porovnání objektu s COORDINATE_AND_ADDRESS
       if (COORDINATE_AND_ADDRESS.latLng) {
         return (
-          item.identObject === COORDINATE_AND_ADDRESS.identObject &&
-          item.address === COORDINATE_AND_ADDRESS.address &&
-          item.latLng[0] === COORDINATE_AND_ADDRESS.latLng[0] &&
+          item.address === COORDINATE_AND_ADDRESS.address ||
+          item.latLng[0] === COORDINATE_AND_ADDRESS.latLng[0] ||
           item.latLng[1] === COORDINATE_AND_ADDRESS.latLng[1]
         );
       };

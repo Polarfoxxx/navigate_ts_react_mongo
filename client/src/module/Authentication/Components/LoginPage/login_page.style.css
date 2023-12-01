@@ -117,8 +117,6 @@
 }
 
 
-
-
 /* ================================================= */
 .loginPage .textSide {
   width: 80%;
@@ -128,7 +126,7 @@
   align-items: center;
   justify-content: start;
   position: relative;
-  background: linear-gradient(70deg, rgba(0,0,0,1) 41%, rgba(0,173,28,1) 100%);
+  background: linear-gradient(70deg, rgba(0, 0, 0, 1) 41%, rgba(0, 173, 28, 1) 100%);
 }
 
 .loginPage .textSide::before {

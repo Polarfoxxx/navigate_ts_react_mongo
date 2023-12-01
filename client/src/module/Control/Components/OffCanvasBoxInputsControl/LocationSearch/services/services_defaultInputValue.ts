@@ -1,3 +1,4 @@
+
 type CoordinateType = {
     address: string;
 };
@@ -5,8 +6,9 @@ type CoordinateType = {
 function services_defaultInputValue<T extends CoordinateType>(index: number, array: T[]): string {
     if (index >= 0 && index < array.length) {
         return array[index].address;
-    };
-    return "";
+    } else {
+        return "";
+    }
 };
 
 export default services_defaultInputValue;

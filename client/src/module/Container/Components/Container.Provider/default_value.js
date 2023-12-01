@@ -47,7 +47,7 @@ export const defaultValue_sideways_for_Provider_Context = {
         allResultDATA: null,
         select_Route_Bussines: {
             select: 0,
-            typeMAPorList:""
+            typeMAPorList: ""
         }
     }
 };

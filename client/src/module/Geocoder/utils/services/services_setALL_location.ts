@@ -31,7 +31,6 @@ export default function services_setALL_location({
 
 
         const COORDINATE_AND_ADDRESS = {
-            identObject: input_ident,
             address: GEO_DATA.address,
             latLng: GEO_DATA.latLng
         };
@@ -40,7 +39,6 @@ export default function services_setALL_location({
         // Zistíme, či objekt už existuje v poli
         const index = location_DATA.arrayALL_coordinate.findIndex(item => {
             return (
-                item.identObject === COORDINATE_AND_ADDRESS.identObject ||
                 item.address === COORDINATE_AND_ADDRESS.address ||
                 item.latLng[0] === COORDINATE_AND_ADDRESS.latLng[0] ||
                 item.latLng[1] === COORDINATE_AND_ADDRESS.latLng[1]

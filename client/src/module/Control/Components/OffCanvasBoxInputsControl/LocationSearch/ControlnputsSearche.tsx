@@ -57,54 +57,52 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
 
   /* vymazanie */
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(input_ident);
-    console.log(arrayALL_coordinate);
+    const UPDATE_DATA_START_END_ = {
+      address: "",
+      latLng: [],
+    };
+    const UPDATE_DATA_MAPBUSSINES = {
+      typeSearch: "",
+      status: false,
+      POI_Data: null,
+      dataMapBussines_froPopup: null,
+      allResultDATA: null,
+      select_Route_Bussines: 0
+    };
 
     if (typeof input_ident === "number") {
-      if (input_ident >= 0 && input_ident < arrayALL_coordinate.length) {
-
-        const NEWDATA = arrayALL_coordinate
-        NEWDATA.splice(input_ident, 1);
-    console.log(NEWDATA);
-
+        const NEW_DATA = arrayALL_coordinate;
+        NEW_DATA.splice(input_ident, 1);
         updateContext_DATA([
-          { newData: NEWDATA, key: "arrayALL_coordinate" },
+          { newData: NEW_DATA, key: "arrayALL_coordinate" },
         ]);
-        dispatch({ type: "SET_QUERY", payload: "" })
-      };
+        dispatch({ type: "SET_QUERY", payload: "" }) 
     } else {
-      const IDENT_INPUT_NAME = input_ident === "start_point" ? "startPoints" : "endPoints"
-
-      dispatch({ type: "SET_QUERY", payload: "" })
-      const UPDATE_DATA_STARTPOINT = {
-        address: "",
-        latLng: [],
+      if (input_ident === "start_point") {
+        dispatch({ type: "SET_QUERY", payload: "" })
+        updateContext_DATA([
+          { newData: UPDATE_DATA_START_END_, key: "startPoints" },
+          { newData: UPDATE_DATA_START_END_, key: "endPoints" },
+          { newData: [], key: "arrayALL_coordinate" },
+          { newData: [], key: "main_atl_route" },
+          { newData: UPDATE_DATA_MAPBUSSINES, key: "mapBussines_Category" },
+        ]);
+      } else if (input_ident === "end_point") {
+        dispatch({ type: "SET_QUERY", payload: "" })
+        updateContext_DATA([
+          { newData: UPDATE_DATA_START_END_, key: "endPoints" },
+          { newData: [], key: "arrayALL_coordinate" },
+          { newData: [], key: "main_atl_route" },
+          { newData: UPDATE_DATA_MAPBUSSINES, key: "mapBussines_Category" },
+        ]);
       };
-
-      const UPDATE_DATA_MAPBUSSINES = {
-        typeSearch: "",
-        status: false,
-        POI_Data: null,
-        dataMapBussines_froPopup: null,
-        allResultDATA: null,
-        select_Route_Bussines: 0
-      };
-
-      updateContext_DATA([
-        { newData: UPDATE_DATA_STARTPOINT, key: IDENT_INPUT_NAME },
-        { newData: [], key: "main_atl_route" },
-        { newData: UPDATE_DATA_MAPBUSSINES, key: "mapBussines_Category" },
-      ]);
     };
-  }
-
+  };
 
 
   /* nastavenie mesta do inputov po kliku */
   React.useEffect(() => {
-    if (input_value) {
       dispatch({ type: "SET_QUERY", payload: input_value })
-    };
   }, [input_value]);
 
 

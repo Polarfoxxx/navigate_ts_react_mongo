@@ -9,13 +9,13 @@ export type Type_forGeocoderInput = {
 };
 
 export type Type_State_ControlnputsSearche = {
-    query: string,
+    query: string | undefined,
     results: string[],
     isResultsOpen: boolean,
 };
 
 export type Type_Action_ControlnputsSearche =
-    | { type: 'SET_QUERY'; payload: string }
+    | { type: 'SET_QUERY'; payload: string | undefined }
     | { type: 'SET_RESULT'; payload: string[] }
     | { type: 'SET_RESULT_OPEN'; payload: boolean };
 

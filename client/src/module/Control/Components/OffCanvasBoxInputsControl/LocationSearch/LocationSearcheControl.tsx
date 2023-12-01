@@ -27,6 +27,7 @@ function LocationSearcheControl(): JSX.Element {
                         input_value={services_defaultInputValue(0, arrayALL_coordinate)} />
                 }
                 {
+
                     arrayALL_coordinate.length > 0 && arrayALL_coordinate.map((coordinate, key) => (
                         <ControlnputsSearche
                             key={key}
