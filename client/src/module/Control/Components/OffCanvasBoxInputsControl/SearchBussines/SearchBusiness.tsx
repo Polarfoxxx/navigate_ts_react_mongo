@@ -4,7 +4,7 @@ import { OnePointBussinessSearcheControl, RouteBussinessSearcheControl, NoConten
 import { Container } from "../../../../Container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowRight, faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import { SearchALLResultBusssinesControl } from "../..";
+import { SearchBussinesItemControl } from "../..";
 
 
 function SearchBusiness(): JSX.Element {
@@ -16,9 +16,9 @@ function SearchBusiness(): JSX.Element {
     /* aky kontet sa ma zobrazit rozdelenie jedneho bodu alebo cesty */
     React.useEffect(() => {
         if (startPoints.latLng[0] && !endPoints.latLng[0]) {
-            setSearchCompContent([<OnePointBussinessSearcheControl />, <SearchALLResultBusssinesControl />])
+            setSearchCompContent([<OnePointBussinessSearcheControl />, <SearchBussinesItemControl />])
         } else if (startPoints.latLng[0] && endPoints.latLng[0]) {
-            setSearchCompContent([<RouteBussinessSearcheControl />, <SearchALLResultBusssinesControl />])
+            setSearchCompContent([<RouteBussinessSearcheControl />, <SearchBussinesItemControl />])
         } else {
             setSearchCompContent(<NoContent />)
         }

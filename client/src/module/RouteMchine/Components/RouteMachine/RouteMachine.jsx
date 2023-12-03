@@ -46,7 +46,7 @@ function RouteMachine() {
                 addWaypoints: false,
             },
             altLineOptions: {
-                styles: [{ color: "blue", opacity: 0.7, weight: 5 }],
+                styles: [{ color: "black", opacity: 0.7, weight: 5 }],
                 extendToWaypoints: false,
                 missingRouteTolerance: 5,
                 addWaypoints: true,

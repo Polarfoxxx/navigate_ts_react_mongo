@@ -5,9 +5,9 @@ import { Type_SearchRespo_clearDATA_Circle } from "../../../../Container";
 import { geocoder_coordSearche } from "../../../../Geocoder";
 import { UseChangeContextDATA } from "../../../../hooks";
 import UseChangeContextDATA_CALL from "../../../../hooks/UseChangeContextDATA/UseChangeContextDATA_CALL";
+import { SERVICES_CONVERSION_OF_UNIT_AND_TIME as CONVER_UNITS } from "../../../../utils";
 
-
-function SearchALLResultBusssinesControl(): JSX.Element {
+function SearchBussinesItemControl(): JSX.Element {
     const { location_DATA, sideWays_DATA, setLocation_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { mapBussines_Category } = sideWays_DATA, { endPoints } = location_DATA;
     const [bussinesDATA, setBussinesDATA] = React.useState<Type_SearchRespo_clearDATA_Circle[]>([]);
@@ -73,7 +73,7 @@ function SearchALLResultBusssinesControl(): JSX.Element {
                                     <h5>Distace</h5>
                                 </div>
                                 <div>
-                                    <h5>{item.distance}</h5>
+                                    <h5>{CONVER_UNITS.services_conversionOfUnits({ total_value: item.distance, units_type: "km" })}</h5>
                                 </div>
                             </div>
                             <div className="boxItem footerBlock">
@@ -91,4 +91,4 @@ function SearchALLResultBusssinesControl(): JSX.Element {
     );
 };
 
-export default SearchALLResultBusssinesControl;
+export default SearchBussinesItemControl;

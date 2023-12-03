@@ -29,7 +29,7 @@ export default function services_onClick_setStartEnd(
 
   } else {
     const COORDINATE_AND_ADDRESS = {
-      identObject: location_DATA.arrayALL_coordinate.length,
+      identObject: location_DATA.arrayALL_coordinate.length,  //pridanie kluca ident pre priradenie objektu ku inputu.("nuitne pre prepis")
       address: sideWays_DATA.clickOnMap.address,
       latLng: sideWays_DATA.clickOnMap.latLng,
     };

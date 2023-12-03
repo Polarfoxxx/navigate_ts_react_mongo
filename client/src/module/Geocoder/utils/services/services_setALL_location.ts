@@ -31,12 +31,11 @@ export default function services_setALL_location({
 
 
         const COORDINATE_AND_ADDRESS = {
-            identObject: input_ident,
+            identObject: input_ident,  //pridanie kluca ident pre priradenie objektu ku inputu.("nuitne pre prepis")
             address: GEO_DATA.address,
             latLng: GEO_DATA.latLng
         };
-       
-        
+
         // Zistíme, či objekt už existuje v poli
         const index = location_DATA.arrayALL_coordinate.findIndex(item => {
             return (
@@ -46,20 +45,20 @@ export default function services_setALL_location({
                 item.latLng[1] === COORDINATE_AND_ADDRESS.latLng[1]
             );
         });
-        
+
         // Ak objekt neexistuje, pridáme ho do poľa
         if (index === -1) {
             const newArrayALLCoordinate = [
                 ...location_DATA.arrayALL_coordinate,
                 COORDINATE_AND_ADDRESS
             ];
-        
+
             return { ...location_DATA, arrayALL_coordinate: newArrayALLCoordinate };
         } else {
             // Ak objekt existuje, nahradíme ho novým objektom na rovnakom mieste
             const newArrayALLCoordinate = [...location_DATA.arrayALL_coordinate];
             newArrayALLCoordinate[index] = COORDINATE_AND_ADDRESS;
-        
+
             return { ...location_DATA, arrayALL_coordinate: newArrayALLCoordinate };
         }
     }

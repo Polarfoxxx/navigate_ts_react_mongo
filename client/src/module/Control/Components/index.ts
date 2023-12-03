@@ -15,7 +15,7 @@ export { default as RouteBussinessSearcheControl } from "./OffCanvasBoxInputsCon
 export { default as NoContent } from "./OffCanvasBoxInputsControl/SearchBussines/NoContent";
 export { default as LocationSearcheControl } from "./OffCanvasBoxInputsControl/LocationSearch/LocationSearcheControl";
 export { default as OnClickBussinesSearcheContent } from "./PoputsContentControl/OnClickBussinesSearcheContent/OnClickBussinesSearcheContent";
-export { default as SearchALLResultBusssinesControl } from "./OffCanvasBoxInputsControl/SearchBussines/SearchALLResultBusssinesControl";
+export { default as SearchBussinesItemControl } from "./OffCanvasBoxInputsControl/SearchBussines/SearchBussinesItemControl";
 
 
 
