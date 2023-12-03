@@ -5,7 +5,7 @@ import { Type_forDetailOfTheRoad, Type_State_DetailOfTheRoad, Type_Action_Detail
 import { DetailOTRitem, SERVICES_CONVERSION_OF_UNIT_AND_TIME } from "../index";
 import { DEFAULT_VALUE_FOR_REDUCER } from "./defaultValue";
 import clsx from "clsx";
- 
+
 
 const reducer = (state: Type_State_DetailOfTheRoad, action: Type_Action_DetailOfTheRoad) => {
    switch (action.type) {
@@ -41,6 +41,7 @@ function DetailOfTheRoad({ oneRoute, active, index }: Type_forDetailOfTheRoad): 
 
 
 
+
    return (
       <div className="detailOfTheRoad">
          <div
@@ -51,11 +52,11 @@ function DetailOfTheRoad({ oneRoute, active, index }: Type_forDetailOfTheRoad): 
          <div className="detailOfTheRoad_totalInfo">
             <div className="totalDis">
                <span className="disSpan">Total Distance:</span>
-               <p>{SERVICES_CONVERSION_OF_UNIT_AND_TIME.services_conversionOfUnits(state.total_Info?.totalDistance)}</p>
+               <p>{SERVICES_CONVERSION_OF_UNIT_AND_TIME.services_conversionOfUnits({ total_value: state.total_Info?.totalDistance, units_type: "m" })}</p>
             </div>
             <div>
                <span className="timeSpan">Total Time:</span>
-               <p>{SERVICES_CONVERSION_OF_UNIT_AND_TIME.services_conversionOfTime(state.total_Info?.totalTime)}</p>
+               <p>{SERVICES_CONVERSION_OF_UNIT_AND_TIME.services_conversionOfTime({ total_value: state.total_Info?.totalTime, units_type: "min" })}</p>
             </div>
          </div>
          <div className="direction_box">

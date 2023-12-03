@@ -1,4 +1,4 @@
-import SIC_codes from "../../../../utils/SIC_code.json";
+import SIC_codes from "../../../../utils/SIC/SIC_code.json";
 
 const SIC_code: { [key: string]: string } = SIC_codes
 

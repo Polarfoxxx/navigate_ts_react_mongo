@@ -4,13 +4,12 @@ import { Type_For_Direction_item } from "./type";
 import { Container } from "../../../Container";
 import services_navigationIcons from "./services/services_navigationIcons";
 import { UseChangeContextDATA } from "../../../hooks";
-
+import { SERVICES_CONVERSION_OF_UNIT_AND_TIME } from "../../../utils";
 
 
 function DetailOTRitem({ all_directions, all_coordinate }: Type_For_Direction_item): JSX.Element {
     const { sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
-
 
     const handleDivMouseToogle = (event: React.MouseEvent<HTMLDivElement>, state: boolean) => {
         if (state) {
@@ -26,7 +25,6 @@ function DetailOTRitem({ all_directions, all_coordinate }: Type_For_Direction_it
             updateContext_DATA([{ newData: null, key: "markerInTheRoute" }]);
         };
     };
-
 
     return (
         <>
@@ -58,11 +56,11 @@ function DetailOTRitem({ all_directions, all_coordinate }: Type_For_Direction_it
                         <div className="item distanceAndTime">
                             <div className="time">
                                 <span className="spTime">Time:</span>
-                                <p>{Math.round(item.time) / 10} min</p>
+                                <p>{SERVICES_CONVERSION_OF_UNIT_AND_TIME.services_conversionOfTime({ total_value: item.time, units_type: "min" })}</p>
                             </div>
                             <div className="distance">
                                 <span className="spDis">Distance:</span>
-                                <p>{Math.round((item.distance))} m</p>
+                                <p>{SERVICES_CONVERSION_OF_UNIT_AND_TIME.services_conversionOfUnits({ total_value: item.distance, units_type: "m" })}</p>
                             </div>
                         </div>
                         <div className="item time">

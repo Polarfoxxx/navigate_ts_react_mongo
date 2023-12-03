@@ -5,7 +5,7 @@ import { Container } from "../../../../Container";
 import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import { Type_OnePointBussinesControl } from "../../../../Container";
-import  SIC_Codes  from "../../../../utils/SIC_code.json";
+import  SIC_Codes  from "../../../../utils/SIC/SIC_code.json";
 
 
 function OnePointBussinessSearcheControl(): JSX.Element {
