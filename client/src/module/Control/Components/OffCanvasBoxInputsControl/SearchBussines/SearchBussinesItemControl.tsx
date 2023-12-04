@@ -24,9 +24,12 @@ function SearchBussinesItemControl(): JSX.Element {
 
     /*zmena oznaceneho busssines so seznamu na zaklade kliknutia na marker  */
     React.useEffect(() => {
-        selectREF.current = (mapBussines_Category.select_Route_Bussines.typeMAPorList === "mapMarker")
+        if(mapBussines_Category.select_Route_Bussines.select !== null) {
+            selectREF.current = (mapBussines_Category.select_Route_Bussines.typeMAPorList === "mapMarker")
             ? (mapBussines_Category.select_Route_Bussines.select - 1)
             : mapBussines_Category.select_Route_Bussines.select;
+        }
+     
     }, [location_DATA.endPoints.address])
 
 
@@ -62,25 +65,27 @@ function SearchBussinesItemControl(): JSX.Element {
                             key={key}>
                             <div className="boxItem headBlock">
                                 <div className="headBlockTypename">
-                                    <h5>{item.fields.group_sic_code_name}</h5>
+                                    <h5 className="itemTittle">{item.fields.group_sic_code_name}</h5>
                                 </div>
-                                <div className="headBlocknameBussines">
+                                <div className="headBlockvalue bussinesName">
                                     <h5>{item.name}</h5>
                                 </div>
                             </div>
                             <div className="boxItem bodyBlock">
                                 <div>
-                                    <h5>Distace</h5>
+                                    <h5 className="itemTittle">Distace</h5>
                                 </div>
-                                <div>
+                                <div className="headBlockvalue">
                                     <h5>{CONVER_UNITS.services_conversionOfUnits({ total_value: item.distance, units_type: "km" })}</h5>
                                 </div>
                             </div>
                             <div className="boxItem footerBlock">
                                 <div>
-                                    <h5>Phone:</h5>
+                                    <h5 className="itemTittle">Phone:</h5>
                                 </div>
-                                <h5>{item.fields.phone}</h5>
+                                <div className="headBlockvalue">
+                                    <h5>{item.fields.phone}</h5>
+                                </div>
                             </div>
                         </div>
                     )

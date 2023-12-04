@@ -88,7 +88,6 @@ function OnClickBussinesSearcheContent(): JSX.Element {
                 </div>
             </div>
             <div className="bussinesContentFooter">
-                <p style={{ color: "white" }}>{bussinesDATA_item.resultNumber}</p>
                 <button onClick={() => handleSelectBussinesMarker(bussinesDATA_item)}>navigate</button>
             </div>
         </div>

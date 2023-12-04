@@ -46,7 +46,7 @@ export const defaultValue_sideways_for_Provider_Context = {
         dataMapBussines_froPopup: null,
         allResultDATA: null,
         select_Route_Bussines: {
-            select: 0,
+            select: null,
             typeMAPorList: ""
         }
     }

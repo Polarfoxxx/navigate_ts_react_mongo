@@ -46,6 +46,7 @@ function MapSearch(): JSX.Element {
 
         } else if (mapBussines_Category.typeSearch === "RouteBussinessSearche") {
             try {
+                
                 /*  const DATA_API = await SEARCH_BUSSINES_API.search_API_bussines_Corridor()
                  console.log(DATA_API);
   */

@@ -40,7 +40,7 @@ export type Type_MapBussines_Category = {
 };
 
 export type TypeSelect_Route_Bussines = {
-  select: number,
+  select: number | null,
   typeMAPorList: string
 }
 
