@@ -33,9 +33,9 @@ export type Type_incident = {
 export type Type_MapBussines_Category = {
   typeSearch: string,
   status: boolean,
-  POI_Data: null | Type_OnePointBussinesControl & Type_RouteBussinesControl,
-  dataMapBussines_froPopup: null | Type_SearchRespo_clearDATA_Circle,
-  allResultDATA: null | Type_SearchRespo_clearDATA_Circle[],
+  SIC_Data: null | Type_OnePointBussinesControl & Type_RouteBussinesControl,
+  dataMapBussines_froPopup: null | Type_SearchRespo_EDITED_DATA,
+  allResultDATA: null | Type_SearchRespo_EDITED_DATA[],
   select_Route_Bussines: TypeSelect_Route_Bussines
 };
 
@@ -60,7 +60,7 @@ export type Type_RouteBussinesControl = {
 };
 
 /* typ upraveny z RAW odpovade */
-export type Type_SearchRespo_clearDATA_Circle = {
+export type Type_SearchRespo_EDITED_DATA = {
   distance: number;
   name: string;
   resultNumber: number;

@@ -42,7 +42,7 @@ export const defaultValue_sideways_for_Provider_Context = {
         typeSearch: "",
         type: "",
         status: false,
-        POI_Data: null,
+        SIC_Data: null,
         dataMapBussines_froPopup: null,
         allResultDATA: null,
         select_Route_Bussines: {

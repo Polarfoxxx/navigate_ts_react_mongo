@@ -1,5 +1,5 @@
 
-export type Type_RAW_OnePoint_response_bussiness = {
+export type Type_RAW_DATA_response_bussiness = {
     distance: number;
     distanceUnit: string;
     fields: {

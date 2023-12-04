@@ -3,7 +3,7 @@ export { default as SEARCH_BUSSINES_API } from "./search.API/searchAPI";
 
 /* type */
 export type {
-    Type_RAW_OnePoint_response_bussiness,
+    Type_RAW_DATA_response_bussiness,
 } from "./search.API/types";
 
 

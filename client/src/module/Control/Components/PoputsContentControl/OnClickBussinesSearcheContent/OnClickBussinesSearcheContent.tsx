@@ -1,6 +1,6 @@
 import React from "react";
 import "./onClickBussinesSeaCont.style.css";
-import { Container, Type_SearchRespo_clearDATA_Circle } from "../../../../Container";
+import { Container, Type_SearchRespo_EDITED_DATA } from "../../../../Container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBuilding } from '@fortawesome/free-solid-svg-icons'
 import { geocoder_coordSearche } from "../../../../Geocoder";
@@ -12,7 +12,7 @@ function OnClickBussinesSearcheContent(): JSX.Element {
     const { location_DATA, sideWays_DATA, setLocation_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { mapBussines_Category } = sideWays_DATA;
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
-    const [bussinesDATA_item, setBussinesDATA_item] = React.useState<Type_SearchRespo_clearDATA_Circle>(DEFAULT_VALUE_FOR_ONCLICK_BUSSINES_CONTENT)
+    const [bussinesDATA_item, setBussinesDATA_item] = React.useState<Type_SearchRespo_EDITED_DATA>(DEFAULT_VALUE_FOR_ONCLICK_BUSSINES_CONTENT)
 
     /* nastavenie stavu pre obsah popupu */
     React.useEffect(() => {
@@ -23,7 +23,7 @@ function OnClickBussinesSearcheContent(): JSX.Element {
 
 
     /* nastavenie navigacie na bod bussiness */
-    const handleSelectBussinesMarker = (item: Type_SearchRespo_clearDATA_Circle) => {
+    const handleSelectBussinesMarker = (item: Type_SearchRespo_EDITED_DATA) => {
         /* voalnie geocoderu pre nastavenie koncoveho bodu */
         if (item.fields) {
             const UPDATE_DATA = {

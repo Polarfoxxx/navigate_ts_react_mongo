@@ -1,36 +1,40 @@
 import React from "react";
 import "./routeBussSeaControl.style.css"
 import { UseChangeContextDATA } from "../../../../hooks";
-import { Container } from "../../../../Container";
+import { Container, Type_RouteBussinesControl } from "../../../../Container";
 import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
-
-
+import SIC_Codes from "../../../../utils/SIC/SIC_code.json";
 
 function RouteBussinessSearcheControl(): JSX.Element {
-    const { sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context)
+    const { sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
+    const { mapBussines_Category } = sideWays_DATA;
     const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
     const { handleSubmit, reset } = useInputValue();
 
 
-
     const submit = (v: TypeForInputsObject["v"]): void => {
-        console.log(v);
-
-        const UPDATE_DATA = {
-            status: true,
-            POI_Data: {
-                type: v[0].inputValues,
-                width: v[1].inputValues,
-                bufferedWidth: v[2].inputValues,
-                numResult: v[3].inputValues,
-                ambiguities: v[4].inputValues
+        
+        const UPDATE_SIC_DATA: Type_RouteBussinesControl = {
+                type: v[0].inputValues as string,
+                width: v[1].inputValues as string ,
+                bufferedWidth: v[2].inputValues as string,
+                numResult: v[3].inputValues as string,
+                ambiguities: v[4].inputValues as "Ignore" | "Allow"
             }
-        };
+            const UPDATE_DATA = {
+                ...mapBussines_Category,
+                typeSearch: "RouteBussinessSearche",
+                status: true,
+                SIC_Data: UPDATE_SIC_DATA,
+                typePOI: typeof UPDATE_SIC_DATA
+            };
+
         updateContext_DATA([
             { newData: UPDATE_DATA, key: "mapBussines_Category" },
         ])
     };
+
 
 
     return (
@@ -40,11 +44,13 @@ function RouteBussinessSearcheControl(): JSX.Element {
                 <div className="selectorBoxBussines">
                     <label htmlFor="typeBussines">Type Bussines</label>
                     <select name='typeBussines' className="typeBussines" defaultValue="Restaurants" >
-                        <option value="Restaurants">Restaurants</option>
-                        <option value="Pubs">Pubs</option>
-                        <option value="Shopping">Shopping</option>
-                        <option value="Caffes">Caffes</option>
-                        <option value="Bars">Bars</option>
+                        {
+                            Object.keys(SIC_Codes).map(item => (
+                                <option key={item} value={item}>
+                                    {item}
+                                </option>
+                            ))
+                        }
                     </select>
                 </div>
                 <div className="routeControl ">
@@ -55,7 +61,7 @@ function RouteBussinessSearcheControl(): JSX.Element {
                         min={0}
                         max={10}
                         id="inpOneRadius"
-                        placeholder="Radius search"
+                        placeholder="Width search"
                         type="number" />
                 </div>
                 <div className="routeControl ">

@@ -16,25 +16,23 @@ function OnePointBussinessSearcheControl(): JSX.Element {
 
 /* submit odoslanie formulara */
     const submit = (v: TypeForInputsObject["v"]): void => {
-        const UPDATE_POI: Type_OnePointBussinesControl = {
+        const UPDATE_SIC_DATA: Type_OnePointBussinesControl = {
             type: v[0].inputValues as string,
             area: v[1].inputValues as string,
             numResult: v[2].inputValues as string,
             ambiguities: v[3].inputValues as "Ignore" | "Allow"
         };
-        
         const UPDATE_DATA = {
             ...mapBussines_Category,
             typeSearch: "OnePointBussinessSearche",
             status: true,
-            POI_Data: UPDATE_POI,
-            typePOI: typeof UPDATE_POI
+            POI_Data: UPDATE_SIC_DATA,
+            typePOI: typeof UPDATE_SIC_DATA
         };
         updateContext_DATA([
             { newData: UPDATE_DATA, key: "mapBussines_Category" },
         ])
     };
-
 
     /* close markerov bussines */
     const handleClickClearFunctuon = () => {
