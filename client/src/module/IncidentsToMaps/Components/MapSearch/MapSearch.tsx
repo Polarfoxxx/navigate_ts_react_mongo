@@ -15,11 +15,13 @@ function MapSearch(): JSX.Element {
 
     React.useEffect(() => {
         fetchSearchData()
-    }, [mapBussines_Category.SIC_Data?.type]);
+    }, [JSON.stringify( mapBussines_Category)]);
 
 
     async function fetchSearchData() {
+
         if (mapBussines_Category.typeSearch === "OnePointBussinessSearche" && mapBussines_Category.SIC_Data) {
+            
             const UPDATE_DATA_CIRCLE_API: Type_forSearchAPI_Circle = {
                 coordinate_point: startPoints.latLng,
                 area: mapBussines_Category.SIC_Data.area,
@@ -82,7 +84,6 @@ function MapSearch(): JSX.Element {
             }
         }, [allBussines])
      */
-
 
     return (
         <>

@@ -27,7 +27,6 @@ function RouteBussinessSearcheControl(): JSX.Element {
                 typeSearch: "RouteBussinessSearche",
                 status: true,
                 SIC_Data: UPDATE_SIC_DATA,
-                typePOI: typeof UPDATE_SIC_DATA
             };
 
         updateContext_DATA([
@@ -56,10 +55,11 @@ function RouteBussinessSearcheControl(): JSX.Element {
                 <div className="routeControl ">
                     <label htmlFor="Width">Width</label>
                     <input
-                        defaultValue={1}
+                        defaultValue={0.1}
+                        step="0.1"
                         name='width'
                         min={0}
-                        max={10}
+                        max={2}
                         id="inpOneRadius"
                         placeholder="Width search"
                         type="number" />

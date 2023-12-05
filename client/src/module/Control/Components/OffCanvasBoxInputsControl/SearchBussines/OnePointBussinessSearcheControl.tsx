@@ -26,8 +26,7 @@ function OnePointBussinessSearcheControl(): JSX.Element {
             ...mapBussines_Category,
             typeSearch: "OnePointBussinessSearche",
             status: true,
-            POI_Data: UPDATE_SIC_DATA,
-            typePOI: typeof UPDATE_SIC_DATA
+            SIC_Data: UPDATE_SIC_DATA,
         };
         updateContext_DATA([
             { newData: UPDATE_DATA, key: "mapBussines_Category" },

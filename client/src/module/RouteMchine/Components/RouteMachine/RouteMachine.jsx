@@ -88,7 +88,7 @@ function RouteMachine() {
         return () => {
             MAP.removeControl(routingControl);
         };
-    }, [startPoints, endPoints,JSON.stringify(location_DATA.arrayALL_coordinate)]);
+    }, [startPoints, endPoints,JSON.stringify(arrayALL_coordinate)]);
     /* ========================================================================= */
 
 

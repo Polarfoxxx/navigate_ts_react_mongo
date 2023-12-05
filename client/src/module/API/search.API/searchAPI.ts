@@ -41,6 +41,10 @@ async function search_API_bussines_Circle(searchCircleBussines: Type_forSearchAP
   };
 };
 
+
+
+
+
 async function search_API_bussines_Corridor(searchCorridorBussines: Type_forSearchAPI_Corridor): Promise<Type_SearchRespo_EDITED_DATA[]> {
   const KEY_REQUIRED: (keyof Type_RAW_DATA_response_bussiness)[] = ["fields", "distance", "distanceUnit", "name", "resultNumber"]
   const COORDINATE_POINT = searchCorridorBussines.coordinateALLpoints;
@@ -59,6 +63,7 @@ async function search_API_bussines_Corridor(searchCorridorBussines: Type_forSear
   try {
     const response = await axios.get(URL);
     const RESPO_RAW_DATA: Type_RAW_DATA_response_bussiness[] = response.data.searchResults;
+console.log(RESPO_RAW_DATA);
 
     /* uprava vyslednych dat pomocou services, vybranie iba niektorych klucov */
     const RESPO_EDITED_DATA: Type_SearchRespo_EDITED_DATA[] = services_setResponseDATA({ KEY_REQUIRED: KEY_REQUIRED, RESPO_RAW_DATA: RESPO_RAW_DATA });
