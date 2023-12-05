@@ -2,18 +2,25 @@ import React from "react";
 import "./location_info_box.style.css"
 import { LocationInfoGeocoderInput, LocationInfoResult } from "..";
 import { locationInfoAPI } from "../../../API";
+import { Type_CityInfo_RAW_Data } from "../../../API";
 
 function LocationInfoBox(): JSX.Element {
+    const [respoDATA, setRespoDATA] = React.useState<Type_CityInfo_RAW_Data[]>([])
+
+    React.useEffect(() => {
+        fetchLocationInfoData();
+    }, []);
 
 
-React.useEffect(() => {
-    fetchLocationInfoData();
-},[]);
-
-
-async function fetchLocationInfoData() {
-    locationInfoAPI()
-}
+    async function fetchLocationInfoData() {
+        try {
+            const DATA_API = await locationInfoAPI();
+            setRespoDATA(DATA_API)
+            console.log(DATA_API);
+        } catch (error) {
+            console.error(error);
+        };
+    };
 
     return (
         <div className="location_info_box">
@@ -22,9 +29,7 @@ async function fetchLocationInfoData() {
                     <LocationInfoGeocoderInput />
                 </div>
                 <div className="locationvalues">
-                    <div className="locationResBox">
-                        <LocationInfoResult />
-                    </div>
+                    <LocationInfoResult respoDATA={respoDATA} />
                 </div>
             </div>
         </div>
