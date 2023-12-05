@@ -2,34 +2,14 @@ import axios from "axios";
 import { Type_MostedCoordinate_Arr } from "../../IncidentsToMaps";
 import services_setResponseDATA from "../utils/services_setResponseDATA";
 import { Type_IncidentDATA_forMarker } from "../../Container";
+import { Type_RAW_Incidents_response } from "./types";
 
 const API_KEY = '5GX8lJDVddQIy3d3nAmlGCXYaFe5IMFC';
-
-
-type Type_RAW_Incidents_response = {
-  delayFromFreeFlow: number;
-  delayFromTypical: number;
-  distance: number;
-  endTime: string; // predpokladám, že ide o dátumový reťazec
-  eventCode: number;
-  fullDesc: string;
-  iconURL: string;
-  id: string;
-  impacting: boolean;
-  lat: number;
-  lng: number;
-  parameterizedDescription: {}; // prázdny objekt
-  severity: number;
-  shortDesc: string;
-  startTime: string; // predpokladám, že ide o dátumový reťazec
-  type: number;
-}
 
 
 async function fetchIncidentsForSection(section: Type_MostedCoordinate_Arr): Promise<Type_RAW_Incidents_response[]> {
   const BOUNDING_BOX = `${section.norther_western}, ${section.south_east}`;
   const URL = `https://www.mapquestapi.com/traffic/v2/incidents?key=${API_KEY}&boundingBox=${BOUNDING_BOX}&filters=construction,incidents`;
-
 
   try {
     const response = await axios.get(URL);

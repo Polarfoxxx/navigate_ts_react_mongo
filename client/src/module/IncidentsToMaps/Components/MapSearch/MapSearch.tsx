@@ -19,9 +19,7 @@ function MapSearch(): JSX.Element {
 
 
     async function fetchSearchData() {
-
         if (mapBussines_Category.typeSearch === "OnePointBussinessSearche" && mapBussines_Category.SIC_Data) {
-            
             const UPDATE_DATA_CIRCLE_API: Type_forSearchAPI_Circle = {
                 coordinate_point: startPoints.latLng,
                 area: mapBussines_Category.SIC_Data.area,
@@ -43,7 +41,6 @@ function MapSearch(): JSX.Element {
             } catch (error) {
                 console.error(error);
             };
-
         } else if (mapBussines_Category.typeSearch === "RouteBussinessSearche" && mapBussines_Category.SIC_Data) {
             const UPDATE_DATA_CORRIDOR_API: Type_forSearchAPI_Corridor = {
                 coordinateALLpoints: services_ConnectionOfAllCoord(main_atl_route),

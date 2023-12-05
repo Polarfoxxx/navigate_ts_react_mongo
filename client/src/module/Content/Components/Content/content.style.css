@@ -36,16 +36,16 @@
      display: flex;
      align-items: center;
      flex-direction: row;
-     gap: 2%;
+     gap: 1%;
  }
 
  .content .container section .mapsAndControl .controlBox {
-     width: 30%;
+     width: 23%;
      height: 100%;
  }
 
  .content .container section .mapsAndControl .mapsBox {
-     width: 70%;
+     width: 77%;
      height: 100%;
  }
 

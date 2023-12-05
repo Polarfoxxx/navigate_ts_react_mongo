@@ -3,11 +3,13 @@ import React from 'react';
 import ControlBox from './ControlBox';
 import "./offCanvasBox.style.css";
 
+
 function OffCanvasBoxInputsControl(): JSX.Element {
     const [show, setShow] = React.useState(false);
     const handleClick = (): void => {
         setShow(!show);
     };
+
     return (
         <div className="offCanvasBox">
             <div className='offCanvasButtonBox'>
