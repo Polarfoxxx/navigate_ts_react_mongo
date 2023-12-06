@@ -1,7 +1,7 @@
 .location_info_box {
     width: 100%;
-    min-height: 100%;
-    padding: 10px;
+    height: 100%;
+    padding: 5px;
     background-color: rgba(118, 82, 15, 0.429);
     display: flex;
     align-items: center;
@@ -15,6 +15,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    gap: 10px;
 }
 
 .location_info_box .locationbox .locationInpBox {

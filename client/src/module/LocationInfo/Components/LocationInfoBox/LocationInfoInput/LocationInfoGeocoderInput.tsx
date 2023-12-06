@@ -1,9 +1,9 @@
 import React from "react";
-import { GeocoderInputSearche } from "../../../Geocoder";
-import { Container } from "../../../Container";
-import { UseChangeContextDATA } from "../../../hooks";
-import { DEFAULT_VALUE_FOR_REDUCER_CONTROL_INPUT_SEARCH } from "../../../Control";
-import { Type_State_ControlnputsSearche, Type_Action_ControlnputsSearche } from "../../../Control";
+import { GeocoderInputSearche } from "../../../../Geocoder";
+import { Container } from "../../../../Container";
+import { UseChangeContextDATA } from "../../../../hooks";
+import { DEFAULT_VALUE_FOR_REDUCER_CONTROL_INPUT_SEARCH } from "../../../../Control";
+import { Type_State_ControlnputsSearche, Type_Action_ControlnputsSearche } from "../../../../Control";
 
 const reducer = (state: Type_State_ControlnputsSearche, action: Type_Action_ControlnputsSearche) => {
     switch (action.type) {
