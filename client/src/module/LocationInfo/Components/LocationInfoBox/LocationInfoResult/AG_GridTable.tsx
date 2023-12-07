@@ -1,16 +1,32 @@
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-quartz.css';
 import React from 'react';
 import { AgGridReact } from 'ag-grid-react';
-import { ColDef } from 'ag-grid-community';
 import services_ChangeTheObjectForTheTable from './services/services_ChangeTheObjectForTheTable';
 import { Type_IRow, Type_forLocationInfoResult } from './types';
+import "ag-grid-community/styles/ag-grid.css";
+import 'ag-grid-community/styles/ag-theme-alpine.css'; // Importujte požadovaný motiv
+import './ag_GridTable.style.css';
+import {
+    ColDef,
+    ColGroupDef,
+    GridApi,
+    GridOptions,
+    GridReadyEvent,
+    RowSelectedEvent,
+    SelectionChangedEvent,
+    createGrid,
+} from 'ag-grid-community';
+import { UseChangeContextDATA } from '../../../../hooks';
+import { Container } from '../../../../Container';
+
 
 
 // Create new GridExample component
 function AG_GridTable(props: Type_forLocationInfoResult): JSX.Element {
+    const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
+    const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
     const [rowData, setRowData] = React.useState<Type_IRow[]>([])
     const [colDefs] = React.useState<ColDef[]>([
+        { field: 'type' },
         { field: 'name', filter: true },
         { field: 'population' },
         { field: 'countryName' },
@@ -28,11 +44,28 @@ function AG_GridTable(props: Type_forLocationInfoResult): JSX.Element {
         setRowData(services_ChangeTheObjectForTheTable(props.respoDATA));
     }, [JSON.stringify(props.respoDATA)])
 
+    const onCellClicked = (e: RowSelectedEvent) => {
+        const SELECT_COORDIANTE = e.data.coodrinate;
+        const COORDINATE_NUMB_FORMATE: number[] = SELECT_COORDIANTE.split(',').map((coord: string) => parseFloat(coord.trim()));
+        const NAME_LOCATION = e.data.name
+
+        const UPDATE_DATA = {
+            address: NAME_LOCATION,
+            latLng: COORDINATE_NUMB_FORMATE,
+        }
+
+        updateContext_DATA([
+            { newData: UPDATE_DATA, key: "startPoints" },
+        ]);
+    }
+
+
 
     return (
-        <div className={"ag-theme-quartz-dark"}
-            style={{ width: '100%', height: '100%' }}>
+        <div className="ag-theme-alpine-dark">
             <AgGridReact
+                rowSelection={'multiple'}
+                onRowClicked={onCellClicked}
                 rowData={rowData}
                 columnDefs={colDefs}
                 defaultColDef={defaultColDef}

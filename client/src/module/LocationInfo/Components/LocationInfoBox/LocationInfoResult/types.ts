@@ -5,7 +5,8 @@ export type Type_forLocationInfoResult = {
     respoDATA: Type_CityInfo_RAW_Data[]
 };
 
-export type Type_IRow =  {
+export type Type_IRow = {
+    type: string,
     name: string,
     population: number,
     countryName: string,

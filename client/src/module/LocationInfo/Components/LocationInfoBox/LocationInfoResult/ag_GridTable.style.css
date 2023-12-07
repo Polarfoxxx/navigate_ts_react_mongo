@@ -1,5 +1,14 @@
-.ag-theme-quartz-dark {
-    width: 100%;
-    height: 300px;
+@import "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap";
+@import "https://fonts.googleapis.com/css?family=Roboto";
 
+
+.ag-theme-alpine-dark {
+    width: 100%;
+    height: 100%;
+    --ag-grid-size: 5px;
+    --ag-header-foreground-color: rgb(113, 247, 10);
+    --ag-font-size: 12px;
+
+    --ag-control-panel-background-color: #7d0f0f44;
 }
+
