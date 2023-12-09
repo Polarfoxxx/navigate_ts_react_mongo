@@ -62,7 +62,7 @@ function RouteMachine() {
                     marker_icon = services_markerIcon.endIcon();
                     ident = "end_points";
                 } else {
-                    marker_icon = services_markerIcon.altIcon();
+                    marker_icon = services_markerIcon.addPointIcon(i);
                     ident = i;
                 }
                 var marker = L.marker(start.latLng, {

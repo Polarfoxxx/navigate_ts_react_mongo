@@ -9,4 +9,4 @@ export type Type_ALLCoordinateObjekt = {
 export type Type_forControlCLContent = {
     coordinate?: LatLngExpression
 };
-export type Type_ButtonName = "Start of your route" | "End of your route" | "Add between a point";
+export type Type_ButtonName = "Your position" | "End of your route" | "Add between a point";

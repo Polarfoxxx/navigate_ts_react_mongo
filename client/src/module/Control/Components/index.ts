@@ -20,7 +20,6 @@ export { default as SearchBussinesItemControl } from "./OffCanvasBoxInputsContro
 
 
 /* services */
-export { default as services_onClick_setStartEnd } from "./PoputsContentControl/OnClickMapContent/services/services_onClick_setStartEnd";
 export { default as ServicesFollowPointsOnTheMap } from "./DetailOfTheRoad/services/services_followPointsOnTheMap";
 export { default as services_navigationIcons } from "./DetailOfTheRoad/services/services_navigationIcons";
 export { default as SERVICES_CONVERSION_OF_UNIT_AND_TIME } from "../../utils/services_conversionOfUnitsAndTime/services_conversionOfUnitsAndTime";

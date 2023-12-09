@@ -5,6 +5,7 @@ import { Container } from "../../../../Container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowRight, faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { SearchBussinesItemControl } from "../..";
+import { latLng } from "leaflet-control-geocoder/dist/geocoders";
 
 
 function SearchBusiness(): JSX.Element {
@@ -15,13 +16,14 @@ function SearchBusiness(): JSX.Element {
 
     /* aky kontet sa ma zobrazit rozdelenie jedneho bodu alebo cesty */
     React.useEffect(() => {
-        if (startPoints.latLng[0] && !endPoints.latLng[0]) {
-            setSearchCompContent([<OnePointBussinessSearcheControl />, <SearchBussinesItemControl />])
-        } else if (startPoints.latLng[0] && endPoints.latLng[0]) {
-            setSearchCompContent([<RouteBussinessSearcheControl />, <SearchBussinesItemControl />])
-        } else {
-            setSearchCompContent(<NoContent />)
+            if (startPoints.latLng[0] && !endPoints.latLng[0]) {
+                setSearchCompContent([<OnePointBussinessSearcheControl />, <SearchBussinesItemControl />])
+            } else if (startPoints.latLng[0] && endPoints.latLng[0]) {
+                setSearchCompContent([<RouteBussinessSearcheControl />, <SearchBussinesItemControl />])
+            } else {
+                setSearchCompContent(<NoContent />)
         }
+      
     }, [startPoints.latLng[0], !endPoints.latLng[0]]);
 
 

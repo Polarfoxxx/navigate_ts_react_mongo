@@ -7,10 +7,10 @@ import { Type_CityInfo_RAW_Data } from "../../../API";
 function LocationInfoBox(): JSX.Element {
     const [respoDATA, setRespoDATA] = React.useState<Type_CityInfo_RAW_Data[]>([])
 
-    React.useEffect(() => {
+ /*    React.useEffect(() => {
         fetchLocationInfoData();
     }, []);
-
+ */
 
     async function fetchLocationInfoData() {
         try {

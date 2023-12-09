@@ -2,9 +2,9 @@
 import React from "react";
 import "./onClickMapContent.style.css"
 import { Container } from "../../../../Container";
-import services_onClick_setStartEnd from "./services/services_onClick_setStartEnd";
 import { Type_ButtonName } from "./types";
 import { UseChangeContextDATA } from "../../../../hooks";
+import { services_SetStart_End_Add_positionToObjekt } from "../../../../utils";
 
 type Type_forControlMapCLcontent = {
     click?: string
@@ -15,13 +15,13 @@ function OnClickMapContent(props: Type_forControlMapCLcontent): JSX.Element {
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
     const { startPoints, endPoints, arrayALL_coordinate } = location_DATA, { clickOnMap } = sideWays_DATA
     const [locationName, setLocationName] = React.useState("");
-    const [buttonName, setButtonName] = React.useState<Type_ButtonName>("Start of your route");
+    const [buttonName, setButtonName] = React.useState<Type_ButtonName>("Your position");
 
     React.useEffect(() => {
         let buttonName: Type_ButtonName;
         switch (true) {
             case !startPoints.address:
-                buttonName = "Start of your route";
+                buttonName = "Your position";
                 break;
             case !endPoints.address:
                 buttonName = "End of your route";
@@ -33,11 +33,11 @@ function OnClickMapContent(props: Type_forControlMapCLcontent): JSX.Element {
         setButtonName(buttonName);
     }, [startPoints.address, endPoints.address, arrayALL_coordinate]);
 
+    
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation(); /* zabranuje prebublavaniu */
-
         updateContext_DATA([
-            { newData: services_onClick_setStartEnd(location_DATA, sideWays_DATA), key: "location_DATA" },
+            { newData: services_SetStart_End_Add_positionToObjekt({ location_DATA, sideWays_DATA }), key: "location_DATA" },
             { newData: false, key: "popup_event" },
         ]);
     };
@@ -71,9 +71,7 @@ function OnClickMapContent(props: Type_forControlMapCLcontent): JSX.Element {
                     <h4>Position set:</h4>
                 </div>
                 <div className="locationContent">
-                    {
-                        locationName
-                    }
+                    {locationName}
                 </div>
             </div>
             <div className="buttonBox">
@@ -83,9 +81,7 @@ function OnClickMapContent(props: Type_forControlMapCLcontent): JSX.Element {
                 </button>
             </div>
             <div>
-                {
-                    props.click && <div>{props.click}</div>
-                }
+                {props.click && <div>{props.click}</div>}
             </div>
         </div>
     )

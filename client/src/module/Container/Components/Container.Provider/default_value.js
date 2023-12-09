@@ -21,7 +21,7 @@ export const defaultValue_address_for_Provider_Context = {
 export const defaultValue_sideways_for_Provider_Context = {
     clickOnMap: {
         address: "",
-        latLng: null,
+        latLng: undefined,
     },
     navi_Machine: false,/* nepoziva sa */
 

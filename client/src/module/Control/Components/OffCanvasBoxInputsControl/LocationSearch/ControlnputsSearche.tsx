@@ -1,11 +1,12 @@
 import React from "react";
 import "./controlnputsSearche.style.css";
 import { Container } from "../../../../Container";
-import { GeocoderInputSearche, services_setALL_location } from "../../../../Geocoder";
+import { GeocoderInputSearche} from "../../../../Geocoder";
 import { Type_forGeocoderInput, Type_Action_ControlnputsSearche, Type_State_ControlnputsSearche } from "../type";
 import services_changeNamefor_Label from "./services/services_changeNamefor_Label";
 import { UseChangeContextDATA } from "../../../../hooks";
 import { DEFAULT_VALUE_FOR_REDUCER_CONTROL_INPUT_SEARCH } from "../defaultValue";
+import { services_SetStart_End_Add_positionToObjekt } from "../../../../utils";
 
 
 /* useReducer ----------------------------*/
@@ -71,12 +72,12 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
     };
 
     if (typeof input_ident === "number") {
-        const NEW_DATA = arrayALL_coordinate;
-        NEW_DATA.splice(input_ident, 1);
-        updateContext_DATA([
-          { newData: NEW_DATA, key: "arrayALL_coordinate" },
-        ]);
-        dispatch({ type: "SET_QUERY", payload: "" }) 
+      const NEW_DATA = arrayALL_coordinate;
+      NEW_DATA.splice(input_ident, 1);
+      updateContext_DATA([
+        { newData: NEW_DATA, key: "arrayALL_coordinate" },
+      ]);
+      dispatch({ type: "SET_QUERY", payload: "" })
     } else {
       if (input_ident === "start_point") {
         dispatch({ type: "SET_QUERY", payload: "" })
@@ -102,7 +103,7 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
 
   /* nastavenie mesta do inputov po kliku */
   React.useEffect(() => {
-      dispatch({ type: "SET_QUERY", payload: input_value })
+    dispatch({ type: "SET_QUERY", payload: input_value })
   }, [input_value]);
 
 
@@ -127,15 +128,18 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
   /* nastavenie hodnot z geocodera */
   const handleAddressClick = async (address: string) => {
     const coordinates = await geocoderService.getCoordinatesForAddress(address);
-    const GEO_DATA = {
-      address: address,
-      latLng: [coordinates?.lat, coordinates?.lon]
-    };
+    if (coordinates) {
+      const GEO_DATA = {
+        address: address,
+        latLng: [coordinates?.lat, coordinates?.lon]
+      };
 
-    updateContext_DATA([
-      { newData: services_setALL_location({ location_DATA, GEO_DATA, input_ident }), key: "location_DATA" }
-    ]);
-    dispatch({ type: "SET_RESULT_OPEN", payload: false }); // Zavřít seznam po výběru adresy
+      updateContext_DATA([
+        { newData: services_SetStart_End_Add_positionToObjekt({ location_DATA, sideWays_DATA, GEO_DATA,input_ident }), key: "location_DATA" }
+      ]);
+      dispatch({ type: "SET_RESULT_OPEN", payload: false }); // Zavřít seznam po výběru adresy
+    }
+
   };
 
 

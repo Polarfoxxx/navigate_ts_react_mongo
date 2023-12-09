@@ -18,7 +18,7 @@ function Maps() {
     console.log("map");
     const mapRef = React.useRef(null);
     const containerRef = React.useRef<HTMLDivElement | null>(null);
-    const CENTER_MAP: LatLngExpression = [40.72498136513723, -73.995302658492366];
+    const CENTER_MAP: LatLngExpression = [48.8459792673620, 17.232557500116];
 
     return (
         <div

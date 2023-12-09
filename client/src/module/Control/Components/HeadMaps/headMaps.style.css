@@ -1,26 +1,28 @@
 .headerLocName {
     width: 100%;
     height: 100%;
+
+    & .headarLocName_Box {
+        width: 100%;
+        height: 170px;
+        min-height: 150px;
+        overflow: hidden;
+
+        & .startEndLocation {
+            width: auto;
+            min-height: 27px;
+            margin-top: 6px;
+            border-radius: 7px;
+            z-index: 99;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+        }
+    }
 }
 
-.headerLocName .headarLocName_Box {
-    width: 100%;
-    height: 170px;
-    min-height: 150px;
-    overflow: hidden;
-}
 
-.headerLocName .headarLocName_Box .startEndLocation {
-    width: auto;
-    min-height: 27px;
-    margin-top: 6px;
-    border-radius: 7px;
-    z-index: 99;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-}
 
 .headerLocName .headarLocName_Box .startEndLocationActive {
     width: auto;

@@ -6,6 +6,7 @@ import { Type_SearchRespo_EDITED_DATA } from "../../../Container";
 import MarkersBussinessAndIncidents from "../MarkersBussinessAndIncidents/MarkersBussinessAndIncidents";
 import L from "leaflet";
 import { UseChangeContextDATA } from "../../../hooks";
+import { SERVICES_MARKER_ICON } from "../../../RouteMchine";
 
 function MapSearch(): JSX.Element {
     const { location_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
@@ -19,7 +20,7 @@ function MapSearch(): JSX.Element {
 
 
     async function fetchSearchData() {
-        if (mapBussines_Category.typeSearch === "OnePointBussinessSearche" && mapBussines_Category.SIC_Data) {
+        if (mapBussines_Category.typeSearch === "OnePointBussinessSearche" && mapBussines_Category.SIC_Data && startPoints.latLng) {
             const UPDATE_DATA_CIRCLE_API: Type_forSearchAPI_Circle = {
                 coordinate_point: startPoints.latLng,
                 area: mapBussines_Category.SIC_Data.area,
@@ -92,11 +93,7 @@ function MapSearch(): JSX.Element {
                         position={item.fields.mqap_geography.latLng}
                         data={item}
                         key={key}
-                        icon={L.icon({
-                            iconUrl: `https://assets.mapquestapi.com/icon/v2/marker-000000-1c8899.png`,
-                            iconSize: [38, 45],
-                            iconAnchor: [19, 35],
-                        })}
+                        icon={SERVICES_MARKER_ICON.bussinesIcon()}
                     />
                 )
             };
