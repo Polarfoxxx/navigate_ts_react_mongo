@@ -5,7 +5,7 @@ class GeocoderInputSearche {
   async autoComplete(query: string): Promise<string[]> {
     try {
       const response = await axios.get(
-        `https://nominatim.openstreetmap.org/search?format=json&q=${query}`
+        `https://nominatim.openstreetmap.org/search?format=json&q=${query}&accept-language=en`
       );
       const autoResults: string[] = response.data.map(
         (result: { display_name: string }) => result.display_name
@@ -20,7 +20,7 @@ class GeocoderInputSearche {
   async getCoordinatesForAddress(address: string): Promise<{ lat: number; lon: number } | null> {
     try {
       const response = await axios.get(
-        `https://nominatim.openstreetmap.org/search?format=json&q=${address}`
+        `https://nominatim.openstreetmap.org/search?format=json&q=${address}&accept-language=en`
       );
       if (response.data.length > 0) {
         const coordinates = {

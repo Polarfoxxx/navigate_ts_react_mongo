@@ -6,11 +6,12 @@ export { default as AG_GridTable } from "./LocationInfoBox/LocationInfoResult/AG
 
 /* services */
 export { default as services_ChangeTheObjectForTheTable } from "./LocationInfoBox/LocationInfoResult/services/services_ChangeTheObjectForTheTable";
+export { default as services_changeLocationNameToCountryCode } from "./LocationInfoBox/services/services_changeLocationNameToCountryCode";
 
 
 /* types */
 export type {
     Type_forLocationInfoResult,
     Type_IRow,
-    
-}from "./LocationInfoBox/LocationInfoResult/types"
+
+} from "./LocationInfoBox/LocationInfoResult/types"

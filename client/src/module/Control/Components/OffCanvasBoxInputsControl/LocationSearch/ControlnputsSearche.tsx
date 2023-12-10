@@ -1,7 +1,7 @@
 import React from "react";
 import "./controlnputsSearche.style.css";
 import { Container } from "../../../../Container";
-import { GeocoderInputSearche} from "../../../../Geocoder";
+import { GeocoderInputSearche } from "../../../../Geocoder";
 import { Type_forGeocoderInput, Type_Action_ControlnputsSearche, Type_State_ControlnputsSearche } from "../type";
 import services_changeNamefor_Label from "./services/services_changeNamefor_Label";
 import { UseChangeContextDATA } from "../../../../hooks";
@@ -73,11 +73,20 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
 
     if (typeof input_ident === "number") {
       const NEW_DATA = arrayALL_coordinate;
-      NEW_DATA.splice(input_ident, 1);
+      const INDEX = NEW_DATA.findIndex(objekt => objekt.identObject === input_ident);
+      if (INDEX !== -1) {
+        NEW_DATA.splice(input_ident, 1);
+        // Zmena ident v objektoch
+        for (let i = 0; i < NEW_DATA.length; i++) {
+          NEW_DATA[i].identObject = i
+        };
+      };
+
       updateContext_DATA([
         { newData: NEW_DATA, key: "arrayALL_coordinate" },
       ]);
       dispatch({ type: "SET_QUERY", payload: "" })
+
     } else {
       if (input_ident === "start_point") {
         dispatch({ type: "SET_QUERY", payload: "" })
@@ -135,7 +144,7 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
       };
 
       updateContext_DATA([
-        { newData: services_SetStart_End_Add_positionToObjekt({ location_DATA, sideWays_DATA, GEO_DATA,input_ident }), key: "location_DATA" }
+        { newData: services_SetStart_End_Add_positionToObjekt({ location_DATA, sideWays_DATA, GEO_DATA, input_ident }), key: "location_DATA" }
       ]);
       dispatch({ type: "SET_RESULT_OPEN", payload: false }); // Zavřít seznam po výběru adresy
     }

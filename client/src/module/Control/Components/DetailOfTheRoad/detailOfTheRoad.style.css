@@ -1,7 +1,7 @@
 .detailOfTheRoad {
     width: 100%;
     min-height: 100px;
-    background-color: white;
+    background-color:#181d1f;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,13 +25,12 @@
 }
 
 .detailOfTheRoad .detailOfTheRoad_header:hover {
-    background-color: rgb(179, 179, 179);
+    background-color: rgb(137, 137, 137);
 }
 
 .detailOfTheRoad .detailOfTheRoad_totalInfo {
     width: 100%;
     height: 50px;
-    border: 1px solid red;
     display: flex;
     align-items: start;
     flex-direction: column;
@@ -75,7 +74,6 @@
     flex-direction: column;
     overflow: hidden;
     overflow-y: auto;
-    border: 1px solid green;
     padding-top: 5px;
     padding-bottom: 5px;
 }

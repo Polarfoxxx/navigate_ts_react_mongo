@@ -5,9 +5,12 @@ import {
 } from "./types";
 
 export default async function geocoder_coordSearche(CLICK_COORD: Type_fromGeocoderMapClickSearche): Promise<Type_returning_object> {
-  const provider = new OpenStreetMapProvider();
+  const provider = new OpenStreetMapProvider({
+    params: {
+      'accept-language': 'en',
+    },
+  });
   const searchQuery = `${CLICK_COORD[0]}, ${CLICK_COORD[1]}`;
-
   try {
     const result = await provider.search({ query: searchQuery });
 
@@ -16,7 +19,7 @@ export default async function geocoder_coordSearche(CLICK_COORD: Type_fromGeocod
 
       const update_data: Type_returning_object = {
         address: firstResult.label,
-        latLng: [CLICK_COORD[0],CLICK_COORD[1]],     /*  [firstResult.y, firstResult.x]  ak chcem aby sa coord viazali na dom */
+        latLng: [CLICK_COORD[0], CLICK_COORD[1]],     /*  [firstResult.y, firstResult.x]  ak chcem aby sa coord viazali na dom */
         type: "clickToMap"
       };
 

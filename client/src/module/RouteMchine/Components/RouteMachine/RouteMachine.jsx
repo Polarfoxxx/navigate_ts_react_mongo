@@ -20,11 +20,11 @@ function RouteMachine() {
     const [routes, setRoutes] = React.useState([]);
 
     React.useEffect(() => {
-        console.log("runmacchien");
+       
         const START_POINT = startPoints;
         const END_POINT = endPoints;
         const ADD_CORD_POINT =  arrayALL_coordinate.map((item) => item.latLng);
-
+        console.log(arrayALL_coordinate);
         /* pousun mapy na prvy marker */
         if (START_POINT.address && !END_POINT.address) {
             MAP.flyTo([START_POINT.latLng[0], START_POINT.latLng[1]]);

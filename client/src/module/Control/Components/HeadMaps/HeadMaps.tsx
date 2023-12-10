@@ -60,7 +60,7 @@ function HeadMaps(): JSX.Element {
                             <div
                                 className="addLocation_item"
                                 key={key}>
-                                <h4>- {item.address}</h4>
+                                <h4>{key + 1}. - {item.address}</h4>
                             </div>
                         )
                     }

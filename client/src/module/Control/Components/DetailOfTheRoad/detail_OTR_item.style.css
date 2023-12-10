@@ -6,9 +6,11 @@
     justify-content: center;
     cursor: pointer;
     padding: 2px;
+    color: rgb(188, 188, 188);
 }
-.route_item:hover{
-    background-color: rgb(205, 205, 205);
+
+.route_item:hover {
+    background-color: rgb(0, 0, 0);
 }
 
 .route_item>div {
@@ -65,15 +67,16 @@
     height: 100%;
     overflow-y: auto;
 }
-.route_item .roadAndText .text{
+
+.route_item .roadAndText .text {
     border-bottom: 1px solid rgba(181, 5, 5, 0.233);
 }
 
 /* ------------------------ */
 .route_item .exit {
     width: 25%;
-     font-size: 12px;
-     padding: 3px;
+    font-size: 12px;
+    padding: 3px;
 }
 
 /* ------------------------ */

@@ -1,8 +1,10 @@
 import axios from "axios";
 import { Type_CityInfo_RAW_Data } from "./types";
+import lookup from 'country-code-lookup';
 
 
-async function locationInfoAPI(): Promise<Type_CityInfo_RAW_Data[]> {
+async function locationInfoAPI(INFO_COUNTRY: lookup.SearchOutput): Promise<Type_CityInfo_RAW_Data[]> {
+const COUTRY_CODE = INFO_COUNTRY?.iso2;
 
     const options = {
         method: 'GET',
@@ -10,7 +12,7 @@ async function locationInfoAPI(): Promise<Type_CityInfo_RAW_Data[]> {
         params: {
             type: 'CITY',
             skip: '0',
-            country: 'US',
+            country: COUTRY_CODE,
             limit: '100',
 
         },
@@ -21,9 +23,12 @@ async function locationInfoAPI(): Promise<Type_CityInfo_RAW_Data[]> {
     };
 
     try {
-        const RESPO_DATA = await axios.request(options);
-        const RESPO_RAW_DATA: Type_CityInfo_RAW_Data[] = RESPO_DATA.data;
-        return RESPO_RAW_DATA;
+        if(COUTRY_CODE) {
+            const RESPO_DATA = await axios.request(options);
+            const RESPO_RAW_DATA: Type_CityInfo_RAW_Data[] = RESPO_DATA.data;
+            return RESPO_RAW_DATA;
+        }
+      return []
     } catch (error) {
         console.error(error);
         return []

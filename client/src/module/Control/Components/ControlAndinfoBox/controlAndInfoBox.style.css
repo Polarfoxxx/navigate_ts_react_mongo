@@ -1,9 +1,9 @@
-.controlAndinfoBox{
+.controlAndinfoBox {
     width: 100%;
     height: 100%;
 }
 
-.controlAndinfoBox .offCanvasBox_box{
+.controlAndinfoBox .offCanvasBox_box {
     width: 100%;
     height: 25%;
     display: flex;
@@ -12,7 +12,7 @@
     flex-direction: column;
 }
 
-.controlAndinfoBox .offCanvasBox_box .offCanvasBoxTextContent{
+.controlAndinfoBox .offCanvasBox_box .offCanvasBoxTextContent {
     width: 100%;
     height: 70%;
     display: flex;
@@ -24,17 +24,15 @@
     flex-direction: column;
 }
 
-.controlAndinfoBox .offCanvasBoxCanvas .offCanvasBoxCanvas{
+.controlAndinfoBox .offCanvasBoxCanvas .offCanvasBoxCanvas {
     width: 100%;
     height: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.controlAndinfoBox .control_detailOfTheRoad_box{
+
+.controlAndinfoBox .control_detailOfTheRoad_box {
     width: 100%;
     height: 75%;
-    background-color: rgba(156, 156, 156, 0.578);
-   
 }
-
