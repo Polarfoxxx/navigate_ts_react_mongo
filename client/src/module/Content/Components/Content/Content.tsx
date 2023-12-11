@@ -3,9 +3,7 @@ import { ControlAndinfoBox } from "../../../Control";
 import { MapAndHeaderBox } from "../../../Maps";
 import { LocationInfoBox } from "../../../LocationInfo";
 import { Header } from "../../../HeaderAndFooter/Components";
-
-
-
+import { ImageLocation } from "../../../ImageLocation";
 
 function Content() {
     return (
@@ -25,6 +23,9 @@ function Content() {
                     </div>
                     <div className='locationInfobox'>
                         <LocationInfoBox />
+                    </div>
+                    <div className="locationImageBox">
+                        <ImageLocation />
                     </div>
                 </section>
                 <footer>

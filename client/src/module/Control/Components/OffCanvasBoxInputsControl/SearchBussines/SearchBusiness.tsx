@@ -22,8 +22,7 @@ function SearchBusiness(): JSX.Element {
                 setSearchCompContent([<RouteBussinessSearcheControl />, <SearchBussinesItemControl />])
             } else {
                 setSearchCompContent(<NoContent />)
-        }
-      
+        };
     }, [startPoints.latLng[0], !endPoints.latLng[0]]);
 
 
@@ -40,7 +39,7 @@ function SearchBusiness(): JSX.Element {
                 </div>
                 <div className="searchBoxbutton">
                     {
-                       /*  mapBussines_Category.allResultDATA && mapBussines_Category.allResultDATA?.length > 0 && */
+                        mapBussines_Category.allResultDATA && mapBussines_Category.allResultDATA?.length > 0 && 
                         <button onClick={handleResultClick}>
                             <div>
                                 {
@@ -63,10 +62,8 @@ function SearchBusiness(): JSX.Element {
                         searchCompContent
                     }
                 </div>
-
             </section>
         </div>
-
     )
 };
 

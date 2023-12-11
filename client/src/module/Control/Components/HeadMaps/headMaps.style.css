@@ -6,7 +6,7 @@
 
     & .headarLocName_Box {
         width: 100%;
-        height: 170px;
+        height: 160px;
         min-height: 150px;
         overflow: hidden;
 
@@ -47,7 +47,7 @@
 
 .headerLocName .headarLocName_Box .addedLocation {
     width: auto;
-    height: 100px;
+    height: 85px;
     overflow-y: auto;
     background-color: #97969600;
     padding-left: 30px;

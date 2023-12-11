@@ -5,6 +5,7 @@ import { locationInfoAPI, Type_CityInfo_RAW_Data } from "../../../API";
 import { Container } from "../../../Container";
 import { UseChangeContextDATA } from "../../../hooks";
 import lookup from  'country-code-lookup';
+import imageLocation_API from "../../../API/imageLocation.API/imageLocation_API";
 
 
 function LocationInfoBox(): JSX.Element {
@@ -13,12 +14,13 @@ function LocationInfoBox(): JSX.Element {
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
     const [respoDATA, setRespoDATA] = React.useState<Type_CityInfo_RAW_Data[]>([])
 
+
+    imageLocation_API()
+
     React.useEffect(() => {
        const INFO_COUNTRY = services_changeLocationNameToCountryCode(location_DATA)
         fetchLocationInfoData(INFO_COUNTRY);
-        
     }, [startPoints.address, endPoints.address]);
-
 
     async function fetchLocationInfoData(INFO_COUNTRY: lookup.SearchOutput) {
         try {

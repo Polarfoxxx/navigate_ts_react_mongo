@@ -52,8 +52,9 @@ function AG_GridTable(props: Type_forLocationInfoResult): JSX.Element {
         const UPDATE_DATA = {
             address: NAME_LOCATION,
             latLng: COORDINATE_NUMB_FORMATE,
-        }
+        };
 
+        
         updateContext_DATA([
             { newData: UPDATE_DATA, key: "startPoints" },
         ]);
