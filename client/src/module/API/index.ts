@@ -1,6 +1,7 @@
 export { default as traffic_Incidents_API } from "./trafficIncidents.API/traffic_Incidents";
 export { default as SEARCH_BUSSINES_API } from "./search.API/searchAPI";
 export { default as locationInfoAPI } from "./locationInfo.API/locationInfoAPI";
+export { default as imageLocation_API } from "./imageLocation.API/imageLocation_API";
 
 /* type */
 export type {
@@ -18,6 +19,11 @@ export type {
     Type_AdminDivision1,
     Type_AdminDivision2
 } from "./locationInfo.API/types";
+
+export type {
+    Type_Respo_UnsplashPhoto,
+    Type_Respo_UnsplashPhoto_links
+} from "./imageLocation.API/types";
 
 
 /* service */

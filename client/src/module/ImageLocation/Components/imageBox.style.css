@@ -1,0 +1,28 @@
+.imageBox{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.imageBox .imageBoxContent{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-x: auto;
+
+}
+.imageBox .imageBoxContent  .img_item{
+    width: 20%;
+    height:auto;
+    border: 1px solid orange;
+    object-fit:contain;
+
+}
+.imageBox .imageBoxContent  .img_item >img {
+    width: 100%;
+    height: 100%;
+}
+

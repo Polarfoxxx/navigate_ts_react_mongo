@@ -14,9 +14,6 @@ function LocationInfoBox(): JSX.Element {
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
     const [respoDATA, setRespoDATA] = React.useState<Type_CityInfo_RAW_Data[]>([])
 
-
-    imageLocation_API()
-
     React.useEffect(() => {
        const INFO_COUNTRY = services_changeLocationNameToCountryCode(location_DATA)
         fetchLocationInfoData(INFO_COUNTRY);

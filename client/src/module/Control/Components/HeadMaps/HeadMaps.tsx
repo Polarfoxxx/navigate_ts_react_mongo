@@ -6,7 +6,6 @@ import { UseChangeContextDATA } from "../../../hooks";
 import { DEFAULT_VALUE_FOR_REDUCER } from "./default_Value";
 import clsx from "clsx";
 
-
 /* useReducer ----------------------------*/
 const reducer = (state: Type_State_HeadMaps, action: Type_Action_HeadMaps) => {
     switch (action.type) {
