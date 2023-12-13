@@ -10,9 +10,9 @@ function services_SetStart_End_Add_positionToObjekt({
 }: TypeFor_services_SetStart_End_Add_positionToObjekt): Type_location_DATA {
 
 
-    if (!location_DATA.startPoints.address) {
+    if (!location_DATA.startPoints.address.label) {
         return inclusionOnObjekt("startPoints")
-    } else if (!location_DATA.endPoints.address) {
+    } else if (!location_DATA.endPoints.address.label) {
         return inclusionOnObjekt("endPoints")
     } else return inclusionOnObjekt("")
 
@@ -22,7 +22,7 @@ function services_SetStart_End_Add_positionToObjekt({
             const UPDATE_OBJECT_NEW_LOCATION = {
                 ...location_DATA,
                 [objektName]: {
-                    address: GEO_DATA && GEO_DATA.address ? GEO_DATA.address : sideWays_DATA.clickOnMap.address,
+                    address: GEO_DATA &&GEO_DATA.address ? GEO_DATA.address : sideWays_DATA.clickOnMap.address,
                     latLng: GEO_DATA && GEO_DATA.latLng ? GEO_DATA.latLng : sideWays_DATA.clickOnMap.latLng ? sideWays_DATA.clickOnMap.latLng : []
                 },
             };
@@ -34,7 +34,6 @@ function services_SetStart_End_Add_positionToObjekt({
                 address: GEO_DATA && GEO_DATA.address ? GEO_DATA.address : sideWays_DATA.clickOnMap.address,
                 latLng: GEO_DATA && GEO_DATA.latLng ? GEO_DATA.latLng : sideWays_DATA.clickOnMap.latLng ? sideWays_DATA.clickOnMap.latLng : []
             };
-            console.log(COORDINATE_AND_ADDRESS);
 
             // Zistíme, či objekt už existuje v poli
             const index = location_DATA.arrayALL_coordinate.findIndex(item => {

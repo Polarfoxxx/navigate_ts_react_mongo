@@ -118,20 +118,31 @@ export type Type_ArrayALLRoute = {
 /* =========================================================== */
 export type Type_ALLCoordinateObjekt = {
   identObject?: string | number,
-  address: string;
+  address: Type_Addrress;
   latLng: number[];
 };
 export type Type_ArrayAllCoord = Type_ALLCoordinateObjekt[];
 /* =========================================================== */
 /* =========================================================== */
+export type Type_Addrress = {
+  label: string;
+  country: string;
+  country_code: string;
+  county: string;
+  postcode: string;
+  region: string;
+  state: string;
+  town: string;
+};
+
 export type TypeStartAndEndPoint = {
-  address: string;
+  address: Type_Addrress;
   latLng: number[];
 };
 /* =========================================================== */
 /* =========================================================== */
 export type Type_OnClick_object = {
-  address: string;
+  address: Type_Addrress;
   latLng: number[] | undefined;
 };
 /* =========================================================== */

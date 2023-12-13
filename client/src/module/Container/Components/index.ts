@@ -19,7 +19,8 @@ export type {
     Type_OnePointBussinesControl,
     Type_RouteBussinesControl,
     Type_SearchRespo_EDITED_DATA,
-    TypeSelect_Route_Bussines
+    TypeSelect_Route_Bussines,
+    Type_Addrress
 } from "./Container.Provider/types";
 
 

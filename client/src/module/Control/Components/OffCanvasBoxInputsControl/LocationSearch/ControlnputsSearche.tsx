@@ -1,6 +1,6 @@
 import React from "react";
 import "./controlnputsSearche.style.css";
-import { Container } from "../../../../Container";
+import { Container,Type_Addrress } from "../../../../Container";
 import { GeocoderInputSearche } from "../../../../Geocoder";
 import { Type_forGeocoderInput, Type_Action_ControlnputsSearche, Type_State_ControlnputsSearche } from "../type";
 import services_changeNamefor_Label from "./services/services_changeNamefor_Label";
@@ -118,29 +118,29 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
 
   /* zatvaranie ul okna ak kliknem vedla */
   React.useEffect(() => {
-    const handleWindowClick = (e: MouseEvent) => {
-      const targetElement = e.target as HTMLElement;
+    const HANDLE_WIN_CLICK = (e: MouseEvent) => {
+      const TARGET_ELEMENT = e.target as HTMLElement;
       if (
-        targetElement.className !== "ul_result" && // Klik mimo ulko
-        !targetElement.classList.contains("geoInput") // Klik na vstupní pole (input)
+        TARGET_ELEMENT.className !== "ul_result" && // Klik mimo ulko
+        !TARGET_ELEMENT.classList.contains("geoInput") // Klik na vstupní pole (input)
       ) {
         dispatch({ type: "SET_RESULT_OPEN", payload: false });
       };
     };
-    window.addEventListener("click", handleWindowClick);
+    window.addEventListener("click", HANDLE_WIN_CLICK);
     return () => {
-      window.removeEventListener("click", handleWindowClick);
+      window.removeEventListener("click", HANDLE_WIN_CLICK);
     };
   }, []);
 
 
   /* nastavenie hodnot z geocodera */
   const handleAddressClick = async (address: string) => {
-    const coordinates = await geocoderService.getCoordinatesForAddress(address);
-    if (coordinates) {
+    const GEOCODER_DATA = await geocoderService.getCoordinatesForAddress(address);
+    if (GEOCODER_DATA) {
       const GEO_DATA = {
-        address: address,
-        latLng: [coordinates?.lat, coordinates?.lon]
+        address: GEOCODER_DATA,
+        latLng: [GEOCODER_DATA?.lat, GEOCODER_DATA?.lon]
       };
 
       updateContext_DATA([

@@ -2,7 +2,7 @@ import React from "react";
 import "./imageLocation.style.css";
 import { imageLocation_API, Type_Respo_UnsplashPhoto_links } from "../../API";
 import { Container } from "../../Container";
-import { services_LocationNamePartitionForLoadingTheImage, ImageBox } from "..";
+import { ImageBox } from "..";
 
 function ImageLocation(): JSX.Element {
     const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
@@ -11,14 +11,14 @@ function ImageLocation(): JSX.Element {
 
 
     React.useEffect(() => {
-        if (startPoints.address) {
+        if (startPoints.address.label) {
             fetchDATA()
         };
-    }, [location_DATA.startPoints.address]);
+    }, [location_DATA.startPoints.address.label]);
 
 
     async function fetchDATA() {
-        const LOCATION_NAME_FOR_API = services_LocationNamePartitionForLoadingTheImage(location_DATA);
+        const LOCATION_NAME_FOR_API = startPoints.address.town;
         try {
             const RESPO_DATA: Type_Respo_UnsplashPhoto_links[] = await imageLocation_API(LOCATION_NAME_FOR_API);
             setRespoDATA(RESPO_DATA);

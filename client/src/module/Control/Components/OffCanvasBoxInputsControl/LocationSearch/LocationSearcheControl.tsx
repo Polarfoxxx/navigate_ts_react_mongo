@@ -16,13 +16,13 @@ function LocationSearcheControl(): JSX.Element {
             <div className="strart_input_box stEnd">
                 <ControlnputsSearche
                     input_ident="start_point"
-                    input_value={startPoints.address} />
+                    input_value={startPoints.address.label} />
             </div>
 
             {/* medzi input */}
             <div className="sideways_box">
                 {
-                    endPoints.address && <ControlnputsSearche
+                    endPoints.address.label && <ControlnputsSearche
                         input_ident={0}
                         input_value={services_defaultInputValue(0, arrayALL_coordinate)} />
                 }
@@ -39,9 +39,9 @@ function LocationSearcheControl(): JSX.Element {
 
             {/* end input */}
             <div className="end_input_box stEnd">
-                {startPoints.address && <ControlnputsSearche
+                {startPoints.address.label && <ControlnputsSearche
                     input_ident="end_point"
-                    input_value={endPoints.address} />
+                    input_value={endPoints.address.label} />
                 }
             </div>
 

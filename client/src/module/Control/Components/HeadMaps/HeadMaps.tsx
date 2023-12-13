@@ -29,9 +29,9 @@ function HeadMaps(): JSX.Element {
     const [state, dispatch] = React.useReducer(reducer, DEFAULT_VALUE_FOR_REDUCER);
 
     React.useEffect(() => {
-        dispatch({ type: "START_POINTS_NAME", payload: startPoints.address });
-        dispatch({ type: "END_POINTS_NAME", payload: endPoints.address });
-    }, [startPoints.address, endPoints.address]);
+        dispatch({ type: "START_POINTS_NAME", payload: startPoints.address.label });
+        dispatch({ type: "END_POINTS_NAME", payload: endPoints.address.label });
+    }, [startPoints.address.label, endPoints.address.label]);
 
     const handleClickIncidents = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation(); /* zabranuje prebublavaniu */
@@ -59,7 +59,7 @@ function HeadMaps(): JSX.Element {
                             <div
                                 className="addLocation_item"
                                 key={key}>
-                                <h4>{key + 1}. - {item.address}</h4>
+                                <h4>{key + 1}. - {item.address.label}</h4>
                             </div>
                         )
                     }

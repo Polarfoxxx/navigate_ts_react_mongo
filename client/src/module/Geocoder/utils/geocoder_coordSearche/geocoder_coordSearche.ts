@@ -15,14 +15,19 @@ import {
       `${PROVIDER_URL}?q=${encodeURIComponent(SEARCH_QUERY)}&format=${FORMAT}&accept-language=${LANGUAGE}&addressdetails=1&limit=1`
     );
     if (RESPONSE.data) {
-      const RESULT = await RESPONSE.data;
-
-      if (RESULT.length > 0) {
-        const FIRST_RESULT = RESULT[0];
-        console.log(FIRST_RESULT);
+        const ADDRESS_DATA = {
+          label: RESPONSE.data[0].display_name,
+          country: RESPONSE.data[0].address.country,
+          country_code: RESPONSE.data[0].address.country_code,
+          county: RESPONSE.data[0].address.country,
+          postcode: RESPONSE.data[0].address.postcode,
+          region: RESPONSE.data[0].address.region,
+          state: RESPONSE.data[0].address.state,
+          town: RESPONSE.data[0].address.town,
+        }
 
         const UPDATE_DATA: Type_returning_object = {
-          address: FIRST_RESULT.display_name,
+          address: ADDRESS_DATA,
           latLng: [CLICK_COORD[0], CLICK_COORD[1]],
           type: "clickToMap",
         };
@@ -32,10 +37,6 @@ import {
         console.log("Place not found.");
         throw new Error("Place not found.");
       }
-    } else {
-      console.error('Error fetching data from OpenStreetMap API');
-      throw new Error('Error fetching data from OpenStreetMap API');
-    }
   } catch (error) {
     console.error('Error geocoding:', error);
     throw error;

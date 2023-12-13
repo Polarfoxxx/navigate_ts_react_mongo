@@ -25,7 +25,7 @@ function IncidentsToMap() {
         /* rozdelovac ak sa jedna o inceidety na trase alebo incidenty v celom okne */
         const MINI_SECTION = services_highestCoordInhTeAreasOf(location_DATA);
         const ALL_INCIDENTS_WIN = services_rectagleCoord_WinMap(mapsCurrentInfo.mapsRectangle);
-        const SECTION = location_DATA.endPoints.address ? MINI_SECTION : ALL_INCIDENTS_WIN
+        const SECTION = location_DATA.endPoints.address.label ? MINI_SECTION : ALL_INCIDENTS_WIN
 
         try {
             const DATA_API: Type_IncidentDATA_forMarker[] = await traffic_Incidents_API(SECTION, 1000, 1000);

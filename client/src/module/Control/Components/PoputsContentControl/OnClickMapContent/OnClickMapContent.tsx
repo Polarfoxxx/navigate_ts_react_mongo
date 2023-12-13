@@ -20,10 +20,10 @@ function OnClickMapContent(props: Type_forControlMapCLcontent): JSX.Element {
     React.useEffect(() => {
         let buttonName: Type_ButtonName;
         switch (true) {
-            case !startPoints.address:
+            case !startPoints.address.label:
                 buttonName = "Your position";
                 break;
-            case !endPoints.address:
+            case !endPoints.address.label:
                 buttonName = "End of your route";
                 break;
             default:
@@ -31,7 +31,7 @@ function OnClickMapContent(props: Type_forControlMapCLcontent): JSX.Element {
                 break;
         };
         setButtonName(buttonName);
-    }, [startPoints.address, endPoints.address, arrayALL_coordinate]);
+    }, [startPoints.address.label, endPoints.address.label, arrayALL_coordinate]);
 
     
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -44,7 +44,7 @@ function OnClickMapContent(props: Type_forControlMapCLcontent): JSX.Element {
 
 
     React.useEffect(() => {
-        setLocationName(clickOnMap.address)
+        setLocationName(clickOnMap.address.label)
     }, [clickOnMap]);
 
     return (

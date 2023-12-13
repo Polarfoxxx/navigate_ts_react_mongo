@@ -1,11 +1,24 @@
 
+
+const default_address = {
+    label:"",
+    country: "",
+    country_code: "",
+    county: "",
+    postcode: "",
+    region: "",
+    state: "",
+    town: ""
+};
+
+/* ----------------------------------------------------------- */
 export const defaultValue_address_for_Provider_Context = {
     startPoints: {
-        address: "",
+        address: default_address,
         latLng: [],
     },
     endPoints: {
-        address: "",
+        address:default_address,
         latLng: [],
     },
     arrayALL_coordinate: [],
@@ -20,7 +33,7 @@ export const defaultValue_address_for_Provider_Context = {
 
 export const defaultValue_sideways_for_Provider_Context = {
     clickOnMap: {
-        address: "",
+        address: default_address,
         latLng: undefined,
     },
     navi_Machine: false,/* nepoziva sa */
@@ -51,4 +64,7 @@ export const defaultValue_sideways_for_Provider_Context = {
         }
     }
 };
+/* ----------------------------------------------------------- */
+
+
 

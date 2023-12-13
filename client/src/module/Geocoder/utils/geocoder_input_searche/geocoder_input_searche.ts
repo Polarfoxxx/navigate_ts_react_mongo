@@ -1,9 +1,12 @@
 // GeocoderService.ts
 import axios from "axios";
+import { Type_respo_geocoderForAddress } from "./types";
+
 
 const PROVIDER_URL = 'https://nominatim.openstreetmap.org/search';
 const FORMAT = 'json';
 const LANGUAGE = 'en';
+
 class GeocoderInputSearche {
   async autoComplete(query: string): Promise<string[]> {
     try {
@@ -20,7 +23,8 @@ class GeocoderInputSearche {
     };
   };
 
-  async getCoordinatesForAddress(address: string): Promise<{ lat: number; lon: number } | null> {
+
+  async getCoordinatesForAddress(address: string): Promise<Type_respo_geocoderForAddress | null> {
     try {
       const RESPONSE = await axios.get(
         `${PROVIDER_URL}?format=${FORMAT}&q=${address}&accept-language=${LANGUAGE}&addressdetails=1&limit=1`
@@ -28,11 +32,19 @@ class GeocoderInputSearche {
       console.log(RESPONSE);
 
       if (RESPONSE.data.length > 0) {
-        const COORDINATES = {
+        const COORDINATES_AND_ADDRESS = {
+          label: RESPONSE.data[0].display_name,
+          country: RESPONSE.data[0].address.country,
+          country_code: RESPONSE.data[0].address.country_code,
+          county: RESPONSE.data[0].address.country,
+          postcode: RESPONSE.data[0].address.postcode,
+          region: RESPONSE.data[0].address.region,
+          state: RESPONSE.data[0].address.state,
+          town: RESPONSE.data[0].address.town,
           lat: parseFloat(RESPONSE.data[0].lat),
           lon: parseFloat(RESPONSE.data[0].lon),
         };
-        return COORDINATES;
+        return COORDINATES_AND_ADDRESS;
       } else {
         return null;
       };

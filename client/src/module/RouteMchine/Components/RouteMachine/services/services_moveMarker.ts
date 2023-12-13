@@ -16,17 +16,17 @@ export default async function services_moveMarker({
       if (GEOCODER_DATA) {
         const UPDATED_ARRAY = [...location_DATA.arrayALL_coordinate];
         if (typeof markerIdent === "number") {
-          UPDATED_ARRAY[markerIdent - 1] = GEOCODER_DATA;
+         /*  UPDATED_ARRAY[markerIdent - 1] = GEOCODER_DATA.address; */
         };
         if (markerIdent === "start_points") {
           return {
             ...location_DATA,
-            startPoints: GEOCODER_DATA,
+            startPoints: GEOCODER_DATA.address,
           };
         } else if (markerIdent === "end_points") {
           return {
             ...location_DATA,
-            endPoints: GEOCODER_DATA,
+            endPoints: GEOCODER_DATA.address,
           };
         } else if (typeof (markerIdent) === "number") {
           return {

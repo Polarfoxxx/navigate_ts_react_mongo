@@ -26,7 +26,7 @@ function RouteMachine() {
         const ADD_CORD_POINT =  arrayALL_coordinate.map((item) => item.latLng);
         console.log(arrayALL_coordinate);
         /* pousun mapy na prvy marker */
-        if (START_POINT.address && !END_POINT.address) {
+        if (START_POINT.address.label && !END_POINT.address.label) {
             MAP.flyTo([START_POINT.latLng[0], START_POINT.latLng[1]]);
         };
 
@@ -88,7 +88,7 @@ function RouteMachine() {
         return () => {
             MAP.removeControl(routingControl);
         };
-    }, [startPoints, endPoints,JSON.stringify(arrayALL_coordinate)]);
+    }, [startPoints, endPoints ,JSON.stringify(arrayALL_coordinate)]);
     /* ========================================================================= */
 
 

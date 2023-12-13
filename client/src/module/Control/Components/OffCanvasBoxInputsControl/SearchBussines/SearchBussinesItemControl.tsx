@@ -29,7 +29,7 @@ function SearchBussinesItemControl(): JSX.Element {
             ? (mapBussines_Category.select_Route_Bussines.select - 1)
             : mapBussines_Category.select_Route_Bussines.select;
         }
-    }, [location_DATA.endPoints.address])
+    }, [location_DATA.endPoints.address.label])
 
 
     /* ozbacenie bussines na zobrazenie zrasi */

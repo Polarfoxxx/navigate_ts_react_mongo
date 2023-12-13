@@ -6,3 +6,10 @@ export { default as GeocoderInputSearche } from "./geocoder_input_searche/geocod
 export type {
     Type_ALLCoordinateObjekt
 } from "./types";
+
+export type {
+    Type_respo_geocoderForAddress
+} from "./geocoder_input_searche/types";
+
+
+

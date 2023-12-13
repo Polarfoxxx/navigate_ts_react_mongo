@@ -15,7 +15,6 @@ function Provider({ children }: Props_Provider): JSX.Element {
     const [location_DATA, setLocation_DATA] = React.useState<Type_location_DATA>(defaultValue_address_for_Provider_Context);
     const [sideWays_DATA, setSideWays_DATA] = React.useState<Type_sideWays_DATA>(defaultValue_sideways_for_Provider_Context);
 
-
     return (
         <Context.Provider value={{ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA }}>
             {children}

@@ -17,6 +17,15 @@ export const DEFAULT_VALUE_FOR_INC_DATA = {
 };
 
 export const DEFAULT_VALUE_FOR_GEOCODER = {
-    address: "",
+    address:  {
+        label:"",
+        country: "",
+        country_code: "",
+        county: "",
+        postcode: "",
+        region: "",
+        state: "",
+        town: ""
+    },
     latLng: []
 }

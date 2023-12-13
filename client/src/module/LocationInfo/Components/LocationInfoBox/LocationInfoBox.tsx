@@ -17,7 +17,7 @@ function LocationInfoBox(): JSX.Element {
     React.useEffect(() => {
        const INFO_COUNTRY = services_changeLocationNameToCountryCode(location_DATA)
         fetchLocationInfoData(INFO_COUNTRY);
-    }, [startPoints.address, endPoints.address]);
+    }, [startPoints.address.label, endPoints.address.label]);
 
     async function fetchLocationInfoData(INFO_COUNTRY: lookup.SearchOutput) {
         try {

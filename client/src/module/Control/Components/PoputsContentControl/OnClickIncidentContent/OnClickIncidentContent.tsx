@@ -75,7 +75,7 @@ function OnClickIncidentContent(): JSX.Element {
                 </div>
                 <div className="inc_location">
                     <div className="block_title">Location:</div>
-                    <div>{geocoder.address}</div>
+                    <div>{geocoder.address.label}</div>
                 </div>
             </div>
         </div>
