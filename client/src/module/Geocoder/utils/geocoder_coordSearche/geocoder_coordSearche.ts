@@ -11,7 +11,7 @@ import {
   const SEARCH_QUERY = `${CLICK_COORD[0]}, ${CLICK_COORD[1]}`;
 
   try {
-    const RESPONSE = await axios(
+    const RESPONSE = await axios.get(
       `${PROVIDER_URL}?q=${encodeURIComponent(SEARCH_QUERY)}&format=${FORMAT}&accept-language=${LANGUAGE}&addressdetails=1&limit=1`
     );
     if (RESPONSE.data) {
