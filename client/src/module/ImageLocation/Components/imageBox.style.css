@@ -7,22 +7,29 @@
 }
 .imageBox .imageBoxContent{
     width: 100%;
-    height: 750px;
+    height: auto;
+    max-height: 750px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     overflow-x: auto;
+    justify-content: center;
 
 }
 .imageBox .imageBoxContent  .img_item{
-    width: 20%;
-    height:auto;
-    border: 1px solid orange;
+    width: auto;
+    height:300px;
+    border: 2px solid rgb(0, 0, 0);
+    overflow: hidden;
 }
 .imageBox .imageBoxContent  .img_item >img {
     width: 100%;
     height: 100%;
-    object-fit:cover;
-
+    object-fit: contain ;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.imageBox .imageBoxContent  .img_item >img:hover{
+    transform: scale(1.1);
 }
 

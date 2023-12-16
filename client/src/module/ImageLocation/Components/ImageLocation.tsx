@@ -9,12 +9,14 @@ function ImageLocation(): JSX.Element {
     const { startPoints } = location_DATA;
     const [respoDATA, setRespoDATA] = React.useState<Type_Respo_UnsplashPhoto_links[]>([])
 
+    console.log(startPoints.address);
 
     React.useEffect(() => {
-        if (startPoints.address.label) {
+        if (startPoints.address.town) {
+            
             fetchDATA()
         };
-    }, [location_DATA.startPoints.address.label]);
+    }, [location_DATA.startPoints.address]);
 
 
     async function fetchDATA() {

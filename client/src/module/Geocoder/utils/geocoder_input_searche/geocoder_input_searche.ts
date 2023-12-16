@@ -40,7 +40,7 @@ class GeocoderInputSearche {
           postcode: RESPONSE.data[0].address.postcode,
           region: RESPONSE.data[0].address.region,
           state: RESPONSE.data[0].address.state,
-          town: RESPONSE.data[0].address.town,
+          town:  RESPONSE.data[0].address.town || RESPONSE.data[0].address.suburb || RESPONSE.data[0].address.city,
           lat: parseFloat(RESPONSE.data[0].lat),
           lon: parseFloat(RESPONSE.data[0].lon),
         };

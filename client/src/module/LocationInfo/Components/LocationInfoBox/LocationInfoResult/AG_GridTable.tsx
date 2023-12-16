@@ -53,19 +53,14 @@ function AG_GridTable(props: Type_forLocationInfoResult): JSX.Element {
         const COORDINATE_NUMB_FORMATE: number[] = SELECT_COORDIANTE.split(',').map((coord: string) => parseFloat(coord.trim()));
         const NAME_LOCATION = e.data.name
         const GEOCODER_DATA = await geocoderService.getCoordinatesForAddress(NAME_LOCATION);
-
         const UPDATE_DATA = {
             address: GEOCODER_DATA,
             latLng: COORDINATE_NUMB_FORMATE,
         };
-
-
         updateContext_DATA([
             { newData: UPDATE_DATA, key: "startPoints" },
         ]);
-    }
-
-
+    };
 
     return (
         <div className="ag-theme-alpine-dark">
