@@ -1,7 +1,7 @@
 import React from "react";
 import "./location_info_box.style.css"
 import { LocationInfoGeocoderInput, LocationInfoResult, services_changeLocationNameToCountryCode } from "..";
-import { locationInfoAPI, Type_CityInfo_RAW_Data } from "../../../API";
+import { locationInfo_API, Type_CityInfo_RAW_Data } from "../../../API";
 import { Container } from "../../../Container";
 import { UseChangeContextDATA } from "../../../hooks";
 import lookup from  'country-code-lookup';
@@ -21,7 +21,7 @@ function LocationInfoBox(): JSX.Element {
 
     async function fetchLocationInfoData(INFO_COUNTRY: lookup.SearchOutput) {
         try {
-            const DATA_API = await locationInfoAPI(INFO_COUNTRY);
+            const DATA_API = await locationInfo_API(INFO_COUNTRY);
             setRespoDATA(DATA_API)
             console.log(DATA_API);
         } catch (error) {

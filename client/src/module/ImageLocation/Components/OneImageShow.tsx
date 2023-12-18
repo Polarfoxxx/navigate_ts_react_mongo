@@ -15,16 +15,17 @@ function OneImageShow(props: Type_ForOneImageShow): JSX.Element {
         setImageSRC(props.IMAGE_SRC)
     }, [props.IMAGE_SRC])
 
-    const handleImageClick = (e: React.MouseEvent<HTMLImageElement>) => {
+    const handleImageClick = (e: React.MouseEvent<HTMLElement>) => {
         props.setImageShow(false)
     };
 
 
 
     return (
-        <div className="oneImageContent">
+        <div className="oneImageContent"
+        onClick={handleImageClick}>
             <img 
-            onClick={handleImageClick}
+        
             src={imageSRC} alt="" />
         </div>
     );

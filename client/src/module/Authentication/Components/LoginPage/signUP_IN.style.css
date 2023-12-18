@@ -53,6 +53,10 @@
     margin-top: 10px;
 }
 
+.signUP_IN .signContainer>form>input:autofill{
+    filter:none;
+}
+
 .signUP_IN .signContainer>form>button {
     margin-top: 20px;
     width: 90px;

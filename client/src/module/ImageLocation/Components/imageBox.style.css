@@ -27,9 +27,9 @@
     height: 100%;
     object-fit: contain ;
     cursor: pointer;
-    transition: 0.4s;
+    filter: grayscale(100%);
 }
 .imageBox .imageBoxContent  .img_item >img:hover{
-    transform: scale(1.1);
+    filter: none;
 }
 
