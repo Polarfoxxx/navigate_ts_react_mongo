@@ -1,6 +1,6 @@
 import React from "react";
 import "./signUP_IN.style.css";
-import { authentication_API } from "../../../API";
+import { AUTHENTICATION_API } from "../../../API";
 import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import validator from "email-validator";
@@ -51,12 +51,13 @@ function SignUp(): JSX.Element {
 
     async function fetchDATA({ emailValue, passwordValue }: Type_forAuthentication_API) {
         try {
-            const DATA = await authentication_API({ emailValue, passwordValue })
-
+            const REGISTER_DATA = await AUTHENTICATION_API.registerNewUser_API({ emailValue, passwordValue });
+            console.log(REGISTER_DATA);
+            
         } catch (error) {
             console.error(error);
         };
-    }
+    };
 
 
     return (
@@ -65,17 +66,17 @@ function SignUp(): JSX.Element {
                 <div className="signContainerName">
                     <h1>Sign Up</h1>
                 </div>
-                <form
-                    onSubmit={(e) => handleSubmit(e, submit)}>
+                <form onSubmit={(e) => handleSubmit(e, submit)}>
                     <input
                         ref={el => (imputPassConfir.current.emailValue = el)}
                         name='emailValue'
+                        autoComplete="email"
                         placeholder="Email"
                         type="email" />
                     <input
                         ref={el => (imputPassConfir.current.passwordValue = el)}
                         name='passwordValue'
-                        type="password"
+                        type="text"
                         placeholder="Password" />
                     <input
                         ref={el => (imputPassConfir.current.passwordConfrmationValue = el)}

@@ -2,9 +2,11 @@
 const express = require("express");
 const app = express();
 app.use(express.json());
+const bcrypt = require('bcrypt');
 const Joi = require("joi");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const jwt = require('jsonwebtoken');
 const { json } = require("express");
 const Port = 4000;
 const mongo = "mongodb://127.0.0.1:27017/navigate";
@@ -25,7 +27,7 @@ mongoose
 const userSchema = new mongoose.Schema({
   username: String,
   password: String,
-  data: String
+  data: [{ text: String }]
 })
 
 const User = mongoose.model("user", userSchema)
@@ -33,38 +35,81 @@ const User = mongoose.model("user", userSchema)
 /* ---------------------------------------------------------------------------- */
 /* ---------------------------------------------------------------------------- */
 
-/* cretate product POST method -------------------------------------*/
+/* register POST method -------------------------------------*/
 app.post('/register/newUser', async (req, res) => {
-  const { username, password } = req.body;
-  console.log(username, password);
   try {
+    const { username, password } = req.body;
+
+    // Hashovanie hesla
+    const hashedPassword = await bcrypt.hash(password, 10);
     // Skontrolujte, či používateľ už neexistuje
     const existingUser = await User.findOne({ username });
+
     if (existingUser) {
       return res.status(400).json({ message: 'Používateľ už existuje.' });
     } else {
-      // Vytvorte nového používateľa
-      User.create(req.body)
-        .then((data) => { res.json(data) })
-        .catch((err) => { res.send(err) })
-    }
+      // Validácia dát pomocou Joi
+      const validateUser = Joi.object({
+        username: Joi.string().min(3).required(),
+        password: Joi.string().min(4).required(),
+      });
+
+      const validation = validateUser.validate({ username, password });
+      if (validation.error) {
+        res.status(400).json({ message: validation.error.details[0].message });
+      } else {
+        // Vytvorte nového používateľa
+        const newUser = {
+          username,
+          password: hashedPassword,
+          messages: [],
+        };
+        User.create(newUser)
+          .then((data) => res.json(data))
+          .catch((err) => {
+            console.error(err);
+            res.status(500).json({ message: 'Chyba pri registrácii.' });
+          });
+      };
+    };
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Chyba pri registrácii.' });
-  }
+  };
+});
+/* Login GET method -------------------------------------*/
+app.post('/login/user', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    /* hladanie uzivatela*/
+    const user = await User.findOne({ username });
+
+    if (user && await bcrypt.compare(password, user.password)) {
+      // Generovanie JWT s časovou expiráciou
+      const token = jwt.sign({ username }, 'secret', { expiresIn: '1h' });
+      res.json({ token }); 
+      console.log(token);
+    } else {
+      res.status(401).send('Invalid username or password');
+    };
+  } catch
+  (error) {
+    res.status(500).send('Internal Server Error');
+  };
 });
 
-/*  // Vytvorte a pošlite JWT token
-      const token = jwt.sign({ username }, secretKey);
-      res.json({ token });
-    }; */
+// Middleware na overenie JWT pri každom requeste
+const authenticateToken = (req, res, next) => {
+  const token = req.header('Authorization');
+  if (!token) return res.status(401).send('Access denied');
+  jwt.verify(token, 'secret', (err, user) => {
+    if (err) return res.status(403).send('Invalid token');
+    req.user = user;
+    next();
+  });
+};
 
 
-/* validation */
-const validadeProduct = Joi.object({
-  productName: Joi.string().min(2).required(),
-  price: Joi.number().min(2).required(),
-})
 
 /* Display all product GET method -------------------------------------*/
 app.get("/api/listen/product", (req, res) => {
