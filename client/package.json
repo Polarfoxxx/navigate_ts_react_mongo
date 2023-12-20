@@ -24,6 +24,7 @@
     "email-validator": "^2.0.4",
     "foxxy_input_value": "^1.1.5",
     "foxxy-package": "^1.1.8",
+    "jwt-decode": "^4.0.0",
     "leaflet": "^1.9.4",
     "leaflet-control-geocoder": "^2.4.0",
     "leaflet-geosearch": "^3.8.0",

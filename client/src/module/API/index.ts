@@ -27,6 +27,11 @@ export type {
 } from "./imageLocation.API/types";
 
 
+export type {
+    Type_forLogin_respo_objekt
+} from "./authentication.API/types";
+
+
 /* service */
 export { default as services_setResponseDATA } from "./utils/services_setResponseDATA";
 

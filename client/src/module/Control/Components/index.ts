@@ -22,7 +22,7 @@ export { default as SearchBussinesItemControl } from "./OffCanvasBoxInputsContro
 /* services */
 export { default as ServicesFollowPointsOnTheMap } from "./DetailOfTheRoad/services/services_followPointsOnTheMap";
 export { default as services_navigationIcons } from "./DetailOfTheRoad/services/services_navigationIcons";
-export { default as SERVICES_CONVERSION_OF_UNIT_AND_TIME } from "../../utils/services_conversionOfUnitsAndTime/services_conversionOfUnitsAndTime";
+export { default as SERVICES_CONVERSION_OF_UNIT_AND_TIME } from "../../utils/servicesConversionOfUnitsAndTime/services_conversionOfUnitsAndTime";
 export { default as services_changeNamefor_Label } from "./OffCanvasBoxInputsControl/LocationSearch/services/services_changeNamefor_Label";
 export { default as services_defaultInputValue } from "./OffCanvasBoxInputsControl/LocationSearch/services/services_defaultInputValue";
 

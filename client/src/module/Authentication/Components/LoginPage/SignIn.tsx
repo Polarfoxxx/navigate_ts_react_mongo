@@ -5,6 +5,7 @@ import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import validator from "email-validator";
 import { Type_forAuthentication_API } from "..";
+import { useNavigate } from "react-router-dom";
 
 
 type Type_forInputElemets = {
@@ -13,6 +14,7 @@ type Type_forInputElemets = {
 };
 
 function SignIn(): JSX.Element {
+    const NAVIGATE = useNavigate();
     const { handleSubmit, reset } = useInputValue();
     const imputPassConfir = React.useRef<Type_forInputElemets>({
         emailValue: null,
@@ -43,8 +45,10 @@ function SignIn(): JSX.Element {
     async function fetchDATA({ emailValue, passwordValue }: Type_forAuthentication_API) {
         try {
             const LOGIN_DATA = await AUTHENTICATION_API.loginUser_API({ emailValue, passwordValue });
-            console.log(LOGIN_DATA);
-            
+            if (LOGIN_DATA?.status === 200) {
+                localStorage.setItem('JWT_token', JSON.stringify(LOGIN_DATA.JWT_token));
+                NAVIGATE("/Content");
+            };
         } catch (error) {
             console.error(error);
         };
