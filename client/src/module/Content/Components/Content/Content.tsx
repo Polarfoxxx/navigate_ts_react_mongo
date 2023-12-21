@@ -12,11 +12,13 @@ function Content() {
 const NAVIGATE = useNavigate();
 
 React.useEffect(() => {
+    console.log("content");
+    
     const JWT_FROM_STORAGE =  localStorage.getItem('JWT_token');
     if(JWT_FROM_STORAGE === null) {
-        NAVIGATE("Login");
+        NAVIGATE("/LoginPage");
     }else {
-        servicesJWTdecodeAndValidity(JWT_FROM_STORAGE)
+        !servicesJWTdecodeAndValidity(JWT_FROM_STORAGE) && NAVIGATE("/LoginPage")
     };
 });
 

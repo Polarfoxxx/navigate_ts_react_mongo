@@ -5,6 +5,7 @@ export type {
     Type_Provider_Context,
     Type_sideWays_DATA,
     Type_location_DATA,
+    Type_userDATA,
     Type_ArrayALLRoute,
     Type_forRouteChange,
     TypeStartAndEndPoint,

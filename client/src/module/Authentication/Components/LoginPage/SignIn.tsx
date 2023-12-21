@@ -6,7 +6,8 @@ import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import validator from "email-validator";
 import { Type_forAuthentication_API } from "..";
 import { useNavigate } from "react-router-dom";
-
+import { UseChangeContextDATA } from "../../../hooks";
+import { Container } from "../../../Container";
 
 type Type_forInputElemets = {
     emailValue: HTMLInputElement | null,
@@ -14,6 +15,8 @@ type Type_forInputElemets = {
 };
 
 function SignIn(): JSX.Element {
+    const { user_DATA, setUser_DATA } = React.useContext(Container.Context);
+    const { updateContext_DATA } = UseChangeContextDATA({ user_DATA, setUser_DATA });
     const NAVIGATE = useNavigate();
     const { handleSubmit, reset } = useInputValue();
     const imputPassConfir = React.useRef<Type_forInputElemets>({
@@ -21,11 +24,12 @@ function SignIn(): JSX.Element {
         passwordValue: null,
     });
 
+
     const submit = (v: TypeForInputsObject["v"]): void => {
         const emailValue = v[0].inputValues.toString();
         const passwordValue = v[1].inputValues;
 
-        /* valdicia dat */
+        /* valdicia dat oznacenie chybajucej hodnoty*/
         const VALIDATE_EMAIL = validator.validate(emailValue);
         if (VALIDATE_EMAIL) {
             imputPassConfir.current.emailValue!.style.backgroundColor = "";
@@ -48,11 +52,16 @@ function SignIn(): JSX.Element {
             if (LOGIN_DATA?.status === 200) {
                 localStorage.setItem('JWT_token', JSON.stringify(LOGIN_DATA.JWT_token));
                 NAVIGATE("/Content");
+                updateContext_DATA([
+                    { newData: LOGIN_DATA.user_name, key: "loginName" },
+                ]);
+            } else {
+
             };
         } catch (error) {
             console.error(error);
         };
-    }
+    };
 
 
     return (

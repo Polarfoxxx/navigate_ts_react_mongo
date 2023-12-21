@@ -28,7 +28,8 @@ export type {
 
 
 export type {
-    Type_forLogin_respo_objekt
+    Type_forLogin_respo_objekt,
+    Type_forSaveDATA_API
 } from "./authentication.API/types";
 
 

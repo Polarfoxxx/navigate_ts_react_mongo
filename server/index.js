@@ -87,6 +87,37 @@ app.post('/login/user', async (req, res) => {
     if (user && await bcrypt.compare(password, user.password)) {
       // Generovanie JWT s časovou expiráciou
       const token = jwt.sign({ username }, 'secret', { expiresIn: '1h' });
+      res.json({ token, username });
+    } else {
+      res.status(401).send('Invalid username or password');
+    };
+  } catch
+  (error) {
+    res.status(500).send('Internal Server Error');
+  };
+});
+
+// Middleware na overenie JWT pri každom ulozani dat
+const authenticateToken = (req, res, next) => {
+  const token = req.header('Authorization');
+  if (!token) return res.status(401).send('Access denied');
+  jwt.verify(token, 'secret', (err, user) => {
+    if (err) return res.status(403).send('Invalid token');
+    req.user = user;
+    next();
+  });
+};
+
+/* save GET method -------------------------------------*/
+app.post('/save/data', authenticateToken, async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    /* hladanie uzivatela*/
+    const user = await User.findOne({ username });
+
+    if (user && await bcrypt.compare(password, user.password)) {
+      // Generovanie JWT s časovou expiráciou
+      const token = jwt.sign({ username }, 'secret', { expiresIn: '1h' });
       res.json({ token }); 
       console.log(token);
     } else {
@@ -98,38 +129,7 @@ app.post('/login/user', async (req, res) => {
   };
 });
 
-// Middleware na overenie JWT pri každom requeste
-const authenticateToken = (req, res, next) => {
-  const token = req.header('Authorization');
-  if (!token) return res.status(401).send('Access denied');
-  jwt.verify(token, 'secret', (err, user) => {
-    if (err) return res.status(403).send('Invalid token');
-    req.user = user;
-    next();
-  });
-};
 
-
-
-/* Display all product GET method -------------------------------------*/
-app.get("/api/listen/product", (req, res) => {
-  Product.find()
-    .then(prod => { res.json(prod) })
-    .catch(() => console.log("chyba pri nacitani produktov"))
-})
-/* Delete product DELETE method -------------------------------------*/
-app.delete("/api/listen/product/delete/:id", (req, res) => {
-  Product.findByIdAndDelete(req.params.id)
-    .then((data) => { res.json(data) })
-    .catch((err) => console.log(err))
-})
-/* Find product GET method -------------------------------------*/
-app.get("/api/listen/product/:name", (req, res) => {
-  const name = req.params.name;
-  Product.find({ productName: name })
-    .then((data) => { res.json(data) })
-    .catch((err) => { console.log(err) })
-})
 
 
 /* const express = require('express');

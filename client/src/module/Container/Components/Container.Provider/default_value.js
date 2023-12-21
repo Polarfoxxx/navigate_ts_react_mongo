@@ -64,6 +64,9 @@ export const defaultValue_sideways_for_Provider_Context = {
         }
     }
 };
+export const default_UserDATA_for_Provider_Context = {
+    loginName: ""
+};
 /* ----------------------------------------------------------- */
 
 

@@ -1,4 +1,4 @@
-import { Type_location_DATA, Type_sideWays_DATA } from "../../Container";
+import { Type_location_DATA, Type_sideWays_DATA, Type_userDATA } from "../../Container";
 
 
 export type Type_updateContext_DATA = {
@@ -14,5 +14,7 @@ export type Type_ForUseChangeContextDATA = {
     location_DATA?: Type_location_DATA,
     setLocation_DATA?: React.Dispatch<React.SetStateAction<Type_location_DATA>>,
     sideWays_DATA?: Type_sideWays_DATA,
-    setSideWays_DATA?: React.Dispatch<React.SetStateAction<Type_sideWays_DATA>>
+    setSideWays_DATA?: React.Dispatch<React.SetStateAction<Type_sideWays_DATA>>,
+    user_DATA?: Type_userDATA,
+    setUser_DATA?: React.Dispatch<React.SetStateAction<Type_userDATA>>;
 };

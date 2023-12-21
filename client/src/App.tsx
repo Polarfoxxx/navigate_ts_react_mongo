@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {  Route, Routes } from 'react-router-dom';
 import { Container } from './module/Container';
 import { Content } from './module/Content';
 import { LoginPage } from './module/Authentication';
@@ -11,7 +11,7 @@ function App(): JSX.Element {
   const NAVIGATE = useNavigate();
 
   React.useEffect(() => {
-    localStorage.getItem("JWT_token") === null ? NAVIGATE("LoginPage") : NAVIGATE("Content")
+    localStorage.getItem("JWT_token") === null ? NAVIGATE("/LoginPage") : NAVIGATE("/Content")
   }, [])
 
 
