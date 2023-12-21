@@ -2,7 +2,7 @@ import { useMap } from "react-leaflet";
 import L from "leaflet";
 import React, { useEffect } from "react";
 import { Container } from "../../../../Container";
-import { SERVICES_MARKER_ICON } from "../../../../RouteMchine";
+import { SERVICES_MARKER_ICON } from "../../../../RouteMachine";
 
 function ServicesFollowPointsOnTheMap(): null {
     const MAP = useMap();

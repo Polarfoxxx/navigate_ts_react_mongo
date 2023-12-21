@@ -5,7 +5,6 @@ import { locationInfo_API, Type_CityInfo_RAW_Data } from "../../../API";
 import { Container } from "../../../Container";
 import { UseChangeContextDATA } from "../../../hooks";
 import lookup from  'country-code-lookup';
-import imageLocation_API from "../../../API/imageLocation.API/imageLocation_API";
 
 
 function LocationInfoBox(): JSX.Element {

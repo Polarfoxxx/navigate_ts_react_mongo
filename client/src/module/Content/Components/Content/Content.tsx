@@ -2,7 +2,7 @@ import React from "react";
 import "./content.style.css"
 import { ControlAndinfoBox } from "../../../Control";
 import { MapAndHeaderBox } from "../../../Maps";
-import { LocationInfoBox } from "../../../LocationInfo";
+import { LocationUserData } from "../../../LocationUserInfo";
 import { Header } from "../../../HeaderAndFooter/Components";
 import { ImageLocation } from "../../../ImageLocation";
 import {servicesJWTdecodeAndValidity} from "../../../utils/";
@@ -23,6 +23,7 @@ React.useEffect(() => {
 });
 
 
+
     return (
         <div className="content" >
             <div className="container">
@@ -39,7 +40,7 @@ React.useEffect(() => {
                         </div>
                     </div>
                     <div className='locationInfobox'>
-                        <LocationInfoBox />
+                        <LocationUserData />
                     </div>
                     <div className="locationImageBox">
                         <ImageLocation />

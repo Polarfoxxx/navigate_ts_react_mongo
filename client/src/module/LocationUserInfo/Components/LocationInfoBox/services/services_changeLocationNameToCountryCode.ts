@@ -1,4 +1,4 @@
-import { Type_location_DATA } from "../../../../Container";
+import { Type_location_DATA } from '../../../../Container';
 import lookup from  'country-code-lookup';
 
 function services_changeLocationNameToCountryCode(location_DATA: Type_location_DATA): lookup.SearchOutput {

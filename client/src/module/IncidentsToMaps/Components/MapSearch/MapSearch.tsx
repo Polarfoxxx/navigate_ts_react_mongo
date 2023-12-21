@@ -6,7 +6,7 @@ import { Type_SearchRespo_EDITED_DATA } from "../../../Container";
 import MarkersBussinessAndIncidents from "../MarkersBussinessAndIncidents/MarkersBussinessAndIncidents";
 import L from "leaflet";
 import { UseChangeContextDATA } from "../../../hooks";
-import { SERVICES_MARKER_ICON } from "../../../RouteMchine";
+import { SERVICES_MARKER_ICON } from "../../../RouteMachine";
 
 function MapSearch(): JSX.Element {
     const { location_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);

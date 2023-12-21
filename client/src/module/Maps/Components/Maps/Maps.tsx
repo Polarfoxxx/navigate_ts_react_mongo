@@ -6,7 +6,7 @@ import { LatLngExpression } from 'leaflet';
 import PoligonXXX from '../../../IncidentsToMaps/Components/poligonXXXXX/PoligonXXX';
 
 import { FilterMaps } from '../../../Maps/Components';
-import { RouteMachine } from '../../../RouteMchine';
+import { RouteMachine } from '../../../RouteMachine';
 import { IncidentsToMap } from '../../../IncidentsToMaps';
 import { MapHandler } from '../../Components';
 import { ServicesFollowPointsOnTheMap } from '../../../Control';

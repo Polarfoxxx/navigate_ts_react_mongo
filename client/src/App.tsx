@@ -20,7 +20,7 @@ function App(): JSX.Element {
       <Container.Provider>
           <Routes>
             <Route path="LoginPage" element={<LoginPage />} />
-            <Route path="Content" element={<Content />} />
+            <Route path="Content/*" element={<Content />} />
           </Routes>
       </Container.Provider>
 
