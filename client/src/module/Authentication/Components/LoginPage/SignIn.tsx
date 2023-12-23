@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { UseChangeContextDATA } from "../../../hooks";
 import { Container } from "../../../Container";
 
+
 type Type_forInputElemets = {
     emailValue: HTMLInputElement | null,
     passwordValue: HTMLInputElement | null,
@@ -50,16 +51,19 @@ function SignIn(): JSX.Element {
         try {
             const LOGIN_DATA = await AUTHENTICATION_API.loginUser_API({ emailValue, passwordValue });
             if (LOGIN_DATA?.status === 200) {
-                localStorage.setItem('JWT_token', JSON.stringify(LOGIN_DATA.JWT_token));
+                localStorage.setItem('JWT_token', JSON.stringify({
+                    JWT_token: LOGIN_DATA.JWT_token, 
+                    user_Name: LOGIN_DATA.user_name
+                }));
                 NAVIGATE("/Content");
                 updateContext_DATA([
                     { newData: LOGIN_DATA.user_name, key: "loginName" },
                 ]);
             } else {
-
+                alert(LOGIN_DATA);
             };
         } catch (error) {
-            console.error(error);
+            console.error("chyba v prihlaseni");
         };
     };
 

@@ -23,7 +23,6 @@ function App(): JSX.Element {
             <Route path="Content/*" element={<Content />} />
           </Routes>
       </Container.Provider>
-
     </div>
   );
 }

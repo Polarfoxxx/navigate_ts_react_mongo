@@ -5,23 +5,22 @@ import { MapAndHeaderBox } from "../../../Maps";
 import { LocationUserData } from "../../../LocationUserInfo";
 import { Header } from "../../../HeaderAndFooter/Components";
 import { ImageLocation } from "../../../ImageLocation";
-import {servicesJWTdecodeAndValidity} from "../../../utils/";
+import { servicesJWTdecodeAndValidity } from "../../../utils/";
 import { useNavigate } from "react-router-dom";
 
 function Content() {
-const NAVIGATE = useNavigate();
+    const NAVIGATE = useNavigate();
 
-React.useEffect(() => {
-    console.log("content");
-    
-    const JWT_FROM_STORAGE =  localStorage.getItem('JWT_token');
-    if(JWT_FROM_STORAGE === null) {
-        NAVIGATE("/LoginPage");
-    }else {
-        !servicesJWTdecodeAndValidity(JWT_FROM_STORAGE) && NAVIGATE("/LoginPage")
-    };
-});
-
+    React.useEffect(() => {
+            
+        const JWT_FROM_STORAGE = localStorage.getItem('JWT_token');
+        if (JWT_FROM_STORAGE === null) {
+            NAVIGATE("/LoginPage");
+        } else {
+            const USER_NAME_AND_KEY = JSON.parse(JWT_FROM_STORAGE);
+            !servicesJWTdecodeAndValidity(USER_NAME_AND_KEY.JWT_token) && NAVIGATE("/LoginPage")
+        };
+    });
 
 
     return (

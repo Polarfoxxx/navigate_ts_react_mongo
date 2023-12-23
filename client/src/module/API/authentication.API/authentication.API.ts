@@ -32,9 +32,9 @@ async function loginUser_API(props: Type_forAuthentication_API): Promise<Type_fo
     username: props.emailValue,
     password: props.passwordValue,
   };
-  
   try {
     const RESPO_DATA = await axios.post("http://localhost:4000/login/user", LOGIN_DATA)
+
     const LOGIN_RESPO_OBJEKT = {
       status: RESPO_DATA.status,
       JWT_token: RESPO_DATA.data.token,
@@ -42,11 +42,12 @@ async function loginUser_API(props: Type_forAuthentication_API): Promise<Type_fo
     };
     return LOGIN_RESPO_OBJEKT;
 
-  } catch (error) {
-    console.error(error);
-  }
+  }catch (error) {
+      if (axios.isAxiosError(error)) {
+       console.log(error.response);
+      };
+  };
 };
-
 
 /* --------------------------------------------------------------------------------------- */
 async function saveDATA_API(props: Type_forSaveDATA_API): Promise<any | undefined> {

@@ -62,7 +62,7 @@ app.post('/register/newUser', async (req, res) => {
         const newUser = {
           username,
           password: hashedPassword,
-          messages: [],
+          data: [],
         };
         User.create(newUser)
           .then((data) => res.json(data))
@@ -89,7 +89,7 @@ app.post('/login/user', async (req, res) => {
       const token = jwt.sign({ username }, 'secret', { expiresIn: '1h' });
       res.json({ token, username });
     } else {
-      res.status(401).send('Invalid username or password');
+      res.status(401).send("Unauthorized");
     };
   } catch
   (error) {
@@ -111,18 +111,17 @@ const authenticateToken = (req, res, next) => {
 /* save GET method -------------------------------------*/
 app.post('/save/data', authenticateToken, async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { coords } = req.body;
     /* hladanie uzivatela*/
     const user = await User.findOne({ username });
 
-    if (user && await bcrypt.compare(password, user.password)) {
-      // Generovanie JWT s časovou expiráciou
-      const token = jwt.sign({ username }, 'secret', { expiresIn: '1h' });
-      res.json({ token }); 
-      console.log(token);
-    } else {
-      res.status(401).send('Invalid username or password');
-    };
+    // Pridanie správy do poľa správ používateľa
+    user.data.push({ coords });
+    
+    // Uloženie aktualizovaného používateľa do databázy
+    await user.save();
+
+    res.status(201).send('Message saved');
   } catch
   (error) {
     res.status(500).send('Internal Server Error');

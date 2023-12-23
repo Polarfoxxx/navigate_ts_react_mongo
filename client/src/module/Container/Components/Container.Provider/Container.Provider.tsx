@@ -33,14 +33,15 @@ function Provider({ children }: Props_Provider): JSX.Element {
     const NAVIGATE = useNavigate();
 
     React.useEffect(() => {
-        const JWT_FROM_STORAGE =  localStorage.getItem('JWT_token');
-        if(JWT_FROM_STORAGE === null) {
+        console.log("constent");
+        const JWT_FROM_STORAGE = localStorage.getItem('JWT_token');
+        if (JWT_FROM_STORAGE === null) {
             NAVIGATE("/LoginPage");
-        }else {
+        } else {
             !servicesJWTdecodeAndValidity(JWT_FROM_STORAGE) && NAVIGATE("/LoginPage")
         };
-    });
-    
+    },[JSON.stringify([location_DATA,sideWays_DATA])]);
+
 
     return (
         <Context.Provider value={{ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA, user_DATA, setUser_DATA }}>
