@@ -1,26 +1,19 @@
 import React from "react";
 import "./signUP_IN.style.css";
-import { AUTHENTICATION_API } from "../../../API";
+import { AUTHENTICATION_API, Type_forRegister_respo_objekt } from "../../../API";
 import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import validator from "email-validator";
-import { Type_forAuthentication_API } from "..";
+import { Type_forAuthentication_API,Type_forInputElemets } from "..";
+import { DEFAULT_VALUE_INPUT_PASS_CONFIR, DEFAULT_VALUE_FOR_RESPO_MESSAGE } from "./default_value";
 
 
-type Type_forInputElemets = {
-    emailValue: HTMLInputElement | null,
-    passwordValue: HTMLInputElement | null,
-    passwordConfrmationValue: HTMLInputElement | null,
-};
 
 
 function SignUp(): JSX.Element {
     const { handleSubmit, reset } = useInputValue();
-    const imputPassConfir = React.useRef<Type_forInputElemets>({
-        emailValue: null,
-        passwordValue: null,
-        passwordConfrmationValue: null,
-    });
+    const [respoMessage, setRespoMessage] = React.useState(DEFAULT_VALUE_FOR_RESPO_MESSAGE);
+    const imputPassConfir = React.useRef<Type_forInputElemets>(DEFAULT_VALUE_INPUT_PASS_CONFIR);
 
     const submit = (v: TypeForInputsObject["v"]): void => {
         const emailValue = v[0].inputValues.toString();
@@ -52,8 +45,16 @@ function SignUp(): JSX.Element {
     async function fetchDATA({ emailValue, passwordValue }: Type_forAuthentication_API) {
         try {
             const REGISTER_DATA = await AUTHENTICATION_API.registerNewUser_API({ emailValue, passwordValue });
-            console.log(REGISTER_DATA);
-            
+            if (REGISTER_DATA?.message) {
+                setRespoMessage({
+                    status: REGISTER_DATA.status,
+                    message: REGISTER_DATA.message
+                });
+
+                setTimeout(() => {
+                    setRespoMessage(DEFAULT_VALUE_FOR_RESPO_MESSAGE)
+                }, 5000)
+            };
         } catch (error) {
             console.error(error);
         };
@@ -65,6 +66,11 @@ function SignUp(): JSX.Element {
             <div className="signContainer">
                 <div className="signContainerName">
                     <h1>Sign Up</h1>
+                </div>
+                <div 
+                style={respoMessage.status === 200 ? {color:"green"}: {color: "red"}}
+                className="loginBoxErrorMessage">
+                    <p>{respoMessage.message}</p>
                 </div>
                 <form onSubmit={(e) => handleSubmit(e, submit)}>
                     <input

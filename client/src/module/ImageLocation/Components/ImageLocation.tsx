@@ -9,7 +9,6 @@ function ImageLocation(): JSX.Element {
     const { startPoints } = location_DATA;
     const [respoDATA, setRespoDATA] = React.useState<Type_Respo_UnsplashPhoto_links[]>([])
 
-    console.log(startPoints.address);
 
     React.useEffect(() => {
         if (startPoints.address.town) {

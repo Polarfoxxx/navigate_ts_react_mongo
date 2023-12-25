@@ -4,22 +4,20 @@ import { AUTHENTICATION_API } from "../../../API";
 import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import validator from "email-validator";
-import { Type_forAuthentication_API } from "..";
+import { Type_forAuthentication_API, Type_forInputElemets } from "..";
 import { useNavigate } from "react-router-dom";
 import { UseChangeContextDATA } from "../../../hooks";
 import { Container } from "../../../Container";
 
 
-type Type_forInputElemets = {
-    emailValue: HTMLInputElement | null,
-    passwordValue: HTMLInputElement | null,
-};
+
 
 function SignIn(): JSX.Element {
     const { user_DATA, setUser_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ user_DATA, setUser_DATA });
     const NAVIGATE = useNavigate();
     const { handleSubmit, reset } = useInputValue();
+    const [respoMessage, setRespoMessage] = React.useState("");
     const imputPassConfir = React.useRef<Type_forInputElemets>({
         emailValue: null,
         passwordValue: null,
@@ -60,7 +58,12 @@ function SignIn(): JSX.Element {
                     { newData: LOGIN_DATA.user_name, key: "loginName" },
                 ]);
             } else {
-                alert(LOGIN_DATA);
+                if(LOGIN_DATA) {
+                    setRespoMessage(LOGIN_DATA?.message);
+                    setTimeout(() => {
+                        setRespoMessage("")
+                        },5000)
+                };
             };
         } catch (error) {
             console.error("chyba v prihlaseni");
@@ -75,6 +78,9 @@ function SignIn(): JSX.Element {
                     <h1>Sign in</h1>
                 </div>
                 <form onSubmit={(e) => handleSubmit(e, submit)}>
+                    <div className="loginBoxErrorMessage">
+                       <p>{respoMessage}</p>
+                    </div>
                     <input
                         ref={el => (imputPassConfir.current.emailValue = el)}
                         name='emailValue'
@@ -86,7 +92,7 @@ function SignIn(): JSX.Element {
                         name='passwordValue'
                         type="text"
                         placeholder="Password" />
-                    <button>Submit</button>
+                    <button>Login</button>
                 </form>
             </div>
         </div>

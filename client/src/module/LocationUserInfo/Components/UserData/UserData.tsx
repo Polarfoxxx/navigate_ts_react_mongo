@@ -1,6 +1,7 @@
 import React from "react";
 import "./userData.style.css";
 import { Container } from "../../../Container";
+import { AUTHENTICATION_API } from "../../../API";
 
 function UserDATA(): JSX.Element {
     const [logUserName, setLogUserName] = React.useState("");
@@ -20,6 +21,19 @@ function UserDATA(): JSX.Element {
     }, []);
 
 
+const handleClickSaveDATA = () => {
+
+    const LOAD_USER_DATA = localStorage.getItem("JWT_token");
+    const DATA = JSON.stringify(location_DATA.startPoints.latLng)
+
+    if(LOAD_USER_DATA && DATA) {
+        
+        const USER_DATA = JSON.parse(LOAD_USER_DATA)
+        const USER_NAME = USER_DATA.user_Name
+        const USER_JWT_TOKEN = USER_DATA.JWT_token
+        AUTHENTICATION_API.saveDATA_API({USER_NAME,USER_JWT_TOKEN, DATA})
+    };
+};
 
     return (
         <div className="userDataContent">
@@ -36,7 +50,7 @@ function UserDATA(): JSX.Element {
                             <p>{location_DATA.endPoints.address.label}</p>
                         </div>
                         <div>
-                            <button>save</button>
+                            <button onClick={handleClickSaveDATA}>save</button>
                         </div>
                     </div>
                 </div>

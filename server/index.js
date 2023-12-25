@@ -40,14 +40,15 @@ app.post('/register/newUser', async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    // Hashovanie hesla
-    const hashedPassword = await bcrypt.hash(password, 10);
     // Skontrolujte, či používateľ už neexistuje
     const existingUser = await User.findOne({ username });
 
     if (existingUser) {
-      return res.status(400).json({ message: 'Používateľ už existuje.' });
+      return res.status(400).json({ message: 'User existing' });
     } else {
+    // Hashovanie hesla
+      const hashedPassword = await bcrypt.hash(password, 10);
+
       // Validácia dát pomocou Joi
       const validateUser = Joi.object({
         username: Joi.string().min(3).required(),
@@ -56,7 +57,7 @@ app.post('/register/newUser', async (req, res) => {
 
       const validation = validateUser.validate({ username, password });
       if (validation.error) {
-        res.status(400).json({ message: validation.error.details[0].message });
+        res.status(400).json({ message: "The password must have minimum four signs" });
       } else {
         // Vytvorte nového používateľa
         const newUser = {
@@ -65,16 +66,16 @@ app.post('/register/newUser', async (req, res) => {
           data: [],
         };
         User.create(newUser)
-          .then((data) => res.json(data))
+          .then(() => res.json({ message: "Registration sucesfull" }))
           .catch((err) => {
             console.error(err);
-            res.status(500).json({ message: 'Chyba pri registrácii.' });
+            res.status(500).json({ message: 'Registration error.' });
           });
       };
     };
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Chyba pri registrácii.' });
+    res.status(500).json({ message: 'Registration error.' });
   };
 });
 /* Login GET method -------------------------------------*/
@@ -83,13 +84,12 @@ app.post('/login/user', async (req, res) => {
     const { username, password } = req.body;
     /* hladanie uzivatela*/
     const user = await User.findOne({ username });
-
     if (user && await bcrypt.compare(password, user.password)) {
       // Generovanie JWT s časovou expiráciou
       const token = jwt.sign({ username }, 'secret', { expiresIn: '1h' });
       res.json({ token, username });
     } else {
-      res.status(401).send("Unauthorized");
+      res.status(401).json("Unauthorized");
     };
   } catch
   (error) {
@@ -111,13 +111,14 @@ const authenticateToken = (req, res, next) => {
 /* save GET method -------------------------------------*/
 app.post('/save/data', authenticateToken, async (req, res) => {
   try {
-    const { coords } = req.body;
+    const { username,  data} = req.body;
     /* hladanie uzivatela*/
+    console.log(data);
     const user = await User.findOne({ username });
 
     // Pridanie správy do poľa správ používateľa
-    user.data.push({ coords });
-    
+    user.data.push({ text: data });
+
     // Uloženie aktualizovaného používateľa do databázy
     await user.save();
 
