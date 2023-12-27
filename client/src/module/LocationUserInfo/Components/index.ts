@@ -5,6 +5,12 @@ export { default as LocationInfoResult } from "./LocationInfoBox/LocationInfoRes
 export { default as AG_GridTable } from "./LocationInfoBox/LocationInfoResult/AG_GridTable";
 export { default as LocationUserData } from "./LocationUserData";
 export { default as UserDATA } from "./UserData/UserData";
+export { default as UserSaveData } from "./UserData/UserSaveData/UserSaveData";
+export { default as UserLoadData } from "./UserData/UserLoadData/UserLoadData";
+export { default as UserSaveDataItem } from "./UserData/UserSaveData/UserSaveDataItem";
+
+
+
 
 /* services */
 export { default as services_ChangeTheObjectForTheTable } from "./LocationInfoBox/LocationInfoResult/services/services_ChangeTheObjectForTheTable";

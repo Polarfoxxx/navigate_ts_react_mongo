@@ -13,8 +13,6 @@ function ImageBox(props: Type_ForImageBOX): JSX.Element {
 
 
     React.useEffect(() => {
-        console.log(props.respoDATA);
-
         if (props.respoDATA.length > 0 || true) {
             setImageData(fakedata)
         };

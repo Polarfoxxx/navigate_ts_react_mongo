@@ -27,7 +27,13 @@ mongoose
 const userSchema = new mongoose.Schema({
   username: String,
   password: String,
-  data: [{ text: String }]
+  data: [
+    {
+      name: String,
+      startCoord: [Number],
+      endCoord: [Number]
+    }
+  ]
 })
 
 const User = mongoose.model("user", userSchema)
@@ -39,16 +45,13 @@ const User = mongoose.model("user", userSchema)
 app.post('/register/newUser', async (req, res) => {
   try {
     const { username, password } = req.body;
-
     // Skontrolujte, či používateľ už neexistuje
     const existingUser = await User.findOne({ username });
-
     if (existingUser) {
       return res.status(400).json({ message: 'User existing' });
     } else {
-    // Hashovanie hesla
+      // Hashovanie hesla
       const hashedPassword = await bcrypt.hash(password, 10);
-
       // Validácia dát pomocou Joi
       const validateUser = Joi.object({
         username: Joi.string().min(3).required(),
@@ -78,6 +81,7 @@ app.post('/register/newUser', async (req, res) => {
     res.status(500).json({ message: 'Registration error.' });
   };
 });
+
 /* Login GET method -------------------------------------*/
 app.post('/login/user', async (req, res) => {
   try {
@@ -93,16 +97,16 @@ app.post('/login/user', async (req, res) => {
     };
   } catch
   (error) {
-    res.status(500).send('Internal Server Error');
+    res.status(500).json('Internal Server Error');
   };
 });
 
 // Middleware na overenie JWT pri každom ulozani dat
 const authenticateToken = (req, res, next) => {
   const token = req.header('Authorization');
-  if (!token) return res.status(401).send('Access denied');
+  if (!token) return res.status(401).json('Access denied');
   jwt.verify(token, 'secret', (err, user) => {
-    if (err) return res.status(403).send('Invalid token');
+    if (err) return res.status(403).json('Invalid token');
     req.user = user;
     next();
   });
@@ -111,23 +115,47 @@ const authenticateToken = (req, res, next) => {
 /* save GET method -------------------------------------*/
 app.post('/save/data', authenticateToken, async (req, res) => {
   try {
-    const { username,  data} = req.body;
+    const { username, startCoord, endCoord, routeName } = req.body;
     /* hladanie uzivatela*/
-    console.log(data);
     const user = await User.findOne({ username });
-
     // Pridanie správy do poľa správ používateľa
-    user.data.push({ text: data });
-
+    user.data.push({
+      name: routeName,
+      startCoord: startCoord,
+      endCoord: endCoord
+    });
     // Uloženie aktualizovaného používateľa do databázy
     await user.save();
+    res.status(201).json('Route saved');
+  } catch
+  (error) {
+    res.status(500).json('Internal Server Error');
+  };
+});
 
+
+/* get GET method -------------------------------------*/
+app.get('/load/data', authenticateToken, async (req, res) => {
+  try {
+    const { username, startCoord, endCoord, routeName } = req.body;
+    /* hladanie uzivatela*/
+    const user = await User.findOne({ username });
+    // Pridanie správy do poľa správ používateľa
+    user.data.push({
+      name: routeName,
+      startCoord: startCoord,
+      endCoord: endCoord
+    });
+    // Uloženie aktualizovaného používateľa do databázy
+    await user.save();
     res.status(201).send('Message saved');
   } catch
   (error) {
     res.status(500).send('Internal Server Error');
   };
 });
+
+
 
 
 

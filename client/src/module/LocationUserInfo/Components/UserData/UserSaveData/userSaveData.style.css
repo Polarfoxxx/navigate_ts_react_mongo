@@ -1,0 +1,47 @@
+.userSaveDataContent{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 105, 40, 0.149);
+}
+
+.userSaveDataContent .userSavedataBox{
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+.userSaveDataContent .userSavedataBox .userSaveLocationHeader{
+    width: 100%;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.478);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 20px;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.userSaveDataContent .userSavedataBox .userSaveLocationBody{
+    width: 100%;
+    height: 100%;
+    max-height: 450px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+    overflow-x: auto;
+}
+
+.userSaveDataContent .userSavedataBox .userSaveLocationBody .userSaveItemBox{
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+
+
+

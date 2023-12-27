@@ -12,6 +12,8 @@ export type Type_forRegister_respo_objekt = {
 
 export type Type_forSaveDATA_API = {
     USER_NAME: string,
-    USER_JWT_TOKEN: string
-    DATA: string,
+    USER_JWT_TOKEN: string,
+    ROUTE_NAME: string,
+    START_COORD: number[], 
+     END_COORD: number[]
 };

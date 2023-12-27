@@ -39,17 +39,18 @@
 .loginPage .buttonSide .buttonSideCol .buttonBox {
   width: 20vw;
   min-width: 300px;
-  height: 140vh;
+  height: 20vh;
   min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  background-color: rgba(0, 0, 0, 0.474);
+  background-color: rgba(131, 131, 131, 0.474);
   position: absolute;
-  left: 120px;
+  left: 170px;
+  bottom: 80px;
   transform: skew(18deg);
-  border-left: 4px solid var(--yellowGreen);
+  border-radius: 40px;
 }
 
 .loginPage .buttonSide .buttonSideCol .buttonBox .signButton {

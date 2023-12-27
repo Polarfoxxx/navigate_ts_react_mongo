@@ -74,7 +74,9 @@ async function loginUser_API(props: Type_forAuthentication_API): Promise<Type_fo
 async function saveDATA_API(props: Type_forSaveDATA_API): Promise<any | undefined> {
   const SAVE_DATA = {
     username: props.USER_NAME,
-    data: props.DATA,
+    routeName: props.ROUTE_NAME,
+    startCoord: props.START_COORD,
+    endCoord: props.END_COORD,
   };
   const JWT_TOKEN = props.USER_JWT_TOKEN;
 
