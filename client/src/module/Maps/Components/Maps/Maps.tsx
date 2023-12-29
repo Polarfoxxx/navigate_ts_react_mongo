@@ -31,7 +31,7 @@ function Maps() {
             className='maps'>
             <MapContainer
                 center={CENTER_MAP}
-                zoom={14}
+                zoom={10}
                 maxZoom={18}
                 minZoom={4}
                 ref={mapRef}

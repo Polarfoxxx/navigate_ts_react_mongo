@@ -5,5 +5,9 @@
     background-color: rgba(0, 0, 0, 0.635);
     border-radius: 10px;
     border: 1px solid rgb(110, 110, 110);
-
+cursor: pointer;
+transition: 0.3s;
+}
+.userSaveDataContent .userSavedataBox .userSaveLocationBody .item:hover{
+    background-color: rgba(250, 235, 215, 0.264)
 }

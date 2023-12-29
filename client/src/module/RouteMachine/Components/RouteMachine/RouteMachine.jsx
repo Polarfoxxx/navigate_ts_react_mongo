@@ -25,6 +25,7 @@ function RouteMachine() {
         const END_POINT = endPoints;
         const ADD_CORD_POINT =  arrayALL_coordinate.map((item) => item.latLng);
         console.log(arrayALL_coordinate);
+        
         /* pousun mapy na prvy marker */
         if (START_POINT.address.label && !END_POINT.address.label) {
             MAP.flyTo([START_POINT.latLng[0], START_POINT.latLng[1]]);
@@ -124,7 +125,7 @@ function RouteMachine() {
                     const bounds = L.latLngBounds(routeCoordinates);
                   
                     // Nastavení automatického přiblížení na celou trasu
-                    MAP.fitBounds(bounds, { padding: [200, 200] }); // Můžete také nastavit padding podle potřeby
+                    MAP.fitBounds(bounds, { padding: [250, 250] }); // Můžete také nastavit padding podle potřeby
                   }
             }, []);
         };

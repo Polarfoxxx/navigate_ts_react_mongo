@@ -43,6 +43,7 @@ function AG_GridTable(props: Type_forLocationInfoResult): JSX.Element {
     }, []);
 
 
+
     React.useEffect(() => {
         setRowData(services_ChangeTheObjectForTheTable(props.respoDATA));
     }, [JSON.stringify(props.respoDATA)])

@@ -11,16 +11,19 @@ export { default as UserSaveDataItem } from "./UserData/UserSaveData/UserSaveDat
 
 
 
-
 /* services */
 export { default as services_ChangeTheObjectForTheTable } from "./LocationInfoBox/LocationInfoResult/services/services_ChangeTheObjectForTheTable";
 export { default as services_changeLocationNameToCountryCode } from "./LocationInfoBox/services/services_changeLocationNameToCountryCode";
+export { default as services_theMatchOfTheCreatedObject } from "./UserData/UserSaveData/services/services_theMatchOfTheCreatedObject";
 
 
 /* types */
 export type {
     Type_forLocationInfoResult,
     Type_IRow,
-} from "./LocationInfoBox/LocationInfoResult/types"
+} from "./LocationInfoBox/LocationInfoResult/types";
 
+export type {
+    Type_UserSaveHistoryRouteObjekt
+} from "./UserData/UserSaveData/types";
 

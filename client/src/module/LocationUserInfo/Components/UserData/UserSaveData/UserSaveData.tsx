@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./userSaveData.style.css";
 import { Container } from "../../../../Container";
 import { AUTHENTICATION_API } from "../../../../API";
@@ -7,28 +7,16 @@ import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import UserSaveDataItem from "./UserSaveDataItem";
-
-
-
-type Type_UserSaveHistoryRouteObjekt = {
-    startPoint: string,
-    endPoint: string,
-    routeName: string,
-    routeTime: number,
-    routeDistance: number,
-}
-
-
-
+import { Type_ArrayAllCoord } from "../../../../Container";
+import { Type_UserSaveHistoryRouteObjekt } from "./types";
+import services_theMatchOfTheCreatedObject from "./services/services_theMatchOfTheCreatedObject";
 
 
 function UserSaveData(): JSX.Element {
     const [logUserName, setLogUserName] = React.useState("");
     const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
-    const { startPoints, endPoints, main_atl_route } = location_DATA;
-    const [save_historyRoute, setSave_historyRoute] = React.useState<Type_UserSaveHistoryRouteObjekt[]>([]);
-    const { handleSubmit, reset } = useInputValue();
-    // Stav pre aktuálne údaje
+    const { startPoints, endPoints, main_atl_route, arrayALL_coordinate } = location_DATA;
+    const history_RouteReff = React.useRef<Type_UserSaveHistoryRouteObjekt[]>([]);
 
     /* nastavenie mena prihlaseneho */
     React.useEffect(() => {
@@ -40,19 +28,44 @@ function UserSaveData(): JSX.Element {
     }, []);
 
 
-    // Vaša existujúca logika
+    /* nacitanie vsetkychroutes z lokalneho uloziska */
+    React.useEffect(() => {
+        const storedArray = localStorage.getItem('saveHistoryRoutes');
+        if (storedArray) {
+            const PARSE_ROUTE_ARR = JSON.parse(storedArray);
+            history_RouteReff.current = PARSE_ROUTE_ARR
+        }
+    }, []);
+
+
+    /* nastavenie novej trasy vlozenie do pola a lokalneho uloziska */
     React.useEffect(() => {
         if (location_DATA.main_atl_route.length > 0) {
-            const UPDATE_DATA = {
-                startPoint: startPoints.address.label,
-                endPoint: endPoints.address.label,
+            const UPDATE_DATA: Type_UserSaveHistoryRouteObjekt = {
+                startPoint: {
+                    address: startPoints.address,
+                    latLng: startPoints.latLng
+                },
+                endPoint: {
+                    address: endPoints.address,
+                    latLng: endPoints.latLng
+                },
+                addPoint: arrayALL_coordinate,
                 routeName: main_atl_route[0].nameRoutes,
                 routeTime: main_atl_route[0].totalTime,
                 routeDistance: main_atl_route[0].totalDistance,
             };
-            setSave_historyRoute((prevHistory) => [...prevHistory, UPDATE_DATA]);
+
+            const save_historyRoute = history_RouteReff.current;
+            if (services_theMatchOfTheCreatedObject({ save_historyRoute, UPDATE_DATA }) === -1) {
+                history_RouteReff.current = [...history_RouteReff.current, UPDATE_DATA]
+            };
         };
+        return (() => {
+            localStorage.setItem('saveHistoryRoutes', JSON.stringify(history_RouteReff.current))
+        });
     }, [JSON.stringify(location_DATA.main_atl_route)]);
+
 
 
     return (
@@ -68,7 +81,7 @@ function UserSaveData(): JSX.Element {
                 </div>
                 <div className="userSaveLocationBody">
                     {
-                        save_historyRoute.map((item, key) =>
+                        history_RouteReff.current.map((item, key) =>
                             <div
                                 className="userSaveItemBox"
                                 key={key}>

@@ -4,15 +4,9 @@ import { Container } from "../../../../Container";
 import { AUTHENTICATION_API } from "../../../../API";
 import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
+import { Type_UserSaveHistoryRouteObjekt } from "./types";
+import { UseChangeContextDATA } from "../../../../hooks";
 
-
-type Type_UserSaveHistoryRouteObjekt = {
-    startPoint: string,
-    endPoint: string,
-    routeName: string,
-    routeTime: number,
-    routeDistance: number,
-};
 
 type Type_UserSaveDataItem = {
     item: Type_UserSaveHistoryRouteObjekt
@@ -20,13 +14,30 @@ type Type_UserSaveDataItem = {
 
 function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
     const [logUserName, setLogUserName] = React.useState("");
-    const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
+    const { location_DATA, setLocation_DATA, sideWays_DATA } = React.useContext(Container.Context);
+    const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
     const { startPoints, endPoints, main_atl_route } = location_DATA;
     const [save_historyRoute, setSave_historyRoute] = React.useState<Type_UserSaveHistoryRouteObjekt[]>([]);
     const { handleSubmit, reset } = useInputValue();
-  
-     /* odoslanie formulara */
-     const submit = (v: TypeForInputsObject["v"]): void => {
+    const [dataForProps, setDataForProps] = React.useState<Type_UserSaveHistoryRouteObjekt>();
+
+
+React.useEffect(() => {
+    if(props.item) {
+        setDataForProps({
+            startPoint: props.item.startPoint,
+            endPoint: props.item.endPoint,
+            addPoint: props.item.addPoint,
+            routeName: props.item.routeName,
+            routeTime: props.item.routeTime,
+            routeDistance: props.item.routeDistance
+        });
+    };
+},[props.item])
+
+
+    /* odoslanie formulara */
+    const submit = (v: TypeForInputsObject["v"]): void => {
         console.log(v);
         const LOAD_USER_DATA = localStorage.getItem("JWT_token");
         const START_COORD = startPoints.latLng;
@@ -42,29 +53,46 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
             reset();
         };
     };
-  
-  
-    return(
-        <div className="item">
-        <div className="routeName">
-            <p>{props.item.routeName}</p>
+
+    const handleClick = (route: Type_UserSaveHistoryRouteObjekt) => {
+
+        const UPDATE_DATA = {
+            ...location_DATA,
+            startPoints: route.startPoint,
+            endPoints: route.endPoint,
+            arrayALL_coordinate: route.addPoint
+        };
+
+        updateContext_DATA([
+            { newData: UPDATE_DATA, key: "location_DATA" },
+        ]);
+    }
+
+
+
+    return (
+        <div
+            onClick={() => handleClick(props.item)}
+            className="item">
+            <div className="routeName">
+                <p>{dataForProps?.routeName}</p>
+            </div>
+            <div className="itemStartPoint">
+                <p>{dataForProps?.startPoint.address.label}</p>
+            </div>
+            <div className="itemEndPoint">
+                <p>{dataForProps?.endPoint.address.label}</p>
+            </div>
+            <div>
+                <form onSubmit={(e) => handleSubmit(e, submit)}>
+                    <input
+                        name="name"
+                        placeholder="Route name"
+                        type="text" />
+                    <button>save</button>
+                </form>
+            </div>
         </div>
-        <div className="itemStartPoint">
-            <p>{props.item.startPoint}</p>
-        </div>
-        <div className="itemEndPoint">
-            <p>{props.item.endPoint}</p>
-        </div>
-        <div>
-            <form onSubmit={(e) => handleSubmit(e, submit)}>
-                <input
-                    name="name"
-                    placeholder="Route name"
-                    type="text" />
-                <button>save</button>
-            </form>
-        </div>
-    </div>
     );
 };
 
