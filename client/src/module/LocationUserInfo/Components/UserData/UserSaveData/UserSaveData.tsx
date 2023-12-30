@@ -82,7 +82,7 @@ function UserSaveData(): JSX.Element {
                 <div className="userSaveLocationBody">
                     {
                         history_RouteReff.current.map((item, key) =>
-                                <UserSaveDataItem item={item} key={key}/>
+                                <UserSaveDataItem item={item} keyItem={key}/>
                         )
                     }
                 </div>

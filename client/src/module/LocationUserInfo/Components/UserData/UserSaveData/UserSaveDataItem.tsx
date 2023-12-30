@@ -11,7 +11,7 @@ import { faRoad, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 
 export type Type_UserSaveDataItem = {
     item: Type_UserSaveHistoryRouteObjekt,
-    key: number
+    keyItem: number
 }
 
 function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
@@ -78,8 +78,7 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
                 <div className="routeItemKey">
                     <div className="routeKeybox">
                     <div className="keyItem">
-                        <h4>{props.key}</h4>
-                        <h4>4</h4>
+                        <h4>{props.keyItem}</h4>
                     </div>
                     </div>
                    
