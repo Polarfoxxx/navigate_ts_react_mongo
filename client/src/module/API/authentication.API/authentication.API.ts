@@ -77,6 +77,7 @@ async function saveDATA_API(props: Type_forSaveDATA_API): Promise<any | undefine
     routeName: props.ROUTE_NAME,
     startCoord: props.START_COORD,
     endCoord: props.END_COORD,
+    allCoord: props.ALL_COORD
   };
   const JWT_TOKEN = props.USER_JWT_TOKEN;
 

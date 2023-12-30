@@ -23,6 +23,24 @@ mongoose
   .then(() => console.log("connect to mongoo"))
   .catch(() => console.log("error connect mongoo"))
 
+// Definícia typu Type_Addrress
+const Type_Addrress = {
+  label: String,
+  country: String,
+  country_code: String,
+  county: String,
+  postcode: String,
+  region: String,
+  state: String,
+  town: String,
+};
+
+// Definícia typu Type_ALLCoordinateObjekt
+const Type_ALLCoordinateObjekt = {
+  identObject: { type: mongoose.Schema.Types.Mixed }, // môže byť string alebo number, ak je identObject prítomný
+  address: Type_Addrress,
+  latLng: [Number],
+};
 
 const userSchema = new mongoose.Schema({
   username: String,
@@ -30,11 +48,18 @@ const userSchema = new mongoose.Schema({
   data: [
     {
       name: String,
-      startCoord: [Number],
-      endCoord: [Number]
+      startCoord: {
+        address: Type_Addrress,
+        latLng: [Number]
+      },
+      endCoord:  {
+        address: Type_Addrress,
+        latLng: [Number]
+      },
+      allCoord: [Type_ALLCoordinateObjekt]
     }
   ]
-})
+});
 
 const User = mongoose.model("user", userSchema)
 
@@ -114,15 +139,17 @@ const authenticateToken = (req, res, next) => {
 
 /* save GET method -------------------------------------*/
 app.post('/save/data', authenticateToken, async (req, res) => {
+  console.log(req.body);
   try {
-    const { username, startCoord, endCoord, routeName } = req.body;
+    const { username, startCoord, endCoord, routeName, allCoord } = req.body;
     /* hladanie uzivatela*/
     const user = await User.findOne({ username });
     // Pridanie správy do poľa správ používateľa
     user.data.push({
       name: routeName,
       startCoord: startCoord,
-      endCoord: endCoord
+      endCoord: endCoord,
+      allCoord: allCoord
     });
     // Uloženie aktualizovaného používateľa do databázy
     await user.save();

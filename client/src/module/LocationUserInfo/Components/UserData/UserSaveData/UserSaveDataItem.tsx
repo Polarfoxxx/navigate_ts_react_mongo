@@ -18,7 +18,7 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
     const [logUserName, setLogUserName] = React.useState("");
     const { location_DATA, setLocation_DATA, sideWays_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
-    const { startPoints, endPoints, main_atl_route } = location_DATA;
+    const { startPoints, endPoints, arrayALL_coordinate } = location_DATA;
     const [save_historyRoute, setSave_historyRoute] = React.useState<Type_UserSaveHistoryRouteObjekt[]>([]);
     const { handleSubmit, reset } = useInputValue();
     const [dataForProps, setDataForProps] = React.useState<Type_UserSaveHistoryRouteObjekt>();
@@ -35,22 +35,23 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
                 routeDistance: props.item.routeDistance
             });
         };
-    }, [props.item])
+    }, [props.item]);
 
 
     /* odoslanie formulara */
     const submit = (v: TypeForInputsObject["v"]): void => {
         console.log(v);
         const LOAD_USER_DATA = localStorage.getItem("JWT_token");
-        const START_COORD = startPoints.latLng;
-        const END_COORD = endPoints.latLng;
-        const ROUTE_NAME = v[0].input;
+        const START_COORD = startPoints;
+        const END_COORD = endPoints;
+        const ALL_COORD = arrayALL_coordinate;
+        const ROUTE_NAME = v[0].inputValues.toString();
 
-        if (LOAD_USER_DATA && START_COORD[0] && END_COORD[0]) {
+        if (LOAD_USER_DATA && START_COORD.latLng[0] && END_COORD.latLng[0]) {
             const USER_DATA = JSON.parse(LOAD_USER_DATA)
             const USER_NAME = USER_DATA.user_Name;
             const USER_JWT_TOKEN = USER_DATA.JWT_token;
-            AUTHENTICATION_API.saveDATA_API({ USER_NAME, USER_JWT_TOKEN, ROUTE_NAME, START_COORD, END_COORD })
+            AUTHENTICATION_API.saveDATA_API({ USER_NAME, USER_JWT_TOKEN, ROUTE_NAME, START_COORD, END_COORD,ALL_COORD })
             reset();
         };
     };
@@ -68,9 +69,6 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
             { newData: UPDATE_DATA, key: "location_DATA" },
         ]);
     }
-
-    console.log(props.key);
-
 
     return (
         <div
@@ -109,7 +107,6 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
                 </div>
                 <div className="itemStartEndName">
                     <p>{dataForProps?.endPoint.address.label}</p>
-
                 </div>
             </div>
             <div className="itemEventBlock">

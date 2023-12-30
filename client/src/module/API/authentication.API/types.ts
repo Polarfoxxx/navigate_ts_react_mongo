@@ -1,3 +1,6 @@
+import { TypeStartAndEndPoint, Type_ArrayAllCoord } from "../../Container";
+
+
 export type Type_forLogin_respo_objekt = {
     status: number,
     JWT_token: string,
@@ -14,6 +17,7 @@ export type Type_forSaveDATA_API = {
     USER_NAME: string,
     USER_JWT_TOKEN: string,
     ROUTE_NAME: string,
-    START_COORD: number[], 
-     END_COORD: number[]
+    START_COORD: TypeStartAndEndPoint, 
+     END_COORD: TypeStartAndEndPoint,
+     ALL_COORD: Type_ArrayAllCoord
 };
