@@ -6,10 +6,12 @@ import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import { Type_UserSaveHistoryRouteObjekt } from "./types";
 import { UseChangeContextDATA } from "../../../../hooks";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRoad, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 
-
-type Type_UserSaveDataItem = {
-    item: Type_UserSaveHistoryRouteObjekt
+export type Type_UserSaveDataItem = {
+    item: Type_UserSaveHistoryRouteObjekt,
+    key: number
 }
 
 function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
@@ -22,18 +24,18 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
     const [dataForProps, setDataForProps] = React.useState<Type_UserSaveHistoryRouteObjekt>();
 
 
-React.useEffect(() => {
-    if(props.item) {
-        setDataForProps({
-            startPoint: props.item.startPoint,
-            endPoint: props.item.endPoint,
-            addPoint: props.item.addPoint,
-            routeName: props.item.routeName,
-            routeTime: props.item.routeTime,
-            routeDistance: props.item.routeDistance
-        });
-    };
-},[props.item])
+    React.useEffect(() => {
+        if (props.item) {
+            setDataForProps({
+                startPoint: props.item.startPoint,
+                endPoint: props.item.endPoint,
+                addPoint: props.item.addPoint,
+                routeName: props.item.routeName,
+                routeTime: props.item.routeTime,
+                routeDistance: props.item.routeDistance
+            });
+        };
+    }, [props.item])
 
 
     /* odoslanie formulara */
@@ -45,7 +47,6 @@ React.useEffect(() => {
         const ROUTE_NAME = v[0].input;
 
         if (LOAD_USER_DATA && START_COORD[0] && END_COORD[0]) {
-
             const USER_DATA = JSON.parse(LOAD_USER_DATA)
             const USER_NAME = USER_DATA.user_Name;
             const USER_JWT_TOKEN = USER_DATA.JWT_token;
@@ -68,22 +69,50 @@ React.useEffect(() => {
         ]);
     }
 
+    console.log(props.key);
 
 
     return (
         <div
             onClick={() => handleClick(props.item)}
-            className="item">
-            <div className="routeName">
-                <p>{dataForProps?.routeName}</p>
+            className="itemUserSave">
+            <div className="routeNameAndLogo">
+                <div className="routeItemKey">
+                    <div className="routeKeybox">
+                    <div className="keyItem">
+                        <h4>{props.key}</h4>
+                        <h4>4</h4>
+                    </div>
+                    </div>
+                   
+                </div>
+                <div className="routeItemName">
+                    <div className="nameLogo">
+                        <FontAwesomeIcon icon={faRoad} />
+                    </div>
+                    <div className="nameRoute">
+                        <p>{dataForProps?.routeName}</p>
+                    </div>
+                </div>
             </div>
-            <div className="itemStartPoint">
-                <p>{dataForProps?.startPoint.address.label}</p>
+            <div className="itemStartANDEndPoint">
+                <div className="itemStartEndLogo">
+                    <FontAwesomeIcon icon={faLocationDot} />
+                </div>
+                <div className="itemStartEndName">
+                    <p>{dataForProps?.startPoint.address.label}</p>
+                </div>
             </div>
-            <div className="itemEndPoint">
-                <p>{dataForProps?.endPoint.address.label}</p>
+            <div className="itemStartANDEndPoint">
+                <div className="itemStartEndLogo">
+                    <FontAwesomeIcon icon={faLocationDot} />
+                </div>
+                <div className="itemStartEndName">
+                    <p>{dataForProps?.endPoint.address.label}</p>
+
+                </div>
             </div>
-            <div>
+            <div className="itemEventBlock">
                 <form onSubmit={(e) => handleSubmit(e, submit)}>
                     <input
                         name="name"

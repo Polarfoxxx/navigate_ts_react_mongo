@@ -121,11 +121,11 @@ function RouteMachine() {
 
                 /* posun na trasu */
                 if (routes.length > 0) {
-                    const routeCoordinates = routes[0].coordinates; // Předpokládáme, že budeme používat první trasu
+                    const routeCoordinates = ROUTES[0].coordinates; // Předpokládáme, že budeme používat první trasu
                     const bounds = L.latLngBounds(routeCoordinates);
                   
                     // Nastavení automatického přiblížení na celou trasu
-                    MAP.fitBounds(bounds, { padding: [250, 250] }); // Můžete také nastavit padding podle potřeby
+                    MAP.fitBounds(bounds, { padding: [200, 200] }); // Můžete také nastavit padding podle potřeby
                   }
             }, []);
         };
