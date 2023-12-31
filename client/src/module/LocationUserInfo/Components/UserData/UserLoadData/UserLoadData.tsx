@@ -1,9 +1,10 @@
 import React from "react";
+import "./UserLoad.style.css"
 
 function UserLoadData(): JSX.Element {
     return(
-        <div>
-
+        <div className="imageBox">
+          
         </div>
     );
 };

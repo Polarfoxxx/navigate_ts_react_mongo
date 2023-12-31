@@ -15,26 +15,21 @@ import { Popups } from '../../../Maps/Components';
 import { MapSearche } from '../../../IncidentsToMaps';
 
 function Maps() {
-    console.log("map");
-    const mapRef = React.useRef(null);
-    const containerRef = React.useRef<HTMLDivElement | null>(null);
-    const CENTER_MAP: LatLngExpression = [48.8459792673620, 17.232557500116];
+    const MAP_REF = React.useRef(null);
+    const CONTAINER_FOR_MAP = React.useRef<HTMLDivElement | null>(null);
+    const CENTER_MAP: LatLngExpression = [40.741105712175916, -73.9919172811947];
 
 
-
-
-
-    
     return (
         <div
-            ref={containerRef}
+            ref={CONTAINER_FOR_MAP}
             className='maps'>
             <MapContainer
                 center={CENTER_MAP}
                 zoom={10}
                 maxZoom={18}
                 minZoom={4}
-                ref={mapRef}
+                ref={MAP_REF}
                 scrollWheelZoom={true}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -48,9 +43,7 @@ function Maps() {
                 <MapSearche />
                 <Popups />
                 {/*    <PoligonXXX />  */}
-
             </MapContainer>
-
         </div>
     );
 };

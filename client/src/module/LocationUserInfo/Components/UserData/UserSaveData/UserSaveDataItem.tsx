@@ -51,7 +51,7 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
             const USER_DATA = JSON.parse(LOAD_USER_DATA)
             const USER_NAME = USER_DATA.user_Name;
             const USER_JWT_TOKEN = USER_DATA.JWT_token;
-            AUTHENTICATION_API.saveDATA_API({ USER_NAME, USER_JWT_TOKEN, ROUTE_NAME, START_COORD, END_COORD,ALL_COORD })
+            AUTHENTICATION_API.saveDATA_API({ USER_NAME, USER_JWT_TOKEN, ROUTE_NAME, START_COORD, END_COORD, ALL_COORD })
             reset();
         };
     };
@@ -77,11 +77,10 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
             <div className="routeNameAndLogo">
                 <div className="routeItemKey">
                     <div className="routeKeybox">
-                    <div className="keyItem">
-                        <h4>{props.keyItem}</h4>
+                        <div className="keyItem">
+                            <h4>{props.keyItem + 1}</h4>
+                        </div>
                     </div>
-                    </div>
-                   
                 </div>
                 <div className="routeItemName">
                     <div className="nameLogo">
