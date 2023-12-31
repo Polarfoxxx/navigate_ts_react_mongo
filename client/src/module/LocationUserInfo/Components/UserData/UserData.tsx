@@ -1,7 +1,7 @@
 import React from "react";
 import "./userData.style.css"
 import { Container } from "../../../Container";
-import { UserLoadData, UserSaveData } from "../";
+import { UserFreeBlockData, UserSaveAndHistoryData } from "../";
 
 
 function UserDATA(): JSX.Element {
@@ -10,10 +10,10 @@ function UserDATA(): JSX.Element {
     return (
         <div className="userDataContent">
             <div className="userSaveData">
-                <UserSaveData />
+                <UserSaveAndHistoryData />
             </div>
             <div className="userLoadData">
-                <UserLoadData />
+                <UserFreeBlockData />
             </div>
         </div>
     );

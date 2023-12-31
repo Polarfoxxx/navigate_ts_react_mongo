@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 function LocationUserData(): JSX.Element {
     const NAVIGATE = useNavigate();
 
-    React.useEffect(() => {
+    React.useLayoutEffect(() => {
         NAVIGATE("UserDATA")
     }, [])
 
@@ -20,7 +20,7 @@ function LocationUserData(): JSX.Element {
             </div>
             <div className="locationUserDataContent">
                 <Routes>
-                    <Route path="UserDATA" element={<UserDATA />} />
+                    <Route path="UserDATA/*" element={<UserDATA />} />
                     <Route path="LocationInfoBox" element={<LocationInfoBox />} />
                 </Routes>
             </div>

@@ -1,11 +1,11 @@
 import React from "react";
-import "./userSaveDataItem.style.css";
-import { Container } from "../../../../Container";
-import { AUTHENTICATION_API } from "../../../../API";
+import "./userHistoryDataItem.style.css";
+import { Container } from "../../../../../Container";
+import { AUTHENTICATION_API } from "../../../../../API";
 import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
-import { Type_UserSaveHistoryRouteObjekt } from "./types";
-import { UseChangeContextDATA } from "../../../../hooks";
+import { Type_UserSaveHistoryRouteObjekt } from "../types";
+import { UseChangeContextDATA } from "../../../../../hooks";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRoad, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 
@@ -14,7 +14,7 @@ export type Type_UserSaveDataItem = {
     keyItem: number
 }
 
-function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
+function UserHistoryDataItem(props: Type_UserSaveDataItem): JSX.Element {
     const [logUserName, setLogUserName] = React.useState("");
     const { location_DATA, setLocation_DATA, sideWays_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
@@ -120,4 +120,4 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
     );
 };
 
-export default UserSaveDataItem;
+export default UserHistoryDataItem;

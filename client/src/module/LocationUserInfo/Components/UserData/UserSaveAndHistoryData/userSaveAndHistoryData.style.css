@@ -1,0 +1,18 @@
+.userSaveAndHisData {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.userSaveAndHisData .userSaveAndHisData_nav{
+    width: 100%;
+    height: 10%;
+}
+
+.userSaveAndHisData .userSaveAndHisData_content{
+    width: 100%;
+    height: 90%;
+}

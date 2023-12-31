@@ -5,16 +5,18 @@ export { default as LocationInfoResult } from "./LocationInfoBox/LocationInfoRes
 export { default as AG_GridTable } from "./LocationInfoBox/LocationInfoResult/AG_GridTable";
 export { default as LocationUserData } from "./LocationUserData";
 export { default as UserDATA } from "./UserData/UserData";
-export { default as UserSaveData } from "./UserData/UserSaveData/UserSaveData";
-export { default as UserLoadData } from "./UserData/UserLoadData/UserLoadData";
-export { default as UserSaveDataItem } from "./UserData/UserSaveData/UserSaveDataItem";
+export { default as UserHistoryData } from "./UserData/UserSaveAndHistoryData/HIstoryDataFromLocal/UserHistoryData";
+export { default as UserHistoryDataItem } from "./UserData/UserSaveAndHistoryData/HIstoryDataFromLocal/UserHistoryDataItem";
+export { default as UserFreeBlockData } from "./UserData/UserFreeBlockData/UserFreeBlockData";
+export { default as UserSaveAndHistoryData } from "./UserData/UserSaveAndHistoryData/UserSaveAndHistoryData";
+export { default as UserSaveData } from "./UserData/UserSaveAndHistoryData/SaveDataFromDB/UserSaveData";
 
 
 
 /* services */
 export { default as services_ChangeTheObjectForTheTable } from "./LocationInfoBox/LocationInfoResult/services/services_ChangeTheObjectForTheTable";
 export { default as services_changeLocationNameToCountryCode } from "./LocationInfoBox/services/services_changeLocationNameToCountryCode";
-export { default as services_theMatchOfTheCreatedObject } from "./UserData/UserSaveData/services/services_theMatchOfTheCreatedObject";
+export { default as services_theMatchOfTheCreatedObject } from "./UserData/UserSaveAndHistoryData/HIstoryDataFromLocal/services/services_theMatchOfTheCreatedObject";
 
 
 /* types */
@@ -25,5 +27,5 @@ export type {
 
 export type {
     Type_UserSaveHistoryRouteObjekt
-} from "./UserData/UserSaveData/types";
+} from "./UserData/UserSaveAndHistoryData/types";
 
