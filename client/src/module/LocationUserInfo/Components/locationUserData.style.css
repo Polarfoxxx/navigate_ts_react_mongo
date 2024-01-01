@@ -8,6 +8,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right top 50px;
+
 }
 ::-webkit-scrollbar {
     width: 0px;
@@ -15,11 +16,12 @@
 
 .locationUserData .locationUserDataNavigate{
     width: 100%;
-    height: 7%;
+    height: 8%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: black;
+    background-color: var(--orangeContent);
+    gap: 50px;
 }
 .locationUserData .locationUserDataNavigate .link{
     width: 300px;
@@ -41,7 +43,7 @@
 
 .locationUserData .locationUserDataContent{
     width: 100%;
-    height: 93%;
+    height: 92%;
     display: flex;
     align-items: center;
     justify-content: center;

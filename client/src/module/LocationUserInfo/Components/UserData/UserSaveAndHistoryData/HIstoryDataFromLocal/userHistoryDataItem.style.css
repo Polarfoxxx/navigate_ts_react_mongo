@@ -169,7 +169,7 @@
      position: absolute;
      right: 0px;
      bottom: 0px;
-     background-color: rgb(198, 70, 19);
+     background-color: var(--orangeContent);
      border-radius: 10px 0px 3px 0px;
  }
 

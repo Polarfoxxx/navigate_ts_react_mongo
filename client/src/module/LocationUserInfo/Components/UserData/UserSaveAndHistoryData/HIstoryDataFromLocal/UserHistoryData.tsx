@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import "./userHistoryData.style.css";
 import { Container } from "../../../../../Container";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -6,7 +6,6 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 import UserSaveDataItem from "./UserHistoryDataItem";
 import { Type_UserSaveHistoryRouteObjekt } from "../types";
 import services_theMatchOfTheCreatedObject from "./services/services_theMatchOfTheCreatedObject";
-import { strict } from "assert";
 
 
 function UserHistoryData(): JSX.Element {
@@ -14,6 +13,8 @@ function UserHistoryData(): JSX.Element {
     const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
     const { startPoints, endPoints, main_atl_route, arrayALL_coordinate } = location_DATA;
     const history_RouteReff = React.useRef<Type_UserSaveHistoryRouteObjekt[]>([]);
+    const [clearStorage, setClearStorage] = React.useState(false) /* iba pre render */
+
 
     /* nastavenie mena prihlaseneho */
     React.useEffect(() => {
@@ -67,7 +68,11 @@ function UserHistoryData(): JSX.Element {
         });
     }, [JSON.stringify(location_DATA.main_atl_route)]);
 
-
+const handleClickClearLocalHistory =() => {
+    localStorage.removeItem("saveHistoryRoutes");
+    history_RouteReff.current = [];
+    setClearStorage(!clearStorage)
+}
 
     return (
         <div className="userSaveDataContent">
@@ -82,10 +87,10 @@ function UserHistoryData(): JSX.Element {
                         </div>
                     </div>
                     <div className="headerTittle">
-                        <h3>History searche</h3>
+                        <h3>HISTORY SEARCHE</h3>
                     </div>
                     <div className="headerClearButtom">
-                        <button>Clear</button>
+                        <button onClick={handleClickClearLocalHistory}>Clear history</button>
                     </div>
                 </div>
                 <div className="userSaveLocationBody">

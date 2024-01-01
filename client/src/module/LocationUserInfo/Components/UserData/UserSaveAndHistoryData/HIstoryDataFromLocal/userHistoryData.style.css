@@ -17,15 +17,15 @@
     display: flex;
     align-items: center;
     justify-content: start;
-    padding-left: 30px;
     position: relative;
     color: var(--whiteTextColor);
 }
-.userSaveDataContent .userSavedataBox .userSaveLocationHeader::before{
+
+.userSaveDataContent .userSavedataBox .userSaveLocationHeader::before {
     position: absolute;
-    width: 300px;
+    width: 120%;
     height: 1px;
-    background-color: var(--yellowContent);
+    background-color: var(--orangeContent);
     bottom: 0;
     left: 0;
     content: "";
@@ -36,7 +36,7 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
     gap: 10px;
 }
 
@@ -49,10 +49,27 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
     color: var(--orangeContent);
 }
 
+.userSaveDataContent .userSavedataBox .userSaveLocationHeader .headerClearButtom {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.userSaveDataContent .userSavedataBox .userSaveLocationHeader .headerClearButtom>button {
+    width: 120px;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.userSaveDataContent .userSavedataBox .userSaveLocationHeader .headerClearButtom>button:hover {
+    background-color: var(--orangeContent);
+}
 
 .userSaveDataContent .userSavedataBox .userSaveLocationBody {
     width: 100%;

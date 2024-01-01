@@ -5,19 +5,31 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-top: 3px;
 }
 
-.userSaveAndHisData .userSaveAndHisData_nav{
+.userSaveAndHisData .userSaveAndHisData_nav {
     width: 100%;
-    height: 5%;
+    height: 6%;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
+    position: relative;
 }
-.userSaveAndHisData .userSaveAndHisData_nav .link{
+.userSaveAndHisData .userSaveAndHisData_nav::before {
+    width: 110%;
+    height: 1px;
+    background-color: var(--orangeContent);
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.userSaveAndHisData .userSaveAndHisData_nav .link {
     width: 200px;
-    height: 100%;
+ height: 25px;
     background-color: white;
     display: flex;
     align-items: center;
@@ -28,12 +40,13 @@
     transition: 0.3s;
     font-size: 16px;
 }
-.userSaveAndHisData .userSaveAndHisData_nav .link:hover{
+
+.userSaveAndHisData .userSaveAndHisData_nav .link:hover {
     background-color: var(--yellowGreen);
 }
 
 
-.userSaveAndHisData .userSaveAndHisData_content{
+.userSaveAndHisData .userSaveAndHisData_content {
     width: 100%;
-    height: 95%;
+    height: 94%;
 }
