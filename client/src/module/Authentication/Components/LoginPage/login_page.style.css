@@ -37,15 +37,13 @@
 }
 
 .loginPage .buttonSide .buttonSideCol .buttonBox {
-  width: 20vw;
-  min-width: 300px;
-  height: 20vh;
-  min-height: 300px;
+  width: 350px;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  background-color: rgba(131, 131, 131, 0.474);
+  background: rgba(144, 144, 144, 0.363);
   position: absolute;
   left: 170px;
   bottom: 80px;
@@ -63,10 +61,8 @@
 }
 
 .loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton {
-  width: 8vw;
-  min-width: 100px;
-  height: 3vw;
-  min-height: 40px;
+  width: 150px;
+  height: 50px;
   border-radius: 2vw;
   cursor: pointer;
   position: relative;
@@ -76,10 +72,8 @@
 }
 
 .loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton>button {
-  width: 8vw;
-  min-width: 100px;
-  height: 3vw;
-  min-height: 40px;
+  width: 150px;
+  height: 50px;
   border-radius: 2vw;
   cursor: pointer;
   position: relative;
@@ -89,6 +83,21 @@
   font-size: 20px;
   color: var(--whiteTextColor);
   font-weight: bold;
+}
+.loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton .SignInButton{
+  color: var(--yellowGreen);
+}
+.loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton .SignInButton:hover{
+  transition-delay: 0.1s;
+  color: white;
+}
+/* -------------------------------------------------- */
+.loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton .SignUpButton{
+  color: white;
+}
+.loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton .SignUpButton:hover{
+  transition-delay: 0.1s;
+  color: var(--yellowGreen);
 }
 
 .loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton>button::before {
@@ -112,10 +121,6 @@
 
 }
 
-.loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton>button:hover {
-  transition-delay: 0.1s;
-  color: var(--yellowGreen);
-}
 
 
 /* ================================================= */
@@ -182,12 +187,14 @@
   justify-content: start;
   flex-direction: column;
   right: 0;
+  z-index: 99;
 }
 
 .loginPage .textSide .textBlock .headTextBlock {
   width: 100%;
   height: auto;
   font-size: 55px;
+
 }
 
 .loginPage .textSide .textBlock .headTextBlock .welcomeBox {
@@ -196,6 +203,7 @@
   line-height: 170px;
   font-family: 'Dancing Script', cursive;
   margin-right: 20px;
+
 }
 
 .loginPage .textSide .textBlock .headTextBlock .tomyBox {

@@ -13,8 +13,19 @@ button {
   cursor: pointer;
   font-size: 90%;
   font-weight: bold;
+  background-color: white;
+
 }
 
+.link {
+  box-shadow: inset 57px 47px 90px -55px rgba(0, 0, 0, 0.75);
+  transition: 0.4s;
+  cursor: pointer;
+  font-size: 90%;
+  font-weight: bold;
+  background-color: white;
+
+}
 
 :root {
   --main_title: #000000;
@@ -27,6 +38,7 @@ button {
   --buttonColor: rgb(222, 222, 222);
   --closeButtonColor: rgb(255, 255, 255);
   --colorFontRed: rgb(221, 0, 0);
+  --orangeContent: rgb(255, 68, 0);
 }
 
 
@@ -44,22 +56,25 @@ button {
 ::-webkit-scrollbar {
   width: 10px;
 }
+
 /* Track */
 ::-webkit-scrollbar-track {
   background: #353535;
 }
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: var(--yellowGreenLow);
   border-radius: 5px;
 }
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
@@ -72,4 +87,3 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px rgba(173, 173, 173, 0) inset;
   transition: background-color 5000s ease-in-out 0s;
 }
-

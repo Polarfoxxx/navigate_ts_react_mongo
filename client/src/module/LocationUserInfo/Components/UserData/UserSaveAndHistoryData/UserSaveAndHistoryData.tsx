@@ -1,9 +1,15 @@
 import { Route, Link, Routes } from "react-router-dom";
 import { UserHistoryData, UserSaveData } from "../..";
 import "./userSaveAndHistoryData.style.css";
-
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function UserSaveAndHistoryData(): JSX.Element {
+const NAVIGATE = useNavigate()
+
+React.useLayoutEffect(() => {
+    NAVIGATE("UserHistoryData")
+},[])
 
 
     return (

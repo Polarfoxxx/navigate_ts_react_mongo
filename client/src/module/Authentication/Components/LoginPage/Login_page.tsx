@@ -1,22 +1,14 @@
 import React from "react";
 import "./login_page.style.css";
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
+import SignIn from "./SignIn/SignIn";
+import SignUp from "./SignUp/SignUp";
 
 
 function LoginPage(): JSX.Element {
-    const TO_LOCATION = useNavigate()
     const [hide, setHide] = React.useState(false)
     const [hideBox, setHideBox] = React.useState(false)
     const buttonBoxRef = React.useRef<HTMLDivElement | null>(null);
     const signBoxRef = React.useRef<HTMLDivElement | null>(null);
-
-
-    const handleClick = () => {
-        TO_LOCATION("Content")
-    };
-
 
 
     const handleClickForm = (id: string) => {
@@ -38,7 +30,7 @@ function LoginPage(): JSX.Element {
             !signBoxRef.current.contains(e.target)) {
             setHideBox(false);
         };
-    }
+    };
 
 
     return (
@@ -49,13 +41,17 @@ function LoginPage(): JSX.Element {
                         ref={buttonBoxRef}
                         className="buttonBox">
                         <div className="signButton in">
-                            <div className="effectButton">
-                                <button onClick={() => handleClickForm("Sign in")}> Sign in</button>
+                            <div className="effectButton SigIn">
+                                <button
+                                className="SignInButton"
+                                onClick={() => handleClickForm("Sign in")}> Sign in</button>
                             </div>
                         </div>
                         <div className="signButton up">
-                            <div className="effectButton">
-                                <button onClick={() => handleClickForm("Sign up")}> Sign up</button>
+                            <div className="effectButton SigUp">
+                                <button
+                                className="SignUpButton"
+                                onClick={() => handleClickForm("Sign up")}> Sign up</button>
                             </div>
                         </div>
                     </div>

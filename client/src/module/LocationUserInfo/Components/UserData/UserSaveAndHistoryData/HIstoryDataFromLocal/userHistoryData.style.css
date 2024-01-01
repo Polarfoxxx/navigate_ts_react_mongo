@@ -1,29 +1,63 @@
-.userSaveDataContent{
+.userSaveDataContent {
     width: 100%;
     height: 100%;
 }
 
-.userSaveDataContent .userSavedataBox{
+.userSaveDataContent .userSavedataBox {
     width: 100%;
     height: 100%;
     color: white;
+    margin-top: 5px;
 }
-.userSaveDataContent .userSavedataBox .userSaveLocationHeader{
+
+.userSaveDataContent .userSavedataBox .userSaveLocationHeader {
     width: 100%;
     height: 40px;
     background-color: rgba(0, 0, 0, 0.478);
     display: flex;
     align-items: center;
     justify-content: start;
-    padding-left: 20px;
-    flex-direction: row;
+    padding-left: 30px;
+    position: relative;
+    color: var(--whiteTextColor);
+}
+.userSaveDataContent .userSavedataBox .userSaveLocationHeader::before{
+    position: absolute;
+    width: 300px;
+    height: 1px;
+    background-color: rgba(255, 255, 0, 0.516);
+    bottom: 0;
+    left: 0;
+    content: "";
+}
+
+.userSaveDataContent .userSavedataBox .userSaveLocationHeader .headerName {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
     gap: 10px;
 }
 
-.userSaveDataContent .userSavedataBox .userSaveLocationBody{
+.userSaveDataContent .userSavedataBox .userSaveLocationHeader .headerName .headerAwensomeLogo {
+    color: var(--yellowGreenLow);
+}
+
+.userSaveDataContent .userSavedataBox .userSaveLocationHeader .headerTittle {
     width: 100%;
     height: 100%;
-    max-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--orangeContent);
+}
+
+
+.userSaveDataContent .userSavedataBox .userSaveLocationBody {
+    width: 100%;
+    height: 100%;
+    max-height: 430px;
     padding: 5px;
     display: flex;
     flex-direction: column;
@@ -32,10 +66,3 @@
     gap: 5px;
     overflow-x: auto;
 }
-
-
-
-
-
-
-

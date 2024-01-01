@@ -38,7 +38,7 @@
 }
 
 .header .headerBox .headerbottonBox>button:hover {
-    background-color: var(--yellowGreen);
+    background-color: var(--orangeContent);
     color: rgb(0, 0, 0);
     opacity: 1;
 }
@@ -68,21 +68,27 @@
 .header .headerBox .headerTittleBox .headerLogo {
     font-family: 'Dancing Script', cursive;
     padding-right: 40px;
-    color: rgb(44, 211, 15);
     width: 50%;
     min-width: 900px;
-    font-family: 'Dancing Script', cursive;
 }
-.header .headerBox .headerTittleBox .headerLogo > h2 {
+
+.header .headerBox .headerTittleBox .headerLogo>h2 {
     color: white;
     font-size: 35px;
 }
 
-.header .headerBox .headerTittleBox .headerUser>h2 {
+.header .headerBox .headerTittleBox .headerLogo>h2 {
     font-size: 35px;
-   color: var(--yellowGreen);
+    color: white;
 }
 
-.header .headerBox .headerTittleBox .headerUser>h3 {
-    font-size: 30px;
+.header .headerBox .headerTittleBox .headerLogo>h3 {
+    font-size: 35px;
+}
+
+.header .headerBox .headerTittleBox .headerLogo>h1 {
+    color:white;
+}
+.header .headerBox .headerTittleBox .headerLogo .faIcon{
+    color: var(--orangeContent);
 }

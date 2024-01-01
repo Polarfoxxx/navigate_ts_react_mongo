@@ -21,12 +21,12 @@ function UserHistoryDataItem(props: Type_UserSaveDataItem): JSX.Element {
     const { startPoints, endPoints, arrayALL_coordinate } = location_DATA;
     const [save_historyRoute, setSave_historyRoute] = React.useState<Type_UserSaveHistoryRouteObjekt[]>([]);
     const { handleSubmit, reset } = useInputValue();
-    const [dataForProps, setDataForProps] = React.useState<Type_UserSaveHistoryRouteObjekt>();
+    const [dataFromProps, setDataFromProps] = React.useState<Type_UserSaveHistoryRouteObjekt>();
 
 
     React.useEffect(() => {
         if (props.item) {
-            setDataForProps({
+            setDataFromProps({
                 startPoint: props.item.startPoint,
                 endPoint: props.item.endPoint,
                 addPoint: props.item.addPoint,
@@ -87,7 +87,7 @@ function UserHistoryDataItem(props: Type_UserSaveDataItem): JSX.Element {
                         <FontAwesomeIcon icon={faRoad} />
                     </div>
                     <div className="nameRoute">
-                        <p>{dataForProps?.routeName}</p>
+                        <p>{dataFromProps?.routeName}</p>
                     </div>
                 </div>
             </div>
@@ -96,7 +96,7 @@ function UserHistoryDataItem(props: Type_UserSaveDataItem): JSX.Element {
                     <FontAwesomeIcon icon={faLocationDot} />
                 </div>
                 <div className="itemStartEndName">
-                    <p>{dataForProps?.startPoint.address.label}</p>
+                    <p>{dataFromProps?.startPoint.address.label}</p>
                 </div>
             </div>
             <div className="itemStartANDEndPoint">
@@ -104,8 +104,21 @@ function UserHistoryDataItem(props: Type_UserSaveDataItem): JSX.Element {
                     <FontAwesomeIcon icon={faLocationDot} />
                 </div>
                 <div className="itemStartEndName">
-                    <p>{dataForProps?.endPoint.address.label}</p>
+                    <p>{dataFromProps?.endPoint.address.label}</p>
                 </div>
+            </div>
+            <div className="itemAddedPoint">
+                {
+                    dataFromProps && dataFromProps?.addPoint.length > 0 &&
+                    <div className="addPointShow">
+                        <div className="addPointShowNumb">
+                            <p>{dataFromProps?.addPoint.length + 1}x added point </p>
+                        </div>
+                        <div className="addPointShowIcon">
+                            <FontAwesomeIcon icon={faLocationDot} />
+                        </div>
+                    </div>
+                }
             </div>
             <div className="itemEventBlock">
                 <form onSubmit={(e) => handleSubmit(e, submit)}>

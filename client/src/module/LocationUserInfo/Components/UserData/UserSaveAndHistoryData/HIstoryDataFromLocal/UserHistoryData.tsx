@@ -72,17 +72,22 @@ function UserHistoryData(): JSX.Element {
         <div className="userSaveDataContent">
             <div className="userSavedataBox">
                 <div className="userSaveLocationHeader">
-                    <div className="headerAwensomeLogo">
-                        <FontAwesomeIcon icon={faUser} />
-                    </div>
                     <div className="headerName">
-                        <h1>{logUserName}</h1>
+                        <div className="headerAwensomeLogo">
+                            <FontAwesomeIcon icon={faUser} />
+                        </div>
+                        <div className="headeruserName">
+                            <h4>{logUserName}</h4>
+                        </div>
+                    </div>
+                    <div className="headerTittle">
+                        <h3>History searche</h3>
                     </div>
                 </div>
                 <div className="userSaveLocationBody">
                     {
                         history_RouteReff.current.map((item, key) =>
-                                <UserSaveDataItem item={item} keyItem={key}/>
+                            <UserSaveDataItem item={item} keyItem={key} />
                         )
                     }
                 </div>

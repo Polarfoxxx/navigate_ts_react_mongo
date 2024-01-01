@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     background-image: url("../../../../public/img/backGround/imageUserIngo2.jpg");
-    background-size: 56%;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: right top 50px;
 }
@@ -24,19 +24,19 @@
 .locationUserData .locationUserDataNavigate .link{
     width: 300px;
     height: 30px;
-    background-color: black;
-    color: white;
     margin: 2px;
     text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
-    transition: 0.3s;
-    font-weight: bold;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 18px;
+
 }
 .locationUserData .locationUserDataNavigate .link:hover{
-    color: var(--yellowGreen);
+    background-color: var(--yellowGreen);
 }
 
 .locationUserData .locationUserDataContent{

@@ -1,13 +1,13 @@
 import React from "react";
-import "./signUP_IN.style.css";
-import { AUTHENTICATION_API } from "../../../API";
+import "../SignUp/signUP_IN.style.css";
+import { AUTHENTICATION_API } from "../../../../API";
 import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import validator from "email-validator";
-import { Type_forAuthentication_API, Type_forInputElemets } from "..";
+import { Type_forAuthentication_API, Type_forInputElemets } from "../..";
 import { useNavigate } from "react-router-dom";
-import { UseChangeContextDATA } from "../../../hooks";
-import { Container } from "../../../Container";
+import { UseChangeContextDATA } from "../../../../hooks";
+import { Container } from "../../../../Container";
 
 
 

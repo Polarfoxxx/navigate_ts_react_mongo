@@ -1,7 +1,7 @@
 /* components */
 export { default as LoginPage } from "./LoginPage/Login_page";
-export { default as SignUp } from "./LoginPage/SignUp";
-export { default as SignIn } from "./LoginPage/SignIn";
+export { default as SignUp } from "./LoginPage/SignUp/SignUp";
+export { default as SignIn } from "./LoginPage/SignIn/SignIn";
 
 
 /* type */
