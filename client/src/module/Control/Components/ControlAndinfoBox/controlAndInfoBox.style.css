@@ -24,6 +24,12 @@
     flex-direction: column;
 }
 
+.controlAndinfoBox .offCanvasBox_box .offCanvasBoxTextContent .faaa {
+    color: var(--orangeContent);
+    margin-top: 15px;
+}
+
+
 .controlAndinfoBox .offCanvasBoxCanvas .offCanvasBoxCanvas {
     width: 100%;
     height: 30%;

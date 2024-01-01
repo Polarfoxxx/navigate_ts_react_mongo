@@ -21,16 +21,15 @@
 
 .loginPage .buttonSide {
   position: relative;
-  background-image: url("/public/img/backGround/loginwallp.jpg");
-  background-position: left;
-  background-size: 1920px;
+  background-image: url("/public/img/backGround/loginCompasOrangeGreen2.jpg");
+  background-position: left -150px  bottom;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
 .loginPage .buttonSide .buttonSideCol {
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.353);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,7 +37,7 @@
 
 .loginPage .buttonSide .buttonSideCol .buttonBox {
   width: 350px;
-  height: 300px;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,7 +163,7 @@
   position: absolute;
   top: 480px;
   transition: 1s;
-  z-index: 99;
+  z-index: 199;
 }
 
 .loginPage .textSide .signBox>div {
@@ -229,7 +228,7 @@
 .loginPage .textSide .textBlock .bodyTextBlock .bodyTextContent .first::first-letter {
   font-size: 50px;
   font-weight: bold;
-  color: var(--yellowGreen);
+  color: var(--orangeContent);
 }
 
 

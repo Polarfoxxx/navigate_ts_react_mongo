@@ -1,15 +1,12 @@
 import React, { useRef } from "react";
 import "./userHistoryData.style.css";
 import { Container } from "../../../../../Container";
-import { AUTHENTICATION_API } from "../../../../../API";
-import { useInputValue } from "foxxy_input_value";
-import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import UserSaveDataItem from "./UserHistoryDataItem";
-import { Type_ArrayAllCoord } from "../../../../../Container";
 import { Type_UserSaveHistoryRouteObjekt } from "../types";
 import services_theMatchOfTheCreatedObject from "./services/services_theMatchOfTheCreatedObject";
+import { strict } from "assert";
 
 
 function UserHistoryData(): JSX.Element {
@@ -41,6 +38,9 @@ function UserHistoryData(): JSX.Element {
     /* nastavenie novej trasy vlozenie do pola a lokalneho uloziska */
     React.useEffect(() => {
         if (location_DATA.main_atl_route.length > 0) {
+            const CREATE_TIME = new Date();
+            const   UTC_TIME = CREATE_TIME.toUTCString();
+
             const UPDATE_DATA: Type_UserSaveHistoryRouteObjekt = {
                 startPoint: {
                     address: startPoints.address,
@@ -54,6 +54,7 @@ function UserHistoryData(): JSX.Element {
                 routeName: main_atl_route[0].nameRoutes,
                 routeTime: main_atl_route[0].totalTime,
                 routeDistance: main_atl_route[0].totalDistance,
+                createTime:  UTC_TIME
             };
 
             const save_historyRoute = history_RouteReff.current;
@@ -82,6 +83,9 @@ function UserHistoryData(): JSX.Element {
                     </div>
                     <div className="headerTittle">
                         <h3>History searche</h3>
+                    </div>
+                    <div className="headerClearButtom">
+                        <button>Clear</button>
                     </div>
                 </div>
                 <div className="userSaveLocationBody">

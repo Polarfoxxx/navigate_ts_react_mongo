@@ -7,12 +7,12 @@ import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import { Type_UserSaveHistoryRouteObjekt } from "../types";
 import { UseChangeContextDATA } from "../../../../../hooks";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRoad, faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faRoad, faLocationDot, faClock } from '@fortawesome/free-solid-svg-icons'
 
 export type Type_UserSaveDataItem = {
     item: Type_UserSaveHistoryRouteObjekt,
     keyItem: number
-}
+};
 
 function UserHistoryDataItem(props: Type_UserSaveDataItem): JSX.Element {
     const [logUserName, setLogUserName] = React.useState("");
@@ -32,7 +32,8 @@ function UserHistoryDataItem(props: Type_UserSaveDataItem): JSX.Element {
                 addPoint: props.item.addPoint,
                 routeName: props.item.routeName,
                 routeTime: props.item.routeTime,
-                routeDistance: props.item.routeDistance
+                routeDistance: props.item.routeDistance,
+                createTime: props.item.createTime
             });
         };
     }, [props.item]);
@@ -57,18 +58,16 @@ function UserHistoryDataItem(props: Type_UserSaveDataItem): JSX.Element {
     };
 
     const handleClick = (route: Type_UserSaveHistoryRouteObjekt) => {
-
         const UPDATE_DATA = {
             ...location_DATA,
             startPoints: route.startPoint,
             endPoints: route.endPoint,
             arrayALL_coordinate: route.addPoint
         };
-
         updateContext_DATA([
             { newData: UPDATE_DATA, key: "location_DATA" },
         ]);
-    }
+    };
 
     return (
         <div
@@ -119,6 +118,14 @@ function UserHistoryDataItem(props: Type_UserSaveDataItem): JSX.Element {
                         </div>
                     </div>
                 }
+            </div>
+            <div className="itemStartANDEndPoint">
+                <div className="itemStartEndLogo">
+                    <FontAwesomeIcon icon={faClock} />
+                </div>
+                <div className="itemStartEndName">
+                    <p>{dataFromProps?.createTime}</p>
+                </div>
             </div>
             <div className="itemEventBlock">
                 <form onSubmit={(e) => handleSubmit(e, submit)}>

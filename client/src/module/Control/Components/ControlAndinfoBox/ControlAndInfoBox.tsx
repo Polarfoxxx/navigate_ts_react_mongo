@@ -12,7 +12,7 @@ function ControlAndinfoBox(): JSX.Element {
                 <div className="offCanvasBoxTextContent">
                     <p>All right! here we can search for places using the names of places or streets,</p>
                     <p>you can also enter the starting point and the end point to display the route</p>
-                    <FontAwesomeIcon color="rgb(106, 255, 0)" icon={faCircleDown} size="2xl" />
+                    <FontAwesomeIcon className="faaa" icon={faCircleDown} size="2xl" />
                 </div>
                 <div className="offCanvasBoxCanvas">
                     <OffCanvasBoxInputsControl />

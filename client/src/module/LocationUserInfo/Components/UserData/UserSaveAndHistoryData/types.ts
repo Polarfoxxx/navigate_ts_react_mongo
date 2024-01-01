@@ -8,6 +8,7 @@ export type Type_UserSaveHistoryRouteObjekt = {
     routeName: string,
     routeTime: number,
     routeDistance: number,
+    createTime: string
 };
 
 

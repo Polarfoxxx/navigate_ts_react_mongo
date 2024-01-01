@@ -39,22 +39,22 @@ button {
   --closeButtonColor: rgb(255, 255, 255);
   --colorFontRed: rgb(221, 0, 0);
   --orangeContent: rgb(255, 68, 0);
+  --yellowContent: rgb(155, 210, 14);
 }
-
 
 .app {
   width: 100%;
-  min-width: 1400px;
+  min-width: 1550px;
   height: 100vh;
   display: flex;
   overflow: hidden;
 
 }
 
-
+/* scrool bar */
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 0px;
 }
 
 /* Track */
@@ -73,6 +73,8 @@ button {
   background: #555;
 }
 
+
+/* auto doplnanie pre input */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
