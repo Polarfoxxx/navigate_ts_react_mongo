@@ -17,6 +17,7 @@
     gap: 20px;
     position: relative;
 }
+
 .userSaveAndHisData .userSaveAndHisData_nav::before {
     width: 110%;
     height: 1px;
@@ -29,16 +30,17 @@
 
 .userSaveAndHisData .userSaveAndHisData_nav .link {
     width: 200px;
- height: 25px;
+    height: 25px;
     background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     text-decoration: none;
-    border-radius: 4px;
-    color: black;
-    transition: 0.3s;
-    font-size: 16px;
+    display: flex;
+    font-size: 17px;
+    text-align: center;
+    justify-content: center;
+    border: 2px solid #4e4e4e;
+    border-radius: 5px;
+    color: #000000;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .userSaveAndHisData .userSaveAndHisData_nav .link:hover {

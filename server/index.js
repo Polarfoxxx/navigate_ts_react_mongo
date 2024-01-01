@@ -56,7 +56,8 @@ const userSchema = new mongoose.Schema({
         address: Type_Addrress,
         latLng: [Number]
       },
-      allCoord: [Type_ALLCoordinateObjekt]
+      allCoord: [Type_ALLCoordinateObjekt],
+      timeCreate: String
     }
   ]
 });
@@ -141,7 +142,7 @@ const authenticateToken = (req, res, next) => {
 app.post('/save/data', authenticateToken, async (req, res) => {
   console.log(req.body);
   try {
-    const { username, startCoord, endCoord, routeName, allCoord } = req.body;
+    const { username, startCoord, endCoord, routeName, allCoord, timeCreate } = req.body;
     /* hladanie uzivatela*/
     const user = await User.findOne({ username });
     // Pridanie správy do poľa správ používateľa
@@ -149,7 +150,8 @@ app.post('/save/data', authenticateToken, async (req, res) => {
       name: routeName,
       startCoord: startCoord,
       endCoord: endCoord,
-      allCoord: allCoord
+      allCoord: allCoord,
+      timeCreate: timeCreate
     });
     // Uloženie aktualizovaného používateľa do databázy
     await user.save();

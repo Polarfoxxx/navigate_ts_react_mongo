@@ -41,18 +41,26 @@ function UserHistoryDataItem(props: Type_UserSaveDataItem): JSX.Element {
 
     /* odoslanie formulara */
     const submit = (v: TypeForInputsObject["v"]): void => {
-        console.log(v);
         const LOAD_USER_DATA = localStorage.getItem("JWT_token");
         const START_COORD = startPoints;
         const END_COORD = endPoints;
         const ALL_COORD = arrayALL_coordinate;
         const ROUTE_NAME = v[0].inputValues.toString();
+        const TIME_CREATE = props.item.createTime
 
         if (LOAD_USER_DATA && START_COORD.latLng[0] && END_COORD.latLng[0]) {
             const USER_DATA = JSON.parse(LOAD_USER_DATA)
             const USER_NAME = USER_DATA.user_Name;
             const USER_JWT_TOKEN = USER_DATA.JWT_token;
-            AUTHENTICATION_API.saveDATA_API({ USER_NAME, USER_JWT_TOKEN, ROUTE_NAME, START_COORD, END_COORD, ALL_COORD })
+            AUTHENTICATION_API.saveDATA_API({
+                USER_NAME,
+                USER_JWT_TOKEN,
+                ROUTE_NAME,
+                START_COORD,
+                END_COORD,
+                ALL_COORD,
+                TIME_CREATE
+            })
             reset();
         };
     };

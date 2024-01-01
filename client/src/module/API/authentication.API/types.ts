@@ -17,7 +17,8 @@ export type Type_forSaveDATA_API = {
     USER_NAME: string,
     USER_JWT_TOKEN: string,
     ROUTE_NAME: string,
-    START_COORD: TypeStartAndEndPoint, 
-     END_COORD: TypeStartAndEndPoint,
-     ALL_COORD: Type_ArrayAllCoord
+    START_COORD: TypeStartAndEndPoint,
+    END_COORD: TypeStartAndEndPoint,
+    ALL_COORD: Type_ArrayAllCoord
+    TIME_CREATE: string
 };
