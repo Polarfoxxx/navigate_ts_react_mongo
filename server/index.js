@@ -12,11 +12,8 @@ const Port = 4000;
 const mongo = "mongodb://127.0.0.1:27017/navigate";
 app.listen(Port, () => console.log(`connect to port ${Port}`));
 
-const corsOption = {
-  origin: ['http://localhost:3000'],
-};
-app.use(cors(corsOption));
-app.use(cors())
+
+app.use(cors());
 
 mongoose
   .connect(mongo, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -52,7 +49,7 @@ const userSchema = new mongoose.Schema({
         address: Type_Addrress,
         latLng: [Number]
       },
-      endCoord:  {
+      endCoord: {
         address: Type_Addrress,
         latLng: [Number]
       },
@@ -69,8 +66,9 @@ const User = mongoose.model("user", userSchema)
 
 /* register POST method -------------------------------------*/
 app.post('/register/newUser', async (req, res) => {
+  const { username, password } = req.body;
+
   try {
-    const { username, password } = req.body;
     // Skontrolujte, či používateľ už neexistuje
     const existingUser = await User.findOne({ username });
     if (existingUser) {
@@ -110,8 +108,8 @@ app.post('/register/newUser', async (req, res) => {
 
 /* Login GET method -------------------------------------*/
 app.post('/login/user', async (req, res) => {
+  const { username, password } = req.body;
   try {
-    const { username, password } = req.body;
     /* hladanie uzivatela*/
     const user = await User.findOne({ username });
     if (user && await bcrypt.compare(password, user.password)) {
@@ -119,11 +117,11 @@ app.post('/login/user', async (req, res) => {
       const token = jwt.sign({ username }, 'secret', { expiresIn: '1h' });
       res.json({ token, username });
     } else {
-      res.status(401).json("Unauthorized");
+      res.status(401).send( "Unauthorized" );
     };
   } catch
   (error) {
-    res.status(500).json('Internal Server Error');
+    res.status(500).send('Internal Server Error');
   };
 });
 
@@ -140,9 +138,8 @@ const authenticateToken = (req, res, next) => {
 
 /* save GET method -------------------------------------*/
 app.post('/save/data', authenticateToken, async (req, res) => {
-  console.log(req.body);
+  const { username, startCoord, endCoord, routeName, allCoord, timeCreate } = req.body;
   try {
-    const { username, startCoord, endCoord, routeName, allCoord, timeCreate } = req.body;
     /* hladanie uzivatela*/
     const user = await User.findOne({ username });
     // Pridanie správy do poľa správ používateľa
@@ -155,34 +152,33 @@ app.post('/save/data', authenticateToken, async (req, res) => {
     });
     // Uloženie aktualizovaného používateľa do databázy
     await user.save();
-    res.status(201).json('Route saved');
-  } catch
-  (error) {
-    res.status(500).json('Internal Server Error');
-  };
-});
-
-
-/* get GET method -------------------------------------*/
-app.get('/load/data', authenticateToken, async (req, res) => {
-  try {
-    const { username, startCoord, endCoord, routeName } = req.body;
-    /* hladanie uzivatela*/
-    const user = await User.findOne({ username });
-    // Pridanie správy do poľa správ používateľa
-    user.data.push({
-      name: routeName,
-      startCoord: startCoord,
-      endCoord: endCoord
-    });
-    // Uloženie aktualizovaného používateľa do databázy
-    await user.save();
-    res.status(201).send('Message saved');
+    res.status(201).json({ message: "Route saved" });
   } catch
   (error) {
     res.status(500).send('Internal Server Error');
   };
 });
+
+
+/* get read method -------------------------------------*/
+app.get('/load/data',authenticateToken ,async (req, res) => {
+  const { useName } = req.query;
+
+  try {
+    const user = await User.findOne({ useName });
+    if (user) {
+      res.status(200).json({
+        data: user.data,
+        message: "load"
+      });
+    } else {
+      res.status(500).send('Internal Server Error');
+    }
+  } catch (error) {
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 
 
 

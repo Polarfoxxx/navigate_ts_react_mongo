@@ -83,3 +83,9 @@
     gap: 5px;
     overflow-x: auto;
 }
+.userSaveDataContent .userSavedataBox .userSaveLocationBody .userSaveItem{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -4,26 +4,23 @@ import { Container } from "../../../../../Container";
 import { AUTHENTICATION_API } from "../../../../../API";
 import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
-import { Type_UserSaveHistoryRouteObjekt } from "../types";
+import { Type_UserSaveHistoryRouteObjekt, Type_UserSaveDataItem, Type_saveRoute, TypeforSAVE_API } from "../../..";
 import { UseChangeContextDATA } from "../../../../../hooks";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRoad, faLocationDot, faClock } from '@fortawesome/free-solid-svg-icons'
 
-export type Type_UserSaveDataItem = {
-    item: Type_UserSaveHistoryRouteObjekt,
-    keyItem: number
-};
+
+
 
 function UserHistoryDataItem(props: Type_UserSaveDataItem): JSX.Element {
-    const [logUserName, setLogUserName] = React.useState("");
     const { location_DATA, setLocation_DATA, sideWays_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
     const { startPoints, endPoints, arrayALL_coordinate } = location_DATA;
-    const [save_historyRoute, setSave_historyRoute] = React.useState<Type_UserSaveHistoryRouteObjekt[]>([]);
     const { handleSubmit, reset } = useInputValue();
     const [dataFromProps, setDataFromProps] = React.useState<Type_UserSaveHistoryRouteObjekt>();
+    const [respoMessage, setRespoMessage] = React.useState("")
 
-
+    /* nastave dat pre zobrazenie */
     React.useEffect(() => {
         if (props.item) {
             setDataFromProps({
@@ -39,33 +36,47 @@ function UserHistoryDataItem(props: Type_UserSaveDataItem): JSX.Element {
     }, [props.item]);
 
 
-    /* odoslanie formulara */
+    /* priprava  formulara */
     const submit = (v: TypeForInputsObject["v"]): void => {
-        const LOAD_USER_DATA = localStorage.getItem("JWT_token");
-        const START_COORD = startPoints;
-        const END_COORD = endPoints;
-        const ALL_COORD = arrayALL_coordinate;
-        const ROUTE_NAME = v[0].inputValues.toString();
-        const TIME_CREATE = props.item.createTime
-
-        if (LOAD_USER_DATA && START_COORD.latLng[0] && END_COORD.latLng[0]) {
-            const USER_DATA = JSON.parse(LOAD_USER_DATA)
-            const USER_NAME = USER_DATA.user_Name;
-            const USER_JWT_TOKEN = USER_DATA.JWT_token;
-            AUTHENTICATION_API.saveDATA_API({
-                USER_NAME,
-                USER_JWT_TOKEN,
-                ROUTE_NAME,
-                START_COORD,
-                END_COORD,
-                ALL_COORD,
-                TIME_CREATE
-            })
+        if (v[0].inputValues && startPoints.latLng[0] && endPoints.latLng[0]) {
+            const DATA_FOR_SAVEAPI: Type_saveRoute = {
+                startCoord: startPoints,
+                endCoord: endPoints,
+                allCoord: arrayALL_coordinate,
+                routeName: v[0].inputValues.toString(),
+                timeCreate: props.item.createTime,
+            };
+            saveDATA({ DATA_FOR_SAVEAPI })
             reset();
         };
     };
 
-    const handleClick = (route: Type_UserSaveHistoryRouteObjekt) => {
+    /* async funkcia pre ulozenie dat */
+    async function saveDATA(data: TypeforSAVE_API) {
+        const DATA_ROUTE = data.DATA_FOR_SAVEAPI;
+        const USER_DATA_FROM_STR = localStorage.getItem("JWT_token");
+        if (USER_DATA_FROM_STR) {
+            const USER_DATA = JSON.parse(USER_DATA_FROM_STR);
+            const USER_NAME = USER_DATA.user_Name;
+            const USER_JWT_TOKEN = USER_DATA.JWT_token;
+
+            try {
+                const SAVE_RESPO = await AUTHENTICATION_API.saveDATA_API({ DATA_ROUTE, USER_NAME, USER_JWT_TOKEN });
+                if(SAVE_RESPO) {
+                    setRespoMessage(SAVE_RESPO?.message)
+                    setTimeout(() => {
+                        setRespoMessage("")
+                    }, 5000)
+                };
+            } catch (error) {
+                console.error(error);
+            };
+        }
+
+    };
+
+    /* kliknutie na item historie cesty */
+    const handleClickItem = (route: Type_UserSaveHistoryRouteObjekt) => {
         const UPDATE_DATA = {
             ...location_DATA,
             startPoints: route.startPoint,
@@ -79,7 +90,9 @@ function UserHistoryDataItem(props: Type_UserSaveDataItem): JSX.Element {
 
     return (
         <div
-            onClick={() => handleClick(props.item)}
+            style={props.keyItem === props.selectItem ? { left: "40px" } : { left: "0px" }}
+            key={props.keyItem}
+            onClick={() => handleClickItem(props.item)}
             className="itemUserSave">
             <div className="routeNameAndLogo">
                 <div className="routeItemKey">
@@ -143,6 +156,9 @@ function UserHistoryDataItem(props: Type_UserSaveDataItem): JSX.Element {
                         type="text" />
                     <button>save</button>
                 </form>
+            </div>
+            <div className="respoMessage">
+                <h4>{respoMessage}</h4>
             </div>
         </div>
     );

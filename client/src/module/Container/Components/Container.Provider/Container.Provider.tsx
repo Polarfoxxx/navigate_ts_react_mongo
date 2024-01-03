@@ -32,7 +32,7 @@ function Provider({ children }: Props_Provider): JSX.Element {
     const [user_DATA, setUser_DATA] = React.useState<Type_userDATA>(default_UserDATA_for_Provider_Context);
     const NAVIGATE = useNavigate();
 
-    React.useLayoutEffect(() => {
+    React.useEffect(() => {
         const JWT_FROM_STORAGE = localStorage.getItem('JWT_token');
         if (JWT_FROM_STORAGE === null) {
             NAVIGATE("/LoginPage");

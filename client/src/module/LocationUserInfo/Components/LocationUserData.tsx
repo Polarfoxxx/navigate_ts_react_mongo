@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 function LocationUserData(): JSX.Element {
     const NAVIGATE = useNavigate();
 
-    React.useLayoutEffect(() => {
+    React.useEffect(() => {
         NAVIGATE("UserDATA")
     }, [])
 

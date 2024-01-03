@@ -5,7 +5,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-top: 3px;
 }
 
 .userSaveAndHisData .userSaveAndHisData_nav {
@@ -16,17 +15,11 @@
     justify-content: center;
     gap: 20px;
     position: relative;
+    background: rgb(245,69,0);
+    background: linear-gradient(90deg, rgba(245,69,0,1) 10%, rgba(0,0,0,0.3981967787114846) 100%);
+        
 }
 
-.userSaveAndHisData .userSaveAndHisData_nav::before {
-    width: 110%;
-    height: 1px;
-    background-color: var(--orangeContent);
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
 
 .userSaveAndHisData .userSaveAndHisData_nav .link {
     width: 200px;

@@ -29,3 +29,8 @@ export type {
     Type_UserSaveHistoryRouteObjekt
 } from "./UserData/UserSaveAndHistoryData/types";
 
+export type {
+    Type_UserSaveDataItem,
+    Type_saveRoute,
+    TypeforSAVE_API
+} from "./UserData/UserSaveAndHistoryData/HIstoryDataFromLocal/types";

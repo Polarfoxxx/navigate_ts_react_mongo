@@ -1,6 +1,6 @@
 import React from "react";
 import "./signUP_IN.style.css";
-import { AUTHENTICATION_API, Type_forRegister_respo_objekt } from "../../../../API";
+import { AUTHENTICATION_API, Type_forRespo_objekt } from "../../../../API";
 import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import validator from "email-validator";

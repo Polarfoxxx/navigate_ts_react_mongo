@@ -1,5 +1,4 @@
-import { TypeStartAndEndPoint, Type_ArrayAllCoord } from "../../Container";
-
+import { Type_saveRoute } from "../../LocationUserInfo";
 
 export type Type_forLogin_respo_objekt = {
     status: number,
@@ -8,17 +7,26 @@ export type Type_forLogin_respo_objekt = {
     message: string
 };
 
-export type Type_forRegister_respo_objekt = {
+export type Type_forRespo_objekt = {
     status: number,
     message: ""
 };
+export type Type_forRespoLoad_objekt = {
+    status: number,
+    message: string,
+    data: Type_saveRoute[],
+};
+
+
 
 export type Type_forSaveDATA_API = {
+    DATA_ROUTE: Type_saveRoute,
     USER_NAME: string,
     USER_JWT_TOKEN: string,
-    ROUTE_NAME: string,
-    START_COORD: TypeStartAndEndPoint,
-    END_COORD: TypeStartAndEndPoint,
-    ALL_COORD: Type_ArrayAllCoord
-    TIME_CREATE: string
 };
+
+export type Type_forLoadDATA_API = {
+    USER_NAME: string
+    USER_JWT_TOKEN:string
+
+}

@@ -14,6 +14,7 @@ function UserHistoryData(): JSX.Element {
     const { startPoints, endPoints, main_atl_route, arrayALL_coordinate } = location_DATA;
     const history_RouteReff = React.useRef<Type_UserSaveHistoryRouteObjekt[]>([]);
     const [clearStorage, setClearStorage] = React.useState(false) /* iba pre render */
+    const selectItemRef = React.useRef<number>()
 
 
     /* nastavenie mena prihlaseneho */
@@ -40,7 +41,7 @@ function UserHistoryData(): JSX.Element {
     React.useEffect(() => {
         if (location_DATA.main_atl_route.length > 0) {
             const CREATE_TIME = new Date();
-            const   UTC_TIME = CREATE_TIME.toUTCString();
+            const UTC_TIME = CREATE_TIME.toUTCString();
 
             const UPDATE_DATA: Type_UserSaveHistoryRouteObjekt = {
                 startPoint: {
@@ -55,12 +56,13 @@ function UserHistoryData(): JSX.Element {
                 routeName: main_atl_route[0].nameRoutes,
                 routeTime: main_atl_route[0].totalTime,
                 routeDistance: main_atl_route[0].totalDistance,
-                createTime:  UTC_TIME
+                createTime: UTC_TIME
             };
 
             const save_historyRoute = history_RouteReff.current;
             if (services_theMatchOfTheCreatedObject({ save_historyRoute, UPDATE_DATA }) === -1) {
-                history_RouteReff.current = [...history_RouteReff.current, UPDATE_DATA]
+                history_RouteReff.current = [...history_RouteReff.current, UPDATE_DATA];
+
             };
         };
         return (() => {
@@ -68,11 +70,21 @@ function UserHistoryData(): JSX.Element {
         });
     }, [JSON.stringify(location_DATA.main_atl_route)]);
 
-const handleClickClearLocalHistory =() => {
-    localStorage.removeItem("saveHistoryRoutes");
-    history_RouteReff.current = [];
-    setClearStorage(!clearStorage)
-}
+
+    /* vymazanie local storage */
+    const handleClickClearLocalHistory = () => {
+        localStorage.removeItem("saveHistoryRoutes");
+        history_RouteReff.current = [];
+        setClearStorage(!clearStorage)
+    };
+
+
+/* selekt trasy pre farebne odlisenie */
+    const handleActive = (key: number) => {
+        if (key !== selectItemRef.current) {
+            selectItemRef.current = key
+        };
+    };
 
     return (
         <div className="userSaveDataContent">
@@ -96,7 +108,12 @@ const handleClickClearLocalHistory =() => {
                 <div className="userSaveLocationBody">
                     {
                         history_RouteReff.current.map((item, key) =>
-                            <UserSaveDataItem item={item} keyItem={key} />
+                            <div
+                                onClick={() => handleActive(key)}
+                                key={key}
+                                className="userSaveItem">
+                                <UserSaveDataItem item={item} keyItem={key} selectItem={selectItemRef.current} />
+                            </div>
                         )
                     }
                 </div>
