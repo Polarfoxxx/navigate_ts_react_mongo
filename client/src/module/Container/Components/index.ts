@@ -1,6 +1,8 @@
 
+/* export component */
 export { default as Container } from "./Container.Provider/Container.Provider";
 
+/* export type */
 export type {
     Type_Provider_Context,
     Type_sideWays_DATA,
@@ -24,7 +26,8 @@ export type {
     Type_Addrress
 } from "./Container.Provider/types";
 
-
+/* export defvalue */
+export { defaultValue_address_for_Provider_Context } from "./Container.Provider/default_value.js";
 
 
 

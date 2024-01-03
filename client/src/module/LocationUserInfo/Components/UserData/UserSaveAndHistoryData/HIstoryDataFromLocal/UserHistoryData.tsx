@@ -1,40 +1,28 @@
-import React from "react";
+import React, { useMemo } from "react";
 import "./userHistoryData.style.css";
 import { Container } from "../../../../../Container";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
 import UserSaveDataItem from "./UserHistoryDataItem";
 import { Type_UserSaveHistoryRouteObjekt } from "../types";
 import services_theMatchOfTheCreatedObject from "./services/services_theMatchOfTheCreatedObject";
+import { UseChangeContextDATA } from "../../../../../hooks";
+import { defaultValue_address_for_Provider_Context } from "../../../../../Container";
 
 
 function UserHistoryData(): JSX.Element {
-    const [logUserName, setLogUserName] = React.useState("");
     const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
+    const { updateContext_DATA } = UseChangeContextDATA({  location_DATA, setLocation_DATA });
     const { startPoints, endPoints, main_atl_route, arrayALL_coordinate } = location_DATA;
-    const history_RouteReff = React.useRef<Type_UserSaveHistoryRouteObjekt[]>([]);
     const [clearStorage, setClearStorage] = React.useState(false) /* iba pre render */
     const selectItemRef = React.useRef<number>()
 
-
-    /* nastavenie mena prihlaseneho */
-    React.useEffect(() => {
-        const USER_NAME = localStorage.getItem("JWT_token");
-        if (USER_NAME) {
-            const USER_NAME_AND_KEY = JSON.parse(USER_NAME);
-            setLogUserName(USER_NAME_AND_KEY.user_Name)
-        };
-    }, []);
-
-
     /* nacitanie vsetkychroutes z lokalneho uloziska */
-    React.useEffect(() => {
+    let storageHistorySearch: Type_UserSaveHistoryRouteObjekt[] = useMemo(() => {
         const storedArray = localStorage.getItem('saveHistoryRoutes');
         if (storedArray) {
             const PARSE_ROUTE_ARR = JSON.parse(storedArray);
-            history_RouteReff.current = PARSE_ROUTE_ARR
-        }
-    }, []);
+           return PARSE_ROUTE_ARR;
+        };
+},[])
 
 
     /* nastavenie novej trasy vlozenie do pola a lokalneho uloziska */
@@ -59,14 +47,12 @@ function UserHistoryData(): JSX.Element {
                 createTime: UTC_TIME
             };
 
-            const save_historyRoute = history_RouteReff.current;
-            if (services_theMatchOfTheCreatedObject({ save_historyRoute, UPDATE_DATA }) === -1) {
-                history_RouteReff.current = [...history_RouteReff.current, UPDATE_DATA];
-
+            if (services_theMatchOfTheCreatedObject({ storageHistorySearch, UPDATE_DATA }) === -1) {
+                storageHistorySearch.push(UPDATE_DATA)
             };
         };
         return (() => {
-            localStorage.setItem('saveHistoryRoutes', JSON.stringify(history_RouteReff.current))
+            localStorage.setItem('saveHistoryRoutes', JSON.stringify(storageHistorySearch))
         });
     }, [JSON.stringify(location_DATA.main_atl_route)]);
 
@@ -74,12 +60,13 @@ function UserHistoryData(): JSX.Element {
     /* vymazanie local storage */
     const handleClickClearLocalHistory = () => {
         localStorage.removeItem("saveHistoryRoutes");
-        history_RouteReff.current = [];
+        storageHistorySearch = [];
         setClearStorage(!clearStorage)
+        updateContext_DATA([{ newData: defaultValue_address_for_Provider_Context, key: "location_DATA" }]);
     };
 
 
-/* selekt trasy pre farebne odlisenie */
+    /* selekt trasy pre farebne odlisenie */
     const handleActive = (key: number) => {
         if (key !== selectItemRef.current) {
             selectItemRef.current = key
@@ -87,31 +74,23 @@ function UserHistoryData(): JSX.Element {
     };
 
     return (
-        <div className="userSaveDataContent">
-            <div className="userSavedataBox">
-                <div className="userSaveLocationHeader">
-                    <div className="headerName">
-                        <div className="headerAwensomeLogo">
-                            <FontAwesomeIcon icon={faUser} />
-                        </div>
-                        <div className="headeruserName">
-                            <h4>{logUserName}</h4>
-                        </div>
-                    </div>
+        <div className="userHistoryDataContent">
+            <div className="userHistorydataBox">
+                <div className="userHistLocationHeader">
                     <div className="headerTittle">
                         <h3>HISTORY SEARCHE</h3>
                     </div>
                     <div className="headerClearButtom">
-                        <button onClick={handleClickClearLocalHistory}>Clear history</button>
+                        <button onClick={handleClickClearLocalHistory}>Clear maps and history</button>
                     </div>
                 </div>
-                <div className="userSaveLocationBody">
+                <div className="userHisLocationBody">
                     {
-                        history_RouteReff.current.map((item, key) =>
+                       storageHistorySearch.map((item, key) =>
                             <div
                                 onClick={() => handleActive(key)}
                                 key={key}
-                                className="userSaveItem">
+                                className="userHisItem">
                                 <UserSaveDataItem item={item} keyItem={key} selectItem={selectItemRef.current} />
                             </div>
                         )

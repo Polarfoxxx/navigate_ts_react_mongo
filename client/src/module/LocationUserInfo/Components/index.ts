@@ -7,10 +7,9 @@ export { default as LocationUserData } from "./LocationUserData";
 export { default as UserDATA } from "./UserData/UserData";
 export { default as UserHistoryData } from "./UserData/UserSaveAndHistoryData/HIstoryDataFromLocal/UserHistoryData";
 export { default as UserHistoryDataItem } from "./UserData/UserSaveAndHistoryData/HIstoryDataFromLocal/UserHistoryDataItem";
-export { default as UserFreeBlockData } from "./UserData/UserFreeBlockData/UserFreeBlockData";
 export { default as UserSaveAndHistoryData } from "./UserData/UserSaveAndHistoryData/UserSaveAndHistoryData";
 export { default as UserSaveData } from "./UserData/UserSaveAndHistoryData/SaveDataFromDB/UserSaveData";
-
+export { default as UserSaveDataItem } from "./UserData/UserSaveAndHistoryData/SaveDataFromDB/UserSaveDataItem";
 
 
 /* services */
@@ -30,6 +29,7 @@ export type {
 } from "./UserData/UserSaveAndHistoryData/types";
 
 export type {
+    Type_UserHistoryDataItem,
     Type_UserSaveDataItem,
     Type_saveRoute,
     TypeforSAVE_API

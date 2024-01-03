@@ -1,0 +1,37 @@
+.saveDataContent{
+    width: 100%;
+    height: 100%;
+}
+.saveDataContent .saveDataContBox{
+    width: 100%;
+    height: 100%;
+    color: white;
+    margin-top: 5px;
+}
+.saveDataContent .saveDataHeader{
+    width: 100%;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.478);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    position: relative;
+    color: var(--whiteTextColor);
+}
+.saveDataContent .saveDataBody{
+    width: 100%;
+    height: 535px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 5px;
+    overflow-y: auto;
+}
+.saveDataContent .saveDataBody .saveItem{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

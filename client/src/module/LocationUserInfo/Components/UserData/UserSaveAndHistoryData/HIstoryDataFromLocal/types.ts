@@ -2,11 +2,18 @@ import { Type_UserSaveHistoryRouteObjekt } from "../types";
 import { TypeStartAndEndPoint, Type_ArrayAllCoord } from "../../../../../Container";
 
 
-export type Type_UserSaveDataItem = {
+export type Type_UserHistoryDataItem = {
     item: Type_UserSaveHistoryRouteObjekt,
     keyItem: number,
     selectItem?: number
 };
+
+export type Type_UserSaveDataItem = {
+    item: Type_saveRoute,
+    keyItem: number,
+    selectItem?: number
+};
+
 
 export type Type_saveRoute = {
     startCoord: TypeStartAndEndPoint,

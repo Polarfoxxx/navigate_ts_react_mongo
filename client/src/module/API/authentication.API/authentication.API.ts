@@ -140,10 +140,8 @@ async function loadDATA_API(props: Type_forLoadDATA_API): Promise<Type_forRespoL
       headers: {
         "Authorization": JWT_TOKEN,
         'Content-Type': 'application/json',
-        'Cache-Control': 'no-cache',
       },
     });
-    
 
     const LOAD_RESPO_OBJEKT: Type_forRespoLoad_objekt = {
       status: RESPO_DATA.status,

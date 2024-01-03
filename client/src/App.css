@@ -8,7 +8,7 @@
 
 /* globall */
 button {
-  box-shadow: inset 57px 47px 90px -55px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 57px 47px 90px -55px rgba(0, 0, 0, 0.889);
   transition: 0.4s;
   cursor: pointer;
   font-size: 90%;
@@ -18,7 +18,7 @@ button {
 }
 
 .link {
-  box-shadow: inset 57px 47px 90px -55px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 67px 47px 90px -55px rgb(0, 0, 0);
   transition: 0.4s;
   cursor: pointer;
   font-size: 90%;
@@ -54,17 +54,17 @@ button {
 /* scrool bar */
 /* width */
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #353535;
+  background: #35353500;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--yellowGreenLow);
+  background: rgb(0, 0, 0);
   border-radius: 5px;
 }
 

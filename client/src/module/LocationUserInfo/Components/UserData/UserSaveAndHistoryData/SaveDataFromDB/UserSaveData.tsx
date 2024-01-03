@@ -1,9 +1,12 @@
 import React from "react";
+import "./userSaveData.style.css";
 import { AUTHENTICATION_API } from "../../../../../API";
 import { Type_saveRoute } from "../HIstoryDataFromLocal/types";
+import UserSaveDataItem from "./UserSaveDataItem";
 
 function UserSaveData(): JSX.Element {
     const [loadDATA, setLoadDATA] = React.useState<Type_saveRoute[]>([]);
+    const selectItemRef = React.useRef<number>()
 
     React.useEffect(() => {
         loadData();
@@ -29,22 +32,39 @@ function UserSaveData(): JSX.Element {
         };
     };
 
+    /* selekt trasy pre farebne odlisenie */
+    const handleActive = (key: number) => {
+        if (key !== selectItemRef.current) {
+            selectItemRef.current = key
+        };
+    };
+
+
+
     return (
         <div className="saveDataContent">
-            <div className="saveDataHeader">
-
-            </div>
-            <div className="saveDataBody">
-                {
-                    loadDATA.length > 0 && loadDATA.map((item, key) =>
-                        <div
-                            key={key}
-                            className="saveItem">
-                            {item.startCoord.address.county}
+            <div className="saveDataContBox">
+                <div className="saveDataHeader">
+                    <div className="userSaveHeader">
+                        <div className="headerTittle">
+                            <h3>SAVE ROUTE</h3>
                         </div>
-                    )
-                }
+                    </div>
+                </div>
+                <div className="saveDataBody">
+                    {
+                        loadDATA.length > 0 && loadDATA.map((item, key) =>
+                            <div
+                                onClick={() => handleActive(key)}
+                                key={key}
+                                className="saveItem">
+                                <UserSaveDataItem item={item} keyItem={key} selectItem={selectItemRef.current} />
+                            </div>
+                        )
+                    }
+                </div>
             </div>
+
         </div>
     );
 };

@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema({
   password: String,
   data: [
     {
-      name: String,
+      routeName: String,
       startCoord: {
         address: Type_Addrress,
         latLng: [Number]
@@ -144,7 +144,7 @@ app.post('/save/data', authenticateToken, async (req, res) => {
     const user = await User.findOne({ username });
     // Pridanie správy do poľa správ používateľa
     user.data.push({
-      name: routeName,
+      routeName: routeName,
       startCoord: startCoord,
       endCoord: endCoord,
       allCoord: allCoord,

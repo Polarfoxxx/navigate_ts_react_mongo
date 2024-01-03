@@ -4,7 +4,7 @@ import { Container } from "../../../../../Container";
 import { AUTHENTICATION_API } from "../../../../../API";
 import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
-import { Type_UserSaveHistoryRouteObjekt, Type_UserSaveDataItem, Type_saveRoute, TypeforSAVE_API } from "../../..";
+import { Type_UserSaveHistoryRouteObjekt, Type_UserHistoryDataItem, Type_saveRoute, TypeforSAVE_API } from "../../..";
 import { UseChangeContextDATA } from "../../../../../hooks";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRoad, faLocationDot, faClock } from '@fortawesome/free-solid-svg-icons'
@@ -12,7 +12,7 @@ import { faRoad, faLocationDot, faClock } from '@fortawesome/free-solid-svg-icon
 
 
 
-function UserHistoryDataItem(props: Type_UserSaveDataItem): JSX.Element {
+function UserHistoryDataItem(props: Type_UserHistoryDataItem): JSX.Element {
     const { location_DATA, setLocation_DATA, sideWays_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
     const { startPoints, endPoints, arrayALL_coordinate } = location_DATA;
@@ -23,15 +23,7 @@ function UserHistoryDataItem(props: Type_UserSaveDataItem): JSX.Element {
     /* nastave dat pre zobrazenie */
     React.useEffect(() => {
         if (props.item) {
-            setDataFromProps({
-                startPoint: props.item.startPoint,
-                endPoint: props.item.endPoint,
-                addPoint: props.item.addPoint,
-                routeName: props.item.routeName,
-                routeTime: props.item.routeTime,
-                routeDistance: props.item.routeDistance,
-                createTime: props.item.createTime
-            });
+            setDataFromProps(props.item);
         };
     }, [props.item]);
 
@@ -71,8 +63,7 @@ function UserHistoryDataItem(props: Type_UserSaveDataItem): JSX.Element {
             } catch (error) {
                 console.error(error);
             };
-        }
-
+        };
     };
 
     /* kliknutie na item historie cesty */

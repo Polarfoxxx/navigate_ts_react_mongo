@@ -15,11 +15,40 @@
     justify-content: center;
     gap: 20px;
     position: relative;
-    background: rgb(245,69,0);
-    background: linear-gradient(90deg, rgba(245,69,0,1) 10%, rgba(0,0,0,0.3981967787114846) 100%);
-        
+    flex-direction: row;
+    background: rgb(245, 69, 0);
+    background: linear-gradient(90deg, rgba(245, 69, 0, 1) 2%, rgba(0, 0, 0, 0.3981967787114846) 90%);
+   
 }
 
+.userSaveAndHisData .userSaveAndHisData_nav>div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: row;
+    gap: 10px;
+
+}
+
+.userSaveAndHisData .userSaveAndHisData_nav .headerName {
+    color: rgb(143, 143, 143);
+    width: 40%;
+    padding-left: 10px;
+    background-color: #000000;
+   
+}
+
+.userSaveAndHisData .userSaveAndHisData_nav .headerName .headerAwensomeLogo {
+    color: var(--yellowGreenLow);
+}
+
+/* --------------------------------------------------------- */
+.userSaveAndHisData .userSaveAndHisData_nav .headerLink {
+    width: 100%;
+    height: 100%;
+}
 
 .userSaveAndHisData .userSaveAndHisData_nav .link {
     width: 200px;
