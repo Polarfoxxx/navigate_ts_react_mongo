@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const jwt = require('jsonwebtoken');
 const { json } = require("express");
+var nodemailer = require('nodemailer');
 const Port = 4000;
 const mongo = "mongodb://127.0.0.1:27017/navigate";
 app.listen(Port, () => console.log(`connect to port ${Port}`));
@@ -179,113 +180,33 @@ app.get('/load/data',authenticateToken ,async (req, res) => {
   }
 });
 
+/* send mail ---------------------------------------------*/
+app.post('/send/mail', authenticateToken, async (req, res) => {
 
-
-
-
-
-
-/* const express = require('express');
-const bodyParser = require('body-parser');
-const jwt = require('jsonwebtoken');
-const mongoose = require('mongoose');
-
-const app = express();
-const port = 3000;
-const secretKey = 'tajnyKluc'; // Zmeniť na bezpečný tajný kľúč
-
-app.use(bodyParser.json());
-
-// Pripojenie k MongoDB
-mongoose.connect('mongodb://localhost:27017/yourdbname', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-const User = mongoose.model('User', {
-  username: String,
-  password: String,
-});
-
-// Registrácia používateľa
-app.post('/register', async (req, res) => {
-  const { username, password } = req.body;
-
-  try {
-    // Skontrolujte, či používateľ už neexistuje
-    const existingUser = await User.findOne({ username });
-
-    if (existingUser) {
-      return res.status(400).json({ message: 'Používateľ už existuje.' });
-    }
-
-    // Vytvorte nového používateľa
-    const newUser = new User({ username, password });
-    await newUser.save();
-
-    // Vytvorte a pošlite JWT token
-    const token = jwt.sign({ username }, secretKey);
-    res.json({ token });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Chyba pri registrácii.' });
+  let transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true, // true for 465, false for other ports; in this case, 587
+  auth: {
+    user: 'mfoxx.services@gmail.com',
+    pass: 'ikan vkgs uzcp hnph'
   }
 });
 
-// Prihlásenie používateľa
-app.post('/login', async (req, res) => {
-  const { username, password } = req.body;
+let mailOptions = {
+  from: 'mfoxx.services@gmail.com',
+  to: 'suchovsky.michal@gmail.com',
+  subject: 'Sending Email using Node.js',
+  text: 'Hi..!'
+};
 
-  try {
-    // Nájdite používateľa v databáze
-    const user = await User.findOne({ username, password });
 
-    if (!user) {
-      return res.status(401).json({ message: 'Nesprávne prihlasovacie údaje.' });
-    }
-
-    // Vytvorte a pošlite JWT token
-    const token = jwt.sign({ username }, secretKey);
-    res.json({ token });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Chyba pri prihlásení.' });
+transporter.sendMail(mailOptions, function(error, info){
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email sent: ' + info.response);
   }
 });
+})
 
-// Chránená cesta, kde môžete ukladať objekty
-app.post('/save-object', authenticateToken, (req, res) => {
-  const { name, coord } = req.body;
-  // Tu môžete uložiť objekt podľa prihláseného používateľa
-
-  res.json({ message: 'Objekt uložený úspešne.' });
-});
-
-// Funkcia na overenie JWT tokenu
-function authenticateToken(req, res, next) {
-  const token = req.header('Authorization');
-
-  if (!token) {
-    return res.status(401).json({ message: 'Chýbajúci autorizačný token.' });
-  }
-
-  jwt.verify(token, secretKey, (err, user) => {
-    if (err) {
-      return res.status(403).json({ message: 'Neplatný autorizačný token.' });
-    }
-
-    req.user = user;
-    next();
-  });
-}
-
-app.listen(port, () => {
-  console.log(`Server beží na http://localhost:${port}`);
-});
- */
-
-
-
-
-
-/*  */

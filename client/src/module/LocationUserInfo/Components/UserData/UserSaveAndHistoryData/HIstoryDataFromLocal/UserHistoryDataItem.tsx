@@ -11,7 +11,6 @@ import { faRoad, faLocationDot, faClock } from '@fortawesome/free-solid-svg-icon
 
 
 
-
 function UserHistoryDataItem(props: Type_UserHistoryDataItem): JSX.Element {
     const { location_DATA, setLocation_DATA, sideWays_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
@@ -28,7 +27,7 @@ function UserHistoryDataItem(props: Type_UserHistoryDataItem): JSX.Element {
     }, [props.item]);
 
 
-    /* priprava  formulara */
+    /* priprava  formulara odoslanie do funkcie na stahovanie */
     const submit = (v: TypeForInputsObject["v"]): void => {
         if (v[0].inputValues && startPoints.latLng[0] && endPoints.latLng[0]) {
             const DATA_FOR_SAVEAPI: Type_saveRoute = {
@@ -54,7 +53,7 @@ function UserHistoryDataItem(props: Type_UserHistoryDataItem): JSX.Element {
 
             try {
                 const SAVE_RESPO = await AUTHENTICATION_API.saveDATA_API({ DATA_ROUTE, USER_NAME, USER_JWT_TOKEN });
-                if(SAVE_RESPO) {
+                if (SAVE_RESPO) {
                     setRespoMessage(SAVE_RESPO?.message)
                     setTimeout(() => {
                         setRespoMessage("")
@@ -141,11 +140,24 @@ function UserHistoryDataItem(props: Type_UserHistoryDataItem): JSX.Element {
             </div>
             <div className="itemEventBlock">
                 <form onSubmit={(e) => handleSubmit(e, submit)}>
-                    <input
-                        name="name"
-                        placeholder="Route name"
-                        type="text" />
-                    <button>save</button>
+                    <label htmlFor="">Save route to DB</label>
+                    <div>
+                        <input
+                            name="name"
+                            placeholder="Route name"
+                            type="text" />
+                        <button>Save</button>
+                    </div>
+                </form>
+                <form onSubmit={(e) => handleSubmit(e, submit)}>
+                    <label htmlFor="">Send to email</label>
+                    <div>
+                        <input
+                            name="email"
+                            placeholder="Send email"
+                            type="email" />
+                        <button>Send</button>
+                    </div>
                 </form>
             </div>
             <div className="respoMessage">

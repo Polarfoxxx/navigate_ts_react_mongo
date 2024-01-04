@@ -161,8 +161,8 @@
 
  /* --------------------------------------------------------- */
  .itemUserSave .itemEventBlock {
-     width: 250px;
-     height: 50px;
+     width: 550px;
+     height: 70px;
      display: flex;
      align-items: center;
      justify-content: center;
@@ -171,6 +171,7 @@
      bottom: 0px;
      background-color: var(--orangeContent);
      border-radius: 10px 0px 3px 0px;
+     flex-direction: row;
  }
 
  .itemUserSave .itemEventBlock>form {
@@ -179,15 +180,18 @@
      display: flex;
      align-items: center;
      justify-content: center;
-     flex-direction: row;
+     flex-direction: column;
+     border: 1px solid black;
  }
 
  .itemUserSave .itemEventBlock>form>button {
-     width: 50px;
+     width: 70px;
+     height: 20px;
  }
 
  .itemUserSave .itemEventBlock>form>input {
-     width: 150px;
+     width: 190px;
+     height: 20px;
      padding-left: 5px;
  }
 
