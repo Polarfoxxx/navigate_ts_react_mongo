@@ -19,7 +19,6 @@ function UserSaveData(): JSX.Element {
             const USER_DATA = JSON.parse(USER_DATA_FROM_STR);
             const USER_NAME = USER_DATA.user_Name;
             const USER_JWT_TOKEN = USER_DATA.JWT_token;
-
             try {
                 const LOAD_DATA = await AUTHENTICATION_API.loadDATA_API({ USER_NAME, USER_JWT_TOKEN });
                 console.log(LOAD_DATA);

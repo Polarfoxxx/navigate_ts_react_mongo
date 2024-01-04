@@ -74,8 +74,9 @@ async function loginUser_API(props: Type_forAuthentication_API): Promise<Type_fo
 
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      if (error.response) {
+console.log(error.response);
 
+      if (error.response) {
         const LOGIN_RESPO_ERROR: Type_forLogin_respo_objekt = {
           status: error.response.status,
           JWT_token: "",
@@ -130,7 +131,7 @@ async function saveDATA_API(props: Type_forSaveDATA_API): Promise<Type_forRespo_
 /* --------------------------------------------------------------------------------------- */
 async function loadDATA_API(props: Type_forLoadDATA_API): Promise<Type_forRespoLoad_objekt | undefined> {
   const DATA = {
-    useName: props.USER_NAME,
+    username: props.USER_NAME,
   };
   const JWT_TOKEN = props.USER_JWT_TOKEN;
 
@@ -153,7 +154,7 @@ async function loadDATA_API(props: Type_forLoadDATA_API): Promise<Type_forRespoL
   } catch (error) {
     if (axios.isAxiosError(error)) {
       if (error.response) {
-        const LOGIN_RESPO_ERROR: any = {
+        const LOGIN_RESPO_ERROR: Type_forRespoLoad_objekt = {
           status: error.response.status,
           message: error.response.data,
           data: []
