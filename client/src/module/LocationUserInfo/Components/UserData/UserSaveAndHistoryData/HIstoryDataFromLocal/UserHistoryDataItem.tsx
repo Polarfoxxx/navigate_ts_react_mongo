@@ -41,14 +41,14 @@ const reducer = (state: Type_forReducerUserHistoryDataItem, action: Type_Action_
 function UserHistoryDataItem(props: Type_UserHistoryDataItem): JSX.Element {
     const { location_DATA, setLocation_DATA, sideWays_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
-    const { startPoints, endPoints, arrayALL_coordinate } = location_DATA;
+    const { startPoints, endPoints, arrayALL_coordinate,  main_atl_route} = location_DATA;
     const { handleSubmit, reset } = useInputValue();
     const [state, dispatch] = React.useReducer(reducer, DEFAULT_VALUE_FOR_REDUCER_HISTORY_DATA_ITEM);
 
 
     /* nastave dat pre zobrazenie */
     React.useEffect(() => {
-        if (props.item.routeTime || props.item.routeName) {
+        if (props.item.routeName || props.item.startPoint.latLng[0]) {
             dispatch({ type: "SET_DATA_FROM_PROPS", payload: props.item });
         };
     }, [props.item]);
@@ -63,6 +63,9 @@ function UserHistoryDataItem(props: Type_UserHistoryDataItem): JSX.Element {
                 allCoord: arrayALL_coordinate,
                 routeName: v[0].inputValues.toString(),
                 timeCreate: props.item.createTime,
+                officialName: props.item.routeName,
+                timeRoute: props.item.routeTime,
+                distanceRoute: props.item.routeDistance
             };
             saveDATA({ DATA_FOR_SAVEAPI })
             reset();

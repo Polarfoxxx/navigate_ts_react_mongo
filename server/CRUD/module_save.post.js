@@ -5,7 +5,18 @@ const authenticateToken = require("../authenticateToken/authenticateToken")
 
 
 router.post('/data', authenticateToken, async (req, res) => {
-  const { username, startCoord, endCoord, routeName, allCoord, timeCreate } = req.body;
+  const { 
+    username, 
+    startCoord,
+     endCoord,
+      routeName,
+       allCoord, 
+       timeCreate,
+       officialName,
+       timeRoute,
+       distanceRoute
+      } = req.body;
+      
   try {
     /* hladanie uzivatela*/
     const user = await User.findOne({ username });
@@ -15,7 +26,10 @@ router.post('/data', authenticateToken, async (req, res) => {
       startCoord: startCoord,
       endCoord: endCoord,
       allCoord: allCoord,
-      timeCreate: timeCreate
+      timeCreate: timeCreate,
+      officialName:officialName,
+      timeRoute: timeRoute,
+      distanceRoute: distanceRoute
     });
     // Uloženie aktualizovaného používateľa do databázy
     await user.save();

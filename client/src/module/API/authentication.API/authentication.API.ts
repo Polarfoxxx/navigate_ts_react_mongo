@@ -97,7 +97,10 @@ async function saveDATA_API(props: Type_forSaveDATA_API): Promise<Type_forRespo_
     startCoord: props.DATA_ROUTE.startCoord,
     endCoord: props.DATA_ROUTE.endCoord,
     allCoord: props.DATA_ROUTE.allCoord,
-    timeCreate: props.DATA_ROUTE.timeCreate
+    timeCreate: props.DATA_ROUTE.timeCreate,
+    officialName: props.DATA_ROUTE.officialName,
+    timeRoute: props.DATA_ROUTE.timeRoute,
+    distanceRoute: props.DATA_ROUTE.distanceRoute
   };
   const JWT_TOKEN = props.USER_JWT_TOKEN;
 

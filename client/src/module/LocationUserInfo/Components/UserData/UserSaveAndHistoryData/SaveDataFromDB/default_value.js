@@ -11,7 +11,10 @@ export const DEFAULT_VALUE_SAVE_DATA_ITEM = {
     },
     allCoord: [],
     routeName: "",
-    timeCreate: ""
+    timeCreate: "",
+    officialName: "",
+                timeRoute: 0,
+                distanceRoute: 0
 };
 
 

@@ -40,7 +40,10 @@ const userSchema = new mongoose.Schema({
         latLng: [Number]
       },
       allCoord: [Type_ALLCoordinateObjekt],
-      timeCreate: String
+      timeCreate: String,
+      officialName:String,
+      timeRoute: Number,
+      distanceRoute: Number
     }
   ]
 });
