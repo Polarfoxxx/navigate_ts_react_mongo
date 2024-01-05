@@ -9,7 +9,10 @@ function servicesJWTdecodeAndValidity(JWT_FROM_STORAGE: string): boolean {
 
     if (DATE < JWT_DECODE.exp) {
         checkVerification = true
-    } else { checkVerification = false }
+    } else { 
+        checkVerification = false ;
+        localStorage.removeItem('JWT_token');
+    }
 
     return checkVerification
 };

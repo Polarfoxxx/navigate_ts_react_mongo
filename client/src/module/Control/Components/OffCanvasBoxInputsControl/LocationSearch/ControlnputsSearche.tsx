@@ -10,7 +10,6 @@ import { services_SetStart_End_Add_positionToObjekt } from "../../../../utils";
 
 
 /* useReducer ----------------------------*/
-
 const reducer = (state: Type_State_ControlnputsSearche, action: Type_Action_ControlnputsSearche) => {
   switch (action.type) {
     case 'SET_QUERY':
@@ -23,7 +22,6 @@ const reducer = (state: Type_State_ControlnputsSearche, action: Type_Action_Cont
       return state;
   };
 };
-
 /* useReducer ----------------------------*/
 
 function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput) {

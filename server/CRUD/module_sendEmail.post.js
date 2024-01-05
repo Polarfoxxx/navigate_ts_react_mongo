@@ -6,7 +6,7 @@ const authenticateToken = require("../authenticateToken/authenticateToken")
 
 router.post('/email', authenticateToken, async (req, res) => {
 
-    let transporter = nodemailer.createTransport({
+  let transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
     secure: true, // true for 465, false for other ports; in this case, 587
@@ -15,25 +15,24 @@ router.post('/email', authenticateToken, async (req, res) => {
       pass: 'ikan vkgs uzcp hnph'
     }
   });
-  
+
   let mailOptions = {
     from: 'mfoxx.services@gmail.com',
-    to: 'suchovsky.michal@gmail.com',
+    to: 'bartalova.ivana@gmail.com',
     subject: 'Sending Email using Node.js',
-    text: 'Hi..!'
+    text: 'ja sa mas'
   };
-  
-  
-  transporter.sendMail(mailOptions, function(error, info){
+
+
+  transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error);
     } else {
       console.log('Email sent: ' + info.response);
     }
   });
-  });
+});
 
 module.exports = router;
 
-  
-  
+

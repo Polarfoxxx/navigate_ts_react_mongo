@@ -27,7 +27,10 @@ export type {
 } from "./Container.Provider/types";
 
 /* export defvalue */
-export { defaultValue_address_for_Provider_Context } from "./Container.Provider/default_value.js";
+export {
+    defaultValue_address_for_Provider_Context,
+    default_address
+} from "./Container.Provider/default_value.js";
 
 
 

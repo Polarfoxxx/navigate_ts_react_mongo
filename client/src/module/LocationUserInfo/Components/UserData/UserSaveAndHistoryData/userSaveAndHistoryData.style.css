@@ -17,7 +17,7 @@
     position: relative;
     flex-direction: row;
     background: rgb(245, 69, 0);
-    background: linear-gradient(90deg, rgba(245, 69, 0, 1) 2%, rgba(0, 0, 0, 0.3981967787114846) 90%);
+    background: linear-gradient(90deg, var(--orangeContent) 2%, rgba(0, 0, 0, 0.3981967787114846) 90%);
    
 }
 

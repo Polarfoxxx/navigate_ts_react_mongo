@@ -68,6 +68,7 @@
     justify-content: start;
     gap: 5px;
     overflow-y: auto;
+    padding-top: 10px;
 }
 .userHistoryDataContent .userHistorydataBox .userHisLocationBody .userHisItem{
     width: 70%;

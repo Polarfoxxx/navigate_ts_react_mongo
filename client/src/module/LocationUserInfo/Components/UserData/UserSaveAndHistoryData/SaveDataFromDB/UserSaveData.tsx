@@ -38,8 +38,6 @@ function UserSaveData(): JSX.Element {
         };
     };
 
-
-
     return (
         <div className="saveDataContent">
             <div className="saveDataContBox">

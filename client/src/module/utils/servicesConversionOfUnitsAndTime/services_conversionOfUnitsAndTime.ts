@@ -8,6 +8,7 @@ const SERVICES_CONVERSION_OF_UNIT_AND_TIME = {
 };
 export default SERVICES_CONVERSION_OF_UNIT_AND_TIME;
 
+/* info: services_conversionOfTime({ total_value: item.time, units_type: "min" }) */
 /* convektor pre vzdialenost */
 function services_conversionOfUnits(props: Type_forServices_conversionOfUnitsAndTime): string {
     const TOTAL_DISTANCE = props.total_value;
@@ -22,7 +23,6 @@ function services_conversionOfUnits(props: Type_forServices_conversionOfUnitsAnd
         if (TOTAL_DISTANCE < 1000) {
             const CONVERT_VALUE = convert(TOTAL_DISTANCE, "kilometer").to("m");
             return `${Math.round(CONVERT_VALUE).toFixed(1).toString()} m`
-
         } else {
             return `${Math.round(TOTAL_DISTANCE).toFixed(1).toString()} km`
         };

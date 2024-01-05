@@ -15,15 +15,15 @@ app.use(cors());
 
 
 /* ---------------------------------------------------------------------------- */
-/* register POST method -------------------------------------*/
+/* register POST method --------------------------------*/
 app.use('/register', post_Register);
-/* Login GET method -------------------------------------*/
+/* Login GET method ------------------------------------*/
 app.use('/login', post_Log);
 /* save GET method -------------------------------------*/
 app.use('/save', post_Save);
 /* get read method -------------------------------------*/
 app.use('/load', get_Read);
-/* send mail ---------------------------------------------*/
+/* send mail -------------------------------------------*/
 app.use('/send', post_Send_Email);
 
 

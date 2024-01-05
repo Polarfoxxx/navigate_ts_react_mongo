@@ -1,7 +1,7 @@
 
 
-const default_address = {
-    label:"",
+export const default_address = {
+    label: "",
     country: "",
     country_code: "",
     county: "",
@@ -18,7 +18,7 @@ export const defaultValue_address_for_Provider_Context = {
         latLng: [],
     },
     endPoints: {
-        address:default_address,
+        address: default_address,
         latLng: [],
     },
     arrayALL_coordinate: [],
