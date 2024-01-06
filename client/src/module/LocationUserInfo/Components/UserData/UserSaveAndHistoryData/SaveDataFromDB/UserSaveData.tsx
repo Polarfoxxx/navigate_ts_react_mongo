@@ -41,7 +41,7 @@ function UserSaveData(): JSX.Element {
     return (
         <div className="saveDataContent">
             <div className="saveDataContBox">
-                <div className="saveDataHeader">
+                <div className="saveDatasHeader">
                     <div className="userSaveHeader">
                         <div className="headerTittle">
                             <h3>SAVE ROUTE</h3>

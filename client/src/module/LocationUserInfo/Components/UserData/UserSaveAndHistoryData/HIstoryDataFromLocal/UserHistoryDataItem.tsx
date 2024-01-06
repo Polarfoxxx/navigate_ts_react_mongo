@@ -188,9 +188,6 @@ function UserHistoryDataItem(props: Type_UserHistoryDataItem): JSX.Element {
                     </div>
                 </div>
             </div>
-
-
-
             <div className="itemEventBlock">
                 <form onSubmit={(e) => handleSubmit(e, submit)}>
                     <label htmlFor="">Save route to DB</label>

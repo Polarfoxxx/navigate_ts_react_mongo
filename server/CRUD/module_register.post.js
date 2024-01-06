@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../mongooseDB/mongooseDB");
 const bcrypt = require('bcrypt');
 const Joi = require("joi");
+const sendEmail = require("./module_sendEmail.post")
 
 /* register POST method -------------------------------------*/
 router.post('/newUser', async (req, res) => {
@@ -33,7 +34,11 @@ router.post('/newUser', async (req, res) => {
           data: [],
         };
         User.create(newUser)
-          .then(() => res.json({ message: "Registration sucesfull" }))
+          .then(() => {
+            res.json({ message: "Registration sucesfull" });
+            /* send registration email */
+            sendEmail(username, password, "newRegister")
+          })
           .catch((err) => {
             console.error(err);
             res.status(500).json({ message: 'Registration error.' });

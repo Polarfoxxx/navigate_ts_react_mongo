@@ -1,12 +1,94 @@
-.saveDataItemBox{
+.saveDataItemBox {
     width: 100%;
-    height: 100%;
+    height: 300px;
     border: 1px solid red;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+
 }
+.saveDataItemBox:hover{
+    background-color: var(--yellowGreen);
+}
+
 .saveDataItemBox .saveDataHeader {
-color: aqua;
+    width: 100%;
+    height: 10%;
+    background-color: rgba(85, 85, 85, 0.39);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.itemUserSave .saveDataHeader .routeItemKey {
+    width: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.itemUserSave .saveDataHeader .routeItemKey .routeKeybox {
+    width: 50px;
+    height: 50px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.itemUserSave .saveDataHeader .routeItemKey .keyItem {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgb(29, 29, 29);
+    color: rgb(0, 0, 0);
+    z-index: 5;
+    transform: scale(1.1);
+}
+
+.itemUserSave .saveDataHeader .routeItemKey .keyItem::after {
+    content: "";
+    width: 33px;
+    height: 33px;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    z-index: -1;
+    border-radius: 50%;
+}
+
+.itemUserSave .saveDataHeader .routeItemKey .keyItem::before {
+    content: "";
+    width: 43px;
+    height: 19px;
+    position: absolute;
+    background-color: rgb(29, 29, 29);
+    z-index: -1;
+    bottom: -1px;
+}
+.saveDataItemBox .saveDataBody {
+    background-color: rgb(158, 158, 158);
+    width: 100%;
+    height: 30%;
+}
+
+.saveDataItemBox .saveDataFooter {
+    width: 100%;
+    height: 30%;
+    background-color: rgb(88, 88, 88);
+}
+
+.saveDataItemBox .saveDataEvent {
+    width: 100%;
+    height: 30%;
 }

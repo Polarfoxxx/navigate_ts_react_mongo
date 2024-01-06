@@ -5,18 +5,18 @@ const authenticateToken = require("../authenticateToken/authenticateToken")
 
 
 router.post('/data', authenticateToken, async (req, res) => {
-  const { 
-    username, 
+  const {
+    username,
     startCoord,
-     endCoord,
-      routeName,
-       allCoord, 
-       timeCreate,
-       officialName,
-       timeRoute,
-       distanceRoute
-      } = req.body;
-      
+    endCoord,
+    routeName,
+    allCoord,
+    timeCreate,
+    officialName,
+    timeRoute,
+    distanceRoute
+  } = req.body;
+
   try {
     /* hladanie uzivatela*/
     const user = await User.findOne({ username });
@@ -27,7 +27,7 @@ router.post('/data', authenticateToken, async (req, res) => {
       endCoord: endCoord,
       allCoord: allCoord,
       timeCreate: timeCreate,
-      officialName:officialName,
+      officialName: officialName,
       timeRoute: timeRoute,
       distanceRoute: distanceRoute
     });

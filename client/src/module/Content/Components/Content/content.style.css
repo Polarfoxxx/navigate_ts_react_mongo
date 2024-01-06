@@ -15,22 +15,21 @@
 
  header {
      width: 100%;
-     height: 2.5%;
+     height: 2%;
      color: var(--yellowGreen);
  }
 
  section {
-     height: 95%;
+     height: 96%;
      display: flex;
      flex-direction: column;
      gap: 2%;
      justify-content: center;
      align-items: center;
-
  }
 
  footer {
-     height: 2.5%;
+     height: 2%;
      width: 100%;
  }
 /* hlavne rozdelenie */
@@ -46,7 +45,7 @@
 
  .content .container section .locationInfobox {
      width: 100%;
-     height: 70%;
+     height: 100%;
      display: flex;
      align-items: center;
      justify-content: center;

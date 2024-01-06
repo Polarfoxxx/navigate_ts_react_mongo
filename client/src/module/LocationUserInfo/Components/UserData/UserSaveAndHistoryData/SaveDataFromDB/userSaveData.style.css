@@ -8,26 +8,28 @@
     color: white;
     margin-top: 5px;
 }
-.saveDataContent .saveDataHeader{
+.saveDataContent .saveDatasHeader{
     width: 100%;
     height: 40px;
     background-color: rgba(0, 0, 0, 0.478);
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
     position: relative;
-    color: var(--whiteTextColor);
+    color: var(--yellowGreenLow);
+    border-bottom: 1px solid var(--yellowGreenLow);
 }
 .saveDataContent .saveDataBody{
     width: 100%;
-    height: 535px;
+    height: 705px;
     padding: 5px;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     justify-content: start;
     gap: 5px;
     overflow-y: auto;
+    padding-top: 10px;
 }
 .saveDataContent .saveDataBody .saveItem{
     width: 70%;
