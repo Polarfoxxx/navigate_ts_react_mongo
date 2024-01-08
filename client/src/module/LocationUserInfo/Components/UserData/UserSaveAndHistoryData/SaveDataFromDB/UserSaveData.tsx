@@ -3,15 +3,16 @@ import "./userSaveData.style.css";
 import { AUTHENTICATION_API } from "../../../../../API";
 import { Type_saveRoute } from "../HIstoryDataFromLocal/types";
 import UserSaveDataItem from "./UserSaveDataItem";
+import { Container } from "../../../../../Container";
 
 function UserSaveData(): JSX.Element {
+    const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
     const [loadDATA, setLoadDATA] = React.useState<Type_saveRoute[]>([]);
     const selectItemRef = React.useRef<number>()
 
     React.useEffect(() => {
         loadData();
     }, []);
-
 
     async function loadData() {
         const USER_DATA_FROM_STR = localStorage.getItem("JWT_token");

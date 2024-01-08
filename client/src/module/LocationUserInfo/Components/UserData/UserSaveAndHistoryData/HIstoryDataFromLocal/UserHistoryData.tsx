@@ -10,7 +10,7 @@ import { defaultValue_address_for_Provider_Context } from "../../../../../Contai
 
 function UserHistoryData(): JSX.Element {
     const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
-    const { updateContext_DATA } = UseChangeContextDATA({  location_DATA, setLocation_DATA });
+    const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
     const { startPoints, endPoints, main_atl_route, arrayALL_coordinate } = location_DATA;
     const [clearStorage, setClearStorage] = React.useState(false) /* iba pre render */
     const selectItemRef = React.useRef<number>()
@@ -20,9 +20,9 @@ function UserHistoryData(): JSX.Element {
         const storedArray = localStorage.getItem('saveHistoryRoutes');
         if (storedArray) {
             const PARSE_ROUTE_ARR = JSON.parse(storedArray);
-           return PARSE_ROUTE_ARR;
+            return PARSE_ROUTE_ARR;
         };
-},[])
+    }, [])
 
 
     /* nastavenie novej trasy vlozenie do pola a lokalneho uloziska */
@@ -86,7 +86,7 @@ function UserHistoryData(): JSX.Element {
                 </div>
                 <div className="userHisLocationBody">
                     {
-                       storageHistorySearch.map((item, key) =>
+                        storageHistorySearch.length > 0 && storageHistorySearch.map((item, key) =>
                             <div
                                 onClick={() => handleActive(key)}
                                 key={key}

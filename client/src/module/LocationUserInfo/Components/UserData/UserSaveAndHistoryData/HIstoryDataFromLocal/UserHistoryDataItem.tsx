@@ -41,7 +41,7 @@ const reducer = (state: Type_forReducerUserHistoryDataItem, action: Type_Action_
 function UserHistoryDataItem(props: Type_UserHistoryDataItem): JSX.Element {
     const { location_DATA, setLocation_DATA, sideWays_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
-    const { startPoints, endPoints, arrayALL_coordinate,  main_atl_route} = location_DATA;
+    const { startPoints, endPoints, arrayALL_coordinate, main_atl_route } = location_DATA;
     const { handleSubmit, reset } = useInputValue();
     const [state, dispatch] = React.useReducer(reducer, DEFAULT_VALUE_FOR_REDUCER_HISTORY_DATA_ITEM);
 
@@ -153,7 +153,7 @@ function UserHistoryDataItem(props: Type_UserHistoryDataItem): JSX.Element {
                         state.dataFromProps && state.dataFromProps.addPoint.length > 0 &&
                         <div className="addPointShow">
                             <div className="itemStartEndLogo">
-                                <p>{state.dataFromProps.addPoint.length + 1}x added point </p>
+                                <p>{state.dataFromProps.addPoint.length}x added point </p>
                             </div>
                             <div className="itemStartEndName">
                                 <FontAwesomeIcon icon={faLocationDot} />

@@ -1,15 +1,17 @@
 .saveDataItemBox {
     width: 100%;
+    min-width: 1220px;
     height: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    border-radius: 5px;
+    border-radius: 15px;
     overflow: hidden;
     cursor: pointer;
-    border: 1px solid rgb(195, 195, 195);
-
+    border: 1px solid rgba(255, 255, 255, 0.813);
+position: relative;
+transition: 0.5s;
 }
 
 .saveDataItemBox:hover {
@@ -29,14 +31,15 @@
     color: black;
     font-size: 13px;
     flex-direction: row;
-    background-color: rgba(124, 124, 124, 0.801);
+    background-color: rgb(124, 124, 124);
     height: 10%;
     width: 100%;
     padding: 0 30px;
 }
-.saveDataItemBox .saveDataHeader .headerName{
+
+.saveDataItemBox .saveDataHeader .headerName {
     width: 150px;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(29, 29, 29);
     height: 100%;
     display: flex;
     align-items: center;
@@ -92,14 +95,14 @@
     width: 43px;
     height: 19px;
     position: absolute;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(29, 29, 29);
     z-index: -1;
     bottom: -1px;
 }
 
 /* .---------------------------------------------------------- */
 .saveDataItemBox .saveDataBody {
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(29, 29, 29);
     width: 100%;
     height: 50%;
     display: flex;
@@ -121,9 +124,9 @@
 .saveDataItemBox .saveDataBody .masterBox {
     background-color: rgb(32, 32, 32);
     width: 100%;
-border: 1px solid rgb(133, 133, 133);
-color: white;
-font-weight: bold;
+    border: 1px solid rgb(133, 133, 133);
+    color: white;
+    font-weight: bold;
 
 
 }
@@ -132,8 +135,8 @@ font-weight: bold;
     font-size: 12px;
     min-width: 160px;
     background-color: rgb(44, 44, 44);
-border: 1px solid rgb(73, 67, 67);
-color: var(--whiteTextColor);
+    border: 1px solid rgb(73, 67, 67);
+    color: var(--whiteTextColor);
 }
 
 .saveDataItemBox .saveDataBody .addPoints .bodyPositionKey {
@@ -160,51 +163,58 @@ color: var(--whiteTextColor);
     font-weight: bold;
     color: var(--yellowGreenLow);
 }
+
 .saveDataItemBox .saveDataBody .addPoints .bodyPositionName {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-text-align: center;
-padding: 3px;
+    text-align: center;
+    padding: 3px;
 }
+
 .saveDataItemBox .saveDataBody .addPoints .bodyPositionCoord {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-text-align: center;
-flex-direction: column;
-background-color: rgb(81, 81, 81);
-border-radius: 0 0 8px 8px;
-font-size: 11px;
-padding: 3px;
+    text-align: center;
+    flex-direction: column;
+    background-color: rgb(81, 81, 81);
+    border-radius: 0 0 8px 8px;
+    font-size: 11px;
+    padding: 3px;
 
 
 }
-.saveDataItemBox .saveDataBody .addPoints .bodyPositionCoord .bodyPosiAddCoord_titte{
+
+.saveDataItemBox .saveDataBody .addPoints .bodyPositionCoord .bodyPosiAddCoord_titte {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: start;
     flex-direction: row;
 }
-.saveDataItemBox .saveDataBody .addPoints .bodyPositionCoord .bodyPosiAddCoord_titte:nth-child(1){
+
+.saveDataItemBox .saveDataBody .addPoints .bodyPositionCoord .bodyPosiAddCoord_titte:nth-child(1) {
     color: rgb(177, 177, 177);
 }
-.saveDataItemBox .saveDataBody .addPoints .bodyPositionCoord .bodyPosiAddCoord_titte:nth-child(1) .posCoordAddTittle{
+
+.saveDataItemBox .saveDataBody .addPoints .bodyPositionCoord .bodyPosiAddCoord_titte:nth-child(1) .posCoordAddTittle {
     width: 35px;
     text-align: start;
 }
 
-.saveDataItemBox .saveDataBody .addPoints .bodyPositionCoord .bodyPosiAddCoord_titte:nth-child(2){
+.saveDataItemBox .saveDataBody .addPoints .bodyPositionCoord .bodyPosiAddCoord_titte:nth-child(2) {
     color: rgb(64, 201, 43);
 }
-.saveDataItemBox .saveDataBody .addPoints .bodyPositionCoord .bodyPosiAddCoord_titte:nth-child(2) .posCoordAddTittle{
+
+.saveDataItemBox .saveDataBody .addPoints .bodyPositionCoord .bodyPosiAddCoord_titte:nth-child(2) .posCoordAddTittle {
     width: 35px;
     text-align: start;
 }
+
 /* ----------------------------- */
 .saveDataItemBox .saveDataBody .saveBodyArrow {
     display: flex;
@@ -247,7 +257,7 @@ padding: 3px;
 
 .saveDataItemBox .saveDataBody>div .bodyPositionCoord .bodyPositionCoord_titte .posCoordTittle {
     width: 80px;
-  
+
 }
 
 .saveDataItemBox .saveDataBody>div .bodyPositionCoord .bodyPositionCoord_titte:nth-child(1) {
@@ -264,15 +274,16 @@ padding: 3px;
 .saveDataItemBox .saveDataFooter {
     width: 100%;
     height: 20%;
-    background-color: rgb(35, 35, 35);
+    background-color: rgb(62, 62, 62);
     display: flex;
     align-items: start;
     justify-content: start;
     flex-direction: row;
-    padding: 10px;
     position: relative;
+    padding-top: 5px;
 }
-.saveDataItemBox .saveDataFooter .saveFooterMasterInfo{
+
+.saveDataItemBox .saveDataFooter .saveFooterMasterInfo {
     width: 100%;
     display: flex;
     align-items: center;
@@ -281,28 +292,32 @@ padding: 3px;
     position: absolute;
 }
 
-.saveDataItemBox  .saveDataFooter .saveFooterMasterInfo> div{
+.saveDataItemBox .saveDataFooter .saveFooterMasterInfo>div {
     display: flex;
     align-items: start;
     justify-content: start;
     flex-direction: row;
-    width: 300px;
+    width: 270px;
     height: 20px;
-    background-color: aqua;
 }
-.saveDataItemBox  .saveDataFooter .saveFooterMasterInfo> div .saveFootTimeTittle,
-.saveDataItemBox  .saveDataFooter .saveFooterMasterInfo> div .saveFootDisTittle{
+
+.saveDataItemBox .saveDataFooter .saveFooterMasterInfo>div .saveFootTimeTittle,
+.saveDataItemBox .saveDataFooter .saveFooterMasterInfo>div .saveFootDisTittle {
     width: 150px;
     color: var(--yellowGreenLow)
-};
-.saveDataItemBox  .saveDataFooter .saveFooterMasterInfo> div .saveFootTimeValue,
-    .saveDataItemBox  .saveDataFooter .saveFooterMasterInfo> div .saveFootDisValue{
+}
+
+;
+
+.saveDataItemBox .saveDataFooter .saveFooterMasterInfo>div .saveFootTimeValue,
+.saveDataItemBox .saveDataFooter .saveFooterMasterInfo>div .saveFootDisValue {
     width: 200px;
     background-color: rgb(97, 83, 65);
 }
+
 /* --------------------------------------------- */
 
-.saveDataItemBox  .saveDataFooter .saveFooterImage{
+.saveDataItemBox .saveDataFooter .saveFooterImage {
     width: 100%;
     height: 100%;
     display: flex;
@@ -311,11 +326,12 @@ padding: 3px;
     gap: 10px;
     flex-direction: row;
 }
-.saveDataItemBox  .saveDataFooter .saveFooterImage >span{
+
+.saveDataItemBox .saveDataFooter .saveFooterImage>span {
     font-size: 70px;
 }
 
-.saveDataItemBox  .saveDataFooter .saveFooterImage .faa{
+.saveDataItemBox .saveDataFooter .saveFooterImage .faa {
     font-size: 50px;
     color: var(--yellowGreenLow);
 }
@@ -326,55 +342,60 @@ padding: 3px;
 .saveDataItemBox .saveDataEvent {
     width: 100%;
     height: 20%;
-    background-color: black;
+    background-color: rgb(29, 29, 29);
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.saveDataItemBox .saveDataEvent .sendEmailBox{
+
+.saveDataItemBox .saveDataEvent .sendEmailBox {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.saveDataItemBox .saveDataEvent .sendEmailBox >form{
+
+.saveDataItemBox .saveDataEvent .sendEmailBox>form {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
     gap: 17px;
     height: auto;
-    
+
 }
-.saveDataItemBox .saveDataEvent .sendEmailBox >form >div{
+
+.saveDataItemBox .saveDataEvent .sendEmailBox>form>div {
     border: 1px solid rgb(163, 163, 163);
 }
 
-.saveDataItemBox .saveDataEvent .sendEmailBox >form >div> input {
+.saveDataItemBox .saveDataEvent .sendEmailBox>form>div>input {
     height: 25px;
     padding-left: 5px;
 }
-.saveDataItemBox .saveDataEvent .sendEmailBox >form >div> button {
+
+.saveDataItemBox .saveDataEvent .sendEmailBox>form>div>button {
     height: 25px;
     width: 80px;
 }
 
 
-.saveDataItemBox .saveDataEvent .deleteRoute{
+.saveDataItemBox .saveDataEvent .deleteRoute {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.saveDataItemBox .saveDataEvent .deleteRoute > button{
+
+.saveDataItemBox .saveDataEvent .deleteRoute>button {
     width: 130px;
     height: 30px;
     border-radius: 5px;
 }
-.saveDataItemBox .saveDataEvent .deleteRoute > button:hover{
+
+.saveDataItemBox .saveDataEvent .deleteRoute>button:hover {
     background-color: var(--orangeContent);
 
 }
-

@@ -26,16 +26,31 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
     }, []);
 
 
-    /* priprava  formulara odoslanie do funkcie na stahovanie */
+    /* send to email */
     const submit = (v: TypeForInputsObject["v"]): void => {
 
     };
 
+    /* kliknutie na item ulozenej cesty */
+    const handleClickItem = (route: Type_saveRoute) => {
+        const UPDATE_DATA = {
+            ...location_DATA,
+            startPoints: route.startCoord,
+            endPoints: route.endCoord,
+            arrayALL_coordinate: route.allCoord
+        };
+        updateContext_DATA([
+            { newData: UPDATE_DATA, key: "location_DATA" },
+        ]);
+    };
 
 
 
     return (
-        <div className="saveDataItemBox">
+        <div 
+        style={props.keyItem === props.selectItem ? { left: "60px" } : { left: "0px" }}
+        onClick={() => handleClickItem(props.item)}
+        className="saveDataItemBox">
             <div className="saveDataHeader">
                 <div className="routeItemKeys">
                     <div className="routeKeyboxs">
