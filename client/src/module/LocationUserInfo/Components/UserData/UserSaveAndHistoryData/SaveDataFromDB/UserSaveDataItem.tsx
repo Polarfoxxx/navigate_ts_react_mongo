@@ -6,9 +6,10 @@ import { DEFAULT_VALUE_SAVE_DATA_ITEM } from "./default_value";
 import { Container } from "../../../../../Container";
 import { UseChangeContextDATA } from "../../../../../hooks";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRoad, faLocationDot, faClock } from '@fortawesome/free-solid-svg-icons';
+import { faCircleRight, faCarSide, faBullseye } from '@fortawesome/free-solid-svg-icons';
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import { useInputValue } from "foxxy_input_value";
+import { SERVICES_CONVERSION_OF_UNIT_AND_TIME as CONVER_UNITS } from "../../../../../utils";
 
 function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
     const { location_DATA, setLocation_DATA, sideWays_DATA } = React.useContext(Container.Context);
@@ -36,16 +37,14 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
     return (
         <div className="saveDataItemBox">
             <div className="saveDataHeader">
-                <div className="routeItemKey">
-                    <div className="routeKeybox">
-                        <div className="keyItem">
+                <div className="routeItemKeys">
+                    <div className="routeKeyboxs">
+                        <div className="keyItems">
                             <h4>{props.keyItem + 1}</h4>
                         </div>
                     </div>
                 </div>
-                <div className="headerLogo">
-                    <FontAwesomeIcon icon={faRoad} />
-                </div>
+
                 <div className="headerName">
                     <h4>{saveDATA.routeName}</h4>
                 </div>
@@ -57,43 +56,116 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
                 </div>
             </div>
             <div className="saveDataBody">
-                <div className="saveBodyPositionBox">
+                <div className="saveBodyPositionBox masterBox">
                     <div className="bodyPositionName">
-                        <h4>{saveDATA.startCoord.address.label}</h4>
+                        <p>{saveDATA.startCoord.address.label}</p>
                     </div>
                     <div className="bodyPositionCoord">
-                        <h4>{saveDATA.startCoord.latLng.toString()}</h4>
+                        <div className="bodyPositionCoord_titte">
+                            <p className="posCoordTittle">Latitude:</p>
+                            <p className="posCoordValue">{saveDATA.startCoord.latLng[0]}</p>
+                        </div>
+                        <div className="bodyPositionCoord_titte">
+                            <p className="posCoordTittle">Longitude:</p>
+                            <p className="posCoordValue">{saveDATA.startCoord.latLng[1]}</p>
+                        </div>
                     </div>
                 </div>
-                <div className="saveBodyPositionBox">
-                    {
+                <div className="saveBodyArrow">
+                    <FontAwesomeIcon icon={faCircleRight} />
+                </div>
+                {
+                    saveDATA.allCoord.length > 0 ?
                         saveDATA.allCoord.map((item, key) =>
-                            <div
-                                className="savePositionItem"
-                                key={key}>
-                                <div>
-                                    <h4>{item.address.label}</h4>
+                            <>
+                                <div
+                                    className="saveBodyPositionBox addPoints"
+                                    key={key}>
+                                    <div className="bodyPositionKey">
+                                        <p>{key + 1}</p>
+                                    </div>
+                                    <div className="bodyPositionName">
+                                        <p>{item.address.label}</p>
+                                    </div>
+                                    <div className="bodyPositionCoord">
+                                        <div className="bodyPosiAddCoord_titte">
+                                            <p className="posCoordAddTittle">Lat:</p>
+                                            <p className="posCoordAddValue">{item.latLng[0]}</p>
+                                        </div>
+                                        <div className="bodyPosiAddCoord_titte">
+                                            <p className="posCoordAddTittle">Long:</p>
+                                            <p className="posCoordAddValue">{item.latLng[1]}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        )
-                    }
-                </div>
-                <div className="saveBodyPositionBox">
+                                <div className="saveBodyArrow">
+                                    <FontAwesomeIcon icon={faCircleRight} />
+                                </div>
+                            </>
+                        ) : null
+                }
+                {
+                    saveDATA.allCoord.length < 0 ?
+                        <div className="saveBodyArrow">
+                            <FontAwesomeIcon icon={faCircleRight} />
+                        </div> : null
+                }
+
+                <div className="saveBodyPositionBox masterBox">
                     <div className="bodyPositionName">
-                        <h4>{saveDATA.endCoord.address.label}</h4>
+                        <p>{saveDATA.endCoord.address.label}</p>
                     </div>
                     <div className="bodyPositionCoord">
-                        <h4>{saveDATA.endCoord.latLng.toString()}</h4>
+                        <div className="bodyPositionCoord_titte">
+                            <p className="posCoordTittle">Latitude:</p>
+                            <p className="posCoordValue">{saveDATA.endCoord.latLng[0]}</p>
+                        </div>
+                        <div className="bodyPositionCoord_titte">
+                            <p className="posCoordTittle">Longitude:</p>
+                            <p className="posCoordValue">{saveDATA.endCoord.latLng[1]}</p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="saveDataFooter">
-                <div className="savefotterTime">
-                    <h4>{saveDATA.timeRoute}</h4>
+                <div className="saveFooterImage">
+                <FontAwesomeIcon className="faa" icon={faCarSide} />
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+                <span>.</span>
+                <FontAwesomeIcon className="faa" icon={faBullseye} />
                 </div>
-                <div className="savefotterDistance">
-                    <h4>{saveDATA.distanceRoute}</h4>
+                <div className="saveFooterMasterInfo">
+                    <div className="savefotterTime">
+                        <div className="saveFootTimeTittle">
+                            <h4>Route time:</h4>
+                        </div>
+                        <div className="saveFootTimeValue">
+                            <h4>{CONVER_UNITS.services_conversionOfTime({ total_value: saveDATA.timeRoute, units_type: "s" })}</h4>
+                        </div>
+                    </div>
+                    <div className="savefotterDistance">
+                        <div className="saveFootDisTittle">
+                            <h4>Route distance:</h4>
+                        </div>
+                        <div className="saveFootDisValue">
+                            <h4>{CONVER_UNITS.services_conversionOfUnits({ total_value: saveDATA.distanceRoute, units_type: "m" })}</h4>
+                        </div>
+                    </div>
                 </div>
+
             </div>
             <div className="saveDataEvent">
                 <div className="sendEmailBox">
@@ -119,3 +191,23 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
 };
 
 export default UserSaveDataItem;
+
+
+/*   <div className="saveFooterMasterInfo">
+                    <div className="savefotterTime">
+                        <div className="saveFootTimeTittle">
+                            <h4>Route time:</h4>
+                        </div>
+                        <div className="saveFootTimeValue">
+                            <h4>{CONVER_UNITS.services_conversionOfTime({ total_value: saveDATA.timeRoute, units_type: "s" })}</h4>
+                        </div>
+                    </div>
+                    <div className="savefotterDistance">
+                        <div className="saveFootDisTittle">
+                            <h4>Route distance:</h4>
+                        </div>
+                        <div className="saveFootDisValue">
+                            <h4>{CONVER_UNITS.services_conversionOfUnits({ total_value: saveDATA.distanceRoute, units_type: "m" })}</h4>
+                        </div>
+                    </div>
+                </div> */

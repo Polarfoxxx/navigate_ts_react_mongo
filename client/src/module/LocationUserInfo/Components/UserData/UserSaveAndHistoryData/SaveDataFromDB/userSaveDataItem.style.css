@@ -1,7 +1,6 @@
 .saveDataItemBox {
     width: 100%;
-    height: 300px;
-    border: 1px solid red;
+    height: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,22 +8,43 @@
     border-radius: 5px;
     overflow: hidden;
     cursor: pointer;
+    border: 1px solid rgb(195, 195, 195);
 
 }
-.saveDataItemBox:hover{
-    background-color: var(--yellowGreen);
+
+.saveDataItemBox:hover {
+    background-color: var(--yellowGreenLow);
+    border: 1px solid rgb(9, 216, 23);
+}
+
+.saveDataItemBox:hover .saveDataHeader {
+    color: rgb(0, 0, 0);
+    background-color: rgb(12, 113, 12);
 }
 
 .saveDataItemBox .saveDataHeader {
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
+    font-size: 13px;
+    flex-direction: row;
+    background-color: rgba(124, 124, 124, 0.801);
     height: 10%;
-    background-color: rgba(85, 85, 85, 0.39);
+    width: 100%;
+    padding: 0 30px;
+}
+.saveDataItemBox .saveDataHeader .headerName{
+    width: 150px;
+    background-color: rgb(0, 0, 0);
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    color: rgb(255, 255, 255);
 }
-.itemUserSave .saveDataHeader .routeItemKey {
+
+.saveDataItemBox .saveDataHeader .routeItemKeys {
     width: 60px;
     height: 100%;
     display: flex;
@@ -33,10 +53,10 @@
     position: relative;
 }
 
-.itemUserSave .saveDataHeader .routeItemKey .routeKeybox {
+.saveDataItemBox .saveDataHeader .routeItemKeys .routeKeyboxs {
     width: 50px;
     height: 50px;
-    top: 0;
+    top: 5px;
     left: 0;
     position: absolute;
     display: flex;
@@ -44,20 +64,20 @@
     justify-content: center;
 }
 
-.itemUserSave .saveDataHeader .routeItemKey .keyItem {
+.saveDataItemBox .saveDataHeader .routeItemKeys .keyItems {
     width: 43px;
     height: 43px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: rgb(29, 29, 29);
+    background-color: rgb(0, 0, 0);
     color: rgb(0, 0, 0);
     z-index: 5;
     transform: scale(1.1);
 }
 
-.itemUserSave .saveDataHeader .routeItemKey .keyItem::after {
+.saveDataItemBox .saveDataHeader .routeItemKeys .keyItems::after {
     content: "";
     width: 33px;
     height: 33px;
@@ -67,28 +87,294 @@
     border-radius: 50%;
 }
 
-.itemUserSave .saveDataHeader .routeItemKey .keyItem::before {
+.saveDataItemBox .saveDataHeader .routeItemKeys .keyItems::before {
     content: "";
     width: 43px;
     height: 19px;
     position: absolute;
-    background-color: rgb(29, 29, 29);
+    background-color: rgb(0, 0, 0);
     z-index: -1;
     bottom: -1px;
 }
+
+/* .---------------------------------------------------------- */
 .saveDataItemBox .saveDataBody {
-    background-color: rgb(158, 158, 158);
+    background-color: rgb(0, 0, 0);
     width: 100%;
-    height: 30%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
+.saveDataItemBox .saveDataBody>div {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 130px;
+    width: auto;
+    border-radius: 10px;
+}
+
+.saveDataItemBox .saveDataBody .masterBox {
+    background-color: rgb(32, 32, 32);
+    width: 100%;
+border: 1px solid rgb(133, 133, 133);
+color: white;
+font-weight: bold;
+
+
+}
+
+.saveDataItemBox .saveDataBody .addPoints {
+    font-size: 12px;
+    min-width: 160px;
+    background-color: rgb(44, 44, 44);
+border: 1px solid rgb(73, 67, 67);
+color: var(--whiteTextColor);
+}
+
+.saveDataItemBox .saveDataBody .addPoints .bodyPositionKey {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 20px;
+}
+
+.saveDataItemBox .saveDataBody .addPoints .bodyPositionKey>p {
+    font-size: 15px;
+    background-color: rgb(44, 44, 44);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgb(44, 44, 44);
+    position: absolute;
+    bottom: -2px;
+    font-weight: bold;
+    color: var(--yellowGreenLow);
+}
+.saveDataItemBox .saveDataBody .addPoints .bodyPositionName {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+text-align: center;
+padding: 3px;
+}
+.saveDataItemBox .saveDataBody .addPoints .bodyPositionCoord {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+text-align: center;
+flex-direction: column;
+background-color: rgb(81, 81, 81);
+border-radius: 0 0 8px 8px;
+font-size: 11px;
+padding: 3px;
+
+
+}
+.saveDataItemBox .saveDataBody .addPoints .bodyPositionCoord .bodyPosiAddCoord_titte{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: row;
+}
+.saveDataItemBox .saveDataBody .addPoints .bodyPositionCoord .bodyPosiAddCoord_titte:nth-child(1){
+    color: rgb(177, 177, 177);
+}
+.saveDataItemBox .saveDataBody .addPoints .bodyPositionCoord .bodyPosiAddCoord_titte:nth-child(1) .posCoordAddTittle{
+    width: 35px;
+    text-align: start;
+}
+
+.saveDataItemBox .saveDataBody .addPoints .bodyPositionCoord .bodyPosiAddCoord_titte:nth-child(2){
+    color: rgb(64, 201, 43);
+}
+.saveDataItemBox .saveDataBody .addPoints .bodyPositionCoord .bodyPosiAddCoord_titte:nth-child(2) .posCoordAddTittle{
+    width: 35px;
+    text-align: start;
+}
+/* ----------------------------- */
+.saveDataItemBox .saveDataBody .saveBodyArrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    font-size: 30px;
+    color: var(--yellowGreenLow);
+}
+
+.saveDataItemBox .saveDataBody>div .bodyPositionName {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    text-align: center;
+}
+
+.saveDataItemBox .saveDataBody>div .bodyPositionCoord {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(81, 81, 81);
+    padding: 5px;
+    border-radius: 0 0 10px 10px;
+
+}
+
+.saveDataItemBox .saveDataBody>div .bodyPositionCoord .bodyPositionCoord_titte {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: row;
+}
+
+.saveDataItemBox .saveDataBody>div .bodyPositionCoord .bodyPositionCoord_titte .posCoordTittle {
+    width: 80px;
+  
+}
+
+.saveDataItemBox .saveDataBody>div .bodyPositionCoord .bodyPositionCoord_titte:nth-child(1) {
+    width: 230px;
+    color: var(--whiteTextColor);
+}
+
+.saveDataItemBox .saveDataBody>div .bodyPositionCoord .bodyPositionCoord_titte:nth-child(2) {
+    width: 230px;
+    color: var(--yellowGreenLow);
+}
+
+/* ------------------------------------------- */
 .saveDataItemBox .saveDataFooter {
     width: 100%;
-    height: 30%;
-    background-color: rgb(88, 88, 88);
+    height: 20%;
+    background-color: rgb(35, 35, 35);
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: row;
+    padding: 10px;
+    position: relative;
 }
+.saveDataItemBox .saveDataFooter .saveFooterMasterInfo{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+}
+
+.saveDataItemBox  .saveDataFooter .saveFooterMasterInfo> div{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: row;
+    width: 300px;
+    height: 20px;
+    background-color: aqua;
+}
+.saveDataItemBox  .saveDataFooter .saveFooterMasterInfo> div .saveFootTimeTittle,
+.saveDataItemBox  .saveDataFooter .saveFooterMasterInfo> div .saveFootDisTittle{
+    width: 150px;
+    color: var(--yellowGreenLow)
+};
+.saveDataItemBox  .saveDataFooter .saveFooterMasterInfo> div .saveFootTimeValue,
+    .saveDataItemBox  .saveDataFooter .saveFooterMasterInfo> div .saveFootDisValue{
+    width: 200px;
+    background-color: rgb(97, 83, 65);
+}
+/* --------------------------------------------- */
+
+.saveDataItemBox  .saveDataFooter .saveFooterImage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-direction: row;
+}
+.saveDataItemBox  .saveDataFooter .saveFooterImage >span{
+    font-size: 70px;
+}
+
+.saveDataItemBox  .saveDataFooter .saveFooterImage .faa{
+    font-size: 50px;
+    color: var(--yellowGreenLow);
+}
+
+
+/* ------------------------------------------- */
 
 .saveDataItemBox .saveDataEvent {
     width: 100%;
-    height: 30%;
+    height: 20%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+.saveDataItemBox .saveDataEvent .sendEmailBox{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.saveDataItemBox .saveDataEvent .sendEmailBox >form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 17px;
+    height: auto;
+    
+}
+.saveDataItemBox .saveDataEvent .sendEmailBox >form >div{
+    border: 1px solid rgb(163, 163, 163);
+}
+
+.saveDataItemBox .saveDataEvent .sendEmailBox >form >div> input {
+    height: 25px;
+    padding-left: 5px;
+}
+.saveDataItemBox .saveDataEvent .sendEmailBox >form >div> button {
+    height: 25px;
+    width: 80px;
+}
+
+
+.saveDataItemBox .saveDataEvent .deleteRoute{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.saveDataItemBox .saveDataEvent .deleteRoute > button{
+    width: 130px;
+    height: 30px;
+    border-radius: 5px;
+}
+.saveDataItemBox .saveDataEvent .deleteRoute > button:hover{
+    background-color: var(--orangeContent);
+
+}
+
