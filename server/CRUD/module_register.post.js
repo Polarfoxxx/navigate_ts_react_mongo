@@ -37,7 +37,8 @@ router.post('/newUser', async (req, res) => {
           .then(() => {
             res.json({ message: "Registration sucesfull" });
             /* send registration email */
-            sendEmail(username, password, "newRegister")
+            const routeInfo = null
+            sendEmail(username, password, "newRegister", routeInfo)
           })
           .catch((err) => {
             console.error(err);

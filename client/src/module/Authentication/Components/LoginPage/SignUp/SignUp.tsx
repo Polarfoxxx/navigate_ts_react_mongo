@@ -17,14 +17,14 @@ function SignUp(): JSX.Element {
 
     const submit = (v: TypeForInputsObject["v"]): void => {
         const emailValue = v[0].inputValues.toString();
-        const passwordValue = v[1].inputValues;
-        const passwordConfrmationValue = v[2].inputValues;
+        const passwordValue = v[1].inputValues.toString();
+        const passwordConfrmationValue = v[2].inputValues.toString();
 
         /* valdicia dat */
         const VALIDATE_EMAIL = validator.validate(emailValue);
         if (VALIDATE_EMAIL) {
             imputPassConfir.current.emailValue!.style.backgroundColor = "";
-            if (passwordValue) {
+            if (passwordValue && passwordValue.length >=  4) {
                 imputPassConfir.current.passwordValue!.style.backgroundColor = "";
                 if (passwordConfrmationValue && passwordValue === passwordConfrmationValue) {
                     imputPassConfir.current.passwordConfrmationValue!.style.backgroundColor = "";
@@ -83,7 +83,7 @@ function SignUp(): JSX.Element {
                         ref={el => (imputPassConfir.current.passwordValue = el)}
                         name='passwordValue'
                         type="text"
-                        placeholder="Password" />
+                        placeholder="Password min 4 sign" />
                     <input
                         ref={el => (imputPassConfir.current.passwordConfrmationValue = el)}
                         name='passwordConfrmationValue'
