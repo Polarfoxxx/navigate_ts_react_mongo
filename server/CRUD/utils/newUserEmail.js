@@ -1,14 +1,20 @@
 
-    // Vytvorenie textu emailu s informáciami o novom používateľovi
-    const emailText = (username, password) => {
-        return `
-          Vitajte, ${username}!\n\n
-          Ďakujeme za registráciu na našom webovom portáli.\n
-          Tu sú vaše prihlasovacie údaje:\n
-          Používateľské meno: ${username}\n
-          Heslo: ${password}\n\n
-          Ďakujeme, že ste s nami!
+// Vytvorenie textu emailu s informáciami o novom používateľovi
+const emailTextForNewUser = (username, password) => {
+  return `
+        <html>
+        <body>
+          <p>Vitajte, ${username}!</p>
+          <p>Ďakujeme za registráciu na našom webovom portáli.</p>
+          <p>Tu sú vaše prihlasovacie údaje:</p>
+          <ul>
+            <li>Používateľské meno: ${username}</li>
+            <li>Heslo: ${password}</li>
+          </ul>
+          <p>Ďakujeme, že ste s nami!</p>
+        </body>
+      </html>
         `;
-      };
+};
 
-      module.exports = emailText;
+module.exports = emailTextForNewUser;

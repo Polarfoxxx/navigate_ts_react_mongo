@@ -27,6 +27,13 @@ export type Type_forSaveDATA_API = {
 
 export type Type_forLoadDATA_API = {
     USER_NAME: string
-    USER_JWT_TOKEN:string
+    USER_JWT_TOKEN: string
 
-}
+};
+
+export type Type_forSendData_API = {
+    EMAIL_NAME: string,
+    ROUTE_INFO: Type_saveRoute,
+    USER_JWT_TOKEN: string
+};
+

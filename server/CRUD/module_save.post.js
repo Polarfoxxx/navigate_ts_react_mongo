@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require("../mongooseDB/mongooseDB");
-const authenticateToken = require("../authenticateToken/authenticateToken")
+const authenticateToken = require("../authenticateToken/authenticateToken");
 
 
 router.post('/data', authenticateToken, async (req, res) => {
@@ -20,7 +20,7 @@ router.post('/data', authenticateToken, async (req, res) => {
   try {
     /* hladanie uzivatela*/
     const user = await User.findOne({ username });
-    // Pridanie správy do poľa správ používateľa
+    // Pridanie správy do poľa správ používateľa 
     user.data.push({
       routeName: routeName,
       startCoord: startCoord,

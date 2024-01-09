@@ -10,6 +10,8 @@ import { faCircleRight, faCarSide, faBullseye } from '@fortawesome/free-solid-sv
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import { useInputValue } from "foxxy_input_value";
 import { SERVICES_CONVERSION_OF_UNIT_AND_TIME as CONVER_UNITS } from "../../../../../utils";
+import { AUTHENTICATION_API } from "../../../../../API";
+
 
 function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
     const { location_DATA, setLocation_DATA, sideWays_DATA } = React.useContext(Container.Context);
@@ -28,8 +30,28 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
 
     /* send to email */
     const submit = (v: TypeForInputsObject["v"]): void => {
-
+        const ENAIL_NAME_FROM_ITEM = v[0].inputValues.toString();
+        sendEmail(ENAIL_NAME_FROM_ITEM);
+        reset();
     };
+
+    async function sendEmail(ENAIL_NAME_FROM_ITEM: string) {
+        const USER_DATA_FROM_STR = localStorage.getItem("JWT_token");
+        if (USER_DATA_FROM_STR) {
+            const USER_DATA = JSON.parse(USER_DATA_FROM_STR);
+            const USER_LOGIN_NAME = USER_DATA.user_Name;
+            const EMAIL_NAME = ENAIL_NAME_FROM_ITEM ? ENAIL_NAME_FROM_ITEM : USER_LOGIN_NAME;
+            const USER_JWT_TOKEN = USER_DATA.JWT_token;
+            const ROUTE_INFO = props.item;
+
+            try {
+                const SEND_EMAIL = await AUTHENTICATION_API.sendEmail_API({ EMAIL_NAME, ROUTE_INFO, USER_JWT_TOKEN });
+
+            } catch (error) {
+                console.error(error);
+            };
+        };
+    }
 
     /* kliknutie na item ulozenej cesty */
     const handleClickItem = (route: Type_saveRoute) => {
@@ -47,10 +69,10 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
 
 
     return (
-        <div 
-        style={props.keyItem === props.selectItem ? { left: "60px" } : { left: "0px" }}
-        onClick={() => handleClickItem(props.item)}
-        className="saveDataItemBox">
+        <div
+            style={props.keyItem === props.selectItem ? { left: "60px" } : { left: "0px" }}
+            onClick={() => handleClickItem(props.item)}
+            className="saveDataItemBox">
             <div className="saveDataHeader">
                 <div className="routeItemKeys">
                     <div className="routeKeyboxs">
@@ -144,23 +166,23 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
             </div>
             <div className="saveDataFooter">
                 <div className="saveFooterImage">
-                <FontAwesomeIcon className="faa" icon={faCarSide} />
-                <span>.</span>
-                <span>.</span>
-                <span>.</span>
-                <span>.</span>
-                <span>.</span>
-                <span>.</span>
-                <span>.</span>
-                <span>.</span>
-                <span>.</span>
-                <span>.</span>
-                <span>.</span>
-                <span>.</span>
-                <span>.</span>
-                <span>.</span>
-                <span>.</span>
-                <FontAwesomeIcon className="faa" icon={faBullseye} />
+                    <FontAwesomeIcon className="faa" icon={faCarSide} />
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                    <FontAwesomeIcon className="faa" icon={faBullseye} />
                 </div>
                 <div className="saveFooterMasterInfo">
                     <div className="savefotterTime">

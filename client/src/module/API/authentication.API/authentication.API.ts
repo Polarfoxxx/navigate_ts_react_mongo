@@ -5,7 +5,8 @@ import {
   Type_forRespo_objekt,
   Type_forSaveDATA_API,
   Type_forLoadDATA_API,
-  Type_forRespoLoad_objekt
+  Type_forRespoLoad_objekt,
+  Type_forSendData_API
 } from "./types";
 
 
@@ -14,6 +15,7 @@ const AUTHENTICATION_API = {
   loginUser_API,
   saveDATA_API,
   loadDATA_API,
+  sendEmail_API
 };
 export default AUTHENTICATION_API;
 
@@ -27,7 +29,7 @@ async function registerNewUser_API(props: Type_forAuthentication_API): Promise<T
   try {
     const RESPO_DATA = await axios.post("http://localhost:4000/register/newUser", RESGISTER_DATA, {
       headers: {
-        'Content-Type': 'application/json', 
+        'Content-Type': 'application/json',
       }
     });
 
@@ -60,7 +62,7 @@ async function loginUser_API(props: Type_forAuthentication_API): Promise<Type_fo
   try {
     const RESPO_DATA = await axios.post("http://localhost:4000/login/user", LOGIN_DATA, {
       headers: {
-        'Content-Type': 'application/json', 
+        'Content-Type': 'application/json',
       }
     });
 
@@ -74,7 +76,7 @@ async function loginUser_API(props: Type_forAuthentication_API): Promise<Type_fo
 
   } catch (error) {
     if (axios.isAxiosError(error)) {
-console.log(error.response);
+      console.log(error.response);
 
       if (error.response) {
         const LOGIN_RESPO_ERROR: Type_forLogin_respo_objekt = {
@@ -165,5 +167,33 @@ async function loadDATA_API(props: Type_forLoadDATA_API): Promise<Type_forRespoL
         return LOGIN_RESPO_ERROR;
       };
     };
+  };
+};
+
+
+/* --------------------------------------------------------------------------------------- */
+async function sendEmail_API(props: Type_forSendData_API): Promise<any | undefined> {
+  const DATA = {
+    emailName: props.EMAIL_NAME,
+    routeInfo: props.ROUTE_INFO
+  };
+  const JWT_TOKEN = props.USER_JWT_TOKEN;
+
+console.log(DATA);
+
+
+  try {
+    const RESPO_DATA = await axios.post('http://localhost:4000/send/email', DATA, {
+      headers: {
+        "Authorization": JWT_TOKEN,
+        'Content-Type': 'application/json',
+      },
+    });
+
+  console.log(RESPO_DATA);
+  
+
+  } catch (error) {
+    console.error(error);
   };
 };

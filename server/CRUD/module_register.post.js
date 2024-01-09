@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require("../mongooseDB/mongooseDB");
 const bcrypt = require('bcrypt');
 const Joi = require("joi");
-const sendEmail = require("./module_sendEmail.post")
+const {sendEmail} = require("./module_sendEmail.post")
 
 /* register POST method -------------------------------------*/
 router.post('/newUser', async (req, res) => {
