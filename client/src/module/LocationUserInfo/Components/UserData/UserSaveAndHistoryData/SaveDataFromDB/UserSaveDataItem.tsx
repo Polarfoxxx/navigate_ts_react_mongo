@@ -13,13 +13,15 @@ import { SERVICES_CONVERSION_OF_UNIT_AND_TIME as CONVER_UNITS } from "../../../.
 import { AUTHENTICATION_API } from "../../../../../API";
 
 
+
+
 function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
     const { location_DATA, setLocation_DATA, sideWays_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
     const { startPoints, endPoints, arrayALL_coordinate } = location_DATA;
     const { handleSubmit, reset } = useInputValue();
     const [saveDATA, setSaveDATA] = React.useState<Type_saveRoute>(DEFAULT_VALUE_SAVE_DATA_ITEM);
-
+    const [emailSendMessage, setEmailSendMessage] = React.useState("Send to email")
 
     React.useEffect(() => {
         if (props.item.routeName || props.item.startCoord.latLng[0]) {
@@ -46,6 +48,12 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
 
             try {
                 const SEND_EMAIL = await AUTHENTICATION_API.sendEmail_API({ EMAIL_NAME, ROUTE_INFO, USER_JWT_TOKEN });
+                if (SEND_EMAIL) {
+                    setEmailSendMessage(SEND_EMAIL?.message);
+                    setTimeout(() => {
+                        setEmailSendMessage("Send to email");
+                    }, 5000)
+                }
 
             } catch (error) {
                 console.error(error);
@@ -207,7 +215,10 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
             <div className="saveDataEvent">
                 <div className="sendEmailBox">
                     <form onSubmit={(e) => handleSubmit(e, submit)}>
-                        <label htmlFor="">Send to email</label>
+                        <label
+                            style={emailSendMessage === "Send to email" ? { color: "white" } : { color: "red" }}>
+                            {emailSendMessage}
+                        </label>
                         <div>
                             <input
                                 name="email"
@@ -230,21 +241,3 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
 export default UserSaveDataItem;
 
 
-/*   <div className="saveFooterMasterInfo">
-                    <div className="savefotterTime">
-                        <div className="saveFootTimeTittle">
-                            <h4>Route time:</h4>
-                        </div>
-                        <div className="saveFootTimeValue">
-                            <h4>{CONVER_UNITS.services_conversionOfTime({ total_value: saveDATA.timeRoute, units_type: "s" })}</h4>
-                        </div>
-                    </div>
-                    <div className="savefotterDistance">
-                        <div className="saveFootDisTittle">
-                            <h4>Route distance:</h4>
-                        </div>
-                        <div className="saveFootDisValue">
-                            <h4>{CONVER_UNITS.services_conversionOfUnits({ total_value: saveDATA.distanceRoute, units_type: "m" })}</h4>
-                        </div>
-                    </div>
-                </div> */

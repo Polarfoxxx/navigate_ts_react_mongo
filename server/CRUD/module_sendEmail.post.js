@@ -9,18 +9,19 @@ router.post("/email", authenticateToken, async (req, res) => {
   const { emailName, routeInfo } = req.body;
   const username = emailName;
   const type = "sendRoute";
-  const password = "";
+  const password = null;
 
   try {
-    sendEmail(username, password, type, routeInfo);
-    res.status(200).json({ message: "email send" });
+    const response = await sendEmail(username, password, type, routeInfo);
+    res.status(200).send(response);
   } catch (error) {
+    console.error(error);
     res.status(500).send("Internal Server Error");
   }
 });
 
 // Funkcia pre odoslanie emailu
-function sendEmail(username, password, type, routeInfo) {
+async function sendEmail(username, password, type, routeInfo) {
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -41,15 +42,14 @@ function sendEmail(username, password, type, routeInfo) {
         : sendMyRoute(username, routeInfo),
   };
 
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-      res.status(500).send("Internal Server Error");
-    } else {
-      console.log("Email sent: " + info.response);
-      res.status(200).send("Email sent successfully");
-    }
-  });
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    console.log("Email sent: " + info.response);
+    return "Email sent successfully";
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to send email");
+  }
 }
 
 module.exports = router;

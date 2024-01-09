@@ -6,74 +6,83 @@ import {
   Type_forSaveDATA_API,
   Type_forLoadDATA_API,
   Type_forRespoLoad_objekt,
-  Type_forSendData_API
+  Type_forSendData_API,
 } from "./types";
-
 
 const AUTHENTICATION_API = {
   registerNewUser_API,
   loginUser_API,
   saveDATA_API,
   loadDATA_API,
-  sendEmail_API
+  sendEmail_API,
 };
 export default AUTHENTICATION_API;
 
 /* --------------------------------------------------------------------------------------- */
-async function registerNewUser_API(props: Type_forAuthentication_API): Promise<Type_forRespo_objekt | undefined> {
+async function registerNewUser_API(
+  props: Type_forAuthentication_API
+): Promise<Type_forRespo_objekt | undefined> {
   const RESGISTER_DATA = {
     username: props.emailValue,
     password: props.passwordValue,
   };
 
   try {
-    const RESPO_DATA = await axios.post("http://localhost:4000/register/newUser", RESGISTER_DATA, {
-      headers: {
-        'Content-Type': 'application/json',
+    const RESPO_DATA = await axios.post(
+      "http://localhost:4000/register/newUser",
+      RESGISTER_DATA,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
-    });
+    );
 
     const REGISTER_RESPO_OBJEKT: Type_forRespo_objekt = {
       status: RESPO_DATA.status,
-      message: RESPO_DATA.data.message
+      message: RESPO_DATA.data.message,
     };
     return REGISTER_RESPO_OBJEKT;
-
   } catch (error) {
     if (axios.isAxiosError(error)) {
       if (error.response) {
-        const LOGIN_RESPO_ERROR: Type_forRespo_objekt = {
+        const REGISTER_RESPO_OBJEKT: Type_forRespo_objekt = {
           status: error.response.status,
           message: error.response.data.message,
         };
-        return LOGIN_RESPO_ERROR;
-      };
-    };
+        return REGISTER_RESPO_OBJEKT;
+      }
+    }
   }
-};
+}
 
 /* --------------------------------------------------------------------------------------- */
-async function loginUser_API(props: Type_forAuthentication_API): Promise<Type_forLogin_respo_objekt | undefined> {
+async function loginUser_API(
+  props: Type_forAuthentication_API
+): Promise<Type_forLogin_respo_objekt | undefined> {
   const LOGIN_DATA = {
     username: props.emailValue,
     password: props.passwordValue,
   };
 
   try {
-    const RESPO_DATA = await axios.post("http://localhost:4000/login/user", LOGIN_DATA, {
-      headers: {
-        'Content-Type': 'application/json',
+    const RESPO_DATA = await axios.post(
+      "http://localhost:4000/login/user",
+      LOGIN_DATA,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
-    });
+    );
 
     const LOGIN_RESPO_OBJEKT: Type_forLogin_respo_objekt = {
       status: RESPO_DATA.status,
       JWT_token: RESPO_DATA.data.token,
       user_name: RESPO_DATA.data.username,
-      message: RESPO_DATA.data.message
+      message: RESPO_DATA.data.message,
     };
     return LOGIN_RESPO_OBJEKT;
-
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.log(error.response);
@@ -83,16 +92,18 @@ async function loginUser_API(props: Type_forAuthentication_API): Promise<Type_fo
           status: error.response.status,
           JWT_token: "",
           user_name: "",
-          message: error.response.data
+          message: error.response.data,
         };
         return LOGIN_RESPO_ERROR;
       }
-    };
-  };
-};
+    }
+  }
+}
 
 /* --------------------------------------------------------------------------------------- */
-async function saveDATA_API(props: Type_forSaveDATA_API): Promise<Type_forRespo_objekt | undefined> {
+async function saveDATA_API(
+  props: Type_forSaveDATA_API
+): Promise<Type_forRespo_objekt | undefined> {
   const SAVE_DATA = {
     username: props.USER_NAME,
     routeName: props.DATA_ROUTE.routeName,
@@ -102,50 +113,55 @@ async function saveDATA_API(props: Type_forSaveDATA_API): Promise<Type_forRespo_
     timeCreate: props.DATA_ROUTE.timeCreate,
     officialName: props.DATA_ROUTE.officialName,
     timeRoute: props.DATA_ROUTE.timeRoute,
-    distanceRoute: props.DATA_ROUTE.distanceRoute
+    distanceRoute: props.DATA_ROUTE.distanceRoute,
   };
   const JWT_TOKEN = props.USER_JWT_TOKEN;
 
   try {
-    const RESPO_DATA = await axios.post('http://localhost:4000/save/data', SAVE_DATA, {
-      headers: {
-        "Authorization": JWT_TOKEN,
-        'Content-Type': 'application/json',
-      },
-    });
+    const RESPO_DATA = await axios.post(
+      "http://localhost:4000/save/data",
+      SAVE_DATA,
+      {
+        headers: {
+          Authorization: JWT_TOKEN,
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const SAVE_RESPO_OBJEKT: Type_forRespo_objekt = {
       status: RESPO_DATA.status,
-      message: RESPO_DATA.data.message
+      message: RESPO_DATA.data.message,
     };
     return SAVE_RESPO_OBJEKT;
-
   } catch (error) {
     if (axios.isAxiosError(error)) {
       if (error.response) {
-        const LOGIN_RESPO_ERROR: Type_forRespo_objekt = {
+        const SAVE_RESPO_OBJEKT: Type_forRespo_objekt = {
           status: error.response.status,
-          message: error.response.data
+          message: error.response.data,
         };
-        return LOGIN_RESPO_ERROR;
-      };
-    };
-  };
-};
+        return SAVE_RESPO_OBJEKT;
+      }
+    }
+  }
+}
 
 /* --------------------------------------------------------------------------------------- */
-async function loadDATA_API(props: Type_forLoadDATA_API): Promise<Type_forRespoLoad_objekt | undefined> {
+async function loadDATA_API(
+  props: Type_forLoadDATA_API
+): Promise<Type_forRespoLoad_objekt | undefined> {
   const DATA = {
     username: props.USER_NAME,
   };
   const JWT_TOKEN = props.USER_JWT_TOKEN;
 
   try {
-    const RESPO_DATA = await axios.get('http://localhost:4000/load/data', {
+    const RESPO_DATA = await axios.get("http://localhost:4000/load/data", {
       params: DATA,
       headers: {
-        "Authorization": JWT_TOKEN,
-        'Content-Type': 'application/json',
+        Authorization: JWT_TOKEN,
+        "Content-Type": "application/json",
       },
     });
 
@@ -155,45 +171,56 @@ async function loadDATA_API(props: Type_forLoadDATA_API): Promise<Type_forRespoL
       data: RESPO_DATA.data.data,
     };
     return LOAD_RESPO_OBJEKT;
-
   } catch (error) {
     if (axios.isAxiosError(error)) {
       if (error.response) {
-        const LOGIN_RESPO_ERROR: Type_forRespoLoad_objekt = {
+        const LOAD_RESPO_OBJEKT: Type_forRespoLoad_objekt = {
           status: error.response.status,
           message: error.response.data,
-          data: []
+          data: [],
         };
-        return LOGIN_RESPO_ERROR;
-      };
-    };
-  };
-};
-
+        return LOAD_RESPO_OBJEKT;
+      }
+    }
+  }
+}
 
 /* --------------------------------------------------------------------------------------- */
-async function sendEmail_API(props: Type_forSendData_API): Promise<any | undefined> {
+async function sendEmail_API(
+  props: Type_forSendData_API
+): Promise<Type_forRespo_objekt | undefined> {
   const DATA = {
     emailName: props.EMAIL_NAME,
-    routeInfo: props.ROUTE_INFO
+    routeInfo: props.ROUTE_INFO,
   };
   const JWT_TOKEN = props.USER_JWT_TOKEN;
 
-console.log(DATA);
-
-
   try {
-    const RESPO_DATA = await axios.post('http://localhost:4000/send/email', DATA, {
-      headers: {
-        "Authorization": JWT_TOKEN,
-        'Content-Type': 'application/json',
-      },
-    });
+    const RESPO_DATA = await axios.post(
+      "http://localhost:4000/send/email",
+      DATA,
+      {
+        headers: {
+          Authorization: JWT_TOKEN,
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-  console.log(RESPO_DATA);
-  
-
+    const SEND_EMAIL_RESPO_OBJEKT: Type_forRespo_objekt = {
+      status: RESPO_DATA.status,
+      message: RESPO_DATA.data,
+    };
+    return SEND_EMAIL_RESPO_OBJEKT;
   } catch (error) {
-    console.error(error);
+    if (axios.isAxiosError(error)) {
+      if (error.response) {
+        const SEND_EMAIL_RESPO_OBJEKT: Type_forRespo_objekt = {
+          status: error.response.status,
+          message: error.response.data,
+        };
+        return SEND_EMAIL_RESPO_OBJEKT;
+      };
+    };
   };
 };

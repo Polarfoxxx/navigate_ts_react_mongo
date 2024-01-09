@@ -374,6 +374,7 @@ transition: 0.5s;
     height: 25px;
     padding-left: 5px;
     background-color: rgb(58, 58, 58);
+    color: white;
 }
 
 .saveDataItemBox .saveDataEvent .sendEmailBox>form>div>button {
