@@ -9,9 +9,9 @@
     border-radius: 15px;
     overflow: hidden;
     cursor: pointer;
-    border: 1px solid rgba(255, 255, 255, 0.813);
-position: relative;
-transition: 0.5s;
+    border: 1px solid rgba(47, 217, 17, 0.813);
+    position: relative;
+    transition: 0.5s;
 }
 
 .saveDataItemBox:hover {
@@ -380,6 +380,9 @@ transition: 0.5s;
 .saveDataItemBox .saveDataEvent .sendEmailBox>form>div>button {
     height: 25px;
     width: 80px;
+}
+.saveDataItemBox .saveDataEvent .sendEmailBox>form>div>button:hover{
+    background-color: var(--yellowGreenLow);
 }
 
 

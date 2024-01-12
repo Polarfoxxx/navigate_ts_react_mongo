@@ -76,8 +76,17 @@
     display: flex;
     align-items: center;
     justify-content: end;
+}
+
+.headerLocName .headerButtonBox .buttonContent .incidentsButton {
+    width: 250px;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: row;
-    padding-right: 150px;
+    margin-right: 75px;
 }
 
 .headerLocName .headerButtonBox .buttonContent .incidentsButton .offActiveButtom {
@@ -108,4 +117,32 @@
 .headerLocName .headerButtonBox .buttonContent .incidentsButton>button:hover {
     background-color: var(--yellowGreen);
     color: black;
+}
+
+.headerLocName .headerButtonBox .buttonContent .incidentsButton .incidentsButton_INFO_PANEL {
+    display: none;
+    position: absolute;
+    top: -67px;
+    width: 170px;
+    height: 60px;
+    background-color: var(--silverContent);
+    border-radius: 5px;
+    border: 1px solid var(--yellowGreenLow);
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 14px;
+    color: var(--whiteTextColor);
+    padding: 5px;
+    word-wrap: break-word;
+    z-index: 9999;
+}
+
+.headerLocName .headerButtonBox .buttonContent .incidentsButton .incidentsButton_INFO_PANEL>p>span {
+    color: var(--yellowGreen);
+}
+
+
+.headerLocName .headerButtonBox .buttonContent .incidentsButton:hover .incidentsButton_INFO_PANEL {
+    display: block;
+
 }

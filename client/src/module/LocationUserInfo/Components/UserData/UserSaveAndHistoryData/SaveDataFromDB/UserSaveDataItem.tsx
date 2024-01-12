@@ -53,13 +53,12 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
                     setTimeout(() => {
                         setEmailSendMessage("Send to email");
                     }, 5000)
-                }
-
+                };
             } catch (error) {
                 console.error(error);
             };
         };
-    }
+    };
 
     /* kliknutie na item ulozenej cesty */
     const handleClickItem = (route: Type_saveRoute) => {
@@ -70,10 +69,14 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
             arrayALL_coordinate: route.allCoord
         };
         updateContext_DATA([
-            { newData: UPDATE_DATA, key: "location_DATA" },
+            { newData: UPDATE_DATA, key: "location_DATA" }
         ]);
     };
 
+    /* vymazanie ulozenej trasy */
+    const handleClickDelete = (routeName: string) => {
+        
+    };
 
 
     return (
@@ -229,7 +232,7 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
                     </form>
                 </div>
                 <div className="deleteRoute">
-                    <button>DELETE</button>
+                    <button onClick={() => handleClickDelete(props.item.officialName)}>DELETE</button>
                 </div>
 
             </div>

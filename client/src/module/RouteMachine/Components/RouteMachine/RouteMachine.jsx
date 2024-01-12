@@ -9,23 +9,37 @@ import "leaflet-routing-machine";
 import services_routeDetail from "./services/services_routeDetail";
 import services_movieMarker from "./services/services_moveMarker";
 import { UseChangeContextDATA } from "../../../hooks";
+import { services_theMatchOfTheCreatedObject } from "../../../LocationUserInfo";
+
 
 function RouteMachine() {
     const MAP = useMap();
     const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
-    const { startPoints, endPoints, arrayALL_coordinate, changeRoutes } = location_DATA, { mapBussines_Category } = sideWays_DATA;
+    const { startPoints, endPoints, arrayALL_coordinate, main_atl_route } = location_DATA, { mapBussines_Category } = sideWays_DATA;
     const [routingControl, setRoutingControl] = React.useState(null);
     const [marker, setMarker] = React.useState(null);
-    const [routes, setRoutes] = React.useState([]);
+
+    /*  const [routes, setRoutes] = React.useState([]); */
+    let storageHistorySearch = React.useMemo(() => {
+        const storedArray = localStorage.getItem('saveHistoryRoutes');
+        if (storedArray) {
+            const PARSE_ROUTE_ARR = JSON.parse(storedArray);
+            return PARSE_ROUTE_ARR;
+        } else {
+            return []
+        }
+    }, [])
+
+
+
+
 
     React.useEffect(() => {
-       
         const START_POINT = startPoints;
         const END_POINT = endPoints;
-        const ADD_CORD_POINT =  arrayALL_coordinate.map((item) => item.latLng);
-        console.log(arrayALL_coordinate);
-        
+        const ADD_CORD_POINT = arrayALL_coordinate.map((item) => item.latLng);
+
         /* pousun mapy na prvy marker */
         if (START_POINT.address.label && !END_POINT.address.label) {
             MAP.flyTo([START_POINT.latLng[0], START_POINT.latLng[1]]);
@@ -75,9 +89,7 @@ function RouteMachine() {
                     icon: marker_icon,
                     ident: ident,
                 });
-                /* ======================================*/
                 setMarker(marker);
-                /* ======================================*/
                 return marker;
             },
         }, []).addTo(MAP);
@@ -89,7 +101,7 @@ function RouteMachine() {
         return () => {
             MAP.removeControl(routingControl);
         };
-    }, [startPoints, endPoints ,JSON.stringify(arrayALL_coordinate)]);
+    }, [startPoints, endPoints, JSON.stringify(arrayALL_coordinate)]);
     /* ========================================================================= */
 
 
@@ -116,20 +128,55 @@ function RouteMachine() {
         if (routingControl) {
             routingControl.on("routesfound", function (e) {
                 const ROUTES = e.routes;
-                setRoutes(ROUTES)
                 updateContext_DATA([{ newData: services_routeDetail(ROUTES), key: "main_atl_route" }]);
 
                 /* posun na trasu */
-                if (routes.length > 0) {
+                if (ROUTES.length > 0) {
                     const routeCoordinates = ROUTES[0].coordinates; // Předpokládáme, že budeme používat první trasu
                     const bounds = L.latLngBounds(routeCoordinates);
-                  
                     // Nastavení automatického přiblížení na celou trasu
                     MAP.fitBounds(bounds, { padding: [200, 200] }); // Můžete také nastavit padding podle potřeby
-                  }
+                };
+
             }, []);
         };
     }, [routingControl]);
+
+    /* nastavenie novej trasy vlozenie do pola a lokalneho uloziska pre zobarazenie hidtorie*/
+    React.useEffect(() => {
+        if (main_atl_route.length > 0) {
+            const CREATE_TIME = new Date();
+            const UTC_TIME = CREATE_TIME.toUTCString();
+
+            const UPDATE_DATA = {
+                startPoint: {
+                    address: startPoints.address,
+                    latLng: startPoints.latLng
+                },
+                endPoint: {
+                    address: endPoints.address,
+                    latLng: endPoints.latLng
+                },
+                addPoint: arrayALL_coordinate,
+                routeName: main_atl_route[0].nameRoutes,
+                routeTime: main_atl_route[0].totalTime,
+                routeDistance: main_atl_route[0].totalDistance,
+                createTime: UTC_TIME
+            };
+
+            const STORAGE_DATA = JSON.parse(localStorage.getItem('saveHistoryRoutes')) || [];
+            if (STORAGE_DATA.length > 0) {
+                console.log(STORAGE_DATA);
+                if (services_theMatchOfTheCreatedObject({ STORAGE_DATA, UPDATE_DATA }) === -1) {
+                    STORAGE_DATA.push(UPDATE_DATA);
+                    localStorage.setItem('saveHistoryRoutes', JSON.stringify(STORAGE_DATA))
+                };
+            } else {
+                STORAGE_DATA.push(UPDATE_DATA);
+                localStorage.setItem('saveHistoryRoutes', JSON.stringify(STORAGE_DATA))
+            }
+        }
+    }, [JSON.stringify(location_DATA)]);
 
 
     // Zachyťte udalosť pohybu markera
@@ -153,8 +200,6 @@ function RouteMachine() {
             });
         };
     }, [marker]);
-
-
 
     return null;
 };

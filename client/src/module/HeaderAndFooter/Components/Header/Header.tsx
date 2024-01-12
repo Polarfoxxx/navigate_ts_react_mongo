@@ -5,23 +5,30 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLeftLong } from '@fortawesome/free-solid-svg-icons'
 import { faRoute } from '@fortawesome/free-solid-svg-icons'
 import { Container } from "../../../Container";
+import { UseChangeContextDATA } from "../../../hooks";
+import { defaultValue_address_for_Provider_Context } from "../../../Container";
+
 
 function Header(): JSX.Element {
     const TO_LOCATION = useNavigate();
-    const { user_DATA, setUser_DATA } = React.useContext(Container.Context);
-    const { loginName } = user_DATA;
+    const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
+    const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
     const [logUserName, setLogUserName] = React.useState("");
 
+    /* odhlasenie */
     const handleClickToLoginPage = () => {
         TO_LOCATION("/LoginPage");
         localStorage.removeItem('JWT_token');
+        localStorage.removeItem('saveHistoryRoutes');
+        updateContext_DATA([{ newData: defaultValue_address_for_Provider_Context, key: "location_DATA" }]);
+
     };
 
     React.useEffect(() => {
         const USER_NAME = localStorage.getItem("JWT_token");
         if (USER_NAME) {
             const USER_NAME_AND_KEY = JSON.parse(USER_NAME);
-            setLogUserName(USER_NAME_AND_KEY.user_Name)
+            setLogUserName(USER_NAME_AND_KEY.user_Name);
         };
     }, []);
 

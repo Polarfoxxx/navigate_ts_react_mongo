@@ -199,16 +199,7 @@ function UserHistoryDataItem(props: Type_UserHistoryDataItem): JSX.Element {
                         <button>Save</button>
                     </div>
                 </form>
-                <form onSubmit={(e) => handleSubmit(e, submit)}>
-                    <label htmlFor="">Send to email</label>
-                    <div>
-                        <input
-                            name="email"
-                            placeholder="Send email"
-                            type="email" />
-                        <button>Send</button>
-                    </div>
-                </form>
+
             </div>
             <div className="respoMessage">
                 <h4>{state.respoMessage}</h4>

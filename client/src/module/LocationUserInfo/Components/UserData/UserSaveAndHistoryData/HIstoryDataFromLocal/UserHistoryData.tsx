@@ -3,7 +3,6 @@ import "./userHistoryData.style.css";
 import { Container } from "../../../../../Container";
 import UserSaveDataItem from "./UserHistoryDataItem";
 import { Type_UserSaveHistoryRouteObjekt } from "../types";
-import services_theMatchOfTheCreatedObject from "./services/services_theMatchOfTheCreatedObject";
 import { UseChangeContextDATA } from "../../../../../hooks";
 import { defaultValue_address_for_Provider_Context } from "../../../../../Container";
 
@@ -13,56 +12,26 @@ function UserHistoryData(): JSX.Element {
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
     const { startPoints, endPoints, main_atl_route, arrayALL_coordinate } = location_DATA;
     const [clearStorage, setClearStorage] = React.useState(false) /* iba pre render */
-    const selectItemRef = React.useRef<number>()
+    const selectItemRef = React.useRef<number>();
+    const [storage_route, setStorage_route] = React.useState<Type_UserSaveHistoryRouteObjekt[]>([]);
 
-    /* nacitanie vsetkychroutes z lokalneho uloziska */
-    let storageHistorySearch: Type_UserSaveHistoryRouteObjekt[] = useMemo(() => {
+
+
+    React.useEffect(() => {
         const storedArray = localStorage.getItem('saveHistoryRoutes');
         if (storedArray) {
             const PARSE_ROUTE_ARR = JSON.parse(storedArray);
-            return PARSE_ROUTE_ARR;
+            setStorage_route(PARSE_ROUTE_ARR)
         };
-    }, [])
 
-
-    /* nastavenie novej trasy vlozenie do pola a lokalneho uloziska */
-    React.useEffect(() => {
-        if (location_DATA.main_atl_route.length > 0) {
-            const CREATE_TIME = new Date();
-            const UTC_TIME = CREATE_TIME.toUTCString();
-
-            const UPDATE_DATA: Type_UserSaveHistoryRouteObjekt = {
-                startPoint: {
-                    address: startPoints.address,
-                    latLng: startPoints.latLng
-                },
-                endPoint: {
-                    address: endPoints.address,
-                    latLng: endPoints.latLng
-                },
-                addPoint: arrayALL_coordinate,
-                routeName: main_atl_route[0].nameRoutes,
-                routeTime: main_atl_route[0].totalTime,
-                routeDistance: main_atl_route[0].totalDistance,
-                createTime: UTC_TIME
-            };
-
-            if (services_theMatchOfTheCreatedObject({ storageHistorySearch, UPDATE_DATA }) === -1) {
-                storageHistorySearch.push(UPDATE_DATA)
-            };
-        };
-        return (() => {
-            localStorage.setItem('saveHistoryRoutes', JSON.stringify(storageHistorySearch))
-        });
-    }, [JSON.stringify(location_DATA.main_atl_route)]);
+    }, [JSON.stringify(location_DATA.main_atl_route)])
 
 
     /* vymazanie local storage */
     const handleClickClearLocalHistory = () => {
-        localStorage.removeItem("saveHistoryRoutes");
-        storageHistorySearch = [];
-        setClearStorage(!clearStorage)
         updateContext_DATA([{ newData: defaultValue_address_for_Provider_Context, key: "location_DATA" }]);
+        localStorage.removeItem("saveHistoryRoutes");
+        setStorage_route([])
     };
 
 
@@ -86,7 +55,7 @@ function UserHistoryData(): JSX.Element {
                 </div>
                 <div className="userHisLocationBody">
                     {
-                        storageHistorySearch.length > 0 && storageHistorySearch.map((item, key) =>
+                        storage_route.length > 0 && storage_route.map((item, key) =>
                             <div
                                 onClick={() => handleActive(key)}
                                 key={key}

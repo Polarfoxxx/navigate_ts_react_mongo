@@ -13,6 +13,7 @@ import { ServicesFollowPointsOnTheMap } from '../../../Control';
 import { MapTraffic } from '../../../IncidentsToMaps';
 import { Popups } from '../../../Maps/Components';
 import { MapSearche } from '../../../IncidentsToMaps';
+import { MapZoomBox } from '../../../Maps/Components';
 
 function Maps() {
     const MAP_REF = React.useRef(null);
@@ -42,6 +43,7 @@ function Maps() {
                 <MapTraffic />
                 <MapSearche />
                 <Popups />
+                <MapZoomBox/>
                 {/*    <PoligonXXX />  */}
             </MapContainer>
         </div>

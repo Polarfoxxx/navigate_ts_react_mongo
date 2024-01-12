@@ -28,11 +28,13 @@ function HeadMaps(): JSX.Element {
     const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
     const [state, dispatch] = React.useReducer(reducer, DEFAULT_VALUE_FOR_REDUCER);
 
+    /* nastavenie nazvov miest do headeru */
     React.useEffect(() => {
         dispatch({ type: "START_POINTS_NAME", payload: startPoints.address.label });
         dispatch({ type: "END_POINTS_NAME", payload: endPoints.address.label });
     }, [startPoints.address.label, endPoints.address.label]);
 
+    /* incidenty */
     const handleClickIncidents = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation(); /* zabranuje prebublavaniu */
         const UPDATE_DATA = {
@@ -42,6 +44,7 @@ function HeadMaps(): JSX.Element {
         updateContext_DATA([{ newData: UPDATE_DATA, key: "incident" }]);
     };
 
+    /* traffic */
     const handleClickTraffic = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation(); /* zabranuje prebublavaniu */
         updateContext_DATA([{ newData: !traffic, key: "traffic" }]);
@@ -81,6 +84,10 @@ function HeadMaps(): JSX.Element {
                             onClick={handleClickTraffic}>
                             Traffic
                         </button>
+                        <div className="incidentsButton_INFO_PANEL">
+                            <p><span>Incident</span> and <span>traffic</span> function
+                                works if zoom level is greater than <span>13</span>.</p>
+                        </div>
                     </div>
                 </div>
             </div>

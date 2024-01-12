@@ -32,7 +32,7 @@ export default async function traffic_Incidents_API(sectionsArray: Type_MostedCo
     const incidents = await fetchIncidentsForSection(section);
     ALL_INCIDENTS.push(...incidents);
 
-    // Pridajte časové oneskorenie medzi požiadavkami (napríklad 1000 ms = 1 sekunda)
+    // Pridajte časové oneskorenie medzi požiadavkami 
     await new Promise(resolve => setTimeout(resolve, delay));
   };
   const INCIDETS_RESPO_ARR: Type_IncidentDATA_forMarker[] = services_setResponseDATA({ KEY_REQUIRED: KEY_REQUIRED, RESPO_RAW_DATA: ALL_INCIDENTS })

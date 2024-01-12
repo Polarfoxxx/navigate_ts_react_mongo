@@ -12,7 +12,9 @@ function servicesJWTdecodeAndValidity(JWT_FROM_STORAGE: string): boolean {
     } else { 
         checkVerification = false ;
         localStorage.removeItem('JWT_token');
-    }
+     /*    localStorage.removeItem('saveHistoryRoutes'); */
+       
+    };
 
     return checkVerification
 };
