@@ -7,7 +7,8 @@ import {
   Type_forLoadDATA_API,
   Type_forRespoLoad_objekt,
   Type_forSendData_API,
-  Type_forDeleteData_API
+  Type_forDeleteData_API,
+  Type_forDeleteAccount
 } from "./types";
 
 const AUTHENTICATION_API = {
@@ -17,6 +18,7 @@ const AUTHENTICATION_API = {
   loadDATA_API,
   sendEmail_API,
   deleteRoute,
+  deleteAccount
 };
 export default AUTHENTICATION_API;
 
@@ -243,6 +245,43 @@ async function deleteRoute(props: Type_forDeleteData_API): Promise<Type_forRespo
           message: error.response.data.message,
         };
         return DELETE_ROUTE;
+      };
+    };
+  };
+};
+
+
+/* --------------------------------------------------------------------------------------- */
+async function deleteAccount(props: Type_forDeleteAccount): Promise<Type_forRespo_objekt | undefined> {
+  const DATA = {
+    emailName: props.USER_NAME,
+  };
+  const JWT_TOKEN = props.USER_JWT_TOKEN;
+
+  try {
+    const RESPO_DATA = await axios.delete("http://localhost:4000/delete/user", {
+      params: DATA,
+      headers: {
+        Authorization: JWT_TOKEN,
+        "Content-Type": "application/json",
+      },
+    }
+    );
+
+    const DELETE_ACCOUNT: Type_forRespo_objekt = {
+      status: RESPO_DATA.status,
+      message: RESPO_DATA.data.message,
+    };
+    return DELETE_ACCOUNT;
+
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      if (error.response) {
+        const DELETE_ACCOUNT: Type_forRespo_objekt = {
+          status: error.response.status,
+          message: error.response.data.message,
+        };
+        return DELETE_ACCOUNT;
       };
     };
   };

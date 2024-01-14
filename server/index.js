@@ -5,6 +5,8 @@ const post_Save = require("./CRUD/module_save.post");
 const get_Read = require("./CRUD/module_read.get");
 const post_Send_Email = require("./CRUD/module_sendEmail.post");
 const delete_Road = require("./CRUD/module_deleteRoute.delete");
+const delete_Account = require("./CRUD/module.deleteAccount.delete")
+
 
 const express = require("express");
 const app = express();
@@ -27,5 +29,7 @@ app.use('/load', get_Read);
 app.use('/send', post_Send_Email);
 /* delete route ----------------------------------------*/
 app.use('/delete', delete_Road);
+/* delete account ----------------------------------------*/
+app.use('/delete', delete_Account);
 
 

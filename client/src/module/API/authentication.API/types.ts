@@ -18,7 +18,7 @@ export type Type_forRespoLoad_objekt = {
 };
 
 
-
+/* ------------------------------------------------ */
 export type Type_forSaveDATA_API = {
     DATA_ROUTE: Type_saveRoute,
     USER_NAME: string,
@@ -40,6 +40,10 @@ export type Type_forSendData_API = {
 export type Type_forDeleteData_API = {
     EMAIL_NAME: string,
     ROUTE_NAME: string,
+    USER_JWT_TOKEN: string
+};
+export type Type_forDeleteAccount = {
+    USER_NAME: string
     USER_JWT_TOKEN: string
 };
 

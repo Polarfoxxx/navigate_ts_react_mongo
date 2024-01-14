@@ -16,10 +16,31 @@
 .header .headerBox .headerbottonBox {
     width: 15%;
     height: 100%;
+
+}
+
+.header .headerBox .headerRespoMessage {
+    width: 30%;
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
 }
+
+.header .headerBox .headerRespoMessage .headerRespoMessageContent {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(249, 249, 249);
+    background-color: brown;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 15px;
+    line-height: 17px;
+}
+
 
 .header .headerBox .headerTittleBox {
     width: 85%;
@@ -60,8 +81,9 @@
 }
 
 .header .headerBox .headerTittleBox .headerLogo>h1 {
-    color:white;
+    color: white;
 }
-.header .headerBox .headerTittleBox .headerLogo .faIcon{
+
+.header .headerBox .headerTittleBox .headerLogo .faIcon {
     color: var(--orangeContent);
 }

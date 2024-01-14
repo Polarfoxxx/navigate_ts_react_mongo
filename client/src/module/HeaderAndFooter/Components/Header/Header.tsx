@@ -1,21 +1,12 @@
-import { useNavigate } from "react-router-dom";
 import "./header.style.css";
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLeftLong } from '@fortawesome/free-solid-svg-icons'
 import { faRoute } from '@fortawesome/free-solid-svg-icons'
-import { Container } from "../../../Container";
-import { UseChangeContextDATA } from "../../../hooks";
-import { defaultValue_address_for_Provider_Context } from "../../../Container";
-import BasicButtonExample from "./Dropdown";
+import DropdownLogOut from "./DropdownLogOut";
 
 function Header(): JSX.Element {
-    const NAVIGATE = useNavigate();
-    const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
-    const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
     const [logUserName, setLogUserName] = React.useState("");
-
-
+    const [respoMessage, setRespoMessage] = React.useState("")
 
     React.useEffect(() => {
         const USER_NAME = localStorage.getItem("JWT_token");
@@ -29,7 +20,16 @@ function Header(): JSX.Element {
         <div className="header">
             <div className="headerBox">
                 <div className="headerbottonBox">
-                  <BasicButtonExample/>
+                    <DropdownLogOut setRespoMessage={setRespoMessage} />
+                </div>
+                <div className="headerRespoMessage">
+                    {
+                        respoMessage &&
+                        <div className="headerRespoMessageContent">
+                            {respoMessage}
+                        </div>
+                    }
+
                 </div>
                 <div className="headerTittleBox">
                     <div className="headerLogo">
