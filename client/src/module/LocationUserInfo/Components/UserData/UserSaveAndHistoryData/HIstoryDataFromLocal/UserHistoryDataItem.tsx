@@ -83,6 +83,8 @@ function UserHistoryDataItem(props: Type_UserHistoryDataItem): JSX.Element {
 
             try {
                 const SAVE_RESPO = await AUTHENTICATION_API.saveDATA_API({ DATA_ROUTE, USER_NAME, USER_JWT_TOKEN });
+                console.log(SAVE_RESPO);
+                
                 if (SAVE_RESPO) {
                     dispatch({ type: "SET_RESPO_MESSAGE", payload: SAVE_RESPO.message });
                     setTimeout(() => {

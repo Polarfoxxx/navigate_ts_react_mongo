@@ -41,7 +41,7 @@ const userSchema = new mongoose.Schema({
       },
       allCoord: [Type_ALLCoordinateObjekt],
       timeCreate: String,
-      officialName:String,
+      officialName: String,
       timeRoute: Number,
       distanceRoute: Number
     }
@@ -49,4 +49,6 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model('User', userSchema);
+
+
 module.exports = User;

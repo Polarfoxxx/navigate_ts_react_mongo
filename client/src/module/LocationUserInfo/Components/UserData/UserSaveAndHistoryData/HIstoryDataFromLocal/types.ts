@@ -3,6 +3,7 @@ import {
   TypeStartAndEndPoint,
   Type_ArrayAllCoord,
 } from "../../../../../Container";
+import React from "react";
 
 export type Type_UserHistoryDataItem = {
   item: Type_UserSaveHistoryRouteObjekt;
@@ -13,7 +14,10 @@ export type Type_UserHistoryDataItem = {
 export type Type_UserSaveDataItem = {
   item: Type_saveRoute;
   keyItem: number;
-  selectItem?: number;
+  setDeleteNameRoute: React.Dispatch<React.SetStateAction<string>>
+  setSelectRoute: React.Dispatch<React.SetStateAction<number | undefined>>
+
+  
 };
 
 export type Type_saveRoute = {

@@ -23,12 +23,13 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
     const [saveDATA, setSaveDATA] = React.useState<Type_saveRoute>(DEFAULT_VALUE_SAVE_DATA_ITEM);
     const [emailSendMessage, setEmailSendMessage] = React.useState("Send to email")
 
+    /* nastavenie hodnout itemu */
     React.useEffect(() => {
         if (props.item.routeName || props.item.startCoord.latLng[0]) {
-            setSaveDATA(props.item)
-        };
-    }, []);
-
+            setSaveDATA(props.item);
+        }
+    }, [props.item]);
+    
 
     /* send to email */
     const submit = (v: TypeForInputsObject["v"]): void => {
@@ -61,7 +62,7 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
     };
 
     /* kliknutie na item ulozenej cesty */
-    const handleClickItem = (route: Type_saveRoute) => {
+    const handleClickSelect = (route: Type_saveRoute) => {
         const UPDATE_DATA = {
             ...location_DATA,
             startPoints: route.startCoord,
@@ -71,19 +72,19 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
         updateContext_DATA([
             { newData: UPDATE_DATA, key: "location_DATA" }
         ]);
+        props.setSelectRoute(props.keyItem);
     };
 
-    /* vymazanie ulozenej trasy */
+
+    /* nastavenie nazvu pre najdenie trasy pre vymazanie */
     const handleClickDelete = (routeName: string) => {
-        
+        props.setDeleteNameRoute(routeName)
     };
+
 
 
     return (
-        <div
-            style={props.keyItem === props.selectItem ? { left: "60px" } : { left: "0px" }}
-            onClick={() => handleClickItem(props.item)}
-            className="saveDataItemBox">
+        <div className="saveDataItemBox">
             <div className="saveDataHeader">
                 <div className="routeItemKeys">
                     <div className="routeKeyboxs">
@@ -231,10 +232,14 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
                         </div>
                     </form>
                 </div>
+                <div className="selectRoute">
+                    <p>Selekt route on map</p>
+                    <button onClick={() => handleClickSelect(props.item)}>SELECT</button>
+                </div>
                 <div className="deleteRoute">
+                    <p>Delete route</p>
                     <button onClick={() => handleClickDelete(props.item.officialName)}>DELETE</button>
                 </div>
-
             </div>
 
         </div>

@@ -4,7 +4,6 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-
 }
 
 /* globall */
@@ -12,19 +11,53 @@ button {
   box-shadow: inset 57px 47px 90px -55px rgba(0, 0, 0, 0.889);
   transition: 0.4s;
   cursor: pointer;
-  font-size: 90%;
-  font-weight: bold;
   background-color: white;
+  font-size: 0.8em;
 
 }
+
+h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.25em;
+  margin: 0;
+}
+
+h3 {
+  font-size: 1em;
+  margin: 0;
+}
+
+h4 {
+  font-size: 0.875em;
+  margin: 0;
+
+}
+
+h5 {
+  font-size: 0.75em;
+  margin: 0;
+}
+
+h6 {
+  font-size: 0.625em;
+  margin: 0;
+}
+p{
+  margin: 0;
+  line-height: 17px;
+}
+
 
 .link {
   box-shadow: inset 67px 47px 90px -55px rgb(0, 0, 0);
   transition: 0.4s;
   cursor: pointer;
-  font-size: 90%;
-  font-weight: bold;
   background-color: white;
+  font-size: 0.9em;
 }
 
 :root {

@@ -33,7 +33,7 @@ function Content() {
 
     return (
         <div className="content" >
-            <div className="container">
+            <div className="containers">
                 <header>
                     <Header />
                 </header>

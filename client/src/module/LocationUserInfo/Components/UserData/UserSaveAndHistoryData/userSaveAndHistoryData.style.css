@@ -27,6 +27,7 @@
     justify-content: start;
     flex-direction: row;
     gap: 10px;
+    border: 1px solid red;
 
 }
 
@@ -54,7 +55,6 @@
     background-color: white;
     text-decoration: none;
     display: flex;
-    font-size: 17px;
     text-align: center;
     justify-content: center;
     border: 2px solid #4e4e4e;

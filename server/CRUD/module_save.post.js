@@ -20,7 +20,18 @@ router.post('/data', authenticateToken, async (req, res) => {
   try {
     /* hladanie uzivatela*/
     const user = await User.findOne({ username });
-    // Pridanie správy do poľa správ používateľa 
+
+
+    if (!user) {
+      return res.status(404).json({ message: 'Používateľ s daným emailName nebol nájdený.' });
+    }
+    // Nájdenie indexu objektu s daným officialName v poli data
+    const indexToDelete = user.data.findIndex(obj => obj.officialName === officialName);
+    //ak existuje pole chybu
+    if (indexToDelete !== -1) {
+      return res.status(404).json({ message: "Route existing" });
+    }
+
     user.data.push({
       routeName: routeName,
       startCoord: startCoord,

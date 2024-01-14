@@ -32,7 +32,8 @@ export type {
     Type_forSaveDATA_API,
     Type_forRespo_objekt,
     Type_forLoadDATA_API,
-    Type_forSendData_API
+    Type_forSendData_API,
+    Type_forDeleteData_API
 } from "./authentication.API/types";
 
 

@@ -7,6 +7,7 @@ import {
   Type_forLoadDATA_API,
   Type_forRespoLoad_objekt,
   Type_forSendData_API,
+  Type_forDeleteData_API
 } from "./types";
 
 const AUTHENTICATION_API = {
@@ -15,22 +16,19 @@ const AUTHENTICATION_API = {
   saveDATA_API,
   loadDATA_API,
   sendEmail_API,
+  deleteRoute,
 };
 export default AUTHENTICATION_API;
 
 /* --------------------------------------------------------------------------------------- */
-async function registerNewUser_API(
-  props: Type_forAuthentication_API
-): Promise<Type_forRespo_objekt | undefined> {
+async function registerNewUser_API(props: Type_forAuthentication_API): Promise<Type_forRespo_objekt | undefined> {
   const RESGISTER_DATA = {
     username: props.emailValue,
     password: props.passwordValue,
   };
 
   try {
-    const RESPO_DATA = await axios.post(
-      "http://localhost:4000/register/newUser",
-      RESGISTER_DATA,
+    const RESPO_DATA = await axios.post("http://localhost:4000/register/newUser", RESGISTER_DATA,
       {
         headers: {
           "Content-Type": "application/json",
@@ -57,18 +55,14 @@ async function registerNewUser_API(
 }
 
 /* --------------------------------------------------------------------------------------- */
-async function loginUser_API(
-  props: Type_forAuthentication_API
-): Promise<Type_forLogin_respo_objekt | undefined> {
+async function loginUser_API(props: Type_forAuthentication_API): Promise<Type_forLogin_respo_objekt | undefined> {
   const LOGIN_DATA = {
     username: props.emailValue,
     password: props.passwordValue,
   };
 
   try {
-    const RESPO_DATA = await axios.post(
-      "http://localhost:4000/login/user",
-      LOGIN_DATA,
+    const RESPO_DATA = await axios.post("http://localhost:4000/login/user", LOGIN_DATA,
       {
         headers: {
           "Content-Type": "application/json",
@@ -92,7 +86,7 @@ async function loginUser_API(
           status: error.response.status,
           JWT_token: "",
           user_name: "",
-          message: error.response.data,
+          message: error.response.data.message,
         };
         return LOGIN_RESPO_ERROR;
       }
@@ -101,9 +95,7 @@ async function loginUser_API(
 }
 
 /* --------------------------------------------------------------------------------------- */
-async function saveDATA_API(
-  props: Type_forSaveDATA_API
-): Promise<Type_forRespo_objekt | undefined> {
+async function saveDATA_API(props: Type_forSaveDATA_API): Promise<Type_forRespo_objekt | undefined> {
   const SAVE_DATA = {
     username: props.USER_NAME,
     routeName: props.DATA_ROUTE.routeName,
@@ -118,9 +110,7 @@ async function saveDATA_API(
   const JWT_TOKEN = props.USER_JWT_TOKEN;
 
   try {
-    const RESPO_DATA = await axios.post(
-      "http://localhost:4000/save/data",
-      SAVE_DATA,
+    const RESPO_DATA = await axios.post("http://localhost:4000/save/data", SAVE_DATA,
       {
         headers: {
           Authorization: JWT_TOKEN,
@@ -139,7 +129,7 @@ async function saveDATA_API(
       if (error.response) {
         const SAVE_RESPO_OBJEKT: Type_forRespo_objekt = {
           status: error.response.status,
-          message: error.response.data,
+          message: error.response.data.message,
         };
         return SAVE_RESPO_OBJEKT;
       }
@@ -148,9 +138,7 @@ async function saveDATA_API(
 }
 
 /* --------------------------------------------------------------------------------------- */
-async function loadDATA_API(
-  props: Type_forLoadDATA_API
-): Promise<Type_forRespoLoad_objekt | undefined> {
+async function loadDATA_API(props: Type_forLoadDATA_API): Promise<Type_forRespoLoad_objekt | undefined> {
   const DATA = {
     username: props.USER_NAME,
   };
@@ -176,7 +164,7 @@ async function loadDATA_API(
       if (error.response) {
         const LOAD_RESPO_OBJEKT: Type_forRespoLoad_objekt = {
           status: error.response.status,
-          message: error.response.data,
+          message: error.response.data.message,
           data: [],
         };
         return LOAD_RESPO_OBJEKT;
@@ -186,9 +174,7 @@ async function loadDATA_API(
 }
 
 /* --------------------------------------------------------------------------------------- */
-async function sendEmail_API(
-  props: Type_forSendData_API
-): Promise<Type_forRespo_objekt | undefined> {
+async function sendEmail_API(props: Type_forSendData_API): Promise<Type_forRespo_objekt | undefined> {
   const DATA = {
     emailName: props.EMAIL_NAME,
     routeInfo: props.ROUTE_INFO,
@@ -196,9 +182,7 @@ async function sendEmail_API(
   const JWT_TOKEN = props.USER_JWT_TOKEN;
 
   try {
-    const RESPO_DATA = await axios.post(
-      "http://localhost:4000/send/email",
-      DATA,
+    const RESPO_DATA = await axios.post("http://localhost:4000/send/email", DATA,
       {
         headers: {
           Authorization: JWT_TOKEN,
@@ -217,9 +201,48 @@ async function sendEmail_API(
       if (error.response) {
         const SEND_EMAIL_RESPO_OBJEKT: Type_forRespo_objekt = {
           status: error.response.status,
-          message: error.response.data,
+          message: error.response.data.message,
         };
         return SEND_EMAIL_RESPO_OBJEKT;
+      };
+    };
+  };
+};
+
+/* --------------------------------------------------------------------------------------- */
+async function deleteRoute(props: Type_forDeleteData_API): Promise<Type_forRespoLoad_objekt | undefined> {
+  const DATA = {
+    emailName: props.EMAIL_NAME,
+    officialName: props.ROUTE_NAME,
+  };
+  const JWT_TOKEN = props.USER_JWT_TOKEN;
+
+  try {
+    const RESPO_DATA = await axios.delete("http://localhost:4000/delete/data", {
+      params: DATA,
+      headers: {
+        Authorization: JWT_TOKEN,
+        "Content-Type": "application/json",
+      },
+    }
+    );
+
+    const DELETE_ROUTE: Type_forRespoLoad_objekt = {
+      data: RESPO_DATA.data.data,
+      status: RESPO_DATA.status,
+      message: RESPO_DATA.data.message,
+    };
+    return DELETE_ROUTE;
+
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      if (error.response) {
+        const DELETE_ROUTE: Type_forRespoLoad_objekt = {
+          data: [],
+          status: error.response.status,
+          message: error.response.data.message,
+        };
+        return DELETE_ROUTE;
       };
     };
   };

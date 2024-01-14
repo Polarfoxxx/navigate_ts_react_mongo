@@ -3,18 +3,19 @@ import "./userSaveData.style.css";
 import { AUTHENTICATION_API } from "../../../../../API";
 import { Type_saveRoute } from "../HIstoryDataFromLocal/types";
 import UserSaveDataItem from "./UserSaveDataItem";
-import { Container } from "../../../../../Container";
 
 function UserSaveData(): JSX.Element {
-    const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
     const [loadDATA, setLoadDATA] = React.useState<Type_saveRoute[]>([]);
-    const selectItemRef = React.useRef<number>()
+    const [selectRoute, setSelectRoute] = React.useState<number | undefined>();
+    const [deleteNameRoute, setDeleteNameRoute] = React.useState("");
 
+    /* spustenie nacitacej api  */
     React.useEffect(() => {
-        loadData();
+        fetchloadData();
     }, []);
 
-    async function loadData() {
+    /* volanie api pre nacitanie */
+    async function fetchloadData() {
         const USER_DATA_FROM_STR = localStorage.getItem("JWT_token");
         if (USER_DATA_FROM_STR) {
             const USER_DATA = JSON.parse(USER_DATA_FROM_STR);
@@ -22,7 +23,7 @@ function UserSaveData(): JSX.Element {
             const USER_JWT_TOKEN = USER_DATA.JWT_token;
             try {
                 const LOAD_DATA = await AUTHENTICATION_API.loadDATA_API({ USER_NAME, USER_JWT_TOKEN });
-                console.log(LOAD_DATA);
+
                 if (LOAD_DATA?.status === 200) {
                     setLoadDATA(LOAD_DATA.data)
                 };
@@ -32,12 +33,40 @@ function UserSaveData(): JSX.Element {
         };
     };
 
-    /* selekt trasy pre farebne odlisenie */
-    const handleActive = (key: number) => {
-        if (key !== selectItemRef.current) {
-            selectItemRef.current = key
+
+    /* spustenie vymazavacej api */
+    React.useEffect(() => {
+        if (deleteNameRoute) {
+            deleteItem()
+        }
+    }, [deleteNameRoute])
+
+    /* volanie api pre vymazanie*/
+    async function deleteItem() {
+        const USER_DATA_FROM_STR = localStorage.getItem("JWT_token");
+        if (USER_DATA_FROM_STR) {
+            const USER_DATA = JSON.parse(USER_DATA_FROM_STR);
+            const EMAIL_NAME = USER_DATA.user_Name;
+            const USER_JWT_TOKEN = USER_DATA.JWT_token;
+            const ROUTE_NAME = deleteNameRoute;
+
+            try {
+                const RESPO_DATA = await AUTHENTICATION_API.deleteRoute({ EMAIL_NAME, ROUTE_NAME, USER_JWT_TOKEN });
+                if (RESPO_DATA?.status === 200) {
+                    console.log(RESPO_DATA.data);
+                    setLoadDATA(RESPO_DATA.data)
+                };
+            } catch (error) {
+                console.error(error);
+            };
         };
     };
+
+
+    /* selekt trasy pre farebne odlisenie */
+    React.useEffect(() => {
+        console.log(selectRoute);
+    }, [selectRoute])
 
     return (
         <div className="saveDataContent">
@@ -51,12 +80,15 @@ function UserSaveData(): JSX.Element {
                 </div>
                 <div className="saveDataBody">
                     {
-                        loadDATA.length > 0 && loadDATA.map((item, key) =>
+                        loadDATA.map((item, key) =>
                             <div
-                                onClick={() => handleActive(key)}
-                                key={key}
+                                style={selectRoute === key ? { left: "60px" } : { left: "0px" }}
                                 className="saveItem">
-                                <UserSaveDataItem item={item} keyItem={key} selectItem={selectItemRef.current} />
+                                <UserSaveDataItem
+                                    item={item}
+                                    keyItem={key}
+                                    setDeleteNameRoute={setDeleteNameRoute}
+                                    setSelectRoute={setSelectRoute} />
                             </div>
                         )
                     }

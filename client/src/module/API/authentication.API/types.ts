@@ -37,3 +37,9 @@ export type Type_forSendData_API = {
     USER_JWT_TOKEN: string
 };
 
+export type Type_forDeleteData_API = {
+    EMAIL_NAME: string,
+    ROUTE_NAME: string,
+    USER_JWT_TOKEN: string
+};
+

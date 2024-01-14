@@ -18,33 +18,7 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-}
-
-.header .headerBox .headerbottonBox>button {
-    width: 200px;
-    height: 40px;
-    font-weight: bold;
-    border-radius: 8px;
-    background-color: var(--silverContent);
-    color: white;
-    cursor: pointer;
-    transition: 0.4s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    opacity: 0.6;
-}
-
-.header .headerBox .headerbottonBox>button:hover {
-    background-color: var(--orangeContent);
-    color: rgb(0, 0, 0);
-    opacity: 1;
-}
-
-.header .headerBox .headerbottonBox>button>span {
-    margin-left: 20px;
+    justify-content: start;
 }
 
 .header .headerBox .headerTittleBox {
@@ -67,7 +41,6 @@
 
 .header .headerBox .headerTittleBox .headerLogo {
     font-family: 'Dancing Script', cursive;
-    padding-right: 40px;
     width: 50%;
     min-width: 900px;
 }

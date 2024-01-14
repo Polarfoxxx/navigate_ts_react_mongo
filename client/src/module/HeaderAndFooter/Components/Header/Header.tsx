@@ -7,22 +7,15 @@ import { faRoute } from '@fortawesome/free-solid-svg-icons'
 import { Container } from "../../../Container";
 import { UseChangeContextDATA } from "../../../hooks";
 import { defaultValue_address_for_Provider_Context } from "../../../Container";
-
+import BasicButtonExample from "./Dropdown";
 
 function Header(): JSX.Element {
-    const TO_LOCATION = useNavigate();
+    const NAVIGATE = useNavigate();
     const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
     const [logUserName, setLogUserName] = React.useState("");
 
-    /* odhlasenie */
-    const handleClickToLoginPage = () => {
-        TO_LOCATION("/LoginPage");
-        localStorage.removeItem('JWT_token');
-        localStorage.removeItem('saveHistoryRoutes');
-        updateContext_DATA([{ newData: defaultValue_address_for_Provider_Context, key: "location_DATA" }]);
 
-    };
 
     React.useEffect(() => {
         const USER_NAME = localStorage.getItem("JWT_token");
@@ -36,10 +29,7 @@ function Header(): JSX.Element {
         <div className="header">
             <div className="headerBox">
                 <div className="headerbottonBox">
-                    <button onClick={handleClickToLoginPage}>
-                        <FontAwesomeIcon icon={faLeftLong} size="2xl" />
-                        <span>Back to login page</span>
-                    </button>
+                  <BasicButtonExample/>
                 </div>
                 <div className="headerTittleBox">
                     <div className="headerLogo">
@@ -47,7 +37,7 @@ function Header(): JSX.Element {
                         <h3> {logUserName}</h3>
                         <h2>in</h2>
                         <h1>FoxxyNavigate</h1>
-                        <FontAwesomeIcon className="faIcon" icon={faRoute}  size="2xl" />
+                        <FontAwesomeIcon className="faIcon" icon={faRoute} size="2xl" />
                     </div>
 
                 </div>
