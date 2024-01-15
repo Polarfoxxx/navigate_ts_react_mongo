@@ -5,18 +5,19 @@ import SignUp from "./SignUp/SignUp";
 
 
 function LoginPage(): JSX.Element {
-    const [hide, setHide] = React.useState(false)
-    const [hideBox, setHideBox] = React.useState(false)
+    const [hide, setHide] = React.useState(false);
+    const [hideBox, setHideBox] = React.useState(false);
     const buttonBoxRef = React.useRef<HTMLDivElement | null>(null);
     const signBoxRef = React.useRef<HTMLDivElement | null>(null);
 
-
-    const handleClickForm = (id: string) => {
+    /* zobrazenie form */
+    const handleClickForm = (id: string): void => {
         id === "Sign in" ? setHide(false) : setHide(true)
         setHideBox(true)
     };
 
 
+    /* pridanie a odobranie eventu po klikniti momo form */
     React.useEffect(() => {
         document.addEventListener("click", handleDocumentClick);
         return () => {
@@ -24,10 +25,10 @@ function LoginPage(): JSX.Element {
         };
     }, []);
 
-    const handleDocumentClick = (e: any) => {
+    const handleDocumentClick = (e: MouseEvent): void => {
         if (buttonBoxRef.current && signBoxRef.current &&
-            !buttonBoxRef.current.contains(e.target) &&
-            !signBoxRef.current.contains(e.target)) {
+            !buttonBoxRef.current.contains(e.target as Node) &&
+            !signBoxRef.current.contains(e.target as Node)) {
             setHideBox(false);
         };
     };
@@ -43,15 +44,15 @@ function LoginPage(): JSX.Element {
                         <div className="signButton in">
                             <div className="effectButton SigIn">
                                 <button
-                                className="SignInButton"
-                                onClick={() => handleClickForm("Sign in")}> Sign in</button>
+                                    className="SignInButton"
+                                    onClick={() => handleClickForm("Sign in")}> Sign in</button>
                             </div>
                         </div>
                         <div className="signButton up">
                             <div className="effectButton SigUp">
                                 <button
-                                className="SignUpButton"
-                                onClick={() => handleClickForm("Sign up")}> Sign up</button>
+                                    className="SignUpButton"
+                                    onClick={() => handleClickForm("Sign up")}> Sign up</button>
                             </div>
                         </div>
                     </div>
@@ -75,7 +76,8 @@ function LoginPage(): JSX.Element {
                 </div>
                 <div className="textBlock">
                     <div className="headTextBlock">
-                        <span className="welcomeBox">Welcome</span> <span className="tomyBox">to my website!</span>
+                        <span className="welcomeBox">Welcome</span>
+                        <span className="tomyBox">to my website!</span>
                     </div>
                     <div className="bodyTextBlock">
                         <div className="bodyTextContent">
@@ -87,9 +89,12 @@ function LoginPage(): JSX.Element {
                         </div>
                     </div>
                 </div>
+                <div className="textEmailBlock">
+                    <h3>suchovsky.michal@gmail.com</h3>
+                </div>
             </div>
         </div>
-    )
+    );
 };
 
 

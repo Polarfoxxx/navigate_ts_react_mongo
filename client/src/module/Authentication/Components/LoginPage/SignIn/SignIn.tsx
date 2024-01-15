@@ -10,8 +10,6 @@ import { UseChangeContextDATA } from "../../../../hooks";
 import { Container } from "../../../../Container";
 
 
-
-
 function SignIn(): JSX.Element {
     const { user_DATA, setUser_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ user_DATA, setUser_DATA });
@@ -23,17 +21,17 @@ function SignIn(): JSX.Element {
         passwordValue: null,
     });
 
-
+/* priprava a kontrola hodnout pre odoslanie form */
     const submit = (v: TypeForInputsObject["v"]): void => {
         const emailValue = v[0].inputValues.toString();
-        const passwordValue = v[1].inputValues;
+        const passwordValue = v[1].inputValues.toString();
 
         /* valdicia dat oznacenie chybajucej hodnoty*/
         const VALIDATE_EMAIL = validator.validate(emailValue);
         if (VALIDATE_EMAIL) {
-            imputPassConfir.current.emailValue!.style.backgroundColor = "";
-            if (passwordValue) {
-                imputPassConfir.current.passwordValue!.style.backgroundColor = "";
+            imputPassConfir.current.emailValue!.style.border = "";
+            if (passwordValue && passwordValue.length >= 4) {
+                imputPassConfir.current.passwordValue!.style.border = "";
                 fetchDATA({ emailValue, passwordValue })
                 reset()
             } else {
@@ -44,13 +42,13 @@ function SignIn(): JSX.Element {
         };
     };
 
-
+/* odoslanie form */
     async function fetchDATA({ emailValue, passwordValue }: Type_forAuthentication_API) {
         try {
             const LOGIN_DATA = await AUTHENTICATION_API.loginUser_API({ emailValue, passwordValue });
             if (LOGIN_DATA?.status === 200) {
-                localStorage.setItem('JWT_token', JSON.stringify({
-                    JWT_token: LOGIN_DATA.JWT_token, 
+                localStorage.setItem("JWT_token", JSON.stringify({
+                    JWT_token: LOGIN_DATA.JWT_token,
                     user_Name: LOGIN_DATA.user_name
                 }));
                 NAVIGATE("/Content");
@@ -58,15 +56,15 @@ function SignIn(): JSX.Element {
                     { newData: LOGIN_DATA.user_name, key: "loginName" },
                 ]);
             } else {
-                if(LOGIN_DATA) {
+                if (LOGIN_DATA?.message) {
                     setRespoMessage(LOGIN_DATA?.message);
                     setTimeout(() => {
                         setRespoMessage("")
-                        },5000)
+                    }, 8000);
                 };
             };
         } catch (error) {
-            console.error("chyba v prihlaseni");
+            console.error(error);
         };
     };
 
@@ -79,18 +77,18 @@ function SignIn(): JSX.Element {
                 </div>
                 <form onSubmit={(e) => handleSubmit(e, submit)}>
                     <div className="loginBoxErrorMessage">
-                       <p>{respoMessage}</p>
+                        <p>{respoMessage}</p>
                     </div>
                     <input
                         ref={el => (imputPassConfir.current.emailValue = el)}
-                        name='emailValue'
+                        name="emailValue"
                         placeholder="Email"
                         autoComplete="email"
                         type="email" />
                     <input
                         ref={el => (imputPassConfir.current.passwordValue = el)}
-                        name='passwordValue'
-                        type="text"
+                        name="passwordValue"
+                        type="password"
                         placeholder="Password" />
                     <button>Login</button>
                 </form>
@@ -99,4 +97,4 @@ function SignIn(): JSX.Element {
     );
 };
 
-export default SignIn
+export default SignIn;

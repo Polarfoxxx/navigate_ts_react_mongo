@@ -2,13 +2,11 @@
      width: 100%;
      height: 100vh;
      overflow-y: scroll;
-     background-image: url("../../../../../public/img//backGround/contentBackg.jpg");
-    display: flex;
-    justify-content: center;
-
+     background-image: url("../../../../../public/img/backGround/wp5317954-world-map-wallpaper-black.png");
+     display: flex;
+     justify-content: center;
  }
 
-  
  .content .containers {
      width: 90%;
      height: 300vh;
@@ -35,7 +33,8 @@
      height: 2%;
      width: 100%;
  }
-/* hlavne rozdelenie */
+
+ /* hlavne rozdelenie */
  /* -------------------------------------------------- */
  .content .containers section .mapsAndControl {
      width: 100%;
@@ -52,7 +51,7 @@
      display: flex;
      align-items: center;
      justify-content: center;
-     
+
  }
 
  .content .containers section .locationImageBox {

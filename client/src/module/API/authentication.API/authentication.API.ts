@@ -30,27 +30,23 @@ async function registerNewUser_API(props: Type_forAuthentication_API): Promise<T
   };
 
   try {
-    const RESPO_DATA = await axios.post("http://localhost:4000/register/newUser", RESGISTER_DATA,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-
-    const REGISTER_RESPO_OBJEKT: Type_forRespo_objekt = {
+    const RESPO_DATA = await axios.post("http://localhost:4000/register/newUser", RESGISTER_DATA, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return {
       status: RESPO_DATA.status,
       message: RESPO_DATA.data.message,
     };
-    return REGISTER_RESPO_OBJEKT;
+
   } catch (error) {
     if (axios.isAxiosError(error)) {
       if (error.response) {
-        const REGISTER_RESPO_OBJEKT: Type_forRespo_objekt = {
+        return {
           status: error.response.status,
           message: error.response.data.message,
         };
-        return REGISTER_RESPO_OBJEKT;
       }
     }
   }
@@ -64,37 +60,31 @@ async function loginUser_API(props: Type_forAuthentication_API): Promise<Type_fo
   };
 
   try {
-    const RESPO_DATA = await axios.post("http://localhost:4000/login/user", LOGIN_DATA,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-
-    const LOGIN_RESPO_OBJEKT: Type_forLogin_respo_objekt = {
+    const RESPO_DATA = await axios.post("http://localhost:4000/login/user", LOGIN_DATA, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return {
       status: RESPO_DATA.status,
       JWT_token: RESPO_DATA.data.token,
       user_name: RESPO_DATA.data.username,
       message: RESPO_DATA.data.message,
     };
-    return LOGIN_RESPO_OBJEKT;
+
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      console.log(error.response);
-
       if (error.response) {
-        const LOGIN_RESPO_ERROR: Type_forLogin_respo_objekt = {
+        return {
           status: error.response.status,
           JWT_token: "",
           user_name: "",
           message: error.response.data.message,
         };
-        return LOGIN_RESPO_ERROR;
-      }
-    }
-  }
-}
+      };
+    };
+  };
+};
 
 /* --------------------------------------------------------------------------------------- */
 async function saveDATA_API(props: Type_forSaveDATA_API): Promise<Type_forRespo_objekt | undefined> {
@@ -265,23 +255,19 @@ async function deleteAccount(props: Type_forDeleteAccount): Promise<Type_forResp
         Authorization: JWT_TOKEN,
         "Content-Type": "application/json",
       },
-    }
-    );
-
-    const DELETE_ACCOUNT: Type_forRespo_objekt = {
+    });
+    return {
       status: RESPO_DATA.status,
       message: RESPO_DATA.data.message,
     };
-    return DELETE_ACCOUNT;
 
   } catch (error) {
     if (axios.isAxiosError(error)) {
       if (error.response) {
-        const DELETE_ACCOUNT: Type_forRespo_objekt = {
+        return {
           status: error.response.status,
           message: error.response.data.message,
         };
-        return DELETE_ACCOUNT;
       };
     };
   };

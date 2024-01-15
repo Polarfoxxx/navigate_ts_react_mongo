@@ -21,8 +21,8 @@
 
 .loginPage .buttonSide {
   position: relative;
-  background-image: url("/public/img/backGround/loginCompasOrangeGreen2.jpg");
-  background-position: left -150px  bottom;
+  background-image: url("/public/img/backGround/popo.jpg");
+  background-position: left -150px bottom;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -73,7 +73,7 @@
 .loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton>button {
   width: 150px;
   height: 50px;
-  border-radius: 2vw;
+  border-radius: 20px;
   cursor: pointer;
   position: relative;
   background-color: transparent;
@@ -83,18 +83,22 @@
   color: var(--whiteTextColor);
   font-weight: bold;
 }
-.loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton .SignInButton{
+
+.loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton .SignInButton {
   color: var(--yellowGreen);
 }
-.loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton .SignInButton:hover{
+
+.loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton .SignInButton:hover {
   transition-delay: 0.1s;
   color: white;
 }
+
 /* -------------------------------------------------- */
-.loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton .SignUpButton{
+.loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton .SignUpButton {
   color: white;
 }
-.loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton .SignUpButton:hover{
+
+.loginPage .buttonSide .buttonSideCol .buttonBox .signButton .effectButton .SignUpButton:hover {
   transition-delay: 0.1s;
   color: var(--yellowGreen);
 }
@@ -152,7 +156,7 @@
   position: absolute;
   transform: skew(18deg) translate(-26px, 0px);
   background-color: rgba(174, 174, 174, 0.294);
-  border-left: 110px solid rgba(116, 116, 116, 0.153);
+  border-left: 170px solid rgba(116, 116, 116, 0.153);
 }
 
 /* vyskakovacie okno */
@@ -193,7 +197,8 @@
   width: 100%;
   height: auto;
   font-size: 55px;
-
+  position: relative;
+  right: 130px;
 }
 
 .loginPage .textSide .textBlock .headTextBlock .welcomeBox {
@@ -222,7 +227,12 @@
   margin-top: 20px;
   color: var(--whiteTextColor);
   margin-right: 20px;
-  font-size: 24px;
+
+}
+
+.loginPage .textSide .textBlock .bodyTextBlock .bodyTextContent>p {
+  font-size: 20px;
+  line-height: 30px;
 }
 
 .loginPage .textSide .textBlock .bodyTextBlock .bodyTextContent .first::first-letter {
@@ -246,4 +256,22 @@
 
 .loginPage .textSide .textBlock .bodyTextBlock .bodyTextContent p:nth-child(5) {
   margin-left: 100px;
+}
+
+.loginPage .textSide .textEmailBlock {
+  width: 20vw;
+  height: 30px;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding-right: 30px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: rgb(167, 167, 167);
+}
+
+.loginPage .textSide .textEmailBlock>h3 {
+  font-size: 15px;
 }
