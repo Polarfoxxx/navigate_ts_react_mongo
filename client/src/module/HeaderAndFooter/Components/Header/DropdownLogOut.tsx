@@ -3,12 +3,12 @@ import "./dropdownLogOut.style.css"
 import { TypeFor_DropdownLogOut } from './type';
 
 function DropdownLogOut(props: TypeFor_DropdownLogOut): JSX.Element {
- 
+
     return (
         <div className='dropdownContent'>
             <Dropdown>
                 <Dropdown.Toggle variant="dark" id="dropdown-basic">
-                Logged user
+                    Logged user
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>

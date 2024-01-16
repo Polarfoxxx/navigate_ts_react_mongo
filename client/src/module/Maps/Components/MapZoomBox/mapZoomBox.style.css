@@ -1,4 +1,4 @@
-.mapZoomBox{
+.mapZoomBox {
     width: 130px;
     height: 44.8px;
     z-index: 999;
@@ -8,28 +8,34 @@
     padding: 4px;
     background-color: var(--silverContent);
 }
-.mapZoomBox .mapZoomContent{
+
+.mapZoomBox .mapZoomContent {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    background-color: var(--orangeContent);
     padding: 4px;
-
 }
-.mapZoomBox .mapZoomContent >div{
+
+.mapZoomBox .mapZoomContent>div {
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--whiteTextColor);
+    color: black;
 }
-.mapZoomBox .mapZoomContent .mapZoomContentTittle{
+
+.mapZoomBox .mapZoomContent .mapZoomContentTittle {
     width: 70%;
     color: black;
 }
-.mapZoomBox .mapZoomContent .mapZoomContentValue{
+
+.mapZoomBox .mapZoomContent .mapZoomContentValue {
     width: 30%;
+}
+
+.mapZoomBox .mapZoomContent .mapZoomContentValue>h2 {
+    font-size: 18px;
 }

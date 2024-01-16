@@ -20,19 +20,6 @@ function RouteMachine() {
     const [routingControl, setRoutingControl] = React.useState(null);
     const [marker, setMarker] = React.useState(null);
 
-    /*  const [routes, setRoutes] = React.useState([]); */
-    let storageHistorySearch = React.useMemo(() => {
-        const storedArray = localStorage.getItem('saveHistoryRoutes');
-        if (storedArray) {
-            const PARSE_ROUTE_ARR = JSON.parse(storedArray);
-            return PARSE_ROUTE_ARR;
-        } else {
-            return []
-        }
-    }, [])
-
-
-
 
 
     React.useEffect(() => {
@@ -55,7 +42,7 @@ function RouteMachine() {
             showAlternatives: true,
             show: false,
             lineOptions: {
-                styles: [{ color: "red", opacity: 0.7, weight: 7 }],
+                styles: [{ color: "#EC2700", opacity: 0.7, weight: 7 }],
                 extendToWaypoints: false,
                 missingRouteTolerance: 5,
                 addWaypoints: false,
@@ -81,7 +68,7 @@ function RouteMachine() {
                     ident = i;
                 }
                 var marker = L.marker(start.latLng, {
-                    draggable: true,
+                    draggable: false,
                     bounceOnAdd: false,
                     bounceOnAddOptions: {
                         duration: 1000,

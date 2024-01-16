@@ -9,22 +9,22 @@ import clsx from "clsx";
 /* useReducer ----------------------------*/
 const reducer = (state: Type_State_HeadMaps, action: Type_Action_HeadMaps) => {
     switch (action.type) {
-        case 'START_POINTS_NAME':
+        case "START_POINTS_NAME":
             return { ...state, start_point: action.payload };
-        case 'END_POINTS_NAME':
+        case "END_POINTS_NAME":
             return { ...state, end_point: action.payload };
-        case 'POI_CATEGORY':
+        case "POI_CATEGORY":
             return { ...state, typePOI_category: action.payload };
         default:
             return state;
-    }
+    };
 };
 /* useReducer ----------------------------*/
 
 function HeadMaps(): JSX.Element {
     const { location_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { startPoints, endPoints, arrayALL_coordinate } = location_DATA;
-    const { incident, traffic, mapBussines_Category } = sideWays_DATA;
+    const { incident, traffic } = sideWays_DATA;
     const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
     const [state, dispatch] = React.useReducer(reducer, DEFAULT_VALUE_FOR_REDUCER);
 
@@ -67,7 +67,7 @@ function HeadMaps(): JSX.Element {
                         )
                     }
                 </div>
-                <div className={clsx(state.end_point && 'startEndLocationActive', 'startEndLocation')}>
+                <div className={clsx(state.end_point && "startEndLocationActive", "startEndLocation")}>
                     <h3>{state.end_point}</h3>
                 </div>
             </div>
@@ -75,12 +75,12 @@ function HeadMaps(): JSX.Element {
                 <div className="buttonContent">
                     <div className="incidentsButton">
                         <button
-                            className={clsx(sideWays_DATA.incident.status && 'onActiveButtom', 'offActiveButtom')}
+                            className={clsx(sideWays_DATA.incident.status && "onActiveButtom", "offActiveButtom")}
                             onClick={handleClickIncidents}>
                             Incidents
                         </button>
                         <button
-                            className={clsx(sideWays_DATA.traffic && 'onActiveButtom', 'offActiveButtom')}
+                            className={clsx(sideWays_DATA.traffic && "onActiveButtom", "offActiveButtom")}
                             onClick={handleClickTraffic}>
                             Traffic
                         </button>

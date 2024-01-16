@@ -9,15 +9,19 @@ function ControlAndinfoBox(): JSX.Element {
     return (
         <div className="controlAndinfoBox">
             <div className="offCanvasBox_box">
-                <div className="offCanvasBoxTextContent">
-                    <p>All right! here we can search for places using the names of places or streets,</p>
-                    <p>you can also enter the starting point and the end point to display the route</p>
-                    <FontAwesomeIcon className="faaa" icon={faCircleDown} size="2xl" />
-                </div>
-                <div className="offCanvasBoxCanvas">
-                    <OffCanvasBoxInputsControl />
+                <div className="offCanvasBoxALLContent">
+                    <div className="offCanvasBoxTextContent">
+                        <p>Here we can search for places using city or street names,
+                            you can also search for your favorite businesses in the area
+                        </p>
+                        <FontAwesomeIcon className="faaa" icon={faCircleDown} size="2xl" />
+                    </div>
+                    <div className="offCanvasBoxCanvas">
+                        <OffCanvasBoxInputsControl />
+                    </div>
                 </div>
             </div>
+
             <div className="control_detailOfTheRoad_box">
                 <RoadDIVIDERdetailOTR />
             </div>

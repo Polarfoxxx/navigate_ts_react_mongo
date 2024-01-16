@@ -26,7 +26,8 @@
     align-items: center;
     justify-content: center;
 }
-.header .headerBox .headerRespoMessage .verificationContent{
+
+.header .headerBox .headerRespoMessage .verificationContent {
     width: 80%;
     height: 90%;
     background-color: brown;
@@ -35,19 +36,21 @@
     justify-content: center;
     flex-direction: column;
     padding: 4px;
-border-radius: 10px;
+    border-radius: 10px;
 }
-.header .headerBox .headerRespoMessage .verificationContent .verificationHeader{
+
+.header .headerBox .headerRespoMessage .verificationContent .verificationHeader {
     width: 100%;
     text-align: center;
     height: 100%;
 }
-.header .headerBox .headerRespoMessage .verificationContent .verificationHeader >h4{
+
+.header .headerBox .headerRespoMessage .verificationContent .verificationHeader>h4 {
     font-size: 13px;
     color: white;
 }
 
-.header .headerBox .headerRespoMessage .verificationContent .verificationBody{
+.header .headerBox .headerRespoMessage .verificationContent .verificationBody {
     width: 100%;
     height: 100%;
     display: flex;
@@ -56,29 +59,35 @@ border-radius: 10px;
     flex-direction: row;
     gap: 10px;
 }
-.header .headerBox .headerRespoMessage .verificationContent .verificationBody >button{
+
+.header .headerBox .headerRespoMessage .verificationContent .verificationBody>button {
     width: 70px;
     border-radius: 10px;
 }
-.header .headerBox .headerRespoMessage .verificationContent .verificationBody >button:hover{
+
+.header .headerBox .headerRespoMessage .verificationContent .verificationBody>button:hover {
     background-color: brown;
     color: white;
 
 }
 
-
 .header .headerBox .headerRespoMessage .headerRespoMessageContent {
-    width: 90%;
+    width: 80%;
     height: 90%;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     color: rgb(249, 249, 249);
     background-color: brown;
     border-radius: 10px;
     padding: 5px;
     font-size: 15px;
     line-height: 17px;
+}
+
+.header .headerBox .headerRespoMessage .headerRespoMessageContent>h4 {
+    line-height: 18px;
 }
 
 

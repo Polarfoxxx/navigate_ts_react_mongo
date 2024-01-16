@@ -6,11 +6,11 @@ import "./mapAndHeaderBox.style.css";
 function MapAndHeaderBox(): JSX.Element {
 
     return (
-        <div className='mapAndHeaderBox'>
-            <div className='header_Box'>
+        <div className="mapAndHeaderBox">
+            <div className="header_Box">
                 <HeadMaps />
             </div>
-            <div className='maps_Box'>
+            <div className="maps_Box">
                 <Maps />
             </div>
         </div>

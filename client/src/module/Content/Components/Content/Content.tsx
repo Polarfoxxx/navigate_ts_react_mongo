@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { UseChangeContextDATA } from "../../../hooks";
 import { Container,defaultValue_address_for_Provider_Context } from "../../../Container";
 
-function Content() {
+function Content():JSX.Element {
     const NAVIGATE = useNavigate();
     const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });

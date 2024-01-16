@@ -1,6 +1,5 @@
 
-
 export type TypeFor_DropdownLogOut = {
-    handleClickToDeleteAccount : () => void;
+    handleClickToDeleteAccount: () => void;
     handleClickToLoginPage: () => void
 };

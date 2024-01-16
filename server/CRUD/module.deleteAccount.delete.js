@@ -8,14 +8,14 @@ router.delete('/user', authenticateToken, async (req, res) => {
   const { emailName } = req.query;
 
   try {
-    // Nájdenie používateľa
+    /*  Nájdenie používateľa */
     const user = await User.findOne({ username: emailName });
 
     if (!user) {
       return res.status(404).json({ message: 'Hoops, log to server error' });
     };
 
-    // Odstránenie používateľa
+    /* Odstránenie používateľa */
     await User.deleteOne({ username: emailName });
     res.status(200).json({ message: 'The account is deleted. to five second you will automatic logout' });
   } catch (error) {

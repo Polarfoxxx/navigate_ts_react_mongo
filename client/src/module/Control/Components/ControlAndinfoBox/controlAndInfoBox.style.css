@@ -9,10 +9,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.controlAndinfoBox .offCanvasBox_box .offCanvasBoxALLContent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
+    background-color: rgba(141, 141, 141, 0.378);
+    border-radius: 30px;
+    padding: 10px;
 }
 
-.controlAndinfoBox .offCanvasBox_box .offCanvasBoxTextContent {
+.controlAndinfoBox .offCanvasBox_box .offCanvasBoxALLContent .offCanvasBoxTextContent {
     width: 100%;
     height: 70%;
     display: flex;
@@ -22,15 +30,19 @@
     padding: 10px;
     color: white;
     flex-direction: column;
+   
+}
+.controlAndinfoBox .offCanvasBox_box .offCanvasBoxALLContent .offCanvasBoxTextContent >p{
+    line-height: 20px;
 }
 
-.controlAndinfoBox .offCanvasBox_box .offCanvasBoxTextContent .faaa {
+.controlAndinfoBox .offCanvasBox_box .offCanvasBoxALLContent .offCanvasBoxTextContent .faaa {
     color: var(--orangeContent);
     margin-top: 15px;
 }
 
 
-.controlAndinfoBox .offCanvasBoxCanvas .offCanvasBoxCanvas {
+.controlAndinfoBox .offCanvasBoxCanvas .offCanvasBoxALLContent .offCanvasBoxCanvas {
     width: 100%;
     height: 30%;
     display: flex;

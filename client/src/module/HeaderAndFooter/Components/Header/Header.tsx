@@ -16,7 +16,7 @@ function Header(): JSX.Element {
     const [logUserName, setLogUserName] = React.useState("");
     const [deleteAccountCont, setDeleteAccountCont] = React.useState<JSX.Element | null>(null);
 
-    /* macitanie mena prihlasneneho */
+    /* nacitanie mena prihlasneneho */
     React.useEffect(() => {
         const USER_NAME = localStorage.getItem("JWT_token");
         if (USER_NAME) {
@@ -34,33 +34,33 @@ function Header(): JSX.Element {
     };
 
 
-    const DELETE_MESSAGE = (message: string) => {
+    /* delete kontent */
+    const DELETE_MESSAGE = (message: string): JSX.Element => {
         return (
-            <div>
+            <div className="headerRespoMessageContent">
                 <h4>{message}</h4>
             </div>
         );
     };
 
-    const DELETE_VERIFICATION_CONT = () => {
+    /* potvrdenie pre vymazanie  kontent */
+    const DELETE_VERIFICATION_CONT = (): JSX.Element => {
         return (
             <div className="verificationContent">
                 <div className="verificationHeader">
-                <h4>Are you sure you want to delete the account..?</h4>
+                    <h4>Are you sure you want to delete the account..?</h4>
                 </div>
                 <div className="verificationBody">
-                <button onClick={() => deleteAccount()}>
-                    Delete
-                </button>
-                <button onClick={() => setDeleteAccountCont(null)}>
-                    Cancel
-                </button>
+                    <button onClick={() => deleteAccount()}>
+                        Delete
+                    </button>
+                    <button onClick={() => setDeleteAccountCont(null)}>
+                        Cancel
+                    </button>
                 </div>
             </div>
         );
     };
-
-
 
 
     /* spustenie funkcie pre zobrazenie upozornenia pre vyzanie uctu */
@@ -118,4 +118,4 @@ function Header(): JSX.Element {
     );
 };
 
-export default Header
+export default Header;
