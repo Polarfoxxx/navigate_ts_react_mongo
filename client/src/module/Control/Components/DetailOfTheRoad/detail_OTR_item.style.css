@@ -6,11 +6,13 @@
     justify-content: center;
     cursor: pointer;
     padding: 2px;
-    color: rgb(188, 188, 188);
+    color: rgb(0, 0, 0);
+    margin-top: 3px;
+    background-color: rgb(159, 159, 159);
 }
 
 .route_item:hover {
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(197, 197, 197);
 }
 
 .route_item>div {

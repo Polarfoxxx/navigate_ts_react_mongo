@@ -51,10 +51,9 @@ function Road_DIVIDER_detail_OTR(): JSX.Element {
     return (
         <div className="road_DIVIDER_detail_OTR">
             {
-             main_atl_route.length > 0 && mainAndAlternativeRoads.length > 0 && mainAndAlternativeRoads.map((item, key) =>
-
+                mainAndAlternativeRoads.length > 0 && mainAndAlternativeRoads.map((item, key) =>
                     <div
-                        className={active === key ? "direction_boxs" : "direction_box_deactive"}
+                        className={active === key ? "direction_box" : "direction_box_deactive"}
                         key={key}
                         onClick={() => handleClick(key)}>
                         <DetailOfTheRoad

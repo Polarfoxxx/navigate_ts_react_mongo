@@ -4,17 +4,15 @@ import { Type_For_Direction, Type_LatLng } from "../../../Container";
 import { Type_forDetailOfTheRoad, Type_State_DetailOfTheRoad, Type_Action_DetailOfTheRoad } from "./type";
 import { DetailOTRitem, SERVICES_CONVERSION_OF_UNIT_AND_TIME as CONVER_UNITS } from "../index";
 import { DEFAULT_VALUE_FOR_REDUCER } from "./defaultValue";
-import clsx from "clsx";
-
 
 
 const reducer = (state: Type_State_DetailOfTheRoad, action: Type_Action_DetailOfTheRoad) => {
    switch (action.type) {
-      case 'SET_ALL_DIRECTION':
+      case "SET_ALL_DIRECTION":
          return { ...state, all_directions: action.payload };
-      case 'SET_ALL_COORDINATE':
+      case "SET_ALL_COORDINATE":
          return { ...state, all_coordinate: action.payload };
-      case 'SET_TOTAL_INFO':
+      case "SET_TOTAL_INFO":
          return { ...state, total_Info: action.payload };
       default:
          return state;
