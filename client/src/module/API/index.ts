@@ -3,6 +3,8 @@ export { default as SEARCH_BUSSINES_API } from "./search.API/searchAPI";
 export { default as locationInfo_API } from "./locationInfo.API/locationInfoAPI";
 export { default as imageLocation_API } from "./imageLocation.API/imageLocation_API";
 export { default as AUTHENTICATION_API } from "./authentication.API/authentication.API";
+export { default as mapTaffic_API } from "./mapTraffic.API/mapTaffic_API";
+
 
 /* type */
 export type {

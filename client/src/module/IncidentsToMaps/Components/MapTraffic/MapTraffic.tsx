@@ -3,46 +3,57 @@ import services_zoomLevel from "./services/services_zoomLevel";
 import { useMap } from "react-leaflet";
 import L from "leaflet"
 import { Container } from "../../../Container";
+import { mapTaffic_API } from "../../../API";
+import { Type_forMAP_Traffic } from "./types";
 
-
-function MapTraffic() {
+function MapTraffic(): null {
     const MAP = useMap();
     const { sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { mapsCurrentInfo, traffic } = sideWays_DATA;
     const [imageLayer, setImageLayer] = React.useState<L.ImageOverlay | null>(null);
 
-React.useEffect(() =>{
-    if (MAP && traffic && mapsCurrentInfo.center && mapsCurrentInfo.zoom > 13) {
-
-            const LAT = Object.values(mapsCurrentInfo.center)[0];
-            const LNG = Object.values(mapsCurrentInfo.center)[1];
-            const WIDTH = mapsCurrentInfo.sizeMap[0];
-            const HEIGHT = mapsCurrentInfo.sizeMap[1]
-            const ZOOM = services_zoomLevel(mapsCurrentInfo.zoom)
-
-    
-            const trafficLayerUrl = ` https://www.mapquestapi.com/traffic/v2/flow?&imageType=png&mapLat=${LAT}&mapLng=${LNG}&mapHeight=${HEIGHT}&mapWidth=${WIDTH}&mapScale=${ZOOM}&key=5GX8lJDVddQIy3d3nAmlGCXYaFe5IMFC`;
-            const imageUrl = trafficLayerUrl;
-            const newImageLayer = L.imageOverlay(imageUrl, MAP.getBounds());
-            
+    /*spustenie a nastavenie dat pre funkciu  */
+    React.useEffect(() => {
+        if (MAP && traffic && mapsCurrentInfo.center && mapsCurrentInfo.zoom > 13) {
+            const DATA_FOR_MAPTRAFF: Type_forMAP_Traffic = {
+                lat: Object.values(mapsCurrentInfo.center)[0],
+                lng: Object.values(mapsCurrentInfo.center)[1],
+                width: mapsCurrentInfo.sizeMap[0],
+                height: mapsCurrentInfo.sizeMap[1],
+                zoom: services_zoomLevel(mapsCurrentInfo.zoom)
+            };
+            /* asynchronna funkcia */
+            fetchImageLayer(DATA_FOR_MAPTRAFF)
+        } else {
             if (imageLayer) {
                 MAP.removeLayer(imageLayer);
             };
-            newImageLayer.addTo(MAP);
-            setImageLayer( newImageLayer);
-    
-        } else{
-               if (imageLayer) {
+        }
+    }, [traffic, mapsCurrentInfo.center]);
+
+
+
+    /* funkcia pre stahovanie dat */
+    async function fetchImageLayer(DATA_FOR_MAPTRAFF: any) {
+        try {
+            const FETCH_DATA = await mapTaffic_API(DATA_FOR_MAPTRAFF);
+            const IMAGE_LAYER = FETCH_DATA;
+            const NEW_IMAGE_LAYER = L.imageOverlay(IMAGE_LAYER, MAP.getBounds());
+
+            if (imageLayer) {
                 MAP.removeLayer(imageLayer);
             };
+
+            NEW_IMAGE_LAYER.addTo(MAP);
+            setImageLayer(NEW_IMAGE_LAYER);
+
+        } catch (error) {
+            console.error(error);
         };
+    };
 
-},[traffic, mapsCurrentInfo.center])
- 
-
-
-    return null
-}
+    return null;
+};
 
 export default MapTraffic
 

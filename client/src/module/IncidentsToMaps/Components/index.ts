@@ -25,5 +25,9 @@ export type {
 } from "./MapSearch/type";
 
 
+export type {
+    Type_forMAP_Traffic
+} from "./MapTraffic/types";
+
 
 
