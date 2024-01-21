@@ -6,7 +6,6 @@ import { DetailOfTheRoad } from "../index";
 import { UseChangeContextDATA } from "../../../hooks";
 
 
-
 function Road_DIVIDER_detail_OTR(): JSX.Element {
     const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
     const { main_atl_route, changeRoutes } = location_DATA;
@@ -27,7 +26,6 @@ function Road_DIVIDER_detail_OTR(): JSX.Element {
             return setActive(active)
         };
         setActive(eventNumber);
-
         const UPDATE_OBJEKT = {
             routeIndex: eventNumber,
             onEvent: "ON_CONTROL"

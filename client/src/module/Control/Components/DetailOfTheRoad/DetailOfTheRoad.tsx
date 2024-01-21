@@ -5,7 +5,7 @@ import { Type_forDetailOfTheRoad, Type_State_DetailOfTheRoad, Type_Action_Detail
 import { DetailOTRitem, SERVICES_CONVERSION_OF_UNIT_AND_TIME as CONVER_UNITS } from "../index";
 import { DEFAULT_VALUE_FOR_REDUCER } from "./defaultValue";
 
-
+/* --------------------------------------- */
 const reducer = (state: Type_State_DetailOfTheRoad, action: Type_Action_DetailOfTheRoad) => {
    switch (action.type) {
       case "SET_ALL_DIRECTION":
@@ -18,10 +18,12 @@ const reducer = (state: Type_State_DetailOfTheRoad, action: Type_Action_DetailOf
          return state;
    };
 };
-
+/* --------------------------------------- */
 function DetailOfTheRoad({ oneRoute, active, index }: Type_forDetailOfTheRoad): JSX.Element {
    const [state, dispatch] = React.useReducer(reducer, DEFAULT_VALUE_FOR_REDUCER);
+const directionBoxReff = React.useRef<HTMLDivElement | null>(null);
 
+   /* data cesty */
    React.useEffect(() => {
       const UPDATE_DATA = {
          nameRoads: oneRoute.nameRoutes,
@@ -38,13 +40,19 @@ function DetailOfTheRoad({ oneRoute, active, index }: Type_forDetailOfTheRoad): 
       dispatch({ type: "SET_ALL_COORDINATE", payload: newCoordinate });
    }, [oneRoute]);
 
+/* scrool effekt */
+
+const handleOnsccroll = (): void => {
+   if(directionBoxReff.current) {
+      directionBoxReff.current.scrollTop += 43
+   };
+};
 
 
    return (
       <div className="detailOfTheRoad">
          <div
-            style={active === index ? { backgroundColor: "rgb(106, 255, 0)" } : { backgroundColor: "rgb(107, 107, 107)" }}
-            className="detailOfTheRoad_header">
+            className={active === index ?  "detailOfTheRoad_header_active"  :  "detailOfTheRoad_header" }>
             <h2>Direction for the route - {state.total_Info.nameRoads}</h2>
          </div>
          <div className="detailOfTheRoad_totalInfo">
@@ -52,15 +60,20 @@ function DetailOfTheRoad({ oneRoute, active, index }: Type_forDetailOfTheRoad): 
                <span className="disSpan">Total Distance:</span>
                <p>{CONVER_UNITS.services_conversionOfUnits({ total_value: state.total_Info?.totalDistance, units_type: "m" })}</p>
             </div>
-            <div>
+            <div className="totalTime">
                <span className="timeSpan">Total Time:</span>
                <p>{CONVER_UNITS.services_conversionOfTime({ total_value: state.total_Info?.totalTime, units_type: "min" })}</p>
             </div>
          </div>
-         <div className="direction_box">
+         <div 
+         ref={directionBoxReff}
+         className="direction_box">
             <DetailOTRitem
                all_coordinate={state.all_coordinate}
                all_directions={state.all_directions} />
+         </div>
+         <div className="detailRoadScroolBtn">
+            <button onClick={handleOnsccroll}>Scrool</button>
          </div>
       </div>
    );

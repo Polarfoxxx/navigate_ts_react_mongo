@@ -11,12 +11,13 @@ function DetailOTRitem({ all_directions, all_coordinate }: Type_For_Direction_it
     const { sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
 
+    /* pohyb markera po trase */
     const handleDivMouseToogle = (event: React.MouseEvent<HTMLDivElement>, state: boolean) => {
         if (state) {
             const EVENT_INDEX = +event.currentTarget.id;
             const FIND_COORD = all_coordinate.find((item, idx) => idx === EVENT_INDEX) as L.LatLngExpression;
 
-            if (event.target instanceof HTMLElement && event.target.closest('.item')) {
+            if (event.target instanceof HTMLElement && event.target.closest(".item")) {
                 if (FIND_COORD) {
                     updateContext_DATA([{ newData: FIND_COORD, key: "markerInTheRoute" }])
                 };
@@ -25,6 +26,7 @@ function DetailOTRitem({ all_directions, all_coordinate }: Type_For_Direction_it
             updateContext_DATA([{ newData: null, key: "markerInTheRoute" }]);
         };
     };
+
 
     return (
         <>
@@ -67,7 +69,7 @@ function DetailOTRitem({ all_directions, all_coordinate }: Type_For_Direction_it
                         </div>
                     </div>
                 )
-            }
+            };
         </>
     );
 }

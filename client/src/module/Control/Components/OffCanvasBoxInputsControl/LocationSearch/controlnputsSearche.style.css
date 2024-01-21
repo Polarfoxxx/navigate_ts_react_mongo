@@ -1,77 +1,95 @@
 /* geocoderInput.style.css */
 .geocoder-input-container {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    margin: 0 auto;
-    position: relative;
-    height: auto;
-  }
-  .geocoder-input-container .labelName{
-    width: 100%;
-    font-weight: bold;
-    color: var(--whiteTextColor);
-    font-size: 17px;
-  }
-  .geocoder-input-container .inputAndButtonBox{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-  }
-  .geocoder-input-container> div > input {
-    width: 100%;
-    height: 35px;
-    padding: 8px;
-    margin-bottom: 8px;
-    border: 1px solid #6c0909;
-    font-size: 14px;
-    background-color: var(--silverInputBacgColor);
-    border-right: none;
-    border-radius: 10px;
-  }
-  .geocoder-input-container> div > button {
-    width: 40px;
-    height: 35px;
-    border: 1px solid #6c0909;;
-    background-color: var(--silverInputBacgColor);
-    border-left: none;
-    cursor: pointer;
-    border-radius: 0px 10px  10px 0px;
-    font-size: 18px;
-    font-weight: bold;
-    color: red;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    right: 0px;
-  }
-  .geocoder-input-container> ul {
-    width: 100%;
-    list-style-type: none;
-    background-color: rgb(132, 140, 150);
-    padding: 3px;
-    position: absolute;
-    top: 61px;
-    border-radius: 10px;
-    z-index: 99;
-  }
-  
-  .geocoder-input-container> ul > li {
-    margin-bottom: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    padding: 5px;
-    border-bottom: 1px solid rgba(119, 119, 119, 0.541);
-  }
-  .geocoder-input-container> ul > li:hover {
-    background-color: rgb(171, 171, 171);
-    border-radius: 8px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+  position: relative;
+  height: auto;
+}
+
+.geocoder-input-container .labelName {
+  width: 100%;
+  color: var(--whiteTextColor);
+  font-size: 17px;
+}
+
+.geocoder-input-container .inputAndButtonBox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.geocoder-input-container>div>input {
+  width: 100%;
+  height: 30px;
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #6c0909;
+  font-size: 14px;
+  background-color: rgb(229, 229, 229);
+
+  border-right: none;
+  border-radius: 10px;
+}
+
+.geocoder-input-container>div>button {
+  width: 40px;
+  height: 30px;
+  background-color: var(--silverInputBacgColor);
+  border-left: none;
+  cursor: pointer;
+  border-radius: 0px 10px 10px 0px;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--orangeContent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0px;
+}
+
+.geocoder-input-container>div>button:hover {
+  background-color: var(--orangeContent);
+  color: white;
+}
+
+.geocoder-input-container .ul_result {
+  width: 100%;
+  height: 200px;
+  position: absolute;
+  top: 61px;
+  border-radius: 10px;
+  z-index: 99;
+  overflow-y: scroll;
+  background-color: rgb(229, 229, 229);
+
+}
+
+.geocoder-input-container .ul_result>ul {
+  width: 100%;
+  height: 100%;
+  list-style-type: none;
+  padding: 0;
+}
+
+.geocoder-input-container .ul_result>ul>li {
+  margin-bottom: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 5px;
+  border-bottom: 1px solid rgba(119, 119, 119, 0.541);
+  color: black;
+}
+
+.geocoder-input-container .ul_result>ul>li:hover {
+  background-color: rgb(171, 171, 171);
+  border-radius: 8px;
+}

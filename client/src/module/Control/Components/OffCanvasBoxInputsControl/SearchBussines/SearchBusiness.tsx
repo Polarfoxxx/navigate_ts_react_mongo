@@ -3,9 +3,8 @@ import "./searchBusinness.style.css";
 import { OnePointBussinessSearcheControl, RouteBussinessSearcheControl, NoContent } from "../..";
 import { Container } from "../../../../Container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleArrowRight, faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faCircleArrowRight, faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { SearchBussinesItemControl } from "../..";
-import { latLng } from "leaflet-control-geocoder/dist/geocoders";
 
 
 function SearchBusiness(): JSX.Element {
@@ -16,12 +15,12 @@ function SearchBusiness(): JSX.Element {
 
     /* aky kontet sa ma zobrazit rozdelenie jedneho bodu alebo cesty */
     React.useEffect(() => {
-            if (startPoints.latLng[0] && !endPoints.latLng[0]) {
-                setSearchCompContent([<OnePointBussinessSearcheControl />, <SearchBussinesItemControl />])
-            } else if (startPoints.latLng[0] && endPoints.latLng[0]) {
-                setSearchCompContent([<RouteBussinessSearcheControl />, <SearchBussinesItemControl />])
-            } else {
-                setSearchCompContent(<NoContent />)
+        if (startPoints.latLng[0] && !endPoints.latLng[0]) {
+            setSearchCompContent([<OnePointBussinessSearcheControl />, <SearchBussinesItemControl />])
+        } else if (startPoints.latLng[0] && endPoints.latLng[0]) {
+            setSearchCompContent([<RouteBussinessSearcheControl />, <SearchBussinesItemControl />])
+        } else {
+            setSearchCompContent(<NoContent />)
         };
     }, [startPoints.latLng[0], !endPoints.latLng[0]]);
 
@@ -29,7 +28,7 @@ function SearchBusiness(): JSX.Element {
     /* vyskakovacie okno result */
     const handleResultClick = () => {
         setResultState(!resultState)
-    }
+    };
 
     return (
         <div className="searchBox">
@@ -39,7 +38,7 @@ function SearchBusiness(): JSX.Element {
                 </div>
                 <div className="searchBoxbutton">
                     {
-                        mapBussines_Category.allResultDATA && mapBussines_Category.allResultDATA?.length > 0 && 
+                        mapBussines_Category.allResultDATA && mapBussines_Category.allResultDATA?.length > 0 &&
                         <button onClick={handleResultClick}>
                             <div>
                                 {

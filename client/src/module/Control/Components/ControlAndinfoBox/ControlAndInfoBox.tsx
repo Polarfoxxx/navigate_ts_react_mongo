@@ -1,7 +1,7 @@
 import "./controlAndInfoBox.style.css"
 import { Road_DIVIDER_detail_OTR as RoadDIVIDERdetailOTR, OffCanvasBoxInputsControl } from "../index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleDown } from '@fortawesome/free-solid-svg-icons';
+import { faCircleDown } from "@fortawesome/free-solid-svg-icons";
 
 
 function ControlAndinfoBox(): JSX.Element {

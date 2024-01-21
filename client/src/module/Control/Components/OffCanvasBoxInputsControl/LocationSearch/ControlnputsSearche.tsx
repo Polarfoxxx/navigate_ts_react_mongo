@@ -1,6 +1,6 @@
 import React from "react";
 import "./controlnputsSearche.style.css";
-import { Container,Type_Addrress } from "../../../../Container";
+import { Container } from "../../../../Container";
 import { GeocoderInputSearche } from "../../../../Geocoder";
 import { Type_forGeocoderInput, Type_Action_ControlnputsSearche, Type_State_ControlnputsSearche } from "../type";
 import services_changeNamefor_Label from "./services/services_changeNamefor_Label";
@@ -12,11 +12,11 @@ import { services_SetStart_End_Add_positionToObjekt } from "../../../../utils";
 /* useReducer ----------------------------*/
 const reducer = (state: Type_State_ControlnputsSearche, action: Type_Action_ControlnputsSearche) => {
   switch (action.type) {
-    case 'SET_QUERY':
+    case "SET_QUERY":
       return { ...state, query: action.payload };
-    case 'SET_RESULT':
+    case "SET_RESULT":
       return { ...state, results: action.payload };
-    case 'SET_RESULT_OPEN':
+    case "SET_RESULT_OPEN":
       return { ...state, isResultsOpen: action.payload };
     default:
       return state;
@@ -33,18 +33,18 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
   const timeoutRef = React.useRef<number | null>(null);
   const [state, dispatch] = React.useReducer(reducer, DEFAULT_VALUE_FOR_REDUCER_CONTROL_INPUT_SEARCH);
 
-
+  /* spustenie funkcie pri vyplneni inputu */
   const handleInputChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputText = event.target.value;
-    dispatch({ type: "SET_QUERY", payload: inputText })
+    const INPUT_TEXT = event.target.value;
+    dispatch({ type: "SET_QUERY", payload: INPUT_TEXT })
 
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     };
     timeoutRef.current = window.setTimeout(async () => {
-      if (inputText.length >= 3) {
-        const autoResults = await geocoderService.autoComplete(inputText);
-        dispatch({ type: "SET_RESULT", payload: autoResults });
+      if (INPUT_TEXT.length >= 3) {
+        const AUTO_RESULT = await geocoderService.autoComplete(INPUT_TEXT);
+        dispatch({ type: "SET_RESULT", payload: AUTO_RESULT });
         dispatch({ type: "SET_RESULT_OPEN", payload: true });
       } else {
         dispatch({ type: "SET_RESULT", payload: [] });
@@ -55,7 +55,7 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
 
 
   /* vymazanie */
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleDeleteClick = (): void => {
     const UPDATE_DATA_START_END_ = {
       address: "",
       latLng: [],
@@ -169,20 +169,26 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
           onFocus={() => dispatch({ type: "SET_RESULT_OPEN", payload: true })} />
         <button
           className="resetButton"
-          onClick={(e) => handleClick(e)}>
+          onClick={handleDeleteClick}>
           X
         </button>
       </div>
-
-      {state.isResultsOpen && state.results.length > 0 && (
-        <ul className="ul_result">
-          {state.results.map((result: string, index: number) => (
-            <li key={index} onClick={() => handleAddressClick(result)}>
-              {result}
-            </li>
-          ))}
-        </ul>
-      )}
+      {
+        state.isResultsOpen && state.results.length > 0 && (
+          <div className="ul_result">
+<ul >
+            {
+              state.results.map((result: string, index: number) =>
+                <li
+                  key={index}
+                  onClick={() => handleAddressClick(result)}>
+                  {result}
+                </li>
+              )
+            }
+          </ul>
+          </div>
+        )}
     </div>
   );
 }

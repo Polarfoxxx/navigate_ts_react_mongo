@@ -73,6 +73,7 @@ p{
   --colorFontRed: rgb(221, 0, 0);
   --orangeContent: rgb(201, 46, 15);
   --yellowContent: rgb(155, 210, 14);
+  --silverTransparentCont : rgba(141, 141, 141, 0.378);
 }
 
 .app {

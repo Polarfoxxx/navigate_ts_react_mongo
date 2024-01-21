@@ -55,5 +55,14 @@ export type {
     Type_ButtonName,
 } from "./PoputsContentControl/OnClickMapContent/types";
 
+export type {
+    Type_CoordinateType
+} from "./OffCanvasBoxInputsControl/LocationSearch/services/types";
+
+
+
+
+
+
 /* default value */
 export { DEFAULT_VALUE_FOR_REDUCER_CONTROL_INPUT_SEARCH } from "./OffCanvasBoxInputsControl/defaultValue.js"
