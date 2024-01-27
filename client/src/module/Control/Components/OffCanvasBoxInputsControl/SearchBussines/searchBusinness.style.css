@@ -67,7 +67,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;
-    transition: 1s;
     position: absolute;
     left: 0;
 }

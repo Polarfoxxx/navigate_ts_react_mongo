@@ -1,6 +1,6 @@
 import React from "react";
 import "./searchBusinness.style.css";
-import { OnePointBussinessSearcheControl, RouteBussinessSearcheControl, NoContent } from "../..";
+import { OnePointBussinessSearcheControl, RouteBussinessSearcheControl, NoRoute } from "../..";
 import { Container } from "../../../../Container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowRight, faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -8,10 +8,10 @@ import { SearchBussinesItemControl } from "../..";
 
 
 function SearchBusiness(): JSX.Element {
-    const { location_DATA, sideWays_DATA } = React.useContext(Container.Context)
+    const { location_DATA, sideWays_DATA } = React.useContext(Container.Context);
     const { startPoints, endPoints } = location_DATA, { mapBussines_Category } = sideWays_DATA;
     const [searchCompContent, setSearchCompContent] = React.useState<JSX.Element[] | JSX.Element | null>(null);
-    const [resultState, setResultState] = React.useState(false)
+    const [resultState, setResultState] = React.useState(false);
 
     /* aky kontet sa ma zobrazit rozdelenie jedneho bodu alebo cesty */
     React.useEffect(() => {
@@ -20,7 +20,7 @@ function SearchBusiness(): JSX.Element {
         } else if (startPoints.latLng[0] && endPoints.latLng[0]) {
             setSearchCompContent([<RouteBussinessSearcheControl />, <SearchBussinesItemControl />])
         } else {
-            setSearchCompContent(<NoContent />)
+            setSearchCompContent(<NoRoute />)
         };
     }, [startPoints.latLng[0], !endPoints.latLng[0]]);
 

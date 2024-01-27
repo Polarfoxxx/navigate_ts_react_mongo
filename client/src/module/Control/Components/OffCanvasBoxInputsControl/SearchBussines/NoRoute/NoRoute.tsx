@@ -1,11 +1,10 @@
-import React from "react";
-import "./noContent.style.css";
+import "./noRoute.style.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 
 
-function NoContent(): JSX.Element {
+function NoRoute(): JSX.Element {
     return (
         <div className="noContentBox">
             <div className="noContetntText">
@@ -18,4 +17,4 @@ function NoContent(): JSX.Element {
     );
 };
 
-export default NoContent
+export default NoRoute
