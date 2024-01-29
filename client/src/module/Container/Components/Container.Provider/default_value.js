@@ -67,8 +67,8 @@ export const DEFAULT_VALUE_SIDEWAYS_FOR_PROVIDER_CONTEXT = {
     location_markerPopupt: {
         status: false,
         location: {
-            lat: 0,
-            lng: 0
+            lat: null,
+            lng: null
         }
     }
 };

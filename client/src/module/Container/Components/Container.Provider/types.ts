@@ -106,7 +106,10 @@ export type Type_LatLng = {
   lat: number;
   lng: number;
 };
-
+export type Type_LatLngOrNull = {
+  lat: number | null;
+  lng: number | null;
+};
 export type Type_ArrayALLRoute = {
   nameRoutes: string;
   totalDistance: number;
@@ -157,7 +160,7 @@ export type Type_forTraficDATA = {
 /* =========================================================== */
 export type Type_forLocation_markerPopupt = {
   status: boolean,
-  location: Type_LatLng,
+  location: Type_LatLngOrNull,
 }
 
 /* =========================================================== */

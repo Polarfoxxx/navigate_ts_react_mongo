@@ -75,20 +75,16 @@ function RouteMachine() {
     function createMarkerAndPopups(i, start, n) {
         let marker_icon = null;
         let ident = null;
-        let popupContent = null;
 
         if (i === 0) {
             marker_icon = services_markerIcon.startIcon();
             ident = "start_points";
-            popupContent = "Start Point";
         } else if (i === n - 1) {
             marker_icon = services_markerIcon.endIcon();
             ident = "end_points";
-            popupContent = "End Point";
         } else {
             marker_icon = services_markerIcon.addPointIcon(i);
             ident = i;
-            popupContent = "Point " + i;
         };
         let marker = L.marker(start.latLng, {
             draggable: true,
@@ -124,8 +120,8 @@ function RouteMachine() {
             const UPDATE_DATA = {
                 status: false,
                 location: {
-                    lat: 0,
-                    lng: 0
+                    lat: null,
+                    lng: null
                 }
             };
 

@@ -29,12 +29,12 @@ function Popups(): JSX.Element {
     /* spustenie popupu na location mararker */
     /* navisenie 0.0001 je pre posunutie popup mimo marker  */
     React.useEffect(() => {
-        if (location_markerPopupt) {
+        if (location_markerPopupt && location_markerPopupt.location.lat) {
             console.log(location_markerPopupt);
             const LOCATION = [location_markerPopupt.location.lat + 0.0001, location_markerPopupt.location.lng] as L.LatLngExpression
-         /*    setPopupPosition(LOCATION); */
-         setContent(<OnClickMapContent />)
-          
+            setPopupPosition(LOCATION);
+            setContent(<OnClickMapContent />)
+
         };
     }, [location_markerPopupt.status]);
 
@@ -62,30 +62,32 @@ function Popups(): JSX.Element {
         };
     }, [mapBussines_Category.dataMapBussines_froPopup?.distance]);
 
-   
-    
 
-      React.useEffect(() => {
+
+
+    React.useEffect(() => {
         const handlePopupClose = () => {
-          const UPDATE_DATA = {
-            status: false,
-            location: {
-              lat: 0,
-              lng: 0
-            }
-          };
-          updateContext_DATA([
-            { newData: UPDATE_DATA, key: "location_markerPopupt" },
-          ]);
+            console.log("close");
+            
+            const UPDATE_DATA = {
+                status: false,
+                location: {
+                    lat: null,
+                    lng: null
+                }
+            };
+            updateContext_DATA([
+                { newData: UPDATE_DATA, key: "location_markerPopupt" },
+            ]);
         };
 
         MAP.on('popupclose', handlePopupClose);
         return () => {
             MAP.off('popupclose', handlePopupClose); // Odmazanie event listeneru pri odmontovaní komponentu
         };
-      }, []);
-    
-   
+    }, []);
+
+
 
     return (
         <>
