@@ -5,7 +5,7 @@ import { faRoute } from '@fortawesome/free-solid-svg-icons'
 import DropdownLogOut from "./DropdownLogOut";
 import { AUTHENTICATION_API } from "../../../API";
 import { UseChangeContextDATA } from '../../../hooks';
-import { Container, defaultValue_address_for_Provider_Context } from '../../../Container';
+import { Container, DEFAULT_VALUE_ADDRESS_FOR_PROVIDER_CONTEXT } from '../../../Container';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -30,7 +30,7 @@ function Header(): JSX.Element {
         NAVIGATE("/LoginPage");
         localStorage.removeItem('JWT_token');
         localStorage.removeItem('saveHistoryRoutes');
-        updateContext_DATA([{ newData: defaultValue_address_for_Provider_Context, key: "location_DATA" }]);
+        updateContext_DATA([{ newData: DEFAULT_VALUE_ADDRESS_FOR_PROVIDER_CONTEXT, key: "location_DATA" }]);
     };
 
 

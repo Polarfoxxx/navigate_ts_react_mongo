@@ -4,6 +4,8 @@ export { default as RouteMachine } from "./RouteMachine/RouteMachine";
 export { default as SERVICES_MARKER_ICON } from "./RouteMachine/services/marker_Icon_services";
 export { default as services_moveMarker } from "./RouteMachine/services/services_moveMarker";
 export { default as services_routeDetail } from "./RouteMachine/services/services_routeDetail";
+export { default as services_popupContentSplitter } from "./RouteMachine/services/services_popupContentSplitter";
+
 
 /* types */
 export type {

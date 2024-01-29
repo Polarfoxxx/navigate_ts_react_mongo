@@ -4,7 +4,7 @@ import { Container } from "../../../../../Container";
 import { Type_SearchRespo_EDITED_DATA } from "../../../../../Container";
 import { geocoder_coordSearche } from "../../../../../Geocoder";
 import { UseChangeContextDATA } from "../../../../../hooks";
-import { SERVICES_CONVERSION_OF_UNIT_AND_TIME as CONVER_UNITS } from "../../../../../utils";
+import SearcheItemBussines from "./SearcheItemBussines";
 
 function SearchBussinesItemControl(): JSX.Element {
     const { location_DATA, sideWays_DATA, setLocation_DATA, setSideWays_DATA } = React.useContext(Container.Context);
@@ -23,10 +23,10 @@ function SearchBussinesItemControl(): JSX.Element {
 
     /*zmena oznaceneho busssines so seznamu na zaklade kliknutia na marker  */
     React.useEffect(() => {
-        if(mapBussines_Category.select_Route_Bussines.select !== null) {
+        if (mapBussines_Category.select_Route_Bussines.select !== null) {
             selectREF.current = (mapBussines_Category.select_Route_Bussines.typeMAPorList === "mapMarker")
-            ? (mapBussines_Category.select_Route_Bussines.select - 1)
-            : mapBussines_Category.select_Route_Bussines.select;
+                ? (mapBussines_Category.select_Route_Bussines.select - 1)
+                : mapBussines_Category.select_Route_Bussines.select;
         }
     }, [location_DATA.endPoints.address.label])
 
@@ -61,35 +61,11 @@ function SearchBussinesItemControl(): JSX.Element {
                             className={key === selectREF.current ? "searcheItemActive" : "searcheItemDeactive"}
                             onClick={() => handleSelectItem(item, key)}
                             key={key}>
-                            <div className="boxItem headBlock">
-                                <div className="headBlockTypename">
-                                    <h5 className="itemTittle">{item.fields.group_sic_code_name}</h5>
-                                </div>
-                                <div className="headBlockvalue bussinesName">
-                                    <h5>{item.name}</h5>
-                                </div>
-                            </div>
-                            <div className="boxItem bodyBlock">
-                                <div>
-                                    <h5 className="itemTittle">Distace</h5>
-                                </div>
-                                <div className="headBlockvalue">
-                                    <h5>{CONVER_UNITS.services_conversionOfUnits({ total_value: item.distance, units_type: "km" })}</h5>
-                                </div>
-                            </div>
-                            <div className="boxItem footerBlock">
-                                <div>
-                                    <h5 className="itemTittle">Phone:</h5>
-                                </div>
-                                <div className="headBlockvalue">
-                                    <h5>{item.fields.phone}</h5>
-                                </div>
-                            </div>
+                            <SearcheItemBussines item={item} />
                         </div>
                     )
-                }
+                };
             </div>
-
         </div>
     );
 };

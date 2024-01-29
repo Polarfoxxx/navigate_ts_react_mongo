@@ -10,26 +10,26 @@ import {
 } from "./types";
 
 import {
-    defaultValue_address_for_Provider_Context,
-    defaultValue_sideways_for_Provider_Context,
-    default_UserDATA_for_Provider_Context
+    DEFAULT_VALUE_ADDRESS_FOR_PROVIDER_CONTEXT,
+    DEFAULT_VALUE_SIDEWAYS_FOR_PROVIDER_CONTEXT,
+    DEFAULT_USERDATA_FOR_PROVIDER_CONTEXT
 } from "./default_value";
 
 
 const Context = React.createContext<Type_Provider_Context>({
-    location_DATA: defaultValue_address_for_Provider_Context,
+    location_DATA: DEFAULT_VALUE_ADDRESS_FOR_PROVIDER_CONTEXT,
     setLocation_DATA: () => { },
-    sideWays_DATA: defaultValue_sideways_for_Provider_Context,
+    sideWays_DATA: DEFAULT_VALUE_SIDEWAYS_FOR_PROVIDER_CONTEXT,
     setSideWays_DATA: () => { },
-    user_DATA: default_UserDATA_for_Provider_Context,
+    user_DATA: DEFAULT_USERDATA_FOR_PROVIDER_CONTEXT,
     setUser_DATA: () => { },
 });
 
 
 function Provider({ children }: Props_Provider): JSX.Element {
-    const [location_DATA, setLocation_DATA] = React.useState<Type_location_DATA>(defaultValue_address_for_Provider_Context);
-    const [sideWays_DATA, setSideWays_DATA] = React.useState<Type_sideWays_DATA>(defaultValue_sideways_for_Provider_Context);
-    const [user_DATA, setUser_DATA] = React.useState<Type_userDATA>(default_UserDATA_for_Provider_Context);
+    const [location_DATA, setLocation_DATA] = React.useState<Type_location_DATA>(DEFAULT_VALUE_ADDRESS_FOR_PROVIDER_CONTEXT);
+    const [sideWays_DATA, setSideWays_DATA] = React.useState<Type_sideWays_DATA>(DEFAULT_VALUE_SIDEWAYS_FOR_PROVIDER_CONTEXT);
+    const [user_DATA, setUser_DATA] = React.useState<Type_userDATA>(DEFAULT_USERDATA_FOR_PROVIDER_CONTEXT);
     const NAVIGATE = useNavigate();
 
     React.useEffect(() => {

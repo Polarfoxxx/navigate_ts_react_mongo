@@ -10,37 +10,33 @@ function MarkersBussinessAndIncidents<T extends object>({ type, position, icon, 
     const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { mapBussines_Category } = sideWays_DATA;
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
-    let timeout: NodeJS.Timeout | null = null;
+    const timeoutReff = React.useRef< NodeJS.Timeout | null>(null);
 
 
     // funkcia ktora sa spusti po mouseover nasledne odosle do data cez context
     // pre popup component aby sa zobrazil 
     const handleMarkerToggle = (stateONmouse: boolean) => {
         const clearAndSetTimeout = (callback: () => void) => {
-            if (timeout) {
-                clearTimeout(timeout);
+            if (timeoutReff.current) {
+                clearTimeout(timeoutReff.current);
             }
-            timeout = setTimeout(callback, 700); // Změna na 5000 ms (5 sekund)
+            timeoutReff.current = setTimeout(callback, 700); // Změna na 5000 ms (5 sekund)
         };
         if (type === "incident" || type === "bussines") {
             if (stateONmouse) {
                 clearAndSetTimeout(() => {
-                    const newData =
+                    let newData =
                         type === "incident"
                             ? { ...mapBussines_Category, status: true, dataInc_ForPopup: data }
-                            : {
-                                ...mapBussines_Category,
-                                status: true,
-                                dataMapBussines_froPopup: data,
-                            };
+                            : { ...mapBussines_Category, status: true, dataMapBussines_froPopup: data, };
                     updateContext_DATA([
                         { newData, key: type === "incident" ? "incident" : "mapBussines_Category" },
                         { newData: true, key: "popup_event" },
                     ]);
                 });
             } else {
-                if (timeout) {
-                    clearTimeout(timeout);
+                if (timeoutReff.current) {
+                    clearTimeout(timeoutReff.current);
                 };
             };
         };

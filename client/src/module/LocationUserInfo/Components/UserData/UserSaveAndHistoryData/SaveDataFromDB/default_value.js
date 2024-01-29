@@ -1,12 +1,12 @@
-import { default_address } from "../../../../../Container";
+import { DEFAULT_VALUE_ADDRESS } from "../../../../../Container";
 
 export const DEFAULT_VALUE_SAVE_DATA_ITEM = {
     startCoord: {
-        address: default_address,
+        address: DEFAULT_VALUE_ADDRESS,
         latLng: [],
     },
     endCoord:  {
-        address: default_address,
+        address: DEFAULT_VALUE_ADDRESS,
         latLng: [],
     },
     allCoord: [],

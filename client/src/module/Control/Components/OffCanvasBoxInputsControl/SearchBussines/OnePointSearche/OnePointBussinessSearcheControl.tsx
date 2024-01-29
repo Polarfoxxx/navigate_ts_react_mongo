@@ -5,7 +5,7 @@ import { Container } from "../../../../../Container";
 import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import { Type_OnePointBussinesControl } from "../../../../../Container";
-import  SIC_Codes  from "../../../../../utils/SIC/SIC_code.json";
+import SIC_Codes from "../../../../../utils/SIC/SIC_code.json";
 
 
 function OnePointBussinessSearcheControl(): JSX.Element {
@@ -14,7 +14,7 @@ function OnePointBussinessSearcheControl(): JSX.Element {
     const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
     const { handleSubmit, reset } = useInputValue();
 
-/* submit odoslanie formulara */
+    /* submit odoslanie formulara */
     const submit = (v: TypeForInputsObject["v"]): void => {
         const UPDATE_SIC_DATA: Type_OnePointBussinesControl = {
             type: v[0].inputValues as string,
@@ -92,7 +92,9 @@ function OnePointBussinessSearcheControl(): JSX.Element {
                 </div>
                 <div className="onePointButtonBox">
                     <div className="submitBoxButton">
-                        <button type='submit'>Search</button>
+                        <button type='submit'>
+                            Search
+                        </button>
                     </div>
                     <div className="resetBoxButton">
                         <button onClick={() => { reset(); handleClickClearFunctuon(); }}>

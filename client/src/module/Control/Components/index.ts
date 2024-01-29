@@ -16,6 +16,7 @@ export { default as NoRoute } from "./OffCanvasBoxInputsControl/SearchBussines/N
 export { default as LocationSearcheControl } from "./OffCanvasBoxInputsControl/LocationSearch/LocationSearcheControl";
 export { default as OnClickBussinesSearcheContent } from "./PoputsContentControl/OnClickBussinesSearcheContent/OnClickBussinesSearcheContent";
 export { default as SearchBussinesItemControl } from "./OffCanvasBoxInputsControl/SearchBussines/ResultBussinesSearche/SearchBussinesItemControl";
+export { default as SearcheItemBussines } from "./OffCanvasBoxInputsControl/SearchBussines/ResultBussinesSearche/SearcheItemBussines";
 
 
 
@@ -59,10 +60,16 @@ export type {
     Type_CoordinateType
 } from "./OffCanvasBoxInputsControl/LocationSearch/services/types";
 
+export type {
+    Type_forSearcheItemBussines,
+    TypeFor_data_forSearcheItem
+} from "./OffCanvasBoxInputsControl/SearchBussines/ResultBussinesSearche/types";
 
 
-
+/* objekt */
+export { default as ON_CLICK_POSITION_CONTENT } from "./PoputsContentControl/OnClickPositionContent/OnClickPositionContent"
 
 
 /* default value */
 export { DEFAULT_VALUE_FOR_REDUCER_CONTROL_INPUT_SEARCH } from "./OffCanvasBoxInputsControl/defaultValue.js"
+export { DEFAULT_VALUE_FOR_DATA_FOR_SEARCH_ITEM } from "./OffCanvasBoxInputsControl/SearchBussines/ResultBussinesSearche/defaultValue"

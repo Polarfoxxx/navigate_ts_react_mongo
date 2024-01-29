@@ -1,12 +1,12 @@
-import { default_address } from "../../../../../Container";
+import { DEFAULT_VALUE_ADDRESS } from "../../../../../Container";
 
 export const DEFAULT_VALUE_HISTORY_DATA_ITEM = {
     startPoint: {
-        address: default_address,
+        address: DEFAULT_VALUE_ADDRESS,
         latLng: [],
     },
     endPoint:  {
-        address: default_address,
+        address: DEFAULT_VALUE_ADDRESS,
         latLng: [],
     },
     addPoint: [],

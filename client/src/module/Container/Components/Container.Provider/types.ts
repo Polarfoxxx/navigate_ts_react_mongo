@@ -155,6 +155,13 @@ export type Type_forTraficDATA = {
 };
 /* =========================================================== */
 /* =========================================================== */
+export type Type_forLocation_markerPopupt = {
+  status: boolean,
+  location: Type_LatLng,
+}
+
+/* =========================================================== */
+/* =========================================================== */
 
 export type Type_forRouteChange = {
   routeIndex: number,
@@ -178,10 +185,11 @@ export type Type_sideWays_DATA = {
   mapsCurrentInfo: Type_forTraficDATA,
   incident: Type_incident,
   mapBussines_Category: Type_MapBussines_Category,
+  location_markerPopupt: Type_forLocation_markerPopupt
 };
 export type Type_userDATA = {
-  loginName:  string
-}
+  loginName: string
+};
 
 
 export type Type_Provider_Context = {

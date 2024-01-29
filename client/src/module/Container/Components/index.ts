@@ -23,13 +23,16 @@ export type {
     Type_RouteBussinesControl,
     Type_SearchRespo_EDITED_DATA,
     TypeSelect_Route_Bussines,
-    Type_Addrress
+    Type_Addrress,
+    Type_forLocation_markerPopupt
 } from "./Container.Provider/types";
 
 /* export defvalue */
 export {
-    defaultValue_address_for_Provider_Context,
-    default_address
+    DEFAULT_VALUE_ADDRESS,
+    DEFAULT_VALUE_ADDRESS_FOR_PROVIDER_CONTEXT,
+    DEFAULT_VALUE_SIDEWAYS_FOR_PROVIDER_CONTEXT,
+    DEFAULT_USERDATA_FOR_PROVIDER_CONTEXT
 } from "./Container.Provider/default_value.js";
 
 

@@ -1,6 +1,7 @@
 
 
-export const default_address = {
+
+export const DEFAULT_VALUE_ADDRESS = {
     label: "",
     country: "",
     country_code: "",
@@ -12,13 +13,13 @@ export const default_address = {
 };
 
 /* ----------------------------------------------------------- */
-export const defaultValue_address_for_Provider_Context = {
+export const DEFAULT_VALUE_ADDRESS_FOR_PROVIDER_CONTEXT = {
     startPoints: {
-        address: default_address,
+        address: DEFAULT_VALUE_ADDRESS,
         latLng: [],
     },
     endPoints: {
-        address: default_address,
+        address: DEFAULT_VALUE_ADDRESS,
         latLng: [],
     },
     arrayALL_coordinate: [],
@@ -31,9 +32,9 @@ export const defaultValue_address_for_Provider_Context = {
     }
 };
 
-export const defaultValue_sideways_for_Provider_Context = {
+export const DEFAULT_VALUE_SIDEWAYS_FOR_PROVIDER_CONTEXT = {
     clickOnMap: {
-        address: default_address,
+        address: DEFAULT_VALUE_ADDRESS,
         latLng: undefined,
     },
     navi_Machine: false,/* nepoziva sa */
@@ -62,9 +63,16 @@ export const defaultValue_sideways_for_Provider_Context = {
             select: null,
             typeMAPorList: ""
         }
+    },
+    location_markerPopupt: {
+        status: false,
+        location: {
+            lat: 0,
+            lng: 0
+        }
     }
 };
-export const default_UserDATA_for_Provider_Context = {
+export const DEFAULT_USERDATA_FOR_PROVIDER_CONTEXT = {
     loginName: ""
 };
 /* ----------------------------------------------------------- */
