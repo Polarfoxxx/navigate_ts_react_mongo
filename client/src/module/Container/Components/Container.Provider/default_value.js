@@ -1,3 +1,4 @@
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -50,6 +51,7 @@ export const DEFAULT_VALUE_SIDEWAYS_FOR_PROVIDER_CONTEXT = {
     },
     incident: {
         status: false,
+        popupStatus: false,
         dataInc_ForPopup: null
     },
     mapBussines_Category: {
@@ -66,6 +68,9 @@ export const DEFAULT_VALUE_SIDEWAYS_FOR_PROVIDER_CONTEXT = {
     },
     location_markerPopupt: {
         status: false,
+        data: {
+            ident: ""
+        },
         location: {
             lat: null,
             lng: null

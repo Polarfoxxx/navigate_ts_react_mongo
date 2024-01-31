@@ -24,7 +24,8 @@ export type {
     Type_SearchRespo_EDITED_DATA,
     TypeSelect_Route_Bussines,
     Type_Addrress,
-    Type_forLocation_markerPopupt
+    Type_forLocation_markerPopupt,
+    type_forLocation_markerPopupt_data
 } from "./Container.Provider/types";
 
 /* export defvalue */

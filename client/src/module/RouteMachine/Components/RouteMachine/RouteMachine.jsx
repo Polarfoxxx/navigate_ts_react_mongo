@@ -104,6 +104,9 @@ function RouteMachine() {
             timeoutReff.current = setTimeout(() => {
                 const UPDATE_DATA = {
                     status: true,
+                    data: {
+                        ident: e.target.options.ident,
+                    },
                     location: {
                         lat: e.latlng.lat,
                         lng: e.latlng.lng
@@ -114,18 +117,6 @@ function RouteMachine() {
                     { newData: true, key: "popup_event" }
                 ]);
             }, 1000)
-        });
-        marker.on('mouseout', function () {
-            clearTimeout(timeoutReff.current);
-            const UPDATE_DATA = {
-                status: false,
-                location: {
-                    lat: null,
-                    lng: null
-                }
-            };
-
-          /*   updateContext_DATA([{ newData: UPDATE_DATA, key: "location_markerPopupt" }]); */
         });
         return marker;
     };

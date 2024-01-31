@@ -26,6 +26,7 @@ export type Type_IncidentDATA_forMarker = {
 
 export type Type_incident = {
   status: boolean,
+  popupStatus: boolean,
   dataInc_ForPopup: Type_IncidentDATA_forMarker | null,
 };
 /* =========================================================== */
@@ -158,8 +159,13 @@ export type Type_forTraficDATA = {
 };
 /* =========================================================== */
 /* =========================================================== */
+export type type_forLocation_markerPopupt_data = {
+  ident: string,
+}
+
 export type Type_forLocation_markerPopupt = {
   status: boolean,
+  data: type_forLocation_markerPopupt_data,
   location: Type_LatLngOrNull,
 }
 

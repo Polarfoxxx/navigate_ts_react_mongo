@@ -4,7 +4,7 @@ import { Popup } from "react-leaflet";
 import { Container } from "../../../Container";
 import { LatLngExpression } from "leaflet"
 import { OnClickMapContent, OnClickIncidentContent, OnClickBussinesSearcheContent } from "../../../Control";
-import { useMapEvents } from 'react-leaflet';
+import { PopupEvent } from 'leaflet';
 import { UseChangeContextDATA } from "../../../hooks";
 import { useMap } from "react-leaflet";
 
@@ -16,13 +16,16 @@ function Popups(): JSX.Element {
     const [content, setContent] = React.useState<JSX.Element | null>(null);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
     const [isPopupOpen, setIsPopupOpen] = React.useState(false);
+    const identPopusName = React.useRef("");
 
     /* spustenie popup pre klik na mapu */
     React.useEffect(() => {
         if (clickOnMap && clickOnMap.latLng) {
             const CLICK_COORD = clickOnMap.latLng as LatLngExpression;
             setPopupPosition(CLICK_COORD);
-            setContent(<OnClickMapContent />)
+            setContent(<OnClickMapContent />);
+            identPopusName.current = "clickOnMapPopup";
+
         };
     }, [clickOnMap.address]);
 
@@ -34,6 +37,7 @@ function Popups(): JSX.Element {
             const LOCATION = [location_markerPopupt.location.lat + 0.0001, location_markerPopupt.location.lng] as L.LatLngExpression
             setPopupPosition(LOCATION);
             setContent(<OnClickMapContent />)
+            identPopusName.current = "locationPopup";
 
         };
     }, [location_markerPopupt.status]);
@@ -42,12 +46,14 @@ function Popups(): JSX.Element {
     /* spustenie popupu na incidents mararker */
     /* navisenie 0.0001 je pre posunutie popup mimo marker  */
     React.useEffect(() => {
-        if (incident.dataInc_ForPopup?.lat) {
+        if (incident.dataInc_ForPopup?.lat && incident.popupStatus) {
             const LOCATION = [incident.dataInc_ForPopup?.lat + 0.0001, incident.dataInc_ForPopup?.lng] as L.LatLngExpression
+            console.log(LOCATION);
             setPopupPosition(LOCATION);
-            setContent(<OnClickIncidentContent />)
+            setContent(<OnClickIncidentContent />);
+            identPopusName.current = "incidentPopup";
         };
-    }, [incident.dataInc_ForPopup?.lat]);
+    }, [incident.popupStatus, incident.dataInc_ForPopup?.lat]);
 
 
     /* zobrazenie pre busssines */
@@ -58,27 +64,46 @@ function Popups(): JSX.Element {
             const LNG = mapBussines_Category.dataMapBussines_froPopup.fields.mqap_geography.latLng.lng;
             const LOCATION = [LAT, LNG] as L.LatLngExpression
             setPopupPosition(LOCATION);
-            setContent(<OnClickBussinesSearcheContent />)
+            setContent(<OnClickBussinesSearcheContent />);
+            identPopusName.current = "bussinesPopup";
+
         };
     }, [mapBussines_Category.dataMapBussines_froPopup?.distance]);
 
 
 
-
+    /* clear statusu pri zatvoreni popup */
     React.useEffect(() => {
-        const handlePopupClose = () => {
-            console.log("close");
-            
-            const UPDATE_DATA = {
-                status: false,
-                location: {
-                    lat: null,
-                    lng: null
-                }
+        const handlePopupClose = (e: PopupEvent) => {
+            const TYPE_CLOSE_POPUP = e.popup.options.className;
+
+            switch (TYPE_CLOSE_POPUP) {
+                case "clickOnMapPopup":
+                    console.log("Code for clickOnMapPopup");
+                    break;
+                case "locationPopup":
+                    console.log("Code for locationPopup");
+                    break;
+                case "incidentPopup":
+                    const UPDATE_DATA = {
+                        ...incident,
+                        status: true,
+                        popupStatus: false
+                    };
+                    updateContext_DATA([
+                        { newData: UPDATE_DATA, key: "incident" },
+                    ]);
+                    break;
+                case "businessPopup":
+                    console.log("Code for businessPopup");
+                    break;
+                default:
+                    console.log("Default code");
             };
-            updateContext_DATA([
-                { newData: UPDATE_DATA, key: "location_markerPopupt" },
-            ]);
+
+            console.log(e);
+
+
         };
 
         MAP.on('popupclose', handlePopupClose);
@@ -94,7 +119,7 @@ function Popups(): JSX.Element {
             {
                 popupPosition && popup_event &&
                 <Popup
-                    className={`my pop`}
+                    className={identPopusName.current}
                     position={popupPosition}>
                     {content}
                 </Popup>

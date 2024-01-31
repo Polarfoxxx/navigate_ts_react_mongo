@@ -29,7 +29,6 @@ function IncidentsToMap() {
 
         try {
             const DATA_API: Type_IncidentDATA_forMarker[] = await traffic_Incidents_API(SECTION, 1000, 1000);
-            console.log(`incident ${DATA_API}`);
             setIncidentDATA(DATA_API)
 
         } catch (error) {

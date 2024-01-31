@@ -8,9 +8,9 @@ import { Type_forMarkersBussinessAndIncidents } from "./type";
 
 function MarkersBussinessAndIncidents<T extends object>({ type, position, icon, data }: Type_forMarkersBussinessAndIncidents<T>): JSX.Element {
     const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
-    const { mapBussines_Category } = sideWays_DATA;
+    const { mapBussines_Category, incident } = sideWays_DATA;
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
-    const timeoutReff = React.useRef< NodeJS.Timeout | null>(null);
+    const timeoutReff = React.useRef<NodeJS.Timeout | null>(null);
 
 
     // funkcia ktora sa spusti po mouseover nasledne odosle do data cez context
@@ -25,12 +25,19 @@ function MarkersBussinessAndIncidents<T extends object>({ type, position, icon, 
         if (type === "incident" || type === "bussines") {
             if (stateONmouse) {
                 clearAndSetTimeout(() => {
-                    let newData =
-                        type === "incident"
-                            ? { ...mapBussines_Category, status: true, dataInc_ForPopup: data }
-                            : { ...mapBussines_Category, status: true, dataMapBussines_froPopup: data, };
+                    let update_data = type === "incident"
+                            ? {
+                                status: true,
+                                dataInc_ForPopup: data,
+                                popupStatus: true
+                            } : {
+                                ...mapBussines_Category,
+                                status: true,
+                                dataMapBussines_froPopup: data,
+                            };
+
                     updateContext_DATA([
-                        { newData, key: type === "incident" ? "incident" : "mapBussines_Category" },
+                        { newData: update_data, key: type === "incident" ? "incident" : "mapBussines_Category" },
                         { newData: true, key: "popup_event" },
                     ]);
                 });
