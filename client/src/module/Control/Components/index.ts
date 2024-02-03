@@ -17,6 +17,7 @@ export { default as LocationSearcheControl } from "./OffCanvasBoxInputsControl/L
 export { default as OnClickBussinesSearcheContent } from "./PoputsContentControl/OnClickBussinesSearcheContent/OnClickBussinesSearcheContent";
 export { default as SearchBussinesItemControl } from "./OffCanvasBoxInputsControl/SearchBussines/ResultBussinesSearche/SearchBussinesItemControl";
 export { default as SearcheItemBussines } from "./OffCanvasBoxInputsControl/SearchBussines/ResultBussinesSearche/SearcheItemBussines";
+export { default as OnClickPositionContent } from "./PoputsContentControl/OnClickPositionContent/OnClickPositionContent";
 
 
 

@@ -9,7 +9,6 @@ function MapZoomBox(): JSX.Element {
 
 
     React.useEffect(() => {
-        console.log(mapsCurrentInfo.zoom);
         setmapZoomLevel(mapsCurrentInfo.zoom)
     }, [mapsCurrentInfo.zoom])
 

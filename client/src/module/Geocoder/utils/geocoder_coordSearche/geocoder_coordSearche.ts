@@ -14,7 +14,6 @@ async function geocoder_coordSearche(CLICK_COORD: Type_fromGeocoderMapClickSearc
     const RESPONSE = await axios.get(
       `${PROVIDER_URL}?q=${encodeURIComponent(SEARCH_QUERY)}&format=${FORMAT}&accept-language=${LANGUAGE}&addressdetails=1&limit=1`
     );
-    console.log(RESPONSE);
 
     if (RESPONSE.data) {
       const ADDRESS_DATA = {

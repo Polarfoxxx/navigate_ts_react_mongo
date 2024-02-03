@@ -9,3 +9,6 @@ export { default as MapZoomBox } from "./MapZoomBox/MapZoomBox";
 export type { Type_PopupComponent } from "./Popup/types";
 
 
+/* services */
+export { default as services_typeClose_popup } from "./Popup/services/services_typeClose_popup";
+

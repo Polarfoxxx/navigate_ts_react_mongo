@@ -33,7 +33,7 @@ export type Type_incident = {
 /* =========================================================== */
 export type Type_MapBussines_Category = {
   typeSearch: string,
-  status: boolean,
+  popupStatus: boolean,
   SIC_Data: null | Type_OnePointBussinesControl & Type_RouteBussinesControl,
   dataMapBussines_froPopup: null | Type_SearchRespo_EDITED_DATA,
   allResultDATA: null | Type_SearchRespo_EDITED_DATA[],
@@ -164,7 +164,7 @@ export type type_forLocation_markerPopupt_data = {
 }
 
 export type Type_forLocation_markerPopupt = {
-  status: boolean,
+  popupStatus: boolean,
   data: type_forLocation_markerPopupt_data,
   location: Type_LatLngOrNull,
 }

@@ -87,11 +87,8 @@ function RouteMachine() {
             ident = i;
         };
         let marker = L.marker(start.latLng, {
-            draggable: true,
+            draggable: false,
             bounceOnAdd: false,
-            bounceOnAddOptions: {
-                duration: 1000,
-            },
             icon: marker_icon,
             ident: ident,
         });
@@ -103,7 +100,7 @@ function RouteMachine() {
             console.log(e);
             timeoutReff.current = setTimeout(() => {
                 const UPDATE_DATA = {
-                    status: true,
+                    popupStatus: true,
                     data: {
                         ident: e.target.options.ident,
                     },
@@ -116,8 +113,13 @@ function RouteMachine() {
                     { newData: UPDATE_DATA, key: "location_markerPopupt" },
                     { newData: true, key: "popup_event" }
                 ]);
-            }, 1000)
-        });
+            }, 1000);
+            marker.on('mouseout', () => {
+                if (timeoutReff.current) {
+                    clearTimeout(timeoutReff.current);
+                }
+            });
+        }, []);
         return marker;
     };
 

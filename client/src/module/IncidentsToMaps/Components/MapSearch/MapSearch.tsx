@@ -86,7 +86,7 @@ function MapSearch(): JSX.Element {
     return (
         <>
             {
-                mapBussines_Category.status && allBussines.length > 0 && mapBussines_Category.status &&
+                mapBussines_Category.popupStatus && allBussines.length > 0 && mapBussines_Category.popupStatus &&
                 allBussines.map((item, key) =>
                     <MarkersBussinessAndIncidents
                         type="bussines"
