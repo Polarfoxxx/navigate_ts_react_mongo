@@ -161,6 +161,7 @@ export type Type_forTraficDATA = {
 /* =========================================================== */
 export type type_forLocation_markerPopupt_data = {
   ident: string,
+  address: Type_Addrress
 }
 
 export type Type_forLocation_markerPopupt = {

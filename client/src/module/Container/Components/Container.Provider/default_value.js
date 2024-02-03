@@ -1,4 +1,3 @@
-import { faL } from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -69,7 +68,8 @@ export const DEFAULT_VALUE_SIDEWAYS_FOR_PROVIDER_CONTEXT = {
     location_markerPopupt: {
         popupStatus: false,
         data: {
-            ident: ""
+            ident: "",
+            address: DEFAULT_VALUE_ADDRESS
         },
         location: {
             lat: null,

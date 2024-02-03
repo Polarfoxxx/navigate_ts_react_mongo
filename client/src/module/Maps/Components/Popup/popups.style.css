@@ -21,16 +21,20 @@
     height: auto;
     display: flex;
     justify-content: end;
+    border-bottom: 1px solid rgb(85, 85, 85);
+    padding-bottom: 5px;
 }
 .popupContent .pupupButtonBox > button{
-    width: 50px;
+    width: 45px;
     font-size: 11px;
-    color: black;
+    color: var(--whiteTextColor);
     border-radius: 5px;
+    background-color: red;
+    border: none;
 }
 .popupContent .pupupButtonBox > button:hover{
-    background-color: var(--orangeContent);
-    color: var(--whiteTextColor);
+    background-color: white;
+    color: black;
 }
 
 .popupContent .pupupContentBox{

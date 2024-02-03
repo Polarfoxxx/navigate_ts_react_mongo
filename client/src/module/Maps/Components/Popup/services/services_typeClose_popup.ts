@@ -22,7 +22,7 @@ function services_typeClose_popup({
     switch (TYPE_CLOSE_POPUP) {
         case "clickOnMap":
             return {
-                type: "clickOnMap",
+                type: "",
                 newData: {
                     ...clickOnMap,
                     latLng: undefined

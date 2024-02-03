@@ -9,10 +9,7 @@ import "leaflet-routing-machine";
 import services_routeDetail from "./services/services_routeDetail";
 import { UseChangeContextDATA } from "../../../hooks";
 import { services_theMatchOfTheCreatedObject } from "../../../LocationUserInfo";
-import { ON_CLICK_POSITION_CONTENT } from "../../../Control";
-import YourJSXComponent from "./bbb";
-import ReactDOMServer from "react-dom/server";
-import { DEFAULT_VALUE_ADDRESS } from "../../../Container";
+import services_addressForMarker from "./services/services_addressForMarker";
 
 function RouteMachine() {
     const MAP = useMap();
@@ -20,8 +17,6 @@ function RouteMachine() {
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
     const { startPoints, endPoints, arrayALL_coordinate, main_atl_route } = location_DATA, { mapBussines_Category } = sideWays_DATA;
     const [routingControl, setRoutingControl] = React.useState(null);
-    const [marker, setMarker] = React.useState(null);
-    const [markers, setMarkers] = React.useState([]);
     const timeoutReff = React.useRef(null);
 
 
@@ -62,23 +57,25 @@ function RouteMachine() {
             }
         }, []).addTo(MAP);
 
-        /* ================================================= */
         setRoutingControl(routingControl);
-        /* ================================================= */
+
         return () => {
             MAP.removeControl(routingControl);
         };
     }, [startPoints, endPoints, JSON.stringify(arrayALL_coordinate)]);
     /* ========================================================================= */
 
+
     /* funkcia pre vytvorenie markerov a popopup */
     function createMarkerAndPopups(i, start, n) {
-        let marker_icon = null;
-        let ident = null;
+        let marker_icon = undefined;
+        let ident = undefined;
+        let locationAddress = undefined;
 
         if (i === 0) {
             marker_icon = services_markerIcon.startIcon();
             ident = "start_points";
+            locationAddress = services_addressForMarker({allLocation: location_DATA,  markerIdent: "start_points"})
         } else if (i === n - 1) {
             marker_icon = services_markerIcon.endIcon();
             ident = "end_points";
@@ -91,8 +88,10 @@ function RouteMachine() {
             bounceOnAdd: false,
             icon: marker_icon,
             ident: ident,
+            locationAddress: locationAddress
         });
 
+/* hover effect pre marker na zobrazenie popup */
         marker.on('mouseover', function (e) {
             if (timeoutReff.current) {
                 clearTimeout(timeoutReff.current);
@@ -103,6 +102,7 @@ function RouteMachine() {
                     popupStatus: true,
                     data: {
                         ident: e.target.options.ident,
+                        address: e.target.options.locationAddress
                     },
                     location: {
                         lat: e.latlng.lat,
@@ -122,8 +122,6 @@ function RouteMachine() {
         }, []);
         return marker;
     };
-
-
 
     /* route select */
     React.useEffect(() => {
@@ -185,7 +183,6 @@ function RouteMachine() {
 
             const STORAGE_DATA = JSON.parse(localStorage.getItem('saveHistoryRoutes')) || [];
             if (STORAGE_DATA.length > 0) {
-                console.log(STORAGE_DATA);
                 if (services_theMatchOfTheCreatedObject({ STORAGE_DATA, UPDATE_DATA }) === -1) {
                     STORAGE_DATA.push(UPDATE_DATA);
                     localStorage.setItem('saveHistoryRoutes', JSON.stringify(STORAGE_DATA))
@@ -196,53 +193,6 @@ function RouteMachine() {
             }
         }
     }, [JSON.stringify(location_DATA)]);
-
-
-    React.useEffect(() => {
-        if (marker) {
-            /* spustajuca sa funkcia */
-            function handleDeleteClick() {
-                let ident_name;
-                const UPDATE_DATA = {
-                    address: DEFAULT_VALUE_ADDRESS,
-                    latLng: []
-                };
-
-                if (marker.options.ident === "start_points") {
-                    ident_name = "startPoints";
-                } else if (marker.options.ident === "end_points") {
-                    ident_name = "endPoints";
-                }
-
-                updateContext_DATA([{ newData: UPDATE_DATA, key: ident_name }]);
-            };
-
-            /* kontent pre popoup */
-            const ON_CLICK_POSITION_CONTENT = `
-            <div>
-              <button id="deleteButton">delete</button>
-            </div>
-        `;
-
-            /* vlozenie kontentu */
-            marker.bindPopup(ON_CLICK_POSITION_CONTENT);
-
-            /* pridanie funkcie k button elementu */
-            marker.on('popupopen', function () {
-                console.log("rr");
-                const DELETE_BUTTON = document.getElementById('deleteButton');
-                if (DELETE_BUTTON) {
-                    DELETE_BUTTON.addEventListener('click', handleDeleteClick);
-                };
-            });
-            /* zobrazenie popput */
-            marker.on('mouseover', function () {
-                this.openPopup();
-            });
-        }
-    }, [marker])
-
-
 
     return null;
 };
