@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import "./userHistoryData.style.css";
 import { Container } from "../../../../../Container";
 import UserSaveDataItem from "./UserHistoryDataItem";
@@ -10,8 +10,6 @@ import { DEFAULT_VALUE_ADDRESS_FOR_PROVIDER_CONTEXT } from "../../../../../Conta
 function UserHistoryData(): JSX.Element {
     const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
-    const { startPoints, endPoints, main_atl_route, arrayALL_coordinate } = location_DATA;
-    const [clearStorage, setClearStorage] = React.useState(false) /* iba pre render */
     const selectItemRef = React.useRef<number>();
     const [storage_route, setStorage_route] = React.useState<Type_UserSaveHistoryRouteObjekt[]>([]);
 

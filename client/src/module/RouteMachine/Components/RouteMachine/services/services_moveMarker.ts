@@ -14,7 +14,7 @@ export default async function services_moveMarker({
     try {
       const GEOCODER_DATA = await geocoder_coordSearche([LAT, LNG]);
       if (GEOCODER_DATA) {
-        const UPDATED_ARRAY = [...location_DATA.arrayALL_coordinate];
+        const UPDATED_ARRAY = [...location_DATA.intermediatePoints];
         if (typeof markerIdent === "number") {
          /*  UPDATED_ARRAY[markerIdent - 1] = GEOCODER_DATA.address; */
         };

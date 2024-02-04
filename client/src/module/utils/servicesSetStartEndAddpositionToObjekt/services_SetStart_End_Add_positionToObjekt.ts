@@ -30,13 +30,13 @@ function services_SetStart_End_Add_positionToObjekt({
         } else {
 
             const COORDINATE_AND_ADDRESS = {
-                identObject: input_ident !== undefined ? input_ident : location_DATA.arrayALL_coordinate.length,  //pridanie kluca ident pre priradenie objektu ku inputu.("nuitne pre prepis")
+                identObject: input_ident !== undefined ? input_ident : location_DATA.intermediatePoints.length,  //pridanie kluca ident pre priradenie objektu ku inputu.("nuitne pre prepis")
                 address: GEO_DATA && GEO_DATA.address ? GEO_DATA.address : sideWays_DATA.clickOnMap.address,
                 latLng: GEO_DATA && GEO_DATA.latLng ? GEO_DATA.latLng : sideWays_DATA.clickOnMap.latLng ? sideWays_DATA.clickOnMap.latLng : []
             };
 
             // Zistíme, či objekt už existuje v poli
-            const index = location_DATA.arrayALL_coordinate.findIndex(item => {
+            const index = location_DATA.intermediatePoints.findIndex(item => {
                 return (
                     item.identObject === COORDINATE_AND_ADDRESS.identObject ||
                     item.address === COORDINATE_AND_ADDRESS.address ||
@@ -47,17 +47,17 @@ function services_SetStart_End_Add_positionToObjekt({
             // Ak objekt neexistuje, pridáme ho do poľa
             if (index === -1) {
                 const newArrayALLCoordinate = [
-                    ...location_DATA.arrayALL_coordinate,
+                    ...location_DATA.intermediatePoints,
                     COORDINATE_AND_ADDRESS
                 ];
-                return { ...location_DATA, arrayALL_coordinate: newArrayALLCoordinate };
+                return { ...location_DATA, intermediatePoints: newArrayALLCoordinate };
             } else {
                 // Ak objekt existuje, nahradíme ho novým objektom na rovnakom mieste
-                const newArrayALLCoordinate = [...location_DATA.arrayALL_coordinate];
+                const newArrayALLCoordinate = [...location_DATA.intermediatePoints];
                 newArrayALLCoordinate[index] = COORDINATE_AND_ADDRESS;
-                console.log(location_DATA.arrayALL_coordinate);
+                console.log(location_DATA.intermediatePoints);
 
-                return { ...location_DATA, arrayALL_coordinate: newArrayALLCoordinate };
+                return { ...location_DATA, intermediatePoints: newArrayALLCoordinate };
             };
         };
     };

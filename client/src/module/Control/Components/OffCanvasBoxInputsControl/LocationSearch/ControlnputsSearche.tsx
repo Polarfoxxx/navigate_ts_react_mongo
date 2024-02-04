@@ -26,7 +26,7 @@ const reducer = (state: Type_State_ControlnputsSearche, action: Type_Action_Cont
 
 function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput) {
   const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
-  const { arrayALL_coordinate } = location_DATA;
+  const { intermediatePoints } = location_DATA;
   const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
   const geocoderService = new GeocoderInputSearche();
   const inputRef = React.useRef<HTMLInputElement | null>(null);
@@ -70,7 +70,7 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
     };
 
     if (typeof input_ident === "number") {
-      const NEW_DATA = arrayALL_coordinate;
+      const NEW_DATA = intermediatePoints;
       const INDEX = NEW_DATA.findIndex(objekt => objekt.identObject === input_ident);
       if (INDEX !== -1) {
         NEW_DATA.splice(input_ident, 1);

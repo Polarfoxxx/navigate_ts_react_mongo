@@ -1,7 +1,5 @@
 import React from "react";
 import { GeocoderInputSearche } from "../../../../Geocoder";
-import { Container } from "../../../../Container";
-import { UseChangeContextDATA } from "../../../../hooks";
 import { DEFAULT_VALUE_FOR_REDUCER_CONTROL_INPUT_SEARCH } from "../../../../Control";
 import { Type_State_ControlnputsSearche, Type_Action_ControlnputsSearche } from "../../../../Control";
 
@@ -19,9 +17,6 @@ const reducer = (state: Type_State_ControlnputsSearche, action: Type_Action_Cont
 };
 
 function LocationInfoGeocoderInput(): JSX.Element {
-    const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
-    const { arrayALL_coordinate } = location_DATA;
-    const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
     const geocoderService = new GeocoderInputSearche();
     const inputRef = React.useRef<HTMLInputElement | null>(null);
     const timeoutRef = React.useRef<number | null>(null);

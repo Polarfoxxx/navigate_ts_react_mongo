@@ -7,7 +7,7 @@ import services_defaultInputValue from "./services/services_defaultInputValue";
 
 function LocationSearcheControl(): JSX.Element {
     const { location_DATA } = React.useContext(Container.Context)
-    const { endPoints, startPoints, arrayALL_coordinate } = location_DATA;
+    const { endPoints, startPoints, intermediatePoints } = location_DATA;
 
 
     return (
@@ -24,15 +24,15 @@ function LocationSearcheControl(): JSX.Element {
                 {
                     endPoints.address.label && <ControlnputsSearche
                         input_ident={0}
-                        input_value={services_defaultInputValue(0, arrayALL_coordinate)} />
+                        input_value={services_defaultInputValue(0, intermediatePoints)} />
                 }
                 {
 
-                    arrayALL_coordinate.length > 0 && arrayALL_coordinate.map((coordinate, key) => (
+                    intermediatePoints.length > 0 && intermediatePoints.map((coordinate, key) => (
                         <ControlnputsSearche
                             key={key}
                             input_ident={key + 1}
-                            input_value={services_defaultInputValue(key + 1, arrayALL_coordinate)}
+                            input_value={services_defaultInputValue(key + 1, intermediatePoints)}
                         />
                     ))}
             </div>

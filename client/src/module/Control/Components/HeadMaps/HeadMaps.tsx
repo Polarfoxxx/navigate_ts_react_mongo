@@ -23,7 +23,7 @@ const reducer = (state: Type_State_HeadMaps, action: Type_Action_HeadMaps) => {
 
 function HeadMaps(): JSX.Element {
     const { location_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
-    const { startPoints, endPoints, arrayALL_coordinate } = location_DATA;
+    const { startPoints, endPoints, intermediatePoints } = location_DATA;
     const { incident, traffic } = sideWays_DATA;
     const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
     const [state, dispatch] = React.useReducer(reducer, DEFAULT_VALUE_FOR_REDUCER);
@@ -58,7 +58,7 @@ function HeadMaps(): JSX.Element {
                 </div>
                 <div className="addedLocation">
                     {
-                        arrayALL_coordinate.map((item, key) =>
+                        intermediatePoints.map((item, key) =>
                             <div
                                 className="addLocation_item"
                                 key={key}>

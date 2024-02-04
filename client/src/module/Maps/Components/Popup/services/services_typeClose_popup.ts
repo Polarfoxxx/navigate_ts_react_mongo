@@ -1,23 +1,13 @@
-
-import { Type_incident, Type_forLocation_markerPopupt, Type_MapBussines_Category, Type_OnClick_object } from "../../../../Container";
-
-
-type Type_forServices_typeClose_popup = {
-    TYPE_CLOSE_POPUP: string
-    incident: Type_incident,
-    location_markerPopupt: Type_forLocation_markerPopupt
-    mapBussines_Category: Type_MapBussines_Category;
-    clickOnMap: Type_OnClick_object
-};
+import { Type_forServices_typeClose_popup } from "./types";
 
 
-function services_typeClose_popup({
+function services_typeClose_popup<T, K, A, X>({
     TYPE_CLOSE_POPUP,
     incident,
     location_markerPopupt,
     mapBussines_Category,
     clickOnMap
-}: Type_forServices_typeClose_popup): { type: string, newData: any } {
+}: Type_forServices_typeClose_popup<T, K, A, X>): { type: string, newData: T | K | A | X | undefined } {
 
     switch (TYPE_CLOSE_POPUP) {
         case "clickOnMap":
@@ -33,7 +23,6 @@ function services_typeClose_popup({
                 type: "incident",
                 newData: {
                     ...incident,
-                    status: true,
                     popupStatus: false
                 }
             };
@@ -56,7 +45,7 @@ function services_typeClose_popup({
         default:
             return {
                 type: "",
-                newData: null
+                newData: undefined
             };
     };
 };

@@ -15,7 +15,7 @@ function RouteMachine() {
     const MAP = useMap();
     const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
-    const { startPoints, endPoints, arrayALL_coordinate, main_atl_route } = location_DATA, { mapBussines_Category } = sideWays_DATA;
+    const { startPoints, endPoints, intermediatePoints, main_atl_route } = location_DATA, { mapBussines_Category } = sideWays_DATA;
     const [routingControl, setRoutingControl] = React.useState(null);
     const timeoutReff = React.useRef(null);
 
@@ -23,7 +23,7 @@ function RouteMachine() {
     React.useEffect(() => {
         const START_POINT = startPoints;
         const END_POINT = endPoints;
-        const ADD_CORD_POINT = arrayALL_coordinate.map((item) => item.latLng);
+        const ADD_CORD_POINT = intermediatePoints.map((item) => item.latLng);
 
         /* pousun mapy na prvy marker */
         if (START_POINT.address.label && !END_POINT.address.label) {
@@ -62,7 +62,7 @@ function RouteMachine() {
         return () => {
             MAP.removeControl(routingControl);
         };
-    }, [startPoints, endPoints, JSON.stringify(arrayALL_coordinate)]);
+    }, [startPoints, endPoints, JSON.stringify(intermediatePoints)]);
     /* ========================================================================= */
 
 
@@ -75,15 +75,18 @@ function RouteMachine() {
         if (i === 0) {
             marker_icon = services_markerIcon.startIcon();
             ident = "start_points";
-            locationAddress = services_addressForMarker({allLocation: location_DATA,  markerIdent: "start_points"})
+            locationAddress = services_addressForMarker({ allLocation: location_DATA, markerIdent: "start_points" })
         } else if (i === n - 1) {
             marker_icon = services_markerIcon.endIcon();
             ident = "end_points";
+            locationAddress = services_addressForMarker({ allLocation: location_DATA, markerIdent: "end_points" })
         } else {
             marker_icon = services_markerIcon.addPointIcon(i);
             ident = i;
+            locationAddress = services_addressForMarker({ allLocation: location_DATA, markerIdent: i })
         };
-        let marker = L.marker(start.latLng, {
+
+        const MARKER = L.marker(start.latLng, {
             draggable: false,
             bounceOnAdd: false,
             icon: marker_icon,
@@ -91,8 +94,8 @@ function RouteMachine() {
             locationAddress: locationAddress
         });
 
-/* hover effect pre marker na zobrazenie popup */
-        marker.on('mouseover', function (e) {
+        /* hover effect pre marker na zobrazenie popup */
+        MARKER.on('mouseover', function (e) {
             if (timeoutReff.current) {
                 clearTimeout(timeoutReff.current);
             };
@@ -114,13 +117,13 @@ function RouteMachine() {
                     { newData: true, key: "popup_event" }
                 ]);
             }, 1000);
-            marker.on('mouseout', () => {
+            MARKER.on('mouseout', () => {
                 if (timeoutReff.current) {
                     clearTimeout(timeoutReff.current);
-                }
+                };
             });
         }, []);
-        return marker;
+        return MARKER;
     };
 
     /* route select */
@@ -174,7 +177,7 @@ function RouteMachine() {
                     address: endPoints.address,
                     latLng: endPoints.latLng
                 },
-                addPoint: arrayALL_coordinate,
+                addPoint: intermediatePoints,
                 routeName: main_atl_route[0].nameRoutes,
                 routeTime: main_atl_route[0].totalTime,
                 routeDistance: main_atl_route[0].totalDistance,

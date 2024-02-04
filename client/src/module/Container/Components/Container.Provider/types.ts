@@ -120,12 +120,12 @@ export type Type_ArrayALLRoute = {
 };
 /* =========================================================== */
 /* =========================================================== */
-export type Type_ALLCoordinateObjekt = {
+export type Type_Type_IntermediatePoints_Objekt = {
   identObject?: string | number,
   address: Type_Addrress;
   latLng: number[];
 };
-export type Type_ArrayAllCoord = Type_ALLCoordinateObjekt[];
+export type Type_IntermediatePoints = Type_Type_IntermediatePoints_Objekt[];
 /* =========================================================== */
 /* =========================================================== */
 export type Type_Addrress = {
@@ -182,7 +182,7 @@ export type Type_forRouteChange = {
 export type Type_location_DATA = {
   startPoints: TypeStartAndEndPoint;
   endPoints: TypeStartAndEndPoint;
-  arrayALL_coordinate: Type_ArrayAllCoord;
+  intermediatePoints: Type_IntermediatePoints;
   main_atl_route: Type_ArrayALLRoute[];
   changeRoutes: Type_forRouteChange
 };

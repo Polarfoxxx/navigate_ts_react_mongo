@@ -13,7 +13,7 @@ export type {
     TypeStartAndEndPoint,
     Type_forTraficDATA,
     Type_LatLng,
-    Type_ArrayAllCoord,
+    Type_IntermediatePoints,
     Type_OnClick_object,
     Type_IncidentDATA_forMarker,
     Type_incident,

@@ -1,7 +1,7 @@
 import { Type_UserSaveHistoryRouteObjekt } from "../types";
 import {
   TypeStartAndEndPoint,
-  Type_ArrayAllCoord,
+  Type_IntermediatePoints,
 } from "../../../../../Container";
 import React from "react";
 
@@ -23,7 +23,7 @@ export type Type_UserSaveDataItem = {
 export type Type_saveRoute = {
   startCoord: TypeStartAndEndPoint;
   endCoord: TypeStartAndEndPoint;
-  allCoord: Type_ArrayAllCoord;
+  allCoord: Type_IntermediatePoints;
   routeName: string;
   timeCreate: string;
   officialName: string;

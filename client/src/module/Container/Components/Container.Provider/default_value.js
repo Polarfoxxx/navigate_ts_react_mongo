@@ -22,7 +22,7 @@ export const DEFAULT_VALUE_ADDRESS_FOR_PROVIDER_CONTEXT = {
         address: DEFAULT_VALUE_ADDRESS,
         latLng: [],
     },
-    arrayALL_coordinate: [],
+    intermediatePoints: [],
     main_atl_route: [],
 
     /* nepouiva sa */

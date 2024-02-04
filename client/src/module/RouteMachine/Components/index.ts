@@ -6,7 +6,6 @@ export { default as services_moveMarker } from "./RouteMachine/services/services
 export { default as services_routeDetail } from "./RouteMachine/services/services_routeDetail";
 export { default as services_addressForMarker } from "./RouteMachine/services/services_addressForMarker";
 
-
 /* types */
 export type {
     Type_RoutesFoundEvent,
@@ -16,4 +15,13 @@ export type {
     Type_summary_RoutesDetail,
     Type_leafletRoutesDetail,
     Type_PropsforMovieMarker,
-} from "./RouteMachine/types"
+} from "./RouteMachine/types";
+
+export type {
+    Type_forServices_addressForMarker
+} from "./RouteMachine/services/types"
+
+
+
+
+
