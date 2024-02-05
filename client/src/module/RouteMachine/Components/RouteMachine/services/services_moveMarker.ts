@@ -31,7 +31,7 @@ export default async function services_moveMarker({
         } else if (typeof (markerIdent) === "number") {
           return {
             ...location_DATA,
-            arrayALL_coordinate: UPDATED_ARRAY,
+            intermediatePoints: UPDATED_ARRAY,
           };
         };
       };

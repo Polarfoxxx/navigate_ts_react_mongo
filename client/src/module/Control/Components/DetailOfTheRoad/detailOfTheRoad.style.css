@@ -17,31 +17,29 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 0.6em;
-    padding: 4px;
     background-color: rgb(137, 137, 137);
-    border-top: 5px solid var(--orangeContent);
+    overflow-y: auto;
+    padding-top: 4px;
 }
-
-.detailOfTheRoad .detailOfTheRoad_header_active {
-    width: 100%;
-    height: 40px;
-    min-height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 0.6em;
-    padding: 4px;
+.detailOfTheRoad .detailOfTheRoad_header::-webkit-scrollbar {
+    width: 0;
+  }
+  
+.detailOfTheRoad .detailOfTheRoad_header.active {
     background-color: var(--orangeContent);
     color: var(--whiteTextColor);
 }
 
-
 .detailOfTheRoad .detailOfTheRoad_header:hover {
     background-color: rgb(88, 88, 88);
-    color: white;
+    color: rgb(255, 255, 255);
 }
+.detailOfTheRoad .detailOfTheRoad_header .detailOfTheRoadHead_Content{
+    width: 95%;
+    height: auto;
+    font-size: 9px;
+}
+
 
 .detailOfTheRoad .detailOfTheRoad_totalInfo {
     width: 100%;

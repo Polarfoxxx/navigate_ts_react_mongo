@@ -81,7 +81,7 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
       };
 
       updateContext_DATA([
-        { newData: NEW_DATA, key: "arrayALL_coordinate" },
+        { newData: NEW_DATA, key: "intermediatePoints" },
       ]);
       dispatch({ type: "SET_QUERY", payload: "" })
 
@@ -91,7 +91,7 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
         updateContext_DATA([
           { newData: UPDATE_DATA_START_END_, key: "startPoints" },
           { newData: UPDATE_DATA_START_END_, key: "endPoints" },
-          { newData: [], key: "arrayALL_coordinate" },
+          { newData: [], key: "intermediatePoints" },
           { newData: [], key: "main_atl_route" },
           { newData: UPDATE_DATA_MAPBUSSINES, key: "mapBussines_Category" },
         ]);
@@ -99,7 +99,7 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
         dispatch({ type: "SET_QUERY", payload: "" })
         updateContext_DATA([
           { newData: UPDATE_DATA_START_END_, key: "endPoints" },
-          { newData: [], key: "arrayALL_coordinate" },
+          { newData: [], key: "intermediatePoints" },
           { newData: [], key: "main_atl_route" },
           { newData: UPDATE_DATA_MAPBUSSINES, key: "mapBussines_Category" },
         ]);

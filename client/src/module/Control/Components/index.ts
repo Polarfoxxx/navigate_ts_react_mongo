@@ -20,7 +20,6 @@ export { default as SearcheItemBussines } from "./OffCanvasBoxInputsControl/Sear
 export { default as OnClickPositionContent } from "./PoputsContentControl/OnClickPositionContent/OnClickPositionContent";
 
 
-
 /* services */
 export { default as ServicesFollowPointsOnTheMap } from "./DetailOfTheRoad/services/services_followPointsOnTheMap";
 export { default as services_navigationIcons } from "./DetailOfTheRoad/services/services_navigationIcons";
@@ -65,6 +64,10 @@ export type {
     Type_forSearcheItemBussines,
     TypeFor_data_forSearcheItem
 } from "./OffCanvasBoxInputsControl/SearchBussines/ResultBussinesSearche/types";
+
+export type {
+    Type_forPositon_data
+} from "./PoputsContentControl/OnClickPositionContent/types";
 
 
 /* objekt */

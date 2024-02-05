@@ -67,7 +67,7 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
             ...location_DATA,
             startPoints: route.startCoord,
             endPoints: route.endCoord,
-            arrayALL_coordinate: route.allCoord
+            intermediatePoints: route.allCoord
         };
         updateContext_DATA([
             { newData: UPDATE_DATA, key: "location_DATA" }

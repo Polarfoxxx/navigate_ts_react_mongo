@@ -103,7 +103,7 @@ function UserHistoryDataItem(props: Type_UserHistoryDataItem): JSX.Element {
             ...location_DATA,
             startPoints: route.startPoint,
             endPoints: route.endPoint,
-            arrayALL_coordinate: route.addPoint
+            intermediatePoints: route.addPoint
         };
         updateContext_DATA([
             { newData: UPDATE_DATA, key: "location_DATA" },

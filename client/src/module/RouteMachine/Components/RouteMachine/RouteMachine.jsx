@@ -40,7 +40,7 @@ function RouteMachine() {
             showAlternatives: true,
             show: false,
             lineOptions: {
-                styles: [{ color: "#EC2700", opacity: 0.7, weight: 7 }],
+                styles: [{ color: "red", opacity: 0.8, weight: 6 }],
                 extendToWaypoints: false,
                 missingRouteTolerance: 5,
                 addWaypoints: false,

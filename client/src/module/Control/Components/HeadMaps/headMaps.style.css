@@ -40,7 +40,7 @@
 .headerLocName .headarLocName_Box>div>h3 {
     margin: 5px 10px;
     color: var(--whiteTextColor);
-    font-size: 1em;
+    font-size: 14px;
 }
 
 .headerLocName .headarLocName_Box .addedLocation {

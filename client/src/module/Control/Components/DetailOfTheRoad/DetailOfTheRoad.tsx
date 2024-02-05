@@ -52,8 +52,10 @@ const handleOnsccroll = (): void => {
    return (
       <div className="detailOfTheRoad">
          <div
-            className={active === index ?  "detailOfTheRoad_header_active"  :  "detailOfTheRoad_header" }>
-            <h2>Direction for the route - {state.total_Info.nameRoads}</h2>
+            className={active === index ?  "detailOfTheRoad_header active"  :  "detailOfTheRoad_header" }>
+               <div className="detailOfTheRoadHead_Content">
+               <h2>{state.total_Info.nameRoads}</h2>
+               </div>
          </div>
          <div className="detailOfTheRoad_totalInfo">
             <div className="totalDis">
