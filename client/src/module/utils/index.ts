@@ -1,8 +1,9 @@
 
 /* sevices */
 export { default as SERVICES_CONVERSION_OF_UNIT_AND_TIME } from "./servicesConversionOfUnitsAndTime/services_conversionOfUnitsAndTime";
-export { default as services_SetStart_End_Add_positionToObjekt } from "./servicesSetStartEndAddpositionToObjekt/services_SetStart_End_Add_positionToObjekt";
+export { default as services_SetStart_End_intermediate_positionToObjekt } from "./servicesSetStartEndAddpositionToObjekt/services_SetStart_End_intermediate_positionToObjekt";
 export { default as servicesJWTdecodeAndValidity } from "./servicesJWTdecodeAndValidity/services_JWT_decode";
+export { default as servicesFindAndDeletePositionToObjekt } from "./servicesFindAndDeletePositionToObjekt/servicesFindAndDeletePositionToObjekt";
 
 /* type */
 export type {
@@ -10,7 +11,7 @@ export type {
 } from "./servicesConversionOfUnitsAndTime/types";
 
 export type {
-    TypeFor_services_SetStart_End_Add_positionToObjekt,
+    TypeFor_services_SetStart_End_intermediate_positionToObjekt,
 } from "./servicesSetStartEndAddpositionToObjekt/types";
 
 export type {

@@ -74,12 +74,12 @@ function RouteMachine() {
 
         if (i === 0) {
             marker_icon = services_markerIcon.startIcon();
-            ident = "start_points";
-            locationAddress = services_addressForMarker({ allLocation: location_DATA, markerIdent: "start_points" })
+            ident = "startPoints";
+            locationAddress = services_addressForMarker({ allLocation: location_DATA, markerIdent: "startPoints" })
         } else if (i === n - 1) {
             marker_icon = services_markerIcon.endIcon();
-            ident = "end_points";
-            locationAddress = services_addressForMarker({ allLocation: location_DATA, markerIdent: "end_points" })
+            ident = "endPoints";
+            locationAddress = services_addressForMarker({ allLocation: location_DATA, markerIdent: "endPoints" })
         } else {
             marker_icon = services_markerIcon.addPointIcon(i);
             ident = i;

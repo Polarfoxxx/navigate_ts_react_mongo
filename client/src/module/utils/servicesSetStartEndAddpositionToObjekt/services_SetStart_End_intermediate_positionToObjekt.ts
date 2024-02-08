@@ -1,13 +1,13 @@
 import { Type_location_DATA } from "../../Container";
-import { TypeFor_services_SetStart_End_Add_positionToObjekt } from "./types";
+import { TypeFor_services_SetStart_End_intermediate_positionToObjekt } from "./types";
 
 
-function services_SetStart_End_Add_positionToObjekt({
+function services_SetStart_End_intermediate_positionToObjekt({
     location_DATA,
     sideWays_DATA,
     GEO_DATA,
     input_ident
-}: TypeFor_services_SetStart_End_Add_positionToObjekt): Type_location_DATA {
+}: TypeFor_services_SetStart_End_intermediate_positionToObjekt): Type_location_DATA {
 
 
     if (!location_DATA.startPoints.address.label) {
@@ -63,6 +63,6 @@ function services_SetStart_End_Add_positionToObjekt({
     };
 };
 
-export default services_SetStart_End_Add_positionToObjekt;
+export default services_SetStart_End_intermediate_positionToObjekt;
 
 

@@ -6,7 +6,7 @@ import { Type_forGeocoderInput, Type_Action_ControlnputsSearche, Type_State_Cont
 import services_changeNamefor_Label from "./services/services_changeNamefor_Label";
 import { UseChangeContextDATA } from "../../../../hooks";
 import { DEFAULT_VALUE_FOR_REDUCER_CONTROL_INPUT_SEARCH } from "../defaultValue";
-import { services_SetStart_End_Add_positionToObjekt } from "../../../../utils";
+import { services_SetStart_End_intermediate_positionToObjekt } from "../../../../utils";
 
 
 /* useReducer ----------------------------*/
@@ -142,7 +142,7 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
       };
 
       updateContext_DATA([
-        { newData: services_SetStart_End_Add_positionToObjekt({ location_DATA, sideWays_DATA, GEO_DATA, input_ident }), key: "location_DATA" }
+        { newData: services_SetStart_End_intermediate_positionToObjekt({ location_DATA, sideWays_DATA, GEO_DATA, input_ident }), key: "location_DATA" }
       ]);
       dispatch({ type: "SET_RESULT_OPEN", payload: false }); // Zavřít seznam po výběru adresy
     }

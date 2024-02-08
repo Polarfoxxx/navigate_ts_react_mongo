@@ -4,7 +4,7 @@ import "./onClickMapContent.style.css"
 import { Container } from "../../../../Container";
 import { Type_ButtonName } from "./types";
 import { UseChangeContextDATA } from "../../../../hooks";
-import { services_SetStart_End_Add_positionToObjekt } from "../../../../utils";
+import { services_SetStart_End_intermediate_positionToObjekt } from "../../../../utils";
 
 type Type_forControlMapCLcontent = {
     click?: string
@@ -37,7 +37,7 @@ function OnClickMapContent(props: Type_forControlMapCLcontent): JSX.Element {
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation(); /* zabranuje prebublavaniu */
         updateContext_DATA([
-            { newData: services_SetStart_End_Add_positionToObjekt({ location_DATA, sideWays_DATA }), key: "location_DATA" },
+            { newData: services_SetStart_End_intermediate_positionToObjekt({ location_DATA, sideWays_DATA }), key: "location_DATA" },
             { newData: false, key: "popup_event" },
         ]);
     };

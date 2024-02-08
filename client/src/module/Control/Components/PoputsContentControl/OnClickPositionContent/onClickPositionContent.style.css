@@ -17,6 +17,10 @@
 
 .onclickPositionContent .onclickCoordinate .onClickCoordLagLog .onClickCoordLagLogName {
     color: var(--yellowGreenLow);
+width: 70px;
+}
+.onclickPositionContent .onclickCoordinate .onClickCoordLagLog .onClickCoordLagLogValueBox {
+    color: white;
 }
 
 .onclickPositionContent .onclickPosName {

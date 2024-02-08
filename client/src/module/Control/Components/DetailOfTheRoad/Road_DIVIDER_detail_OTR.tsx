@@ -33,16 +33,9 @@ function Road_DIVIDER_detail_OTR(): JSX.Element {
         updateContext_DATA([{ newData: UPDATE_OBJEKT, key: "changeRoutes" }])
     };
 
-
+/* nastavanie main and alt trasy pre zobrazenie */
     React.useEffect(() => {
-        if (main_atl_route.length > 0) {
-            let allRoute: Type_ArrayALLRoute[] = [];
-            main_atl_route.forEach(item => {
-                /* nastavenie vsetkych trias aj alt  */
-                allRoute.push(item);
-                setMainAndAlternativeRoads(allRoute);
-            });
-        };
+                setMainAndAlternativeRoads(main_atl_route);
     }, [main_atl_route]);
 
 

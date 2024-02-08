@@ -3,11 +3,12 @@ import "./onClickPositionContent.style.css";
 import { Container, DEFAULT_VALUE_ADDRESS } from "../../../../Container";
 import { UseChangeContextDATA } from "../../../../hooks";
 import { Type_forPositon_data } from "./types";
+import { servicesFindAndDeletePositionToObjekt } from "../../../../utils";
 
 function OnClickPositionContent(): JSX.Element {
     const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
-    const { location_markerPopupt } = sideWays_DATA;
+    const { location_markerPopupt } = sideWays_DATA, { startPoints, endPoints, intermediatePoints } = location_DATA;
     const [positon_data, setPosition_data] = React.useState<Type_forPositon_data>({
         ident: "",
         address: DEFAULT_VALUE_ADDRESS,
@@ -28,8 +29,19 @@ function OnClickPositionContent(): JSX.Element {
     }, [location_markerPopupt.data.ident])
 
     /* odstranenie bodu */
-    const handleRemovePoint = (ident: string) => {
-        console.log(ident);
+    const handleRemovePoint = (e: React.MouseEvent<HTMLButtonElement>, ident: string) => {
+        e.stopPropagation()
+        const DELETE_POINT = ident;
+        const { type, newData } = servicesFindAndDeletePositionToObjekt({ startPoints, endPoints, intermediatePoints, DELETE_POINT });
+        type ? updateContext_DATA([
+            { newData: newData, key: type },
+            { newData: false, key: "popup_event" },
+            { newData: [], key: "main_atl_route" },
+        ]) :
+            updateContext_DATA([
+                { newData: newData, key: "intermediatePoints" },
+                { newData: false, key: "popup_event" },
+            ])
     };
 
 
@@ -59,7 +71,7 @@ function OnClickPositionContent(): JSX.Element {
                 <h3>{positon_data.address.label}</h3>
             </div>
             <div className="onclickPosButton">
-                <button onClick={() => handleRemovePoint(positon_data.ident)}>Remove point</button>
+                <button onClick={(e) => handleRemovePoint(e, positon_data.ident)}>Remove point</button>
             </div>
         </div>
     );

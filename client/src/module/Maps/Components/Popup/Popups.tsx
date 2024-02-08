@@ -6,21 +6,18 @@ import { LatLngExpression } from "leaflet"
 import { OnClickMapContent, OnClickIncidentContent, OnClickBussinesSearcheContent, OnClickPositionContent } from "../../../Control";
 import { UseChangeContextDATA } from "../../../hooks";
 import services_typeClose_popup from "./services/services_typeClose_popup";
+import { Type_forPopupLoc_Cont_Ident } from "./types";
 
-type Type_forContentAndIdent = {
-    content: JSX.Element | undefined,
-    identPopName: string
-};
 
 function Popups(): JSX.Element {
     const MAP = useMap();
     const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { clickOnMap, popup_event, incident, mapBussines_Category, location_markerPopupt } = sideWays_DATA;
-    const [popupPosition, setPopupPosition] = React.useState<LatLngExpression | null>(null);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
-    const [contentAndIdent, setContentAndIdent] = React.useState<Type_forContentAndIdent>({
+    const [popupLoc_Cont_Ident, setPopupLoc_Cont_Ident] = React.useState<Type_forPopupLoc_Cont_Ident>({
         content: undefined,
-        identPopName: ""
+        identPopName: "",
+        location: null
     });
 
 
@@ -28,10 +25,10 @@ function Popups(): JSX.Element {
     React.useEffect(() => {
         if (clickOnMap && clickOnMap.latLng) {
             const CLICK_COORD = clickOnMap.latLng as LatLngExpression;
-            setPopupPosition(CLICK_COORD);
-            setContentAndIdent({
+            setPopupLoc_Cont_Ident({
                 content: <OnClickMapContent />,
-                identPopName: "clickOnMap"
+                identPopName: "clickOnMap",
+                location: CLICK_COORD
             });
         };
     }, [clickOnMap.address]);
@@ -42,10 +39,10 @@ function Popups(): JSX.Element {
         if (location_markerPopupt.location.lat && location_markerPopupt.popupStatus) {
             console.log(location_markerPopupt.data.ident);
             const LOCATION = [location_markerPopupt.location.lat + 0.0001, location_markerPopupt.location.lng] as L.LatLngExpression
-            setPopupPosition(LOCATION);
-            setContentAndIdent({
+            setPopupLoc_Cont_Ident({
                 content: <OnClickPositionContent />,
-                identPopName: "location_markerPopupt"
+                identPopName: "location_markerPopupt",
+                location: LOCATION
             });
         };
     }, [location_markerPopupt.location.lat, location_markerPopupt.popupStatus]);
@@ -55,11 +52,10 @@ function Popups(): JSX.Element {
     React.useEffect(() => {
         if (incident.dataInc_ForPopup?.lat && incident.popupStatus) {
             const LOCATION = [incident.dataInc_ForPopup?.lat + 0.0001, incident.dataInc_ForPopup?.lng] as L.LatLngExpression
-            console.log(LOCATION);
-            setPopupPosition(LOCATION);
-            setContentAndIdent({
+            setPopupLoc_Cont_Ident({
                 content: <OnClickIncidentContent />,
-                identPopName: "incident"
+                identPopName: "incident",
+                location: LOCATION
             });
         };
     }, [incident.popupStatus, incident.dataInc_ForPopup?.lat]);
@@ -71,10 +67,10 @@ function Popups(): JSX.Element {
             const LAT = mapBussines_Category.dataMapBussines_froPopup.fields.mqap_geography.latLng.lat + 0.0001;
             const LNG = mapBussines_Category.dataMapBussines_froPopup.fields.mqap_geography.latLng.lng;
             const LOCATION = [LAT, LNG] as L.LatLngExpression
-            setPopupPosition(LOCATION);
-            setContentAndIdent({
+            setPopupLoc_Cont_Ident({
                 content: <OnClickBussinesSearcheContent />,
-                identPopName: "mapBussines_Category"
+                identPopName: "mapBussines_Category",
+                location: LOCATION
             });
         };
     }, [mapBussines_Category.dataMapBussines_froPopup?.fields.mqap_geography.latLng.lat, mapBussines_Category.popupStatus]);
@@ -87,8 +83,8 @@ function Popups(): JSX.Element {
 
     /* zachytenie aktualneho popup nazvu a pri zatvoreni zmeneni typ objektu */
     React.useEffect(() => {
-        const handlePopupClose = () => {
-            const TYPE_CLOSE_POPUP = contentAndIdent.identPopName;
+        const popupClose = () => {
+            const TYPE_CLOSE_POPUP = popupLoc_Cont_Ident.identPopName;
             if (TYPE_CLOSE_POPUP) {
                 const { type, newData } = services_typeClose_popup({ TYPE_CLOSE_POPUP, incident, location_markerPopupt, mapBussines_Category, clickOnMap })
                 type && updateContext_DATA([
@@ -96,31 +92,30 @@ function Popups(): JSX.Element {
                 ]);
             };
         };
-        MAP.on('popupclose', handlePopupClose);
+        MAP.on('popupclose', popupClose);
         return () => {
-            MAP.off('popupclose', handlePopupClose);
+            MAP.off('popupclose', popupClose);
         };
-    }, [contentAndIdent.identPopName, incident, location_markerPopupt, mapBussines_Category, clickOnMap ]);
+    }, [popupLoc_Cont_Ident.identPopName, incident, location_markerPopupt, mapBussines_Category, clickOnMap]);
 
 
     return (
         <>
             {
-                popupPosition && popup_event &&
+                popupLoc_Cont_Ident.location && popup_event &&
                 <Popup
                     closeButton={false}
-                    className={contentAndIdent.identPopName}
-                    position={popupPosition}>
+                    position={popupLoc_Cont_Ident.location}>
                     <div className="popupContent">
                         <div className="pupupButtonBox">
                             <button
-                                className={contentAndIdent.identPopName}
+                                className={popupLoc_Cont_Ident.identPopName}
                                 onClick={(e) => handleClosePupup(e)}>
                                 Close
                             </button>
                         </div>
                         <div className="pupupContentBox">
-                            {contentAndIdent.content}
+                            {popupLoc_Cont_Ident.content}
                         </div>
                     </div>
 
