@@ -33,6 +33,7 @@ export type Type_incident = {
 /* =========================================================== */
 export type Type_MapBussines_Category = {
   typeSearch: string,
+  status: boolean,
   popupStatus: boolean,
   SIC_Data: null | Type_OnePointBussinesControl & Type_RouteBussinesControl,
   dataMapBussines_froPopup: null | Type_SearchRespo_EDITED_DATA,

@@ -14,27 +14,37 @@ function RouteBussinessSearcheControl(): JSX.Element {
 
 
     const submit = (v: TypeForInputsObject["v"]): void => {
-        
         const UPDATE_SIC_DATA: Type_RouteBussinesControl = {
-                type: v[0].inputValues as string,
-                width: v[1].inputValues as string ,
-                bufferedWidth: v[2].inputValues as string,
-                numResult: v[3].inputValues as string,
-                ambiguities: v[4].inputValues as "Ignore" | "Allow"
-            }
-            const UPDATE_DATA = {
-                ...mapBussines_Category,
-                typeSearch: "RouteBussinessSearche",
-                status: true,
-                SIC_Data: UPDATE_SIC_DATA,
-            };
+            type: v[0].inputValues as string,
+            width: v[1].inputValues as string,
+            bufferedWidth: v[2].inputValues as string,
+            numResult: v[3].inputValues as string,
+            ambiguities: v[4].inputValues as "Ignore" | "Allow"
+        };
+        const UPDATE_DATA = {
+            ...mapBussines_Category,
+            typeSearch: "RouteBussinessSearche",
+            status: true,
+            SIC_Data: UPDATE_SIC_DATA,
+        };
 
         updateContext_DATA([
             { newData: UPDATE_DATA, key: "mapBussines_Category" },
-        ])
+        ]);
     };
 
 
+    /* clear form bussines */
+    const handleClickClearFunctuon = () => {
+        const UPDATE_DATA = {
+            ...mapBussines_Category,
+            status: false,
+            popupStatus: false,
+        };
+        updateContext_DATA([
+            { newData: UPDATE_DATA, key: "mapBussines_Category" },
+        ]);
+    };
 
     return (
         <div className="routeContent">
@@ -93,17 +103,19 @@ function RouteBussinessSearcheControl(): JSX.Element {
                 </div>
                 <div className="routeControltButtonBox">
                     <div className="submitBoxButton">
-                        <button type='submit'>submit</button>
+                        <button type='submit'>Search</button>
                     </div>
                     <div className="resetBoxButton">
-                        <button onClick={reset}>reset</button>
+                        <button onClick={() => { reset(); handleClickClearFunctuon() }}>
+                            Reset
+                        </button>
                     </div>
                 </div>
             </form>
         </div>
-    )
+    );
 };
 
-export default RouteBussinessSearcheControl
+export default RouteBussinessSearcheControl;
 
 

@@ -56,6 +56,7 @@ export const DEFAULT_VALUE_SIDEWAYS_FOR_PROVIDER_CONTEXT = {
     mapBussines_Category: {
         typeSearch: "",
         type: "",
+        status: false,
         popupStatus: false,
         SIC_Data: null,
         dataMapBussines_froPopup: null,

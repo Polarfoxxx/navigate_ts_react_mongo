@@ -67,13 +67,15 @@ function Popups(): JSX.Element {
             const LAT = mapBussines_Category.dataMapBussines_froPopup.fields.mqap_geography.latLng.lat + 0.0001;
             const LNG = mapBussines_Category.dataMapBussines_froPopup.fields.mqap_geography.latLng.lng;
             const LOCATION = [LAT, LNG] as L.LatLngExpression
+            console.log(LOCATION);
+
             setPopupLoc_Cont_Ident({
                 content: <OnClickBussinesSearcheContent />,
                 identPopName: "mapBussines_Category",
                 location: LOCATION
             });
         };
-    }, [mapBussines_Category.dataMapBussines_froPopup?.fields.mqap_geography.latLng.lat, mapBussines_Category.popupStatus]);
+    }, [mapBussines_Category.dataMapBussines_froPopup?.fields.lat, mapBussines_Category.popupStatus]);
 
 
     /* clear statusu pri zatvoreni popup */
@@ -85,6 +87,8 @@ function Popups(): JSX.Element {
     React.useEffect(() => {
         const popupClose = () => {
             const TYPE_CLOSE_POPUP = popupLoc_Cont_Ident.identPopName;
+            console.log(TYPE_CLOSE_POPUP);
+            
             if (TYPE_CLOSE_POPUP) {
                 const { type, newData } = services_typeClose_popup({ TYPE_CLOSE_POPUP, incident, location_markerPopupt, mapBussines_Category, clickOnMap })
                 type && updateContext_DATA([

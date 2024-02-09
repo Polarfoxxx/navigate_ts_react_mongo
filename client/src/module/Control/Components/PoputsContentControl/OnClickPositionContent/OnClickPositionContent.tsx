@@ -25,7 +25,6 @@ function OnClickPositionContent(): JSX.Element {
             };
             setPosition_data(UPDATE_DATA)
         }
-
     }, [location_markerPopupt.data.ident])
 
     /* odstranenie bodu */
@@ -41,11 +40,8 @@ function OnClickPositionContent(): JSX.Element {
             updateContext_DATA([
                 { newData: newData, key: "intermediatePoints" },
                 { newData: false, key: "popup_event" },
-            ])
+            ]);
     };
-
-
-
 
     return (
         <div className="onclickPositionContent">

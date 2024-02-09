@@ -26,17 +26,18 @@
 }
 
 .routeContent>form>div>input,
-select {
+.routeContent>form>div>select {
     width: 100%;
     border-radius: 6px;
     height: 27px;
     padding: 0 5px 0 5px;
-    background-color: var(--silverInputBacgColor);
-    font-weight: bolder;
+    background-color: white;
+    font-size: 14px;
+    font-weight: 300;
 }
 
 .routeContent>form>div>select>option {
-    background-color: var(--yellowGreenLow);
+    background-color: white;
 }
 
 .routeContent>form .routeControltButtonBox {
@@ -67,7 +68,6 @@ select {
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
-    font-weight: bold;
     background-color: var(--silverContent);
     color: var(--buttonColor);
 }
@@ -83,7 +83,6 @@ select {
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
-    font-weight: bold;
     background-color: var(--silverContent);
     color: var(--closeButtonColor);
     color: var(--closeButtonColor);
@@ -91,7 +90,7 @@ select {
 
 .routeContent>form .routeControltButtonBox .resetBoxButton>button:hover {
     background-color: red;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 

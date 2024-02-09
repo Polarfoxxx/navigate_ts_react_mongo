@@ -12,11 +12,11 @@ function MapSearch(): JSX.Element {
     const { location_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { mapBussines_Category } = sideWays_DATA, { startPoints, main_atl_route } = location_DATA;
     const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
-    const [allBussines, setBussines] = React.useState<Type_SearchRespo_EDITED_DATA[]>([]);
+    const [allBussines, setAllBussines] = React.useState<Type_SearchRespo_EDITED_DATA[]>([]);
 
     React.useEffect(() => {
         fetchSearchData()
-    }, [JSON.stringify( mapBussines_Category)]);
+    }, [JSON.stringify( mapBussines_Category.SIC_Data)]);
 
 
     async function fetchSearchData() {
@@ -31,7 +31,7 @@ function MapSearch(): JSX.Element {
             try {
                 const DATA_API: Type_SearchRespo_EDITED_DATA[] = await SEARCH_BUSSINES_API.search_API_bussines_Circle(UPDATE_DATA_CIRCLE_API);
                 console.log(DATA_API);
-                setBussines(DATA_API)
+                setAllBussines(DATA_API)
                 const UPDATE_DATA_FOR_CONTEXT = {
                     ...mapBussines_Category,
                     allResultDATA: DATA_API
@@ -54,7 +54,7 @@ function MapSearch(): JSX.Element {
             try {
                 const DATA_API = await SEARCH_BUSSINES_API.search_API_bussines_Corridor(UPDATE_DATA_CORRIDOR_API)
                 console.log(DATA_API);
-                setBussines(DATA_API)
+                setAllBussines(DATA_API)
                 const UPDATE_DATA_FOR_CONTEXT = {
                     ...mapBussines_Category,
                     allResultDATA: DATA_API
@@ -68,26 +68,11 @@ function MapSearch(): JSX.Element {
 
         }
     }
-    /*     React.useEffect(() => {
-            if (mapBussines_Category.POI_Data?.area) {
-                cicrcele(mapBussines_Category.POI_Data?.area)
-            }
-            function cicrcele(area: string) {
-                L.circle([startPoints.latLng[0], startPoints.latLng[1]], {
-                    color: 'rgb(106, 255, 0)',
-                    fillColor: 'black',
-                    fillOpacity: 0.3,
-                    radius: (+area * 1000)
-                }).addTo(MAP);
-            }
-        }, [allBussines])
-     */
 
     return (
         <>
             {
-                mapBussines_Category.popupStatus && allBussines.length > 0 && mapBussines_Category.popupStatus &&
-                allBussines.map((item, key) =>
+                 allBussines.length > 0 && mapBussines_Category.status && allBussines.map((item, key) =>
                     <MarkersBussinessAndIncidents
                         type="bussines"
                         position={item.fields.mqap_geography.latLng}

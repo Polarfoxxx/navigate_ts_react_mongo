@@ -26,6 +26,7 @@ function OnePointBussinessSearcheControl(): JSX.Element {
             ...mapBussines_Category,
             typeSearch: "OnePointBussinessSearche",
             status: true,
+            popupStatus: false,
             SIC_Data: UPDATE_SIC_DATA,
         };
         updateContext_DATA([
@@ -33,16 +34,17 @@ function OnePointBussinessSearcheControl(): JSX.Element {
         ]);
     };
 
-    /* close markerov bussines */
+    /* clear form bussines */
     const handleClickClearFunctuon = () => {
         const UPDATE_DATA = {
             ...mapBussines_Category,
-            status: false
-        }
+            status: false,
+            popupStatus: false,
+        };
         updateContext_DATA([
             { newData: UPDATE_DATA, key: "mapBussines_Category" },
-        ])
-    }
+        ]);
+    };
 
     return (
         <div className="onePointContent">
@@ -97,8 +99,8 @@ function OnePointBussinessSearcheControl(): JSX.Element {
                         </button>
                     </div>
                     <div className="resetBoxButton">
-                        <button onClick={() => { reset(); handleClickClearFunctuon(); }}>
-                            Clear
+                        <button onClick={() => { reset(); handleClickClearFunctuon() }}>
+                            Reset
                         </button>
                     </div>
                 </div>
