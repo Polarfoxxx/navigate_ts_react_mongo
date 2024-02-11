@@ -7,8 +7,8 @@ import { Type_forMarkersBussinessAndIncidents } from "./type";
 
 
 function MarkersBussinessAndIncidents<T extends object>({
-     type, position, icon, data
-     }: Type_forMarkersBussinessAndIncidents<T>): JSX.Element {
+    type, position, icon, data
+}: Type_forMarkersBussinessAndIncidents<T>): JSX.Element {
     const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { mapBussines_Category, incident } = sideWays_DATA;
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
@@ -20,8 +20,7 @@ function MarkersBussinessAndIncidents<T extends object>({
         if (timeoutReff.current) {
             clearTimeout(timeoutReff.current);
         }
-        
-        
+
         timeoutReff.current = setTimeout(() => {
             if (type === "incident" || type === "bussines") {
                 if (stateONmouse) {
@@ -36,17 +35,15 @@ function MarkersBussinessAndIncidents<T extends object>({
                             popupStatus: true,
                             dataMapBussines_froPopup: data,
                         };
-    console.log(UPDATE_DATA);
-    
                     updateContext_DATA([
                         { newData: UPDATE_DATA, key: type === "incident" ? "incident" : "mapBussines_Category" },
                         { newData: true, key: "popup_event" },
                     ]);
                 }
             }
-        }, 1000); // Changed to 700 milliseconds
+        }, 1000);
     };
-    
+
 
 
     return (

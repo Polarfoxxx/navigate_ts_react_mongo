@@ -35,6 +35,10 @@ export {
 
 export {
     DEFAULT_VALUE_MAP_BUSSINES,
+    DEFAULT_VALUE_POSITION,
     DEFAULT_VALUE_ADDRESS,
+    DEFAULT_VALUE_MAP_CURRENT_INFO,
+    DEFAULT_VALUE_MAP_INCIDENT,
+    DEFAULT_VALUE_LOCATION_MARKER_POPUP
 } from "./Container.Provider/defaultValue/secondary_default_value";
 

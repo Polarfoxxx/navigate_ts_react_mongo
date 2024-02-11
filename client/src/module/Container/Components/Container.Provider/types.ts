@@ -189,7 +189,6 @@ export type Type_location_DATA = {
 };
 export type Type_sideWays_DATA = {
   clickOnMap: Type_OnClick_object;
-  navi_Machine: boolean;
   traffic: boolean,
   popup_event: boolean;
   markerInTheRoute: L.LatLngExpression | null,

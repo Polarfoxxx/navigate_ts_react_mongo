@@ -10,7 +10,12 @@ export const DEFAULT_VALUE_ADDRESS = {
     town: ""
 };
 
-export const  DEFAULT_VALUE_MAP_BUSSINES = {
+export const DEFAULT_VALUE_POSITION = {
+    address: DEFAULT_VALUE_ADDRESS,
+    latLng: [],
+}
+
+export const DEFAULT_VALUE_MAP_BUSSINES = {
     typeSearch: "",
     type: "",
     status: false,
@@ -23,3 +28,28 @@ export const  DEFAULT_VALUE_MAP_BUSSINES = {
         typeMAPorList: ""
     }
 };
+
+export const DEFAULT_VALUE_MAP_CURRENT_INFO = {
+    zoom: 0,
+    center: null,
+    sizeMap: [],
+    mapsRectangle: []
+};
+
+export const DEFAULT_VALUE_MAP_INCIDENT = {
+    status: false,
+    popupStatus: false,
+    dataInc_ForPopup: null
+};
+
+export const DEFAULT_VALUE_LOCATION_MARKER_POPUP = {
+    popupStatus: false,
+    data: {
+        ident: "",
+        address: DEFAULT_VALUE_ADDRESS
+    },
+    location: {
+        lat: null,
+        lng: null
+    }
+}

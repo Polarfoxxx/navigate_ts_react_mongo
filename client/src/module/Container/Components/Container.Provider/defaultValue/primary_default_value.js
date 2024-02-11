@@ -1,26 +1,18 @@
 import {
-    DEFAULT_VALUE_ADDRESS,
-    DEFAULT_VALUE_MAP_BUSSINES
+    DEFAULT_VALUE_MAP_BUSSINES,
+    DEFAULT_VALUE_MAP_CURRENT_INFO,
+    DEFAULT_VALUE_MAP_INCIDENT,
+    DEFAULT_VALUE_LOCATION_MARKER_POPUP,
+    DEFAULT_VALUE_POSITION
 } from "./secondary_default_value";
-
-
-
 
 
 /* ----------------------------------------------------------- */
 export const DEFAULT_VALUE_LOCATION_FOR_PROVIDER_CONTEXT = {
-    startPoints: {
-        address: DEFAULT_VALUE_ADDRESS,
-        latLng: [],
-    },
-    endPoints: {
-        address: DEFAULT_VALUE_ADDRESS,
-        latLng: [],
-    },
+    startPoints: DEFAULT_VALUE_POSITION,
+    endPoints: DEFAULT_VALUE_POSITION,
     intermediatePoints: [],
     main_atl_route: [],
-
-    /* nepouiva sa */
     changeRoutes: {
         routeIndex: 0,
         onEvent: ""
@@ -28,40 +20,15 @@ export const DEFAULT_VALUE_LOCATION_FOR_PROVIDER_CONTEXT = {
 };
 
 export const DEFAULT_VALUE_SIDEWAYS_FOR_PROVIDER_CONTEXT = {
-    clickOnMap: {
-        address: DEFAULT_VALUE_ADDRESS,
-        latLng: undefined,
-    },
-    navi_Machine: false,/* nepoziva sa */
-
+    clickOnMap: DEFAULT_VALUE_POSITION,
     traffic: false,
     popup_event: false,
     markerInTheRoute: null,
-    mapsCurrentInfo: {
-        zoom: 0,
-        center: null,
-        sizeMap: [],
-        mapsRectangle: []
-    },
-    incident: {
-        status: false,
-        popupStatus: false,
-        dataInc_ForPopup: null
-    },
+    mapsCurrentInfo: DEFAULT_VALUE_MAP_CURRENT_INFO,
+    incident: DEFAULT_VALUE_MAP_INCIDENT,
     mapBussines_Category: DEFAULT_VALUE_MAP_BUSSINES,
-    location_markerPopupt: {
-        popupStatus: false,
-        data: {
-            ident: "",
-            address: DEFAULT_VALUE_ADDRESS
-        },
-        location: {
-            lat: null,
-            lng: null
-        }
-    }
+    location_markerPopupt: DEFAULT_VALUE_LOCATION_MARKER_POPUP
 };
-/* ----------------------------------------------------------- */
 
 
 
