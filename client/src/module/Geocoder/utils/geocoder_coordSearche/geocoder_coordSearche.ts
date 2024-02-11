@@ -1,10 +1,11 @@
 import axios from "axios";
+import { TypeStartAndEndPoint } from "../../../Container";
 import {
   Type_fromGeocoderMapClickSearche,
   Type_returning_object,
 } from "./types";
 
-async function geocoder_coordSearche(CLICK_COORD: Type_fromGeocoderMapClickSearche): Promise<Type_returning_object> {
+async function geocoder_coordSearche(CLICK_COORD: Type_fromGeocoderMapClickSearche): Promise<TypeStartAndEndPoint> {
   const PROVIDER_URL = 'https://nominatim.openstreetmap.org/search';
   const FORMAT = 'json';
   const LANGUAGE = 'en';
@@ -30,7 +31,6 @@ async function geocoder_coordSearche(CLICK_COORD: Type_fromGeocoderMapClickSearc
       const UPDATE_DATA: Type_returning_object = {
         address: ADDRESS_DATA,
         latLng: [CLICK_COORD[0], CLICK_COORD[1]],
-        type: "clickToMap",
       };
 
       return UPDATE_DATA;

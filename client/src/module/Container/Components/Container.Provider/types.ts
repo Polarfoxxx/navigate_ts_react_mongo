@@ -148,7 +148,7 @@ export type TypeStartAndEndPoint = {
 /* =========================================================== */
 export type Type_OnClick_object = {
   address: Type_Addrress;
-  latLng: number[] | undefined;
+  latLng: number[];
 };
 /* =========================================================== */
 /* =========================================================== */

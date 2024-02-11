@@ -23,7 +23,7 @@ function Popups(): JSX.Element {
 
     /* spustenie popup pre klik na mapu */
     React.useEffect(() => {
-        if (clickOnMap && clickOnMap.latLng) {
+        if (clickOnMap.address.label && clickOnMap.latLng) {
             const CLICK_COORD = clickOnMap.latLng as LatLngExpression;
             setPopupLoc_Cont_Ident({
                 content: <OnClickMapContent />,
