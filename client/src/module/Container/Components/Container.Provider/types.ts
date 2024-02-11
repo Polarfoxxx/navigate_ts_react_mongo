@@ -198,18 +198,12 @@ export type Type_sideWays_DATA = {
   mapBussines_Category: Type_MapBussines_Category,
   location_markerPopupt: Type_forLocation_markerPopupt
 };
-export type Type_userDATA = {
-  loginName: string
-};
-
 
 export type Type_Provider_Context = {
   location_DATA: Type_location_DATA;
   setLocation_DATA: React.Dispatch<React.SetStateAction<Type_location_DATA>>;
   sideWays_DATA: Type_sideWays_DATA,
   setSideWays_DATA: React.Dispatch<React.SetStateAction<Type_sideWays_DATA>>;
-  user_DATA: Type_userDATA,
-  setUser_DATA: React.Dispatch<React.SetStateAction<Type_userDATA>>;
 };
 /* =========================================================== */
 /* =========================================================== */

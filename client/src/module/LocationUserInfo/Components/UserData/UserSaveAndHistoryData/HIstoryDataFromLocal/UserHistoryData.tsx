@@ -4,7 +4,7 @@ import { Container } from "../../../../../Container";
 import UserSaveDataItem from "./UserHistoryDataItem";
 import { Type_UserSaveHistoryRouteObjekt } from "../types";
 import { UseChangeContextDATA } from "../../../../../hooks";
-import { DEFAULT_VALUE_ADDRESS_FOR_PROVIDER_CONTEXT } from "../../../../../Container";
+import { DEFAULT_VALUE_LOCATION_FOR_PROVIDER_CONTEXT } from "../../../../../Container";
 
 
 function UserHistoryData(): JSX.Element {
@@ -27,7 +27,7 @@ function UserHistoryData(): JSX.Element {
 
     /* vymazanie local storage */
     const handleClickClearLocalHistory = () => {
-        updateContext_DATA([{ newData: DEFAULT_VALUE_ADDRESS_FOR_PROVIDER_CONTEXT, key: "location_DATA" }]);
+        updateContext_DATA([{ newData: DEFAULT_VALUE_LOCATION_FOR_PROVIDER_CONTEXT, key: "location_DATA" }]);
         localStorage.removeItem("saveHistoryRoutes");
         setStorage_route([])
     };

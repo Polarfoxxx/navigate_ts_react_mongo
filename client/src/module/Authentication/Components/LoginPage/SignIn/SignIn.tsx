@@ -11,8 +11,6 @@ import { Container } from "../../../../Container";
 
 
 function SignIn(): JSX.Element {
-    const { user_DATA, setUser_DATA } = React.useContext(Container.Context);
-    const { updateContext_DATA } = UseChangeContextDATA({ user_DATA, setUser_DATA });
     const NAVIGATE = useNavigate();
     const { handleSubmit, reset } = useInputValue();
     const [respoMessage, setRespoMessage] = React.useState("");
@@ -52,9 +50,6 @@ function SignIn(): JSX.Element {
                     user_Name: LOGIN_DATA.user_name
                 }));
                 NAVIGATE("/Content");
-                updateContext_DATA([
-                    { newData: LOGIN_DATA.user_name, key: "loginName" },
-                ]);
             } else {
                 if (LOGIN_DATA?.message) {
                     setRespoMessage(LOGIN_DATA?.message);

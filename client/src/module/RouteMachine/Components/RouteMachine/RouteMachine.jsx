@@ -15,7 +15,7 @@ function RouteMachine() {
     const MAP = useMap();
     const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
     const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
-    const { startPoints, endPoints, intermediatePoints, main_atl_route } = location_DATA, { mapBussines_Category } = sideWays_DATA;
+    const { startPoints, endPoints, intermediatePoints, main_atl_route } = location_DATA
     const [routingControl, setRoutingControl] = React.useState(null);
     const timeoutReff = React.useRef(null);
 
@@ -162,7 +162,7 @@ function RouteMachine() {
         };
     }, [routingControl]);
 
-    /* nastavenie novej trasy vlozenie do pola a lokalneho uloziska pre zobarazenie hidtorie*/
+    /* nastavenie novej trasy vlozenie do pola a lokalneho uloziska pre zobarazenie historie*/
     React.useEffect(() => {
         if (main_atl_route.length > 0) {
             const CREATE_TIME = new Date();

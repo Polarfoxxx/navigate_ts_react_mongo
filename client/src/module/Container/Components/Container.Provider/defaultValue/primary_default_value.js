@@ -1,19 +1,14 @@
+import {
+    DEFAULT_VALUE_ADDRESS,
+    DEFAULT_VALUE_MAP_BUSSINES
+} from "./secondary_default_value";
 
 
 
-export const DEFAULT_VALUE_ADDRESS = {
-    label: "",
-    country: "",
-    country_code: "",
-    county: "",
-    postcode: "",
-    region: "",
-    state: "",
-    town: ""
-};
+
 
 /* ----------------------------------------------------------- */
-export const DEFAULT_VALUE_ADDRESS_FOR_PROVIDER_CONTEXT = {
+export const DEFAULT_VALUE_LOCATION_FOR_PROVIDER_CONTEXT = {
     startPoints: {
         address: DEFAULT_VALUE_ADDRESS,
         latLng: [],
@@ -53,19 +48,7 @@ export const DEFAULT_VALUE_SIDEWAYS_FOR_PROVIDER_CONTEXT = {
         popupStatus: false,
         dataInc_ForPopup: null
     },
-    mapBussines_Category: {
-        typeSearch: "",
-        type: "",
-        status: false,
-        popupStatus: false,
-        SIC_Data: null,
-        dataMapBussines_froPopup: null,
-        allResultDATA: null,
-        select_Route_Bussines: {
-            select: null,
-            typeMAPorList: ""
-        }
-    },
+    mapBussines_Category: DEFAULT_VALUE_MAP_BUSSINES,
     location_markerPopupt: {
         popupStatus: false,
         data: {
@@ -77,9 +60,6 @@ export const DEFAULT_VALUE_SIDEWAYS_FOR_PROVIDER_CONTEXT = {
             lng: null
         }
     }
-};
-export const DEFAULT_USERDATA_FOR_PROVIDER_CONTEXT = {
-    loginName: ""
 };
 /* ----------------------------------------------------------- */
 

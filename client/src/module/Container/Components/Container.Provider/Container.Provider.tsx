@@ -6,30 +6,26 @@ import {
     Type_Provider_Context,
     Type_location_DATA,
     Type_sideWays_DATA,
-    Type_userDATA
 } from "./types";
 
 import {
-    DEFAULT_VALUE_ADDRESS_FOR_PROVIDER_CONTEXT,
+    DEFAULT_VALUE_LOCATION_FOR_PROVIDER_CONTEXT,
     DEFAULT_VALUE_SIDEWAYS_FOR_PROVIDER_CONTEXT,
-    DEFAULT_USERDATA_FOR_PROVIDER_CONTEXT
-} from "./default_value";
+} from "./defaultValue/primary_default_value";
 
 
 const Context = React.createContext<Type_Provider_Context>({
-    location_DATA: DEFAULT_VALUE_ADDRESS_FOR_PROVIDER_CONTEXT,
+    location_DATA: DEFAULT_VALUE_LOCATION_FOR_PROVIDER_CONTEXT,
     setLocation_DATA: () => { },
     sideWays_DATA: DEFAULT_VALUE_SIDEWAYS_FOR_PROVIDER_CONTEXT,
     setSideWays_DATA: () => { },
-    user_DATA: DEFAULT_USERDATA_FOR_PROVIDER_CONTEXT,
-    setUser_DATA: () => { },
+   
 });
 
 
 function Provider({ children }: Props_Provider): JSX.Element {
-    const [location_DATA, setLocation_DATA] = React.useState<Type_location_DATA>(DEFAULT_VALUE_ADDRESS_FOR_PROVIDER_CONTEXT);
+    const [location_DATA, setLocation_DATA] = React.useState<Type_location_DATA>(DEFAULT_VALUE_LOCATION_FOR_PROVIDER_CONTEXT);
     const [sideWays_DATA, setSideWays_DATA] = React.useState<Type_sideWays_DATA>(DEFAULT_VALUE_SIDEWAYS_FOR_PROVIDER_CONTEXT);
-    const [user_DATA, setUser_DATA] = React.useState<Type_userDATA>(DEFAULT_USERDATA_FOR_PROVIDER_CONTEXT);
     const NAVIGATE = useNavigate();
 
     React.useEffect(() => {
@@ -43,7 +39,7 @@ function Provider({ children }: Props_Provider): JSX.Element {
 
 
     return (
-        <Context.Provider value={{ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA, user_DATA, setUser_DATA }}>
+        <Context.Provider value={{ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA }}>
             {children}
         </Context.Provider>
     )
