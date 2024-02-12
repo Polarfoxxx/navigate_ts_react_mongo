@@ -12,13 +12,9 @@ import { useInputValue } from "foxxy_input_value";
 import { SERVICES_CONVERSION_OF_UNIT_AND_TIME as CONVER_UNITS } from "../../../../../utils";
 import { AUTHENTICATION_API } from "../../../../../API";
 
-
-
-
 function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
-    const { location_DATA, setLocation_DATA, sideWays_DATA } = React.useContext(Container.Context);
-    const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
-    const { startPoints, endPoints, intermediatePoints } = location_DATA;
+    const { location_DATA, } = React.useContext(Container.Context);
+    const { updateContext_DATA } = UseChangeContextDATA();
     const { handleSubmit, reset } = useInputValue();
     const [saveDATA, setSaveDATA] = React.useState<Type_saveRoute>(DEFAULT_VALUE_SAVE_DATA_ITEM);
     const [emailSendMessage, setEmailSendMessage] = React.useState("Send to email")
@@ -29,7 +25,7 @@ function UserSaveDataItem(props: Type_UserSaveDataItem): JSX.Element {
             setSaveDATA(props.item);
         }
     }, [props.item]);
-    
+
 
     /* send to email */
     const submit = (v: TypeForInputsObject["v"]): void => {

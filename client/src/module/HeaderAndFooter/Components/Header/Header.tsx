@@ -5,14 +5,13 @@ import { faRoute } from '@fortawesome/free-solid-svg-icons'
 import DropdownLogOut from "./DropdownLogOut";
 import { AUTHENTICATION_API } from "../../../API";
 import { UseChangeContextDATA } from '../../../hooks';
-import { Container, DEFAULT_VALUE_LOCATION_FOR_PROVIDER_CONTEXT } from '../../../Container';
+import { DEFAULT_VALUE_LOCATION_FOR_PROVIDER_CONTEXT } from '../../../Container';
 import { useNavigate } from 'react-router-dom';
 
 
 function Header(): JSX.Element {
     const NAVIGATE = useNavigate();
-    const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
-    const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
+    const { updateContext_DATA } = UseChangeContextDATA();
     const [logUserName, setLogUserName] = React.useState("");
     const [deleteAccountCont, setDeleteAccountCont] = React.useState<JSX.Element | null>(null);
 

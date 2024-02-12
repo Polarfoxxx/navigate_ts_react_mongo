@@ -6,12 +6,12 @@ import { faBuilding } from '@fortawesome/free-solid-svg-icons'
 import { geocoder_coordSearche } from "../../../../Geocoder";
 import { UseChangeContextDATA } from "../../../../hooks";
 import { DEFAULT_VALUE_FOR_ONCLICK_BUSSINES_CONTENT } from "./defaultValue";
-import { SERVICES_CONVERSION_OF_UNIT_AND_TIME as CONVER_UNITS} from "../../../../utils";
+import { SERVICES_CONVERSION_OF_UNIT_AND_TIME as CONVER_UNITS } from "../../../../utils";
 
 function OnClickBussinesSearcheContent(): JSX.Element {
-    const { location_DATA, sideWays_DATA, setLocation_DATA, setSideWays_DATA } = React.useContext(Container.Context);
+    const { sideWays_DATA } = React.useContext(Container.Context);
     const { mapBussines_Category } = sideWays_DATA;
-    const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
+    const { updateContext_DATA } = UseChangeContextDATA();
     const [bussinesDATA_item, setBussinesDATA_item] = React.useState<Type_SearchRespo_EDITED_DATA>(DEFAULT_VALUE_FOR_ONCLICK_BUSSINES_CONTENT)
 
     /* nastavenie stavu pre obsah popupu */
@@ -67,7 +67,7 @@ function OnClickBussinesSearcheContent(): JSX.Element {
                         <h4>Distance:</h4>
                     </div>
                     <div className="distanceContentValue bodyValue">
-                        <h2>{CONVER_UNITS.services_conversionOfUnits({total_value: bussinesDATA_item.distance, units_type:"km"})}</h2>
+                        <h2>{CONVER_UNITS.services_conversionOfUnits({ total_value: bussinesDATA_item.distance, units_type: "km" })}</h2>
                     </div>
                 </div>
                 <div className="bussinesContentBodyInfo">

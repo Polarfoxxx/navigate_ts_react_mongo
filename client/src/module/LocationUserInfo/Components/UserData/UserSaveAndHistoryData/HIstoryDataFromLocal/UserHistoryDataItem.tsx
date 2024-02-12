@@ -39,8 +39,8 @@ const reducer = (state: Type_forReducerUserHistoryDataItem, action: Type_Action_
 
 
 function UserHistoryDataItem(props: Type_UserHistoryDataItem): JSX.Element {
-    const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
-    const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
+    const { location_DATA } = React.useContext(Container.Context);
+    const { updateContext_DATA } = UseChangeContextDATA();
     const { startPoints, endPoints, intermediatePoints } = location_DATA;
     const { handleSubmit, reset } = useInputValue();
     const [state, dispatch] = React.useReducer(reducer, DEFAULT_VALUE_FOR_REDUCER_HISTORY_DATA_ITEM);
@@ -84,7 +84,7 @@ function UserHistoryDataItem(props: Type_UserHistoryDataItem): JSX.Element {
             try {
                 const SAVE_RESPO = await AUTHENTICATION_API.saveDATA_API({ DATA_ROUTE, USER_NAME, USER_JWT_TOKEN });
                 console.log(SAVE_RESPO);
-                
+
                 if (SAVE_RESPO) {
                     dispatch({ type: "SET_RESPO_MESSAGE", payload: SAVE_RESPO.message });
                     setTimeout(() => {

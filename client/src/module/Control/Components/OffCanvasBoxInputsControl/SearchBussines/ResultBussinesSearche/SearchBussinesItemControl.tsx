@@ -7,10 +7,10 @@ import { UseChangeContextDATA } from "../../../../../hooks";
 import SearcheItemBussines from "./SearcheItemBussines";
 
 function SearchBussinesItemControl(): JSX.Element {
-    const { location_DATA, sideWays_DATA, setLocation_DATA, setSideWays_DATA } = React.useContext(Container.Context);
-    const { mapBussines_Category } = sideWays_DATA, { endPoints } = location_DATA;
+    const { location_DATA, sideWays_DATA } = React.useContext(Container.Context);
+    const { mapBussines_Category } = sideWays_DATA;
     const [bussinesDATA, setBussinesDATA] = React.useState<Type_SearchRespo_EDITED_DATA[]>([]);
-    const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
+    const { updateContext_DATA } = UseChangeContextDATA();
     const selectREF = React.useRef<number>()
 
     /* nastavenie stavu pre vsetky vysledky busssines */

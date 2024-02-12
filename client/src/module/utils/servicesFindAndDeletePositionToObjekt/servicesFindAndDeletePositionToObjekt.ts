@@ -1,35 +1,48 @@
-import { DEFAULT_VALUE_ADDRESS } from "../../Container";
+import {
+    DEFAULT_VALUE_POSITION,
+    DEFAULT_VALUE_CHANGE_ROUTE, DEFAULT_VALUE_LOCATION_FOR_PROVIDER_CONTEXT,
+} from "../../Container";
+import {
+    Type_for_servicesFindAndDeletePositionToObjekt,
+    Type_retutned_servicesFindAndDeletePositionToObjekt
+} from "./types";
 
-type Type_forServicesFindAndDeletePositionToObjekt<T, A, X> = {
-    startPoints: T
-    endPoints: A
-    intermediatePoints: X[]
-    DELETE_POINT: string
-};
 
-function servicesFindAndDeletePositionToObjekt<T, A, X>(
-    props: Type_forServicesFindAndDeletePositionToObjekt<T, A, X>
-): { type: string, newData: T | A | X[] } {
+function servicesFindAndDeletePositionToObjekt(
+    props: Type_for_servicesFindAndDeletePositionToObjekt
+): Type_retutned_servicesFindAndDeletePositionToObjekt {
 
-    const IDENT_POINT = props.DELETE_POINT;
-
-    if (typeof IDENT_POINT === "string") {
+    if (props.DELETE_POINT === "startPoints") {
         return {
-            type: IDENT_POINT,
+            type: "location_DATA",
+            newData: DEFAULT_VALUE_LOCATION_FOR_PROVIDER_CONTEXT
+        }
+    } else if (props.DELETE_POINT === "endPoints") {
+        return {
+            type: "location_DATA",
             newData: {
-                ...props.startPoints || props.endPoints,
-                address: DEFAULT_VALUE_ADDRESS,
-                latLng: [],
-            }
-        }
-    } else {
-        const INERMEDIATE_ARRAY = props.intermediatePoints;
-        INERMEDIATE_ARRAY.splice(IDENT_POINT - 1, 1);
+                ...props.location_DATA,
+                endPoints: DEFAULT_VALUE_POSITION,
+                intermediatePoints: [],
+                main_atl_route: [],
+                changeRoutes: DEFAULT_VALUE_CHANGE_ROUTE
+            },
+        };
+    } else if (typeof props.DELETE_POINT === "number") {
+        let update_intermediateArr = props.location_DATA.intermediatePoints;
+        update_intermediateArr.splice(props.DELETE_POINT - 1, 1);
         return {
-            type: "",
-            newData: [...INERMEDIATE_ARRAY]
-        }
-    };
+            type: "location_DATA",
+            newData: {
+                ...props.location_DATA,
+                intermediatePoints: update_intermediateArr,
+            },
+        };
+    }
+    return {
+        type: "",
+        newData: ""
+    }
 };
 
 export default servicesFindAndDeletePositionToObjekt;

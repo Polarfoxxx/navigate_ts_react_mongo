@@ -7,9 +7,9 @@ import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import SIC_Codes from "../../../../../utils/SIC/SIC_code.json";
 
 function RouteBussinessSearcheControl(): JSX.Element {
-    const { sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
+    const { sideWays_DATA } = React.useContext(Container.Context);
     const { mapBussines_Category } = sideWays_DATA;
-    const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
+    const { updateContext_DATA } = UseChangeContextDATA();
     const { handleSubmit, reset } = useInputValue();
 
 

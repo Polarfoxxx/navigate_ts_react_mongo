@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { Container } from "../../../Container";
 import { useMap } from "react-leaflet";
 import { LeafletMouseEvent, LatLngExpression } from "leaflet";
 import { geocoder_coordSearche } from "../../../Geocoder";
@@ -7,8 +6,7 @@ import { UseChangeContextDATA } from "../../../hooks";
 
 function MapHandler(): null {
   const MAP = useMap();
-  const { sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
-  const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
+  const { updateContext_DATA } = UseChangeContextDATA();
   const popupLocationRef = useRef<LatLngExpression | undefined>();
   const centerMAP_zoomMAP_Ref = React.useRef({
     mapCenter: MAP.getCenter(),

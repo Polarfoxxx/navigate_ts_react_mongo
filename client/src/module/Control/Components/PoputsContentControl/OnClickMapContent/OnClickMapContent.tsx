@@ -11,8 +11,8 @@ type Type_forControlMapCLcontent = {
 }
 
 function OnClickMapContent(props: Type_forControlMapCLcontent): JSX.Element {
-    const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
-    const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
+    const { location_DATA, sideWays_DATA } = React.useContext(Container.Context);
+    const { updateContext_DATA } = UseChangeContextDATA();
     const { startPoints, endPoints, intermediatePoints } = location_DATA, { clickOnMap } = sideWays_DATA
     const [locationName, setLocationName] = React.useState("");
     const [buttonName, setButtonName] = React.useState<Type_ButtonName>("Your position");
@@ -33,7 +33,7 @@ function OnClickMapContent(props: Type_forControlMapCLcontent): JSX.Element {
         setButtonName(buttonName);
     }, [startPoints.address.label, endPoints.address.label, intermediatePoints]);
 
-    
+
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation(); /* zabranuje prebublavaniu */
         updateContext_DATA([

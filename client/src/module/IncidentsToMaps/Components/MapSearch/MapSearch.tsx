@@ -9,14 +9,14 @@ import { UseChangeContextDATA } from "../../../hooks";
 import { SERVICES_MARKER_ICON } from "../../../RouteMachine";
 
 function MapSearch(): JSX.Element {
-    const { location_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
+    const { location_DATA, sideWays_DATA } = React.useContext(Container.Context);
     const { mapBussines_Category } = sideWays_DATA, { startPoints, main_atl_route } = location_DATA;
-    const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
+    const { updateContext_DATA } = UseChangeContextDATA();
     const [allBussines, setAllBussines] = React.useState<Type_SearchRespo_EDITED_DATA[]>([]);
 
     React.useEffect(() => {
         fetchSearchData()
-    }, [JSON.stringify( mapBussines_Category.SIC_Data)]);
+    }, [JSON.stringify(mapBussines_Category.SIC_Data)]);
 
 
     async function fetchSearchData() {
@@ -72,7 +72,7 @@ function MapSearch(): JSX.Element {
     return (
         <>
             {
-                 allBussines.length > 0 && mapBussines_Category.status && allBussines.map((item, key) =>
+                allBussines.length > 0 && mapBussines_Category.status && allBussines.map((item, key) =>
                     <MarkersBussinessAndIncidents
                         type="bussines"
                         position={item.fields.mqap_geography.latLng}

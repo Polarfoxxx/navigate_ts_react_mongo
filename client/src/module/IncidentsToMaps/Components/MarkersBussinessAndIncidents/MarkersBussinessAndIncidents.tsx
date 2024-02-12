@@ -9,9 +9,9 @@ import { Type_forMarkersBussinessAndIncidents } from "./type";
 function MarkersBussinessAndIncidents<T extends object>({
     type, position, icon, data
 }: Type_forMarkersBussinessAndIncidents<T>): JSX.Element {
-    const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
+    const { sideWays_DATA } = React.useContext(Container.Context);
     const { mapBussines_Category, incident } = sideWays_DATA;
-    const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
+    const { updateContext_DATA } = UseChangeContextDATA();
     const timeoutReff = React.useRef<NodeJS.Timeout | null>(null);
 
     // funkcia ktora sa spusti po mouseover nasledne odosle do data cez context

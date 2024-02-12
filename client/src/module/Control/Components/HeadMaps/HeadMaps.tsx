@@ -22,10 +22,10 @@ const reducer = (state: Type_State_HeadMaps, action: Type_Action_HeadMaps) => {
 /* useReducer ----------------------------*/
 
 function HeadMaps(): JSX.Element {
-    const { location_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
+    const { location_DATA, sideWays_DATA } = React.useContext(Container.Context);
     const { startPoints, endPoints, intermediatePoints } = location_DATA;
     const { incident, traffic } = sideWays_DATA;
-    const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
+    const { updateContext_DATA } = UseChangeContextDATA();
     const [state, dispatch] = React.useReducer(reducer, DEFAULT_VALUE_FOR_REDUCER);
 
     /* nastavenie nazvov miest do headeru */

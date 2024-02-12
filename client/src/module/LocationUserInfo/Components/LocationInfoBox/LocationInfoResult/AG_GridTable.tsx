@@ -16,7 +16,6 @@ import {
     createGrid,
 } from 'ag-grid-community';
 import { UseChangeContextDATA } from '../../../../hooks';
-import { Container } from '../../../../Container';
 import { GeocoderInputSearche } from "../../../../Geocoder";
 
 
@@ -24,8 +23,7 @@ import { GeocoderInputSearche } from "../../../../Geocoder";
 // Create new GridExample component
 function AG_GridTable(props: Type_forLocationInfoResult): JSX.Element {
     const geocoderService = new GeocoderInputSearche();
-    const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
-    const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
+    const { updateContext_DATA } = UseChangeContextDATA();
     const [rowData, setRowData] = React.useState<Type_IRow[]>([])
     const [colDefs] = React.useState<ColDef[]>([
         { field: 'type' },

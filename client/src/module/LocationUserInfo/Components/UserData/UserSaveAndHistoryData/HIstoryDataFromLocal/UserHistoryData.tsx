@@ -8,8 +8,8 @@ import { DEFAULT_VALUE_LOCATION_FOR_PROVIDER_CONTEXT } from "../../../../../Cont
 
 
 function UserHistoryData(): JSX.Element {
-    const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
-    const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
+    const { location_DATA } = React.useContext(Container.Context);
+    const { updateContext_DATA } = UseChangeContextDATA();
     const selectItemRef = React.useRef<number>();
     const [storage_route, setStorage_route] = React.useState<Type_UserSaveHistoryRouteObjekt[]>([]);
 

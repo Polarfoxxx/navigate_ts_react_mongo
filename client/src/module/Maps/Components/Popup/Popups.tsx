@@ -11,9 +11,9 @@ import { Type_forPopupLoc_Cont_Ident } from "./types";
 
 function Popups(): JSX.Element {
     const MAP = useMap();
-    const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
+    const { sideWays_DATA } = React.useContext(Container.Context);
     const { clickOnMap, popup_event, incident, mapBussines_Category, location_markerPopupt } = sideWays_DATA;
-    const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
+    const { updateContext_DATA } = UseChangeContextDATA();
     const [popupLoc_Cont_Ident, setPopupLoc_Cont_Ident] = React.useState<Type_forPopupLoc_Cont_Ident>({
         content: undefined,
         identPopName: "",
@@ -88,7 +88,7 @@ function Popups(): JSX.Element {
         const popupClose = () => {
             const TYPE_CLOSE_POPUP = popupLoc_Cont_Ident.identPopName;
             console.log(TYPE_CLOSE_POPUP);
-            
+
             if (TYPE_CLOSE_POPUP) {
                 const { type, newData } = services_typeClose_popup({ TYPE_CLOSE_POPUP, incident, location_markerPopupt, mapBussines_Category, clickOnMap })
                 type && updateContext_DATA([

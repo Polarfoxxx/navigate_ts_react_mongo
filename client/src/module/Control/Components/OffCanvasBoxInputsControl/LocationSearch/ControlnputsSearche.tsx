@@ -25,9 +25,9 @@ const reducer = (state: Type_State_ControlnputsSearche, action: Type_Action_Cont
 /* useReducer ----------------------------*/
 
 function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput) {
-  const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
+  const { location_DATA, sideWays_DATA } = React.useContext(Container.Context);
   const { intermediatePoints } = location_DATA;
-  const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA });
+  const { updateContext_DATA } = UseChangeContextDATA();
   const geocoderService = new GeocoderInputSearche();
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const timeoutRef = React.useRef<number | null>(null);
@@ -176,17 +176,17 @@ function ControlnputsSearche({ input_ident, input_value }: Type_forGeocoderInput
       {
         state.isResultsOpen && state.results.length > 0 && (
           <div className="ul_result">
-<ul >
-            {
-              state.results.map((result: string, index: number) =>
-                <li
-                  key={index}
-                  onClick={() => handleAddressClick(result)}>
-                  {result}
-                </li>
-              )
-            }
-          </ul>
+            <ul >
+              {
+                state.results.map((result: string, index: number) =>
+                  <li
+                    key={index}
+                    onClick={() => handleAddressClick(result)}>
+                    {result}
+                  </li>
+                )
+              }
+            </ul>
           </div>
         )}
     </div>

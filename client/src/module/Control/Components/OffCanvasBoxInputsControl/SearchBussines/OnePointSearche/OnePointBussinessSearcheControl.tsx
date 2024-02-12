@@ -9,9 +9,9 @@ import SIC_Codes from "../../../../../utils/SIC/SIC_code.json";
 
 
 function OnePointBussinessSearcheControl(): JSX.Element {
-    const { sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
+    const { sideWays_DATA } = React.useContext(Container.Context);
     const { mapBussines_Category } = sideWays_DATA;
-    const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
+    const { updateContext_DATA } = UseChangeContextDATA();
     const { handleSubmit, reset } = useInputValue();
 
     /* submit odoslanie formulara */

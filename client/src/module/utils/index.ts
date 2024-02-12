@@ -18,6 +18,11 @@ export type {
     Type_JWTdecode,
 } from "./servicesJWTdecodeAndValidity/types";
 
+export type {
+    Type_for_servicesFindAndDeletePositionToObjekt,
+    Type_retutned_servicesFindAndDeletePositionToObjekt
+} from "./servicesFindAndDeletePositionToObjekt/types";
+
 
 
 

@@ -53,3 +53,8 @@ export const DEFAULT_VALUE_LOCATION_MARKER_POPUP = {
         lng: null
     }
 }
+
+export const DEFAULT_VALUE_CHANGE_ROUTE = {
+        routeIndex: 0,
+        onEvent: ""
+}

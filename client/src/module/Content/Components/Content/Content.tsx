@@ -8,12 +8,11 @@ import { ImageLocation } from "../../../ImageLocation";
 import { servicesJWTdecodeAndValidity } from "../../../utils/";
 import { useNavigate } from "react-router-dom";
 import { UseChangeContextDATA } from "../../../hooks";
-import { Container,DEFAULT_VALUE_LOCATION_FOR_PROVIDER_CONTEXT } from "../../../Container";
+import { DEFAULT_VALUE_LOCATION_FOR_PROVIDER_CONTEXT } from "../../../Container";
 
-function Content():JSX.Element {
+function Content(): JSX.Element {
     const NAVIGATE = useNavigate();
-    const { location_DATA, setLocation_DATA } = React.useContext(Container.Context);
-    const { updateContext_DATA } = UseChangeContextDATA({ location_DATA, setLocation_DATA });
+    const { updateContext_DATA } = UseChangeContextDATA();
 
 
     React.useEffect(() => {

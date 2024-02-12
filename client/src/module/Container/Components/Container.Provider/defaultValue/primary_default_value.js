@@ -4,8 +4,8 @@ import {
     DEFAULT_VALUE_MAP_INCIDENT,
     DEFAULT_VALUE_LOCATION_MARKER_POPUP,
     DEFAULT_VALUE_POSITION,
+    DEFAULT_VALUE_CHANGE_ROUTE,
 } from "./secondary_default_value";
-
 
 /* ----------------------------------------------------------- */
 export const DEFAULT_VALUE_LOCATION_FOR_PROVIDER_CONTEXT = {
@@ -13,10 +13,7 @@ export const DEFAULT_VALUE_LOCATION_FOR_PROVIDER_CONTEXT = {
     endPoints: DEFAULT_VALUE_POSITION,
     intermediatePoints: [],
     main_atl_route: [],
-    changeRoutes: {
-        routeIndex: 0,
-        onEvent: ""
-    }
+    changeRoutes: DEFAULT_VALUE_CHANGE_ROUTE
 };
 
 export const DEFAULT_VALUE_SIDEWAYS_FOR_PROVIDER_CONTEXT = {

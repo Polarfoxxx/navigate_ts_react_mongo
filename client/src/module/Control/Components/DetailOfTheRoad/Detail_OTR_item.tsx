@@ -1,15 +1,13 @@
 import React from "react";
 import "./detail_OTR_item.style.css";
 import { Type_For_Direction_item } from "./type";
-import { Container } from "../../../Container";
 import services_navigationIcons from "./services/services_navigationIcons";
 import { UseChangeContextDATA } from "../../../hooks";
 import { SERVICES_CONVERSION_OF_UNIT_AND_TIME as CONVER_UNITS } from "../../../utils";
 
 
 function DetailOTRitem({ all_directions, all_coordinate }: Type_For_Direction_item): JSX.Element {
-    const { sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
-    const { updateContext_DATA } = UseChangeContextDATA({ sideWays_DATA, setSideWays_DATA });
+    const { updateContext_DATA } = UseChangeContextDATA();
 
     /* pohyb markera po trase */
     const handleDivMouseToogle = (event: React.MouseEvent<HTMLDivElement>, state: boolean) => {
