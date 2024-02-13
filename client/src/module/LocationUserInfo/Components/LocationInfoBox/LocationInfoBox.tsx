@@ -1,6 +1,6 @@
 import React from "react";
 import "./location_info_box.style.css"
-import { LocationInfoGeocoderInput, LocationInfoResult, services_changeLocationNameToCountryCode } from "..";
+import {  LocationInfoResult, services_changeLocationNameToCountryCode } from "..";
 import { locationInfo_API, Type_CityInfo_RAW_Data } from "../../../API";
 import { Container } from "../../../Container";
 import lookup from  'country-code-lookup';
@@ -20,7 +20,6 @@ function LocationInfoBox(): JSX.Element {
         try {
             const DATA_API = await locationInfo_API(INFO_COUNTRY);
             setRespoDATA(DATA_API)
-            console.log(DATA_API);
         } catch (error) {
             console.error(error);
         };
@@ -29,9 +28,6 @@ function LocationInfoBox(): JSX.Element {
     return (
         <div className="location_info_box">
             <div className="locationbox">
-                <div className="locationInpBox">
-                    <LocationInfoGeocoderInput />
-                </div>
                 <div className="locationvalues">
                     <LocationInfoResult respoDATA={respoDATA} />
                 </div>

@@ -1,6 +1,5 @@
 /* components */
 export { default as LocationInfoBox } from "./LocationInfoBox/LocationInfoBox";
-export { default as LocationInfoGeocoderInput } from "./LocationInfoBox/LocationInfoInput/LocationInfoGeocoderInput";
 export { default as LocationInfoResult } from "./LocationInfoBox/LocationInfoResult/LocationInfoResult";
 export { default as AG_GridTable } from "./LocationInfoBox/LocationInfoResult/AG_GridTable";
 export { default as LocationUserData } from "./LocationUserData";

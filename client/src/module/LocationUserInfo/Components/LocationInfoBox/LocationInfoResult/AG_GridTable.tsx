@@ -5,34 +5,26 @@ import { Type_IRow, Type_forLocationInfoResult } from './types';
 import "ag-grid-community/styles/ag-grid.css";
 import 'ag-grid-community/styles/ag-theme-alpine.css'; // Importujte požadovaný motiv
 import './ag_GridTable.style.css';
-import {
-    ColDef,
-    ColGroupDef,
-    GridApi,
-    GridOptions,
-    GridReadyEvent,
-    RowSelectedEvent,
-    SelectionChangedEvent,
-    createGrid,
-} from 'ag-grid-community';
+import { ColDef, RowSelectedEvent } from 'ag-grid-community';
 import { UseChangeContextDATA } from '../../../../hooks';
 import { GeocoderInputSearche } from "../../../../Geocoder";
-
-
+import { Container } from '../../../../Container';
 
 // Create new GridExample component
 function AG_GridTable(props: Type_forLocationInfoResult): JSX.Element {
+    const { location_DATA } = React.useContext(Container.Context);
+    const { startPoints, endPoints } = location_DATA;
     const geocoderService = new GeocoderInputSearche();
     const { updateContext_DATA } = UseChangeContextDATA();
     const [rowData, setRowData] = React.useState<Type_IRow[]>([])
     const [colDefs] = React.useState<ColDef[]>([
-        { field: 'type' },
-        { field: 'name', filter: true },
-        { field: 'population' },
-        { field: 'countryName' },
-        { field: 'countryId' },
-        { field: 'adminDivision1Name' },
-        { field: 'coodrinate' },
+        { field: 'type',width: 200 },
+        { field: 'name',width: 250 },
+        { field: 'population',width: 250 },
+        { field: 'countryName',width: 250 },
+        { field: 'countryId',width: 250 },
+        { field: 'adminDivision1Name',width: 250 },
+        { field: 'coodrinate',width: 250 },
     ]);
     const defaultColDef = React.useMemo<ColDef>(() => {
         return {
@@ -40,12 +32,11 @@ function AG_GridTable(props: Type_forLocationInfoResult): JSX.Element {
         };
     }, []);
 
-
-
     React.useEffect(() => {
         setRowData(services_ChangeTheObjectForTheTable(props.respoDATA));
     }, [JSON.stringify(props.respoDATA)])
 
+    
 
     const onCellClicked = async (e: RowSelectedEvent) => {
         const SELECT_COORDIANTE = e.data.coodrinate;
@@ -56,9 +47,17 @@ function AG_GridTable(props: Type_forLocationInfoResult): JSX.Element {
             address: GEOCODER_DATA,
             latLng: COORDINATE_NUMB_FORMATE,
         };
-        updateContext_DATA([
-            { newData: UPDATE_DATA, key: "startPoints" },
-        ]);
+
+        if (startPoints.address.label && !endPoints.address.label) {
+            updateContext_DATA([
+                { newData: UPDATE_DATA, key: "startPoints" },
+            ]);
+        } else if (startPoints.address.label && endPoints.address.label) {
+            updateContext_DATA([
+                { newData: UPDATE_DATA, key: "endPoints" },
+            ]);
+        }
+
     };
 
     return (

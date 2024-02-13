@@ -6,9 +6,8 @@
     width: 100%;
     height: 100%;
     --ag-grid-size: 5px;
-    --ag-header-foreground-color: rgb(113, 247, 10);
+    --ag-header-foreground-color: rgb(199, 199, 199);
     --ag-font-size: 12px;
 
-    --ag-control-panel-background-color: #7d0f0f44;
 }
 

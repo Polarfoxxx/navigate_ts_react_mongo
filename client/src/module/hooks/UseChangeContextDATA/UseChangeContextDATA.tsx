@@ -1,17 +1,7 @@
 import React from "react";
 import {
-    Type_ForUseChangeContextDATA_returning,
-    Type_updateContext_DATA
-} from "./types";
-import {
-    Type_forLocation_markerPopupt,
-    Type_MapBussines_Category,
-    Type_incident,
     Type_sideWays_DATA,
-    Type_forTraficDATA,
-    TypeStartAndEndPoint, Type_forRouteChange,
     Type_location_DATA,
-    Type_OnClick_object,
     Container,
     DEFAULT_VALUE_MAP_BUSSINES,
     DEFAULT_VALUE_MAP_CURRENT_INFO,
@@ -20,27 +10,17 @@ import {
     DEFAULT_VALUE_POSITION,
     DEFAULT_VALUE_CHANGE_ROUTE,
 } from "../../Container";
-
-type Type_for_KEY_MAP =
-    TypeStartAndEndPoint |
-    Type_forRouteChange |
-     [] | 
-     Type_OnClick_object |
-    boolean |
-    L.LatLngExpression |
-    null |
-    Type_forTraficDATA |
-    Type_incident |
-    Type_MapBussines_Category |
-    Type_forLocation_markerPopupt
+import {
+    Type_for_KEY_MAP,
+    Type_ForUseChangeContextDATA_returning,
+    Type_updateContext_DATA
+} from "..";
 
 
 function UseChangeContextDATA(): Type_ForUseChangeContextDATA_returning {
     const { location_DATA, setLocation_DATA, sideWays_DATA, setSideWays_DATA } = React.useContext(Container.Context);
 
-
     function updateContext_DATA(props: Type_updateContext_DATA[]): void {
-
         props.forEach((item: Type_updateContext_DATA) => {
             if (item.newData !== "default") {
                 /* kompletne prepisanie celych objektov */
@@ -64,11 +44,8 @@ function UseChangeContextDATA(): Type_ForUseChangeContextDATA_returning {
                     }))
                 } else
                     alert(`key is not exiting ${item.key}`);
-
-
-
+                /* ak bude default */
             } else if (item.newData === "default") {
-
                 const KEY_MAP: Partial<Record<keyof Type_location_DATA & keyof Type_sideWays_DATA, Type_for_KEY_MAP>> = {
                     "startPoints": DEFAULT_VALUE_POSITION,
                     "endPoints": DEFAULT_VALUE_POSITION,
