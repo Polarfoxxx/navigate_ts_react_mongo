@@ -1,0 +1,12 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
+.imageSliderBox{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(145, 105, 44);
+}
+
+.image-gallery-slide img {
+    width: 100%;
+    height: 660px;
+}

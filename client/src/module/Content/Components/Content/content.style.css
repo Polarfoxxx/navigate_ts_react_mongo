@@ -57,7 +57,10 @@
  .content .containers section .locationImageBox {
      width: 100%;
      height: 100%;
-     background-color: rgba(255, 0, 0, 0.183);
+     background-color: brown;
+     display: flex;
+     align-items: center;
+     justify-content: center;
  }
 
  /* -------------------------------------------------- */

@@ -1,11 +1,13 @@
 
 
 export type Type_Respo_UnsplashPhoto_links = {
-    links: {
-        self: string;
-        html: string;
-        download: string;
-        download_location: string;
+    urls: {
+        full: string;
+        raw: string;
+        regular: string;
+        small: string;
+        small_s3: string;
+        thumb: string;
     };
 };
 
