@@ -12,7 +12,7 @@ function LocationInfoBox(): JSX.Element {
     const [respoDATA, setRespoDATA] = React.useState<Type_CityInfo_RAW_Data[]>([]);
 
     React.useEffect(() => {
-       const INFO_COUNTRY = services_changeLocationNameToCountryCode(location_DATA)
+       const INFO_COUNTRY = services_changeLocationNameToCountryCode(location_DATA);
         fetchLocationInfoData(INFO_COUNTRY);
     }, [startPoints.address.label, endPoints.address.label]);
 

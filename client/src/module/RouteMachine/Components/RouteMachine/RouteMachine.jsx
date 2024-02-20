@@ -26,9 +26,9 @@ function RouteMachine() {
         const ADD_CORD_POINT = intermediatePoints.map((item) => item.latLng);
 
         /* pousun mapy na prvy marker */
-        if (START_POINT.address.label && !END_POINT.address.label) {
+      /*   if (START_POINT.address.label && !END_POINT.address.label) {
             MAP.flyTo([START_POINT.latLng[0], START_POINT.latLng[1]]);
-        };
+        }; */
 
         const routingControl = L.Routing.control({
             waypoints: [
