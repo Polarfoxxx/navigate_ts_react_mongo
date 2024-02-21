@@ -9,6 +9,7 @@ import { servicesJWTdecodeAndValidity } from "../../../utils/";
 import { useNavigate } from "react-router-dom";
 import { UseChangeContextDATA } from "../../../hooks";
 import { DEFAULT_VALUE_LOCATION_FOR_PROVIDER_CONTEXT } from "../../../Container";
+import { Footer } from "../../../HeaderAndFooter/Components";
 
 function Content(): JSX.Element {
     const NAVIGATE = useNavigate();
@@ -53,7 +54,7 @@ function Content(): JSX.Element {
                     </div>
                 </section>
                 <footer>
-                    fooo
+                    <Footer />
                 </footer>
             </div>
         </div>

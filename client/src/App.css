@@ -76,6 +76,8 @@ p {
   --yellowContent: rgb(155, 210, 14);
   --silverTransparentCont: rgba(141, 141, 141, 0.378);
   --bacgroundTransparentCont: rgba(0, 0, 0, 0.381);
+  --redSolidBorder: rgba(201, 46, 15, 0.55);
+  --boxShadowColor: rgba(201, 46, 15, 0.663);
 }
 
 .app {

@@ -6,7 +6,7 @@ import { services_setResponseDATA } from "..";
 
 async function imageLocation_API(LOCATION_NAME_FOR_API: string): Promise<Type_Respo_UnsplashPhoto_links[]> {
     const KEY = "jeOF3nLiwBEd7ruL4bEcDpcGyr-u3kz6pl8xYVDxa5o";
-    const RESP_COUNT = 15;
+    const RESP_COUNT = 25;
     const URL = `https://api.unsplash.com/search/photos?query=${LOCATION_NAME_FOR_API}&per_page=${RESP_COUNT}&client_id=${KEY}`;
     console.log(LOCATION_NAME_FOR_API);
     /* https://api.unsplash.com/search/photos?query=${LOCATION_NAME_FOR_API}&per_page=${RESP_COUNT}&client_id=${KEY} */
