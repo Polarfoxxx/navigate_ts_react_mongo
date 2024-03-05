@@ -19,7 +19,7 @@ const Context = React.createContext<Type_Provider_Context>({
     setLocation_DATA: () => { },
     sideWays_DATA: DEFAULT_VALUE_SIDEWAYS_FOR_PROVIDER_CONTEXT,
     setSideWays_DATA: () => { },
-   
+
 });
 
 
@@ -35,7 +35,7 @@ function Provider({ children }: Props_Provider): JSX.Element {
         } else {
             !servicesJWTdecodeAndValidity(JWT_FROM_STORAGE) && NAVIGATE("/LoginPage")
         };
-    },[JSON.stringify([location_DATA,sideWays_DATA])]);
+    }, [JSON.stringify([location_DATA, sideWays_DATA])]);
 
 
     return (

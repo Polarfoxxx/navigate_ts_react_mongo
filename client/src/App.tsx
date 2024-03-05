@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import {  Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Container } from './module/Container';
 import { Content } from './module/Content';
 import { LoginPage } from './module/Authentication';
@@ -19,10 +19,10 @@ function App(): JSX.Element {
   return (
     <div className='app'>
       <Container.Provider>
-          <Routes>
-            <Route path="LoginPage" element={<LoginPage />} />
-            <Route path="Content/*" element={<Content />} />
-          </Routes>
+        <Routes>
+          <Route path="LoginPage" element={<LoginPage />} />
+          <Route path="Content/*" element={<Content />} />
+        </Routes>
       </Container.Provider>
     </div>
   );

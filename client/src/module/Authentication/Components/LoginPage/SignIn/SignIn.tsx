@@ -6,9 +6,6 @@ import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import validator from "email-validator";
 import { Type_forAuthentication_API, Type_forInputElemets } from "../..";
 import { useNavigate } from "react-router-dom";
-import { UseChangeContextDATA } from "../../../../hooks";
-import { Container } from "../../../../Container";
-
 
 function SignIn(): JSX.Element {
     const NAVIGATE = useNavigate();
@@ -19,7 +16,7 @@ function SignIn(): JSX.Element {
         passwordValue: null,
     });
 
-/* priprava a kontrola hodnout pre odoslanie form */
+    /* priprava a kontrola hodnout pre odoslanie form */
     const submit = (v: TypeForInputsObject["v"]): void => {
         const emailValue = v[0].inputValues.toString();
         const passwordValue = v[1].inputValues.toString();
@@ -40,7 +37,7 @@ function SignIn(): JSX.Element {
         };
     };
 
-/* odoslanie form */
+    /* odoslanie form */
     async function fetchDATA({ emailValue, passwordValue }: Type_forAuthentication_API) {
         try {
             const LOGIN_DATA = await AUTHENTICATION_API.loginUser_API({ emailValue, passwordValue });

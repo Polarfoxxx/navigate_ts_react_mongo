@@ -16,7 +16,7 @@ function ImageLocation(): JSX.Element {
             const LOCATION_NAME_FOR_API = services_changeLocationForImage(location_DATA);
             fetchDATA(LOCATION_NAME_FOR_API);
         };
-    }, [location_DATA.startPoints.address,location_DATA.endPoints.address]);
+    }, [location_DATA.startPoints.address, location_DATA.endPoints.address]);
 
 
     async function fetchDATA(location: string) {

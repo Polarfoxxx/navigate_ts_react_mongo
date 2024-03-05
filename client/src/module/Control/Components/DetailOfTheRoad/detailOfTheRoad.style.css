@@ -21,10 +21,11 @@
     overflow-y: auto;
     padding-top: 4px;
 }
+
 .detailOfTheRoad .detailOfTheRoad_header::-webkit-scrollbar {
     width: 0;
-  }
-  
+}
+
 .detailOfTheRoad .detailOfTheRoad_header.active {
     background-color: var(--orangeContent);
     color: var(--whiteTextColor);
@@ -34,7 +35,8 @@
     background-color: rgb(88, 88, 88);
     color: rgb(255, 255, 255);
 }
-.detailOfTheRoad .detailOfTheRoad_header .detailOfTheRoadHead_Content{
+
+.detailOfTheRoad .detailOfTheRoad_header .detailOfTheRoadHead_Content {
     width: 95%;
     height: auto;
     font-size: 9px;

@@ -3,7 +3,6 @@ import "leaflet/dist/leaflet.css"
 import { MapContainer, TileLayer } from "react-leaflet";
 import "./maps.master.style.css"
 import { LatLngExpression } from 'leaflet';
-import PoligonXXX from '../../../IncidentsToMaps/Components/poligonXXXXX/PoligonXXX';
 
 import { FilterMaps } from '../../../Maps/Components';
 import { RouteMachine } from '../../../RouteMachine';
@@ -43,8 +42,7 @@ function Maps() {
                 <MapTraffic />
                 <MapSearche />
                 <Popups />
-                <MapZoomBox/>
-                {/*    <PoligonXXX />  */}
+                <MapZoomBox />
             </MapContainer>
         </div>
     );

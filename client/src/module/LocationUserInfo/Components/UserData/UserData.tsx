@@ -10,7 +10,6 @@ function UserDATA(): JSX.Element {
             <div className="userSaveANDHistoryData">
                 <UserSaveAndHistoryData />
             </div>
-           
         </div>
     );
 };

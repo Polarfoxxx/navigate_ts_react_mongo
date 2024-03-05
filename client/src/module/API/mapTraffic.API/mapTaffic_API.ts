@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { Type_forMAP_Traffic } from "../../IncidentsToMaps";
 
 async function mapTaffic_API(DATA_FOR_MAPTRAFF: Type_forMAP_Traffic): Promise<ArrayBuffer | undefined> {
-  const API_KEY = "5GX8lJDVddQIy3d3nAmlGCXYaFe5IMFC";
+  const API_KEY = ""; /* your key */
   const LAT = DATA_FOR_MAPTRAFF.lat;
   const LNG = DATA_FOR_MAPTRAFF.lng;
   const WIDTH = DATA_FOR_MAPTRAFF.width;

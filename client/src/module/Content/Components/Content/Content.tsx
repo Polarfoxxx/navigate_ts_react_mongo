@@ -15,7 +15,6 @@ function Content(): JSX.Element {
     const NAVIGATE = useNavigate();
     const { updateContext_DATA } = UseChangeContextDATA();
 
-
     React.useEffect(() => {
         const JWT_FROM_STORAGE = localStorage.getItem('JWT_token');
         if (JWT_FROM_STORAGE === null) {

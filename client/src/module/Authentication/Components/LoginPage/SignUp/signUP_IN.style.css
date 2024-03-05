@@ -30,7 +30,8 @@
 .signUP_IN .signContainer .signContainerName>h1::first-letter {
     color: var(--yellowGreen);
 }
-.signUP_IN .signContainer .loginBoxErrorMessage{
+
+.signUP_IN .signContainer .loginBoxErrorMessage {
     width: 100%;
     height: 30px;
     color: red;
@@ -61,8 +62,8 @@
     margin-top: 10px;
 }
 
-.signUP_IN .signContainer>form>input:autofill{
-    filter:none;
+.signUP_IN .signContainer>form>input:autofill {
+    filter: none;
 }
 
 .signUP_IN .signContainer>form>button {

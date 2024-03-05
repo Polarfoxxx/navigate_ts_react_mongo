@@ -1,13 +1,11 @@
 import React from "react";
 import "./signUP_IN.style.css";
-import { AUTHENTICATION_API, Type_forRespo_objekt } from "../../../../API";
+import { AUTHENTICATION_API } from "../../../../API";
 import { useInputValue } from "foxxy_input_value";
 import { TypeForInputsObject } from "foxxy_input_value/dist/hooks/types/types";
 import validator from "email-validator";
 import { Type_forAuthentication_API, Type_forInputElemets } from "../..";
 import { DEFAULT_VALUE_INPUT_PASS_CONFIR, DEFAULT_VALUE_FOR_RESPO_MESSAGE } from "./default_value";
-
-
 
 
 function SignUp(): JSX.Element {

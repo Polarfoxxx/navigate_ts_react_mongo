@@ -11,7 +11,7 @@ const SEARCH_BUSSINES_API = {
 }
 export default SEARCH_BUSSINES_API;
 
-const API_KEY = "5GX8lJDVddQIy3d3nAmlGCXYaFe5IMFC";
+const API_KEY = "";
 
 async function search_API_bussines_Circle(searchCircleBussines: Type_forSearchAPI_Circle): Promise<Type_SearchRespo_EDITED_DATA[]> {
   const KEY_REQUIRED: (keyof Type_RAW_DATA_response_bussiness)[] = ["fields", "distance", "distanceUnit", "name", "resultNumber"]
@@ -42,9 +42,6 @@ async function search_API_bussines_Circle(searchCircleBussines: Type_forSearchAP
 };
 
 
-
-
-
 async function search_API_bussines_Corridor(searchCorridorBussines: Type_forSearchAPI_Corridor): Promise<Type_SearchRespo_EDITED_DATA[]> {
   const KEY_REQUIRED: (keyof Type_RAW_DATA_response_bussiness)[] = ["fields", "distance", "distanceUnit", "name", "resultNumber"]
   const COORDINATE_POINT = searchCorridorBussines.coordinateALLpoints;
@@ -53,18 +50,17 @@ async function search_API_bussines_Corridor(searchCorridorBussines: Type_forSear
   const SIC_CODE = searchCorridorBussines.SIC_CODE;
   const WIDTH = convert(+searchCorridorBussines.width, 'km').to('miles');
   const BUFF_WIDTH = convert(+searchCorridorBussines.buff_width, 'km').to('miles');
-  
+
   const URL = `https://www.mapquestapi.com/search/v2/corridor?` +
-  `line=${COORDINATE_POINT}&width=${WIDTH}&bufferedWidth=${BUFF_WIDTH}&` +
-  `maxMatches=${MAX_MATCHES}&ambiguities=${AMBIGUITIES}&` +
-  `hostedData=mqap.ntpois|group_sic_code=?|${SIC_CODE}&outFormat=json&` +
-  `key=${API_KEY}`;
+    `line=${COORDINATE_POINT}&width=${WIDTH}&bufferedWidth=${BUFF_WIDTH}&` +
+    `maxMatches=${MAX_MATCHES}&ambiguities=${AMBIGUITIES}&` +
+    `hostedData=mqap.ntpois|group_sic_code=?|${SIC_CODE}&outFormat=json&` +
+    `key=${API_KEY}`;
 
   try {
     const response = await axios.get(URL);
     const RESPO_RAW_DATA: Type_RAW_DATA_response_bussiness[] = response.data.searchResults;
-console.log(RESPO_RAW_DATA);
-
+  
     /* uprava vyslednych dat pomocou services, vybranie iba niektorych klucov */
     const RESPO_EDITED_DATA: Type_SearchRespo_EDITED_DATA[] = services_setResponseDATA({ KEY_REQUIRED: KEY_REQUIRED, RESPO_RAW_DATA: RESPO_RAW_DATA });
     return RESPO_EDITED_DATA

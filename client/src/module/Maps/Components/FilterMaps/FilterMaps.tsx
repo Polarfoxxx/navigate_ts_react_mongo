@@ -21,8 +21,8 @@ function FilterMaps(): null {
         const DARK_LAYER = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
             className: 'map-tiles'
-       
-        
+
+
         });
 
         const BASE_LAYERS = {

@@ -29,7 +29,7 @@
 
 #root>div>div>div>section>div.mapsAndControl>div.mapsBox>div>div.maps_Box>div>div>div.leaflet-control-container>div.leaflet-top.leaflet-left>div>a.leaflet-control-zoom-in,
 #root>div>div>div>section>div.mapsAndControl>div.mapsBox>div>div.maps_Box>div>div>div.leaflet-control-container>div.leaflet-top.leaflet-left>div>a.leaflet-control-zoom-out,
-#root > div > div > div > section > div.mapsAndControl > div.mapsBox > div > div.maps_Box > div > div > div.leaflet-control-container > div.leaflet-top.leaflet-right > div.leaflet-control-layers.leaflet-control > a {
+#root>div>div>div>section>div.mapsAndControl>div.mapsBox>div>div.maps_Box>div>div>div.leaflet-control-container>div.leaflet-top.leaflet-right>div.leaflet-control-layers.leaflet-control>a {
     background-color: var(--silverContent);
     border: black;
     color: white;

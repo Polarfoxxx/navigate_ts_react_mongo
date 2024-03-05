@@ -10,7 +10,8 @@
     align-items: center;
     justify-content: center;
 }
-.controlAndinfoBox .offCanvasBox_box .offCanvasBoxALLContent{
+
+.controlAndinfoBox .offCanvasBox_box .offCanvasBoxALLContent {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,9 +31,10 @@
     padding: 10px;
     color: white;
     flex-direction: column;
-   
+
 }
-.controlAndinfoBox .offCanvasBox_box .offCanvasBoxALLContent .offCanvasBoxTextContent >p{
+
+.controlAndinfoBox .offCanvasBox_box .offCanvasBoxALLContent .offCanvasBoxTextContent>p {
     line-height: 20px;
 }
 

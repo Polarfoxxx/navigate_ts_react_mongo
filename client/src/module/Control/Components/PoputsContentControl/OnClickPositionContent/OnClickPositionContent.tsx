@@ -27,7 +27,7 @@ function OnClickPositionContent(): JSX.Element {
         }
     }, [location_markerPopupt.data.ident])
 
-    
+
     /* odstranenie bodu */
     const handleRemovePoint = (e: React.MouseEvent<HTMLButtonElement>, ident: string) => {
         e.stopPropagation()

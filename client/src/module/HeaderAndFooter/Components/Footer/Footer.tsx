@@ -1,18 +1,14 @@
-import React from "react";
 import "./footer.style.css";
 
 
 function Footer(): JSX.Element {
-    return(
+    return (
         <div className="footer">
-            <div>
-                <h2>cjhdsbcjdsk</h2>
+            <div className="createdBox">
+                <h2>Created by foxxy</h2>
             </div>
-            <div>
-
-            </div>
-            <div>
-                
+            <div className="emailBox">
+                <h2>suchovsky.michal@gmail.com</h2>
             </div>
         </div>
     );

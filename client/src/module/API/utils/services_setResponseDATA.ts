@@ -9,7 +9,7 @@ function services_setResponseDATA<T extends object, K extends keyof T>({ KEY_REQ
     let respoARR: Pick<T, K>[] = [];
 
     for (const item of RESPO_RAW_DATA) {
-    let result = {} as Pick<T, K>;
+        let result = {} as Pick<T, K>;
 
         for (const key of KEY_REQUIRED) {
             if (key in item) {

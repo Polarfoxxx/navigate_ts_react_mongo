@@ -5,7 +5,6 @@ export { default as imageLocation_API } from "./imageLocation.API/imageLocation_
 export { default as AUTHENTICATION_API } from "./authentication.API/authentication.API";
 export { default as mapTaffic_API } from "./mapTraffic.API/mapTaffic_API";
 
-
 /* type */
 export type {
     Type_RAW_DATA_response_bussiness,
