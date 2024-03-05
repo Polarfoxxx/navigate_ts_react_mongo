@@ -55,7 +55,6 @@ function services_SetStart_End_intermediate_positionToObjekt({
                 // Ak objekt existuje, nahradíme ho novým objektom na rovnakom mieste
                 const newArrayALLCoordinate = [...location_DATA.intermediatePoints];
                 newArrayALLCoordinate[index] = COORDINATE_AND_ADDRESS;
-                console.log(location_DATA.intermediatePoints);
 
                 return { ...location_DATA, intermediatePoints: newArrayALLCoordinate };
             };

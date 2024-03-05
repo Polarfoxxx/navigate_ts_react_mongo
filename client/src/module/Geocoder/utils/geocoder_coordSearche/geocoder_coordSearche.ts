@@ -35,7 +35,6 @@ async function geocoder_coordSearche(CLICK_COORD: Type_fromGeocoderMapClickSearc
 
       return UPDATE_DATA;
     } else {
-      console.log("Place not found.");
       throw new Error("Place not found.");
     }
   } catch (error) {

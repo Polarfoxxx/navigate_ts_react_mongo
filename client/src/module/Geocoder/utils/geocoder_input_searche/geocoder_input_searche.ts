@@ -22,14 +22,11 @@ class GeocoderInputSearche {
     };
   };
 
-
   async getCoordinatesForAddress(address: string): Promise<Type_respo_geocoderForAddress | null> {
     try {
       const RESPONSE = await axios.get(
         `${PROVIDER_URL}?format=${FORMAT}&q=${address}&accept-language=${LANGUAGE}&addressdetails=1&limit=1`
       );
-      console.log(RESPONSE);
-
       if (RESPONSE.data.length > 0) {
         const COORDINATES_AND_ADDRESS = {
           label: RESPONSE.data[0].display_name,

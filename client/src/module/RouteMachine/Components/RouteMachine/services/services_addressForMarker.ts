@@ -2,7 +2,6 @@ import { Type_Addrress } from "../../../../Container";
 import { Type_forServices_addressForMarker, Type_forIdentMarker_keyOf } from "./types";
 
 function services_addressForMarker(props: Type_forServices_addressForMarker): Type_Addrress | undefined {
-    console.log(props.markerIdent);
 
     if (typeof props.markerIdent === "string") {
         const IDENT_MARKER = props.markerIdent as keyof Type_forIdentMarker_keyOf;

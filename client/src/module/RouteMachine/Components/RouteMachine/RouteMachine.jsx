@@ -99,7 +99,6 @@ function RouteMachine() {
             if (timeoutReff.current) {
                 clearTimeout(timeoutReff.current);
             };
-            console.log(e);
             timeoutReff.current = setTimeout(() => {
                 const UPDATE_DATA = {
                     popupStatus: true,

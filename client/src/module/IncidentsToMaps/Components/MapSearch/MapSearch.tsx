@@ -30,7 +30,6 @@ function MapSearch(): JSX.Element {
             };
             try {
                 const DATA_API: Type_SearchRespo_EDITED_DATA[] = await SEARCH_BUSSINES_API.search_API_bussines_Circle(UPDATE_DATA_CIRCLE_API);
-                console.log(DATA_API);
                 setAllBussines(DATA_API)
                 const UPDATE_DATA_FOR_CONTEXT = {
                     ...mapBussines_Category,
@@ -53,7 +52,6 @@ function MapSearch(): JSX.Element {
             };
             try {
                 const DATA_API = await SEARCH_BUSSINES_API.search_API_bussines_Corridor(UPDATE_DATA_CORRIDOR_API)
-                console.log(DATA_API);
                 setAllBussines(DATA_API)
                 const UPDATE_DATA_FOR_CONTEXT = {
                     ...mapBussines_Category,

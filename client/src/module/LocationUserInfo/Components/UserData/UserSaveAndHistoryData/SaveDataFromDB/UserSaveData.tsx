@@ -53,7 +53,6 @@ function UserSaveData(): JSX.Element {
             try {
                 const RESPO_DATA = await AUTHENTICATION_API.deleteRoute({ EMAIL_NAME, ROUTE_NAME, USER_JWT_TOKEN });
                 if (RESPO_DATA?.status === 200) {
-                    console.log(RESPO_DATA.data);
                     setLoadDATA(RESPO_DATA.data)
                 };
             } catch (error) {
@@ -62,11 +61,6 @@ function UserSaveData(): JSX.Element {
         };
     };
 
-
-    /* selekt trasy pre farebne odlisenie */
-    React.useEffect(() => {
-        console.log(selectRoute);
-    }, [selectRoute])
 
     return (
         <div className="saveDataContent">
